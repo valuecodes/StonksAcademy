@@ -1,6 +1,121 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600&display=swap');
+
+html{
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+:root{
+  --primary-color:#DCDF51;
+  --secondary-color:#777777;
+  --positive-color:#65DF51;
+  --neutral-color:#E7EA5D;
+  --negative-color:#DF5951;
+  --background-color:#DEDEDE;
+  --text-light:#DEDEDE;
+  --light-color:rgb(131, 131, 131);
+}
+
+body{
+  font-family: 'Baloo Tamma 2', cursive;   
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  font-size: 1.6rem;
+  height: 100vh;
+  color: var(--text-light);
+}
+
+.app{
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 6rem 1fr 6rem;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+a{
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.container{
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* Header */
+.header{
+  height: 6rem;
+  width: 100%; 
+  background-color: var(--secondary-color);
+}
+
+.header div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mainLogo{
+  display: flex;
+}
+
+.mainNav ul{
+  display: grid;
+  grid-template-columns: repeat(4,auto);
+  height: 6rem;
+}
+
+.mainNav ul li a{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.mainNav ul li a:hover{
+  background-color: var(--light-color);
+}
+
+/* Footer */
+.footer{
+  background-color: var(--secondary-color);
+}
+
+.footer div{
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* LandingScreen */
+.landingScreen{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landingPageContainer{
+  width: 60rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.landingPageContainer a{
+  font-size: 5rem;
+  padding: 1rem;
+  margin-bottom: 5rem;
+  color: var(--secondary-color);
+  border: 1px solid var(--light-color);
+  border-radius: 0.5rem;
+}
+
+.landingPageContainer a:hover{
+  background-color: rgb(235, 235, 235);
 }
