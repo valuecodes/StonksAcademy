@@ -5,6 +5,11 @@ html{
   box-sizing: border-box;
 }
 
+*{
+  margin: 0;
+  padding: 0;
+}
+
 :root{
   --primary-color:#DCDF51;
   --secondary-color:#777777;
@@ -13,22 +18,25 @@ html{
   --negative-color:#DF5951;
   --background-color:#DEDEDE;
   --text-light:#DEDEDE;
+  --text-dark:rgb(88, 88, 88);
   --light-color:rgb(131, 131, 131);
 }
 
 body{
   font-family: 'Baloo Tamma 2', cursive;   
-  margin: 0;
-  padding: 0;
   font-size: 1.6rem;
   height: 100vh;
-  color: var(--text-light);
+  color: var(--text-dark);
 }
 
 .app{
   min-height: 100vh;
   display: grid;
   grid-template-rows: 6rem 1fr 6rem;
+}
+
+h1{
+  font-size: 4rem;
 }
 
 ul{
@@ -43,6 +51,7 @@ a{
 }
 
 .container{
+  height: 100%;
   max-width: 1400px;
   margin: auto;
 }
@@ -91,11 +100,12 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--primary-color);
 }
 
 /* LandingScreen */
 .landingScreen{
-  height: 100%;
+  height: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,4 +128,66 @@ a{
 
 .landingPageContainer a:hover{
   background-color: rgb(235, 235, 235);
+}
+
+/* SectionHeader */
+.sectionHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.trainingStatus{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.trainingStatus div{
+  background-color: var(--secondary-color);
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-light);
+  font-size: 4.5rem;
+  margin-left: 2rem;
+}
+
+/* AcademyScreen */
+.academyScreen{
+
+}
+
+.academyCategories{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(30rem, 1fr));
+  grid-auto-rows: 30rem;
+  grid-gap: 3rem;
+} 
+
+.academyCategory{
+  height: inherit;
+  background-color: var(--background-color);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: auto 10rem;
+  grid-template-rows: 1fr 1fr;
+}
+
+.academyCategory .trainingStatus{
+  grid-column: 1/3;
+}
+
+.academyCategory a{
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: var(--secondary-color);  
+  color: var(--primary-color);
 }
