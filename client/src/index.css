@@ -56,6 +56,22 @@ a{
   margin: auto;
 }
 
+.backButton{
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem;
+}
+
+.backButton svg{
+  transform: scale(1.5);
+  margin-left: 1.2rem;
+}
+
 /* Header */
 .header{
   height: 6rem;
@@ -157,6 +173,10 @@ a{
   margin-left: 2rem;
 }
 
+.articleHeader{
+  border-bottom: 1px solid black;  
+}
+
 /* AcademyScreen */
 .academyScreen{
 
@@ -190,4 +210,108 @@ a{
   border-radius: 0.5rem;
   background-color: var(--secondary-color);  
   color: var(--primary-color);
+}
+
+/* AcademySection */
+.academySection{
+
+}
+
+.articleHeader{
+  
+}
+
+.articleContainers{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-auto-rows: 20rem;
+  grid-gap: 5rem;
+}
+
+.dropzone{
+  position: relative;
+  z-index: 1;
+  background-color: lightgray;
+}
+
+.articleItem{
+
+}
+
+/* DragAndDrop */
+.dragAndDrop{
+  display: flex;
+}
+
+.droppableContainer{
+  min-height: 33rem;
+  background-color: var(--background-color);
+  margin: 2rem;
+  padding: 2rem;
+  display: grid;
+  grid-template-rows: 5rem 23rem 10rem;
+  width: 250px;
+  /* overflow: hidden; */
+}
+
+.draggingAreaContainer{
+  height: 23rem;
+  max-height: 23rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(201, 201, 201);  
+  overflow: hidden;
+  
+}
+
+.draggingArea{
+  padding: 1rem;
+}
+
+.dragAndDropHeader{
+  text-align: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.draggableItem{
+  color: var(--text-light);
+  border-radius: 0.2rem;
+  font-size: 2.5rem;
+  padding: 1rem;
+  position: relative;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.dragAndDropInfoText{
+  padding: 0.5rem;
+}
+
+.dndIcon{
+  height: 0;
+  position: absolute;
+  margin-left: 10.5rem;
+  margin-top: 10rem;
+  transform: scale(16);
+  color: rgb(161, 161, 161);
+}
+
+/* AssetsAndLiabilities */
+.assetsAndLiabilities{
+  /* display: flex; */
+}
+
+
+/* ArticleContent */
+.articleContent{
+  display: flex;
+}
+
+/* ArticleControls */
+.articleControls{
+  
 }
