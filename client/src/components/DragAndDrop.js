@@ -9,6 +9,7 @@ export default function DragAndDrop(props) {
         columns,
         items,
         getScore,
+        startExercise
     } = props
 
     const [dragAndDrop, setDragAndDrop] = useState([])
@@ -113,13 +114,14 @@ export default function DragAndDrop(props) {
         <div className='dragAndDrop'>
             <DragDropContext onDragEnd={onDragEnd}>
                 {dragAndDrop.map(item =>
+                    (startExercise||!item.exercise)&&
                     <Droppable key={item.droppable} droppableId={item.droppable}>
                         {(provided, snapshot) => (
-                            <div className='droppableContainer'>
+                            <div className={`droppableContainer ${item.starting?'starting':''}`}>
                             <h2 className='dragAndDropHeader'>{item.name}</h2>
-                            <div
+                             <div
                                 ref={provided.innerRef}
-                                style={getListStyle(snapshot.isDraggingOver)}
+                                style={!item.exercise?getListStyle(snapshot.isDraggingOver,item.exercise):{}}
                             >
                                 
                                 <div className='draggingAreaContainer'>
@@ -195,11 +197,11 @@ const getItemStyle = (isDragging, draggableStyle) => ({
     ...draggableStyle
 });
 
-const getListStyle = isDraggingOver => ({
+const getListStyle = (isDraggingOver,exercise) => ({
     background: isDraggingOver ? 'lightgray' :'var(--background-color)' ,
     // padding: grid,
     // paddingTop:'5rem',
     // minHeight:'380px',
-    width: 250
+    // width: 250
 });
 
