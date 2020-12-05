@@ -5,7 +5,6 @@ import MaterialIcon from './MaterialIcon'
 export default function DragAndDrop(props) {
 
     const {
-        startingColumns=[],
         columns,
         items,
         getScore,
@@ -16,10 +15,8 @@ export default function DragAndDrop(props) {
     const [score,setScore] = useState({wrongAnswerCount:0})
 
     useEffect(()=>{
-        
-        let numberOfColumns=5
+
         let newDragAndDrop=[]
-        let total=0
 
         columns.forEach(column =>{
             newDragAndDrop.push({
@@ -38,6 +35,7 @@ export default function DragAndDrop(props) {
         })
         setDragAndDrop(newDragAndDrop)
         calculateScore(newDragAndDrop)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const onDragEnd = (result) => {
@@ -75,9 +73,9 @@ export default function DragAndDrop(props) {
             })
             movedItem.correct=null
             setDragAndDrop(updatedDragAndDrop);
-            let destIndex = destination.droppableId.split('.')[1]
-            if(destIndex!=movedItem.start){
-                if(destIndex==movedItem.target){
+            let destIndex = Number(destination.droppableId.split('.')[1])
+            if(destIndex!==movedItem.start){
+                if(destIndex===movedItem.target){
                     movedItem.correct=true            
                 }else{
                     movedItem.correct=false

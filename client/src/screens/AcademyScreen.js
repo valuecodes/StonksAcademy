@@ -18,7 +18,7 @@ export default function AcademyScreen(){
             <SectionHeader header={'Academy'}/>
             <div className='academyCategories'>
                 {academyCategories.map(category => 
-                    <Category category={category}/>
+                    <Category key={category} category={category}/>
                 )}
             </div>
         </section>

@@ -1,7 +1,6 @@
 import React from 'react'
 import TrainingStatus from './TrainingStatus'
 import { Link } from 'react-router-dom'
-import MaterialIcon from './MaterialIcon'
 
 export default function SectionHeader({header,subHeader,back}) {
     return (

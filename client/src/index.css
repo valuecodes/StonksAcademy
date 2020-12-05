@@ -76,6 +76,7 @@ a{
   padding: 1rem;
   border-radius: 0.5rem;
   border:1px solid black;
+  cursor: pointer;
 }
 
 /* Header */
@@ -181,13 +182,14 @@ a{
 
 .articleHeader{
   border-bottom: 1px solid black;  
+  display: flex;
+  align-items: center;
+}
+.articleHeader h2{
+  margin-right: 2rem;
 }
 
 /* AcademyScreen */
-.academyScreen{
-
-}
-
 .academyCategories{
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(30rem, 1fr));
@@ -228,17 +230,6 @@ a{
 
 .academySection .sectionHeader{
   grid-column: 1/3;
-}
-
-.articleHeader{
-  
-}
-
-.articleContainers{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  grid-auto-rows: 20rem;
-  grid-gap: 5rem;
 }
 
 .dropzone{
@@ -305,7 +296,6 @@ a{
 
 .dragAndDropInfoText{
   padding: 0.5rem;
-  /* height: 20rem; */
 }
 
 .dndIcon{
@@ -323,9 +313,15 @@ a{
   background-color: white!important;
   border: none;
 }
+
 .starting div{
   border: none;  
 }
+
+.starting .dragAndDropHeader{
+  margin-top: 2rem;
+}
+
 .starting div .draggingAreaContainer{
   height: 22rem!important;
   max-height: 22rem;
@@ -336,46 +332,22 @@ a{
 /* AcademyArticles */
 .academyArticles{
   display: grid;
-  /* grid-auto-rows: 60rem; */
+  grid-template-columns: 100%;
   grid-gap: 5rem;
   height: 60rem;
   overflow: hidden;
 }
 
-.articleContainer{
-  /* height: 60rem; */
-}
-
-/* AssetsAndLiabilities */
-.assetsAndLiabilities{
-  /* display: flex; */
+.articleContainer{  
+  max-width:inherit;
+  height: 60rem;
 }
 
 
 /* ArticleContent */
 .article{
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  height: 50rem;
-}
-
-.articleContent{
-  display: flex;
-  justify-content: space-evenly;
-  /* height: inherit; */
-}
-
-/* ArticleControls */
-.articleControls{
-  grid-column: 2/3;
-  margin: 2rem;
-  width: 80%;
-  border-left: 0.1rem solid rgb(167, 167, 167);
-  padding: 1rem;
-}
-
-.articleControlsHeader{
-  /* background-color: red; */
+  width: inherit;
+  height: 55rem;
 }
 
 /* ArticleNavigation */
@@ -403,7 +375,6 @@ a{
   color: var(--secondary-color);
   border-radius: 50%;
   cursor: pointer;
-  
 }
 
 .navigatioCheckpoint{
@@ -428,4 +399,160 @@ a{
 
 .available{
   background-color:var(--positive-color);
+}
+
+.aalDemo{
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.dragAndDropExercise{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.aalDemoResult{
+  padding: 2rem;
+}
+
+.aalDemoResult ul{
+  display: grid;
+}
+
+.chartContainer{
+  height: 100%;
+  width: 1fr;
+}
+
+/* List */
+.list li{
+  width: 25rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list li:last-child{
+  border-top: 1px solid var(--light-color);
+}
+
+.smallList li{
+  position: relative;
+  width:13rem!important;
+  /* flex-wrap: wrap; */
+}
+
+/* ExerciseStats */
+.exerciseStats{
+  padding: 2rem;
+  display: grid;
+}
+
+.articleSubNav{
+  position: relative;
+  z-index: 1;
+  width: 0;
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: 9rem 9rem;
+  grid-auto-rows: 4rem;
+  grid-gap: 1rem;
+}
+
+.articleSubNav button{
+  padding: 0;
+  height: 3rem;
+  background-color: none;
+  border: none;
+  cursor: pointer;
+}
+
+.selected{
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+}
+
+.articleSubPages{
+  margin-top: 3rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(10,100%);
+  transition: margin 0.4s;
+  height: 50rem;
+  
+}
+
+.articleSubPage{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+}
+
+/* TextList */
+.textList li{
+  margin-bottom: 2rem;
+}
+.textList li button{
+  margin-right: 1rem;
+}
+
+.houseIcon{
+  transform: scale(5);
+  color: black;
+}
+
+.valueInvestingDemo{
+  grid-column: 2/4;
+  height: 30rem;
+  width: 50rem;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 1fr 0 0;
+}
+
+.housePrices{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.housePrices .housePrice{
+  width: 10rem;
+  display: grid;
+  grid-gap: 3rem;
+  justify-items: center;
+  margin-top: -4.5rem;
+}
+
+.valueInvestingDemo h2{
+  position: relative;
+  top: -0.5rem;
+  left: -30rem;
+}
+
+.articleExerciseHeader{
+  margin-top: 7rem;
+}
+
+.articleMiddle{
+  margin:  auto 0;
+  grid-column: 2/4;
+}
+
+.estimateHousePrice{
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-rows: 2rem 1fr auto;
+}
+.estimateHousePrice button{
+  height: 3rem;
+  padding: 0;
+}
+
+.exerciseContainer{
+  margin-top: 10rem;
+}
+
+.articleExample{
+  grid-column: 2/5;
+  padding-right: 5rem;
 }
