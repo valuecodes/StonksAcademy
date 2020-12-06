@@ -12,12 +12,30 @@ import TextList from '../components/Article/TextList'
 import MaterialIcon from '../components/MaterialIcon'
 import { datalabels } from 'chartjs-plugin-datalabels'
 import annotation from "chartjs-plugin-annotation";
+import ArticleTableOfContent from '../components/Article/ArticleTableOfContent'
+import ArticleRecap from '../components/Article/ArticleRecap'
+
+const articleContent=[
+    {
+        name:'Assets And Liabilities',
+        desc:'What is the difference between asset and liability',
+        articleTerms:['Asset','Liability']
+    },
+    {
+        name:'Value Investing And Intrinsic Value',
+        desc:'What is the difference market price and real value of asset',
+        articleTerms:['Value investing','Intrinsic value']
+    },
+    {
+        name:'Investing categories',
+        desc:'Different investing categories',
+        articleTerms:['Investment Risk Ladder','Stock','Bond']
+    },
+]
 
 export default function AcademyInvestingScreen() {
 
-    const [navigation, setNavigation] = useState(new ArticleNav(
-        ['assetsAndLiabilities','valueInvestingAndIntrinsicValue','assetsAndLiabilities']
-    ))
+    const [navigation, setNavigation] = useState(new ArticleNav(articleContent,true))
 
     const handleNavigate=(direction,status)=>{
         navigation.navigate(direction,status,navigation,setNavigation)
@@ -30,14 +48,16 @@ export default function AcademyInvestingScreen() {
     return (
         <section className='academySection' >
             <SectionHeader 
-                header={'Academy'} 
-                subHeader={'Investing'} 
-                back={'/academy'}
+                header={'Investing'} 
+                // subHeader={'Investing'} 
+                // back={'/academy'}
             /> 
             <div className='academyArticles' id={'academyArticles'} >
+                <ArticleTableOfContent navigation={navigation} moveTo={handleNavigate}/>
                 <AssetsAndLiabilities article={navigation.articles[0]} completeArticle={completeArticleHandler} /> 
                 <ValueInvestingAndIntrinsicValue article={navigation.articles[1]} completeArticle={completeArticleHandler} />
                 <InvestingCategories article={navigation.articles[2]}  completeArticle={completeArticleHandler} />  
+                <ArticleRecap navigation={navigation}/>
             </div>
             <ArticleNavigation moveTo={handleNavigate} navigation={navigation}/>        
         </section>
@@ -610,7 +630,7 @@ function AssetsAndLiabilitiesPractice(){
 
 function AssetsAndLiabilitiesExercise({score,scoreHandler}){
     return(
-        <div className='dragAndDropExercise'>
+        <div className='dragAndDropExercise articleSubPage'>
             <DragAndDrop 
                 columns={[                    
                     {name:'Drag and drop items to Assets and Liabilities',id:1,

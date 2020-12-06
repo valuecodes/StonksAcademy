@@ -2,25 +2,29 @@ export function ArticleNav(items,testing=false){
 
     const createArticles=(items)=>{
         return items.map((item,index) => {return{
-            name:item,
+            ...item,
             id:index,
             completed:testing,
             visited:false,
             articleId: 'article.'+index,
-            current:0,
+            current:'start',
         }})
     }
 
     const navigate = (direction,status,navigation,setNavigation) => {
+        console.log(direction,status)
         if(status==='unavailable') return
-        let current = navigation.current
+        let current = direction
         let element = null
-        if(direction==='prev'){
-            current--;
+        
+        if(current==='start'){
+            element = document.getElementById('tableOfContent')
+        }else if(current==='recap'){
+            element = document.getElementById('recap')            
         }else{
-            current++;                
-        }                
-        element = document.getElementById('article.'+current)
+            element = document.getElementById('article.'+current)
+        }
+
         if(element){
             element.scrollIntoView({behavior: "smooth"});
             navigation.articles.forEach(item => {
@@ -38,7 +42,7 @@ export function ArticleNav(items,testing=false){
     }
 
     return{
-        current:0,
+        current:'start',
         articles:createArticles(items),
         navigate,
         complete,

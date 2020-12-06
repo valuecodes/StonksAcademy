@@ -1,0 +1,16 @@
+/* Table Of Content */
+.tableOfContent{
+    margin-top: 2rem;
+    display: grid;
+    grid-gap: 3rem;
+  }
+  
+  .articleTerms{
+    display: flex;
+  }
+  .articleTerms p{
+    margin-right: 0.5rem;
+    background-color: var(--background-color);
+    padding: 0 0.5rem;
+    padding-top: 0.2rem;
+  }

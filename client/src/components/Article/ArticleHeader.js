@@ -5,7 +5,9 @@ export default function ArticleHeader({header,articleSubNav,setArticleSubNav}) {
     return (
         <div className='articleHeader'>
             <h2>{header}</h2>
-            <ArticleSubNav articleSubNav={articleSubNav} setArticleSubNav={setArticleSubNav}/>
+            {articleSubNav&&
+                <ArticleSubNav articleSubNav={articleSubNav} setArticleSubNav={setArticleSubNav}/>
+            }
         </div>
     )
 }

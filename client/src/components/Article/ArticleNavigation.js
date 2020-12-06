@@ -5,7 +5,7 @@ export default function ArticleNavigation({moveTo,navigation,}){
 
     const getBorderStyle=(item,index)=>{
         let color=item.id===navigation.current?'var(--secondary-color)':'rgba(255, 255, 255,0.0)'
-        return '0.3rem solid '+color
+        return '0.2rem solid '+color
     }
 
     const getNextButtonStatus=(navigation)=>{
@@ -15,31 +15,47 @@ export default function ArticleNavigation({moveTo,navigation,}){
         return currentArticle.completed?'available':'unavailable'
     }
 
-    let prevButtonStatus = navigation.current===0?'unavailable':''
-    let nextButtonStatus = getNextButtonStatus(navigation)
+    const getButtonStyle=(id)=>{
+        let color=navigation.current===id?'var(--secondary-color)':'rgba(255, 255, 255,0.0)'
+        return '0.2rem solid '+color
+    }
+
+    // let prevButtonStatus = navigation.current===-1?'unavailable':''
+    // let nextButtonStatus = getNextButtonStatus(navigation)
+    let prevButtonStatus = ''
+    let nextButtonStatus = ''
 
     return(
         <div className='articleNavigationContainer'>
             <div className='articleNavigation'>
                 
-                <button onClick={()=> moveTo('prev',prevButtonStatus)}>
+                <button onClick={()=> moveTo('start',prevButtonStatus)}
+                    className='articleNavButton'
+                    style={{border: getButtonStyle('start')}}
+                >
                     <MaterialIcon 
                         className={`navigationIcon ${prevButtonStatus}`}
-                        icon={'ArrowUpwardIcon'} 
+                        icon={'TocIcon'} 
                     />
                 </button>
 
                 {navigation.articles.map((item,index) =>
-                    <div 
+                    <button
+                        onClick={()=> moveTo(item.id,'')}
                         key={item.id}
                         style={{border: getBorderStyle(item,index)}}
-                        className='navigatioCheckpoint'
-                >{navigation.current>=index&&<p>{index+1}</p>} </div>
+                        className='navigationCheckpoint'
+                    >
+                    {index+1}
+                </button> 
                 )}
 
-                <button onClick={()=> moveTo('next',nextButtonStatus)}>
+                <button onClick={()=> moveTo('recap',nextButtonStatus)}
+                     className='articleNavButton'
+                     style={{border: getButtonStyle('recap')}}
+                >
                     <MaterialIcon 
-                        icon={'ArrowDownwardIcon'} 
+                        icon={'EmojiFlagsIcon'} 
                         className={`navigationIcon ${nextButtonStatus}`}
                     />
                 </button>
