@@ -8,7 +8,7 @@ export default function SectionHeader({header,subHeader,back}) {
             <h1>{header}</h1>
             {back&& <BackButton linkTo={back} />} 
             <h2>{subHeader}</h2>
-            <TrainingStatus/>
+            {/* <TrainingStatus/> */}
         </header>
     )
 }

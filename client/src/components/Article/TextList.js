@@ -1,4 +1,5 @@
 import React from 'react'
+import './Article.css'
 
 export default function TextList({content}) {
     return (
@@ -35,7 +36,18 @@ function TextItem({item}){
     return(
         <>
             <h3>{item.header}</h3>
-            <p>{item.text}</p>                   
+            <p>{item.text}</p>    
+            {item.formula&&
+                <Formula formula={item.formula}/>
+            }
         </>
+    )
+}
+
+function Formula({formula}){
+    return(
+        <div className='formula'>
+            {formula}
+        </div>
     )
 }

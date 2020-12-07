@@ -3,7 +3,9 @@ import ArticleHeader from './ArticleHeader'
 import './Article.css'
 
 export default function ArticleRecap({navigation}){
+    
     let allArticleTerms = navigation.articles.map(item => item.articleTerms).flat(1)
+
     return(
         <div id='recap' className='articleContainer'>
             <ArticleHeader 
@@ -12,12 +14,23 @@ export default function ArticleRecap({navigation}){
             <ul className='tableOfContent'>
                 <li>
                     <h4>Section Score</h4>
+                    <div className='recapScore'>
+                        {navigation.articles.map(item =>
+                            <div className='scoreContainer'>
+                                <h3>{item.name}</h3>
+                                {item.score&&
+                                    <h4>Score {item.score.correct}/{item.score.total}</h4>
+                                } 
+                            </div>                        
+                        )}
+
+                    </div>
                 </li>
                 <li>
                     <h4>Terms covered</h4>            
                     <div className='articleTerms'>
-                        {allArticleTerms.map(term =>
-                            <p>{term}</p>
+                        {allArticleTerms.map((term,index) =>
+                            <p key={index}>{term}</p>
                         )}
                     </div>                    
                 </li>

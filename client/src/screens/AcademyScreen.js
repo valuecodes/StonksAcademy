@@ -1,7 +1,6 @@
 import React,{ useState, useEffect } from 'react'
 import SectionHeader from '../components/SectionHeader'
 import { camelCaseToString, truncate } from '../utils/utils';
-import TrainingStatus from '../components/TrainingStatus'
 import { Link } from 'react-router-dom'
 import MaterialIcon from '../components/MaterialIcon'
 
@@ -30,7 +29,7 @@ export default function AcademyScreen(){
             <h2 className='academyCourseHeader'>Featured Courses</h2>
             <div className='academyCategories'>    
                 {academyCategories.map(category => 
-                    <Category key={category} category={category}/>
+                    <Category key={category.name} category={category}/>
                 )}
             </div>
         </section>

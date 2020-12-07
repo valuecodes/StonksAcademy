@@ -10,8 +10,9 @@ import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import TocIcon from '@material-ui/icons/Toc';
 import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
+import BusinessIcon from '@material-ui/icons/Business';
 
-export default function MaterialIcon({icon,color='black',size='large',className}){
+export default function MaterialIcon({icon,color='black',size='large',className,scale=1}){
 
     switch(icon){
         case 'ArrowBackIosIcon':
@@ -34,6 +35,8 @@ export default function MaterialIcon({icon,color='black',size='large',className}
             return <TocIcon className={className}/>
         case 'EmojiFlagsIcon':
             return <EmojiFlagsIcon className={className}/>
+        case 'BusinessIcon':
+            return <BusinessIcon className={className} style={{transform:`scale(${scale})`}}/>
         default: return null
     }
 }

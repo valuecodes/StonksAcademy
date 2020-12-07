@@ -1,4 +1,6 @@
-export function ArticleNav(items,testing=false){
+export function ArticleNav(items,testing=false,startfrom){
+
+    const startingArticle = 'start'
 
     const createArticles=(items)=>{
         return items.map((item,index) => {return{
@@ -7,16 +9,16 @@ export function ArticleNav(items,testing=false){
             completed:testing,
             visited:false,
             articleId: 'article.'+index,
-            current:'start',
+            current: startingArticle,
+            score:null
         }})
     }
 
     const navigate = (direction,status,navigation,setNavigation) => {
-        console.log(direction,status)
         if(status==='unavailable') return
         let current = direction
         let element = null
-        
+
         if(current==='start'){
             element = document.getElementById('tableOfContent')
         }else if(current==='recap'){
@@ -34,15 +36,17 @@ export function ArticleNav(items,testing=false){
         }
     }
 
-    const complete = (id,navigation,setNavigation) => {
-        const articleIndex = navigation.articles.findIndex(item => item.articleId===id)
+    const complete = (id,score,navigation,setNavigation) => {
+        const articleIndex = navigation.articles.findIndex(item => item.id===id)
         const navCopy={...navigation}
         navCopy.articles[articleIndex].completed=true
+        navCopy.articles[articleIndex].score=score
+        console.log(score)
         setNavigation(navCopy)
     }
 
     return{
-        current:'start',
+        current:startingArticle,
         articles:createArticles(items),
         navigate,
         complete,

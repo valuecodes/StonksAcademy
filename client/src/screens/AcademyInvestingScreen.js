@@ -4,7 +4,6 @@ import DragAndDrop from '../components/DragAndDrop'
 import ArticleHeader from '../components/Article/ArticleHeader'
 import ArticleNavigation from '../components/Article/ArticleNavigation'
 import ArticleExerciseStats from '../components/Article/ArticleExerciseStats'
-import ArticleSubNav from '../components/Article/ArticleSubNav'
 import { SubArticleNav } from '../utils/subArticleNav'
 import { Line, Bar } from 'react-chartjs-2'
 import { ArticleNav } from '../utils/articleNav';
@@ -41,8 +40,8 @@ export default function AcademyInvestingScreen() {
         navigation.navigate(direction,status,navigation,setNavigation)
     }
 
-    const completeArticleHandler=(id)=>{
-        navigation.complete(id,navigation,setNavigation)
+    const completeArticleHandler=(id,score)=>{
+        navigation.complete(id,score,navigation,setNavigation)
     }
 
     return (
@@ -89,8 +88,8 @@ function InvestingCategoriesExercise({article,completeArticle}){
     
     const scoreHandler=(newScore)=>{
         setScore(newScore)
-        if(newScore.correct===newScore.total){
-            completeArticle(article.articleId)
+        if((newScore.correct+newScore.wrong)===newScore.total){
+            completeArticle(article.id,score)
         }
     }
 
@@ -166,10 +165,10 @@ function InvestingCategoriesPractice(){
             fill: false,
             borderColor: 'rgba(115, 222, 146,1)',
             backgroundColor:investingCategories.map(item =>{
-                let color=''
                 if(item.riskCategory===1) return 'green'
                 if(item.riskCategory===2) return 'orange'
                 if(item.riskCategory===3) return 'red'
+                return''
             }),
             pointRadius: 0,
             pointHitRadius: 0,
@@ -247,7 +246,7 @@ function ValueInvestingAndIntrinsicValue({article,completeArticle}){
     )
 }
 
-function ValueInvestingExercise({article, completeArticle={completeArticle}}){
+function ValueInvestingExercise({article, completeArticle}){
 
     const [houses, setHouses] = useState([
         {price:95,size:50},
@@ -263,6 +262,22 @@ function ValueInvestingExercise({article, completeArticle={completeArticle}}){
         setHouses(housesCopy)
     }
 
+    const submitScoreHandler = () => {
+        const score={
+            total:0,
+            wrong:0,
+            correct:0,
+            notAnswered:0,
+        }
+        score.total++
+        if(houses[3].price>145&&houses[3].price<170){
+            score.correct++
+        }else{
+            score.wrong++
+        }
+        completeArticle(article.id,score)
+    }
+
     return(
         <div className='articleSubPage'>
             <div className='articleExerciseHeader'>
@@ -274,7 +289,7 @@ function ValueInvestingExercise({article, completeArticle={completeArticle}}){
                         <div className='housePrice houseCard'>
                             <MaterialIcon icon={'HomeIcon'} className='houseIcon'/>
                             <h3>House {index+1}</h3>
-                            <ul className='list smallList'>                                
+                            <ul className='list smallList'>   
                                 <li>                            
                                     <label>Price</label>
                                      <h3>{item.price}k</h3>
@@ -294,7 +309,7 @@ function ValueInvestingExercise({article, completeArticle={completeArticle}}){
                     <div className='estimateHousePrice'>
                         <h3>Estimate</h3>
                         <input min={50} max={200} type='range' onChange={(e) => modifyPriceHandler(e)}/>  
-                        <button onClick={()=>completeArticle(article.articleId)} className='button'>Submit Estimate</button>
+                        <button onClick={submitScoreHandler} className='button'>Submit Estimate</button>
                     </div>                    
                 </div>  
             </div>
@@ -426,7 +441,7 @@ function AssetsAndLiabilities({article,completeArticle}){
     const scoreHandler=(newScore)=>{
         setScore(newScore)
         if(newScore.correct===newScore.total){
-            completeArticle(article.articleId)
+            completeArticle(article.id,score)
         }
     }
     return(

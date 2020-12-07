@@ -14,3 +14,36 @@
     padding: 0 0.5rem;
     padding-top: 0.2rem;
   }
+
+
+/* TextList */
+.textList li{
+  margin-bottom: 2rem;
+}
+
+.textList li button{
+  margin-right: 1rem;
+}
+
+.formula{
+  font-size: 1.4rem;
+  font-weight: bold;
+  background-color: var(--background-color);
+  padding: 1rem;
+  padding-top: 1.3rem;
+  border-left: 0.5rem solid var(--secondary-color);
+}
+
+/* ArticleRecap */
+.recapScore{
+  display: grid;
+  grid-template-columns:repeat(5,20rem);
+  grid-gap: 5rem; 
+}
+
+.scoreContainer{
+  height: 15rem;
+  width: 20rem;
+  padding: 1rem;
+  background-color: var(--background-color);
+}

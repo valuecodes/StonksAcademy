@@ -544,14 +544,6 @@ a{
   padding-right: 5rem;
 }
 
-/* TextList */
-.textList li{
-  margin-bottom: 2rem;
-}
-.textList li button{
-  margin-right: 1rem;
-}
-
 .houseIcon{
   transform: scale(5);
   color: black;
@@ -613,4 +605,75 @@ a{
 .articleExample{
   grid-column: 2/5;
   padding-right: 5rem;
+}
+
+.exampleGrid{
+  display: grid;
+  grid-template-columns:  1fr 1fr 1fr; 
+}
+
+.shareExample{
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: 60%;
+  grid-template-rows: 5rem 20rem 3rem 2rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.shareExample p{
+  align-self: flex-start;
+}
+
+.shareExampleInput{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  align-items: center;
+}
+
+.shareExampleInput label{
+  line-height: 20px;
+}
+
+.shareExampleNumber{
+  font-size: 3rem;
+}
+
+.companyContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.exerciseQuestions{
+  grid-column: 2/4;
+  padding: 5rem;
+}
+
+.exerciseQuestion{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border-bottom: 1px solid var(--background-color);
+  margin-bottom: 3rem;
+}
+
+.exerciseQuestion li{
+  font-size: 2rem;
+  display: grid;  
+  padding-bottom: 1rem;
+}
+
+.exerciseQuestion li:last-child input{
+  font-weight: bold;
+  font-size: 2rem;
+  width: auto;
+  padding: 0.5rem;
+}
+
+/* ArticleResults */
+.articleResults{
+  padding-top: 7rem;
 }
