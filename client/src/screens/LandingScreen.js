@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function LandingScreen() {
+export default function LandingScreen(props) {
     return (
         <section className='landingScreen'>
             <div className='landingPageContainer'>
@@ -11,3 +11,4 @@ export default function LandingScreen() {
         </section>
     )
 }
+

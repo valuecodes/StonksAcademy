@@ -48,6 +48,12 @@ ul{
 a{
   color: var(--text-light);
   text-decoration: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 .container{
@@ -103,7 +109,7 @@ a{
 
 .mainNav ul{
   display: grid;
-  grid-template-columns: repeat(4,auto);
+  grid-template-columns: repeat(5,auto);
   height: 6rem;
 }
 
@@ -116,6 +122,17 @@ a{
 
 .mainNav ul li a:hover{
   background-color: var(--light-color);
+}
+
+.googleLogin{
+  align-self: center;
+  transform: scale(0.8);
+}
+
+.logoutButton{
+  display: flex;
+  align-self: center;
+  height: 3rem;
 }
 
 /* Footer */

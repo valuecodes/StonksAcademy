@@ -16,7 +16,7 @@ function App() {
             <Route path='/academy/stock-market' component={AcademyStockMarketScreen}/>
             <Route path='/academy/investing' component={AcademyInvestingScreen}/>
             <Route exact={true} path='/academy' component={AcademyScreen} />
-            <Route exact={true} path='/'  component={LandingScreen}/>            
+            <Route exact={true} path='/' component={LandingScreen}/>            
           </div>
         </main> 
         <Footer/> 
