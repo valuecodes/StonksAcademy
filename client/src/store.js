@@ -1,10 +1,8 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
-import Cookie from 'js-cookie'
 import { userSigninReducer } from './reducers/userReducers';
 
-const userInfo = Cookie.getJSON('userInfo') || null
-const initialState = {userSignin:{userInfo}}
+const initialState = {}
 
 const reducer = combineReducers({
     userSignin:userSigninReducer

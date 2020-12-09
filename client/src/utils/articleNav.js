@@ -1,14 +1,15 @@
-export function ArticleNav(items,testing=false,startfrom){
+export function ArticleNav(section,testing=false,startfrom){
 
     const startingArticle = 'start'
 
-    const createArticles=(items)=>{
-        return items.map((item,index) => {return{
-            ...item,
+    const createArticles=(section)=>{
+        return section.articles.map((article,index) => {return{
+            ...article,
+            section:section.name,
             id:index,
             completed:testing,
             visited:false,
-            articleId: 'article.'+index,
+            articleId: getArticleId(index),
             current: startingArticle,
             score:null
         }})
@@ -24,7 +25,7 @@ export function ArticleNav(items,testing=false,startfrom){
         }else if(current==='recap'){
             element = document.getElementById('recap')            
         }else{
-            element = document.getElementById('article.'+current)
+            element = document.getElementById(getArticleId(current))
         }
 
         if(element){
@@ -41,13 +42,17 @@ export function ArticleNav(items,testing=false,startfrom){
         const navCopy={...navigation}
         navCopy.articles[articleIndex].completed=true
         navCopy.articles[articleIndex].score=score
-        console.log(score)
+        console.log(score,navCopy.articles[articleIndex])
         setNavigation(navCopy)
+    }
+
+    const getArticleId = (index)=>{
+        return section.name+index
     }
 
     return{
         current:startingArticle,
-        articles:createArticles(items),
+        articles:createArticles(section),
         navigate,
         complete,
     }

@@ -11,27 +11,32 @@ import ArticleExerciseStats from '../components/Article/ArticleExerciseStats'
 import ArticleQuestionnary from '../components/Article/ArticleQuestionnary'
 import ArticleTableOfContent from '../components/Article/ArticleTableOfContent'
 
-const articleContent=[
-    {
-        name:'Share',
-        desc:'What is share of a company and what it represents',
-        articleTerms:['Share','Shares Outstanding','Market Cap']
-    },
-    {
-        name:'Share Financial Ratios',
-        desc:'What is earnings per share and book value and how to calculate them',
-        articleTerms:['Earnings','Earnings per Share','Equity','Book value']
-    },
-    {
-        name:'Stock Market',
-        desc:'What is stock market and how it works',
-        articleTerms:['Stock Market','Broker','IPO']
-    },
-]
+const section={
+    name:'stockMarket',
+    articles:[
+        {
+            name:'Share',
+            desc:'What is share of a company and what it represents',
+            articleTerms:['Share','Shares Outstanding','Market Cap']
+        },
+        {
+            name:'Share Financial Ratios',
+            desc:'What is earnings per share and book value and how to calculate them',
+            articleTerms:['Earnings','Earnings per Share','Equity','Book value']
+        },
+        {
+            name:'Stock Market',
+            desc:'What is stock market and how it works',
+            articleTerms:['Stock Market','Broker','IPO']
+        },
+    ]
+}
+
+
 
 export default function AcademyStockMarketScreen() {
 
-    const [navigation, setNavigation] = useState(new ArticleNav(articleContent))
+    const [navigation, setNavigation] = useState(new ArticleNav(section))
 
     const handleNavigate=(direction,status)=>{
         navigation.navigate(direction,status,navigation,setNavigation)

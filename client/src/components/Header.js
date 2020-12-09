@@ -24,10 +24,7 @@ function Navigation(){
     const { userInfo } = userSignin
 
     useEffect(()=>{
-        if(!userInfo){
-            dispatch(userAuth())
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        dispatch(userAuth())
     },[])
 
     const loginHandler = () =>{

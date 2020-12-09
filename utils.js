@@ -12,10 +12,13 @@ const getToken = (user) => {
 }
 
 const isAuth = (req, res, next) => {
-    const token = req.headers.authorization
+
+    let token = null
+    if(req.cookies.auth){
+        token = JSON.parse(req.cookies.auth)
+    }
     if(token){
-        const onlyToken = token.slice(6,token.length)
-        jwt.verify(onlyToken, process.env.JWT_SECRET, (err, decode) => {
+        jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
             if (err) {
               return res.status(401).send({ message: 'Invalid Token' });
             }

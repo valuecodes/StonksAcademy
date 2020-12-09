@@ -2,6 +2,7 @@ const express = require('express')
 const passport = require('passport')
 const router = express.Router()
 const { getToken, isAuth } = require('../utils');
+const User = require('../models/userModel')
 
 /**
  *  @desc   Auth with Google
@@ -21,36 +22,38 @@ router.get(
         session: false,
         failureRedirect: '/' 
     }),(req, res) => {
-        let user = {
-          name:req.user.name,
-          email:req.user.email,
-          isAdmin:req.user.isAdmin,
-          token:getToken(req.user),
-        }
-        res.cookie('auth', JSON.stringify(user),{httpOnly: true, sameSite:'Strict' })
+        let token = getToken(req.user)
+        res.cookie('auth', JSON.stringify(token),{httpOnly: true, sameSite:'Strict' })
         return res.redirect('http://localhost:3000');
     }    
 )
 
 /**
- *  @desc    Login success returning user info httoOnly cookie is provided
- *  @router  POST /auth/login/success
+ *  @desc    Returns user info
+ *  @router  POST /auth/userInfo
  */
-router.post("/login/success", (req, res) => {
-    if (req.cookies.auth) {
-      const cookie= JSON.parse(req.cookies.auth)
-      const user = {
-        name: cookie.name,
-        isAdmin:cookie.isAdmin,
-        email:cookie.email
+router.post("/userInfo", isAuth, async (req, res) => {
+
+    const userId = req.user._id
+    const user = await User.findById(userId)
+
+    if(user){
+      const userInfo = {
+        name: user.name,
+        isAdmin: user.isAdmin,
+        email: user.email,
+        completedArticles:user.completedArticles,
+        score:user.score,
+        createdAt:user.createdAt,
+        updatedAt:user.updatedAt,
       }
       res.json({
         success: true,
         msg: "User has successfully authenticated",
-        user,
+        userInfo,
       });
     }else{
-      res.status(401).send({msg: 'No user authentication provided'})
+      res.status(401).send({msg: 'User not found'})
     }
 });
 
@@ -60,7 +63,6 @@ router.post("/login/success", (req, res) => {
  */
 router.post('/logout', (req, res) => {
   res.clearCookie('auth')
-  res.clearCookie('userInfo')
   res.status(200).json({msg:'User Logged out'})
 })
 

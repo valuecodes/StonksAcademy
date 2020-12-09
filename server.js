@@ -12,10 +12,6 @@ app.use(cookieParser())
 
 require('./config/passport')(passport)
 connectDB()
-
-const userRoute = require('./routes/userRoute')
-
-app.use('/api/users',userRoute)
 app.use(passport.initialize())
 
 const authRoute = require("./routes/authRoute");

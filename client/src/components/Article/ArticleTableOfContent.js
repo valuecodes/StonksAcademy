@@ -10,7 +10,7 @@ export default function ArticleTableOfContent({navigation, moveTo}){
             />            
             <ul className='tableOfContent'>
                 {navigation.articles.map((item,index) =>
-                    <li>
+                    <li key={item.articleId}>
                         <h3>{index+1}. {item.name}</h3>
                         <p>{item.desc}</p>
                         <h4>Terms covered</h4>

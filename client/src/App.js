@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import AcademyScreen from './screens/AcademyScreen';
 import AcademyInvestingScreen from './screens/AcademyInvestingScreen';
 import AcademyStockMarketScreen from './screens/AcademyStockMarketScreen';
+import ProfileScreen from './screens/ProfileScreen'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <div className='container'>
             <Route path='/academy/stock-market' component={AcademyStockMarketScreen}/>
             <Route path='/academy/investing' component={AcademyInvestingScreen}/>
+            <Route path='/profile' component={ProfileScreen} />
             <Route exact={true} path='/academy' component={AcademyScreen} />
             <Route exact={true} path='/' component={LandingScreen}/>            
           </div>
