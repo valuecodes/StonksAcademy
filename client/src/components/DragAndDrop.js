@@ -102,7 +102,6 @@ export default function DragAndDrop(props) {
                 newScore.total++
             })
         })
-        console.log(newScore)
         setScore(newScore)
         getScore(newScore)
     }

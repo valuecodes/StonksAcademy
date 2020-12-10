@@ -1,14 +1,19 @@
 import React from 'react'
-import TrainingStatus from './TrainingStatus'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 export default function SectionHeader({header,subHeader,back}) {
+
+    const resetArticlesHandler = async () => {
+        await axios.delete('/api/article')
+    }
+
     return (
         <header className='sectionHeader'>
             <h1>{header}</h1>
             {back&& <BackButton linkTo={back} />} 
             <h2>{subHeader}</h2>
-            {/* <TrainingStatus/> */}
+            <button onClick={resetArticlesHandler}>Reset user articles</button>
         </header>
     )
 }

@@ -2,14 +2,14 @@ import React from 'react'
 import ArticleHeader from './ArticleHeader'
 import './Article.css'
 
-export default function ArticleTableOfContent({navigation, moveTo}){
+export default function ArticleTableOfContent({course, moveTo}){
     return(
         <div id='tableOfContent' className='articleContainer'>
             <ArticleHeader 
                 header={'Table of content'} 
             />            
             <ul className='tableOfContent'>
-                {navigation.articles.map((item,index) =>
+                {course.articles.map((item,index) =>
                     <li key={index}>
                         <h3>{index+1}. {item.name}</h3>
                         <p>{item.desc}</p>

@@ -9,7 +9,8 @@ const score = {
 }
 
 const completedArticlesSchema = new mongoose.Schema({
-    section:{type: String, required: true},
+    course:{type: String, required: true},
+    name:{type: String, required: true},
     articleId:{type: String, required: true},
     score:score
 },{

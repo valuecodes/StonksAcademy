@@ -1,25 +1,27 @@
-export function ArticleNav(section,testing=false){
+export function Course(courseContent,userInfo=null){
 
     const startingArticle = 'start'
 
-    const createArticles=(section,userInfo)=>{
+    const createArticles=(courseContent,userInfo)=>{
         let completedArticles = userInfo ? userInfo.completedArticles : []
-        return section.articles.map((article,index) => {
+        return courseContent.articles.map((article,index) => {
             let completedArticle = completedArticles
                 .find(item => item.articleId===getArticleId(index))
             return{
                 ...article,
-                section:section.name,
+                course:courseContent.name,
                 id:index,
+                name:article.name,
                 completed:completedArticle?true:false,
                 visited:false,
                 articleId: getArticleId(index),
                 current: startingArticle,
-                score:completedArticle?completedArticle.score:null
+                score:completedArticle?completedArticle.score:null,
+                component:article.component
             }})
     }
 
-    const navigate = (direction,status,navigation,setNavigation) => {
+    const navigate = (direction,status,navigation,setCourse) => {
         if(status==='unavailable') return
         let current = direction
         let element = null
@@ -36,30 +38,30 @@ export function ArticleNav(section,testing=false){
             navigation.articles.forEach(item => {
                 item.current=current
             })
-            setNavigation({...navigation,current:current})
+            setCourse({...navigation,current:current})
         }
     }
 
-    const complete = (id,score,navigation,setNavigation) => {
+    const complete = (id,score,navigation,setCourse) => {
         const articleIndex = navigation.articles.findIndex(item => item.id===id)
         const navCopy={...navigation}
         navCopy.articles[articleIndex].completed=true
         navCopy.articles[articleIndex].score=score
-        setNavigation(navCopy)
+        setCourse(navCopy)
         return navCopy.articles[articleIndex]
     }
 
     const getArticleId = (index)=>{
-        return section.name+index
+        return courseContent.name+index
     }
     
-    function init(section,userInfo){
-        return createArticles(section,userInfo)
+    function init(courseContent,userInfo){
+        return createArticles(courseContent,userInfo)
     }
 
     return{
         current:startingArticle,
-        articles: createArticles(section),
+        articles: createArticles(courseContent,userInfo),
         init,
         navigate,
         complete,

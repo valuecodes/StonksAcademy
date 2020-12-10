@@ -1,79 +1,12 @@
 import React,{useState,useEffect} from 'react'
-import { ArticleNav } from '../utils/articleNav';
-import SectionHeader from '../components/SectionHeader'
-import { SubArticleNav } from '../utils/subArticleNav'
-import ArticleHeader from '../components/Article/ArticleHeader'
-import ArticleNavigation from '../components/Article/ArticleNavigation'
-import ArticleRecap from '../components/Article/ArticleRecap'
-import MaterialIcon from '../components/MaterialIcon'
-import TextList from '../components/Article/TextList'
-import ArticleExerciseStats from '../components/Article/ArticleExerciseStats'
-import ArticleQuestionnary from '../components/Article/ArticleQuestionnary'
-import ArticleTableOfContent from '../components/Article/ArticleTableOfContent'
-import { useSelector, useDispatch} from 'react-redux'
-import { completeArticle } from '../actions/articleActions'
+import { SubArticleNav } from '../../utils/subArticleNav'
+import ArticleHeader from '../../components/Article/ArticleHeader'
+import ArticleExerciseStats from '../../components/Article/ArticleExerciseStats'
+import ArticleQuestionnary from '../../components/Article/ArticleQuestionnary'
+import MaterialIcon from '../../components/MaterialIcon'
+import TextList from '../../components/Article/TextList'
 
-const section={
-    name:'stockMarket',
-    articles:[
-        {
-            name:'Share',
-            desc:'What is share of a company and what it represents',
-            articleTerms:['Share','Shares Outstanding','Market Cap']
-        },
-        {
-            name:'Share Financial Ratios',
-            desc:'What is earnings per share and book value and how to calculate them',
-            articleTerms:['Earnings','Earnings per Share','Equity','Book value']
-        },
-        {
-            name:'Stock Market',
-            desc:'What is stock market and how it works',
-            articleTerms:['Stock Market','Broker','IPO']
-        },
-    ]
-}
-
-export default function AcademyStockMarketScreen() {
-    const dispatch = useDispatch()
-    const userSignin = useSelector(state => state.userSignin)
-    const { userInfo } = userSignin
-
-    const [navigation, setNavigation] = useState(new ArticleNav(section))
-
-    useEffect(() => {
-        let newArticleNav = new ArticleNav(section)
-        let newArticles = newArticleNav.init(section,userInfo)
-        setNavigation({...newArticleNav,articles:newArticles})
-    }, [userInfo])
-    console.log(navigation)
-    const handleNavigate=(direction,status)=>{
-        navigation.navigate(direction,status,navigation,setNavigation)
-    }
-
-    const completeArticleHandler=(id,score)=>{
-        let completedArticle = navigation.complete(id,score,navigation,setNavigation)
-        dispatch(completeArticle(completedArticle))
-    }
-
-    return (
-        <div className='academySection' >
-            <SectionHeader 
-                header={'Stock Market'} 
-            /> 
-            <div className='academyArticles' id={'academyArticles'} >
-                <ArticleTableOfContent navigation={navigation} moveTo={handleNavigate}/>
-                <Share article={navigation.articles[0]} completeArticle={completeArticleHandler}/>
-                <ArticleTest article={navigation.articles[1]}/>
-                <ArticleTest article={navigation.articles[2]}/>
-                <ArticleRecap navigation={navigation}/>
-            </div>
-            <ArticleNavigation moveTo={handleNavigate} navigation={navigation}/> 
-        </div>
-    )
-}
-
-function Share({article,completeArticle}){
+export function Share({article,completeArticle}){
     const [articleSubNav, setArticleSubNav] = useState(new SubArticleNav(['Practise','Exercise']))
     return(
         <div id={article.articleId} className='articleContainer'>
@@ -153,6 +86,7 @@ function ShareExercise({article,completeArticle}){
         </div>
     )
 }
+
 
 function ArticleResults({article,completeExercise, score}){
     return(
@@ -281,14 +215,7 @@ function SharePractice(){
     )
 }
 
-
-
-
-
-
-
-
-function ArticleTest({article}){
+export function ArticleTest({article}){
     const [articleSubNav, setArticleSubNav] = useState(new SubArticleNav(['Practise','Exercise']))
     return(
         <div  id={article.articleId} className='articleContainer'>

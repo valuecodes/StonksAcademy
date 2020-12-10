@@ -10,7 +10,8 @@ exports.completeArticle = async (req,res) => {
     const article = req.body.article
 
     let newArticle = {
-        section: article.section,
+        course: article.course,
+        name:article.name,
         articleId: article.articleId,
         score: article.score,
     }
@@ -29,7 +30,7 @@ exports.completeArticle = async (req,res) => {
             { "_id": userId,"completedArticles.articleId": newArticle.articleId},
             {"$set": { 
                 "completedArticles.$.score": newArticle.score,
-                "completedArticles.$.section": newArticle.section
+                "completedArticles.$.name": newArticle.name
             }},
         )  
         return res.status(200).json({msg:'Article updated succesfully',data:newArticle})
@@ -39,6 +40,19 @@ exports.completeArticle = async (req,res) => {
             { $push: { "completedArticles": newArticle }}
         )         
         return res.status(200).send({msg:'Article created succesfully',data:newArticle})
-    }
-        
+    }     
+}
+
+
+exports.deleteArticles = async (req,res) => {
+    console.log('deleting')
+    const userId = req.user._id
+    let result = await User.updateOne(
+        {_id:userId},
+        {"$set": { 
+            "completedArticles": [],
+        }}
+    )
+    return res.status(200)
+    console.log(result)
 }

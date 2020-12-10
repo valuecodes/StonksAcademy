@@ -2,9 +2,9 @@ import React from 'react'
 import ArticleHeader from './ArticleHeader'
 import './Article.css'
 
-export default function ArticleRecap({navigation}){
+export default function ArticleRecap({course}){
     
-    let allArticleTerms = navigation.articles.map(item => item.articleTerms).flat(1)
+    let allArticleTerms = course.articles.map(item => item.articleTerms).flat(1)
 
     return(
         <div id='recap' className='articleContainer'>
@@ -15,7 +15,7 @@ export default function ArticleRecap({navigation}){
                 <li>
                     <h4>Section Score</h4>
                     <div className='recapScore'>
-                        {navigation.articles.map((item,index) =>
+                        {course.articles.map((item,index) =>
                             <div key={index} className='scoreContainer'>
                                 <h3>{item.name}</h3>
                                 {item.score&&
