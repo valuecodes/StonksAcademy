@@ -14,8 +14,11 @@ require('./config/passport')(passport)
 connectDB()
 app.use(passport.initialize())
 
-const authRoute = require("./routes/authRoute");
-app.use("/auth", authRoute);
+const authRoute = require('./routes/authRoute');
+const articleRoute = require('./routes/articleRoute')
+
+app.use('/auth', authRoute);
+app.use('/api/article',articleRoute)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT,console.log(`Server started on ${PORT}`))

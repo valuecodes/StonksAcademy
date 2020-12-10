@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { ArticleNav } from '../utils/articleNav';
 import SectionHeader from '../components/SectionHeader'
 import { SubArticleNav } from '../utils/subArticleNav'
@@ -10,6 +10,8 @@ import TextList from '../components/Article/TextList'
 import ArticleExerciseStats from '../components/Article/ArticleExerciseStats'
 import ArticleQuestionnary from '../components/Article/ArticleQuestionnary'
 import ArticleTableOfContent from '../components/Article/ArticleTableOfContent'
+import { useSelector, useDispatch} from 'react-redux'
+import { completeArticle } from '../actions/articleActions'
 
 const section={
     name:'stockMarket',
@@ -32,18 +34,26 @@ const section={
     ]
 }
 
-
-
 export default function AcademyStockMarketScreen() {
+    const dispatch = useDispatch()
+    const userSignin = useSelector(state => state.userSignin)
+    const { userInfo } = userSignin
 
     const [navigation, setNavigation] = useState(new ArticleNav(section))
 
+    useEffect(() => {
+        let newArticleNav = new ArticleNav(section)
+        let newArticles = newArticleNav.init(section,userInfo)
+        setNavigation({...newArticleNav,articles:newArticles})
+    }, [userInfo])
+    console.log(navigation)
     const handleNavigate=(direction,status)=>{
         navigation.navigate(direction,status,navigation,setNavigation)
     }
 
     const completeArticleHandler=(id,score)=>{
-        navigation.complete(id,score,navigation,setNavigation)
+        let completedArticle = navigation.complete(id,score,navigation,setNavigation)
+        dispatch(completeArticle(completedArticle))
     }
 
     return (
@@ -87,7 +97,13 @@ function ShareExercise({article,completeArticle}){
         wrong:0,
         correct:0,
         notAnswered:0,
-    })
+    })    
+
+    useEffect(()=>{
+        if(article.score){
+            setScore(article.score)
+        }
+    },[article])
 
     const [questions, setQuestions] = useState([
         {id:1,parameters:[{name:'Share Price',value:10},{name:'Share Count',value:10}],solve:{name:'Market Cap',value:''},result:100},

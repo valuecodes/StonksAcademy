@@ -13,35 +13,44 @@ import { datalabels } from 'chartjs-plugin-datalabels'
 import annotation from "chartjs-plugin-annotation";
 import ArticleTableOfContent from '../components/Article/ArticleTableOfContent'
 import ArticleRecap from '../components/Article/ArticleRecap'
+import { useDispatch, useSelector } from 'react-redux'
+import { completeArticle } from '../actions/articleActions'
 
-const articleContent=[
-    {
-        name:'Assets And Liabilities',
-        desc:'What is the difference between asset and liability',
-        articleTerms:['Asset','Liability']
-    },
-    {
-        name:'Value Investing And Intrinsic Value',
-        desc:'What is the difference market price and real value of asset',
-        articleTerms:['Value investing','Intrinsic value']
-    },
-    {
-        name:'Investing categories',
-        desc:'Different investing categories',
-        articleTerms:['Investment Risk Ladder','Stock','Bond']
-    },
-]
+const section={
+    name:'investing',
+    articles:[
+        {
+            name:'Assets And Liabilities',
+            desc:'What is the difference between asset and liability',
+            articleTerms:['Asset','Liability']
+        },
+        {
+            name:'Value Investing And Intrinsic Value',
+            desc:'What is the difference market price and real value of asset',
+            articleTerms:['Value investing','Intrinsic value']
+        },
+        {
+            name:'Investing categories',
+            desc:'Different investing categories',
+            articleTerms:['Investment Risk Ladder','Stock','Bond']
+        },
+    ]
+}
 
 export default function AcademyInvestingScreen() {
 
-    const [navigation, setNavigation] = useState(new ArticleNav(articleContent,true))
+    const dispatch = useDispatch()
+    const userSignin = useSelector(state => state.userSignin)
+    const { userInfo } = userSignin
+    const [navigation, setNavigation] = useState(new ArticleNav(section,true))
 
     const handleNavigate=(direction,status)=>{
         navigation.navigate(direction,status,navigation,setNavigation)
     }
 
     const completeArticleHandler=(id,score)=>{
-        navigation.complete(id,score,navigation,setNavigation)
+        let completedArticle = navigation.complete(id,score,navigation,setNavigation)
+        dispatch(completeArticle(completedArticle))
     }
 
     return (
@@ -286,7 +295,7 @@ function ValueInvestingExercise({article, completeArticle}){
             <div className='articleMiddle'>
                 <div className='housePrices exerciseContainer'>    
                     {houses.map((item,index) =>
-                        <div className='housePrice houseCard'>
+                        <div key={index} className='housePrice houseCard'>
                             <MaterialIcon icon={'HomeIcon'} className='houseIcon'/>
                             <h3>House {index+1}</h3>
                             <ul className='list smallList'>   
@@ -420,8 +429,8 @@ function ValueInvesting(){
                         </div>
                         <h2>Neighborhood with 4 houses</h2>
                         <div className='housePrices'>    
-                            {housePrices.map(item =>
-                                <div className='housePrice'>
+                            {housePrices.map((item,index) =>
+                                <div key={index} className='housePrice'>
                                     <MaterialIcon icon={'HomeIcon'} className='houseIcon'/>
                                     <h3>{item}k</h3>
                                 </div>

@@ -1,25 +1,28 @@
-export function ArticleNav(section,testing=false,startfrom){
+export function ArticleNav(section,testing=false){
 
     const startingArticle = 'start'
 
-    const createArticles=(section)=>{
-        return section.articles.map((article,index) => {return{
-            ...article,
-            section:section.name,
-            id:index,
-            completed:testing,
-            visited:false,
-            articleId: getArticleId(index),
-            current: startingArticle,
-            score:null
-        }})
+    const createArticles=(section,userInfo)=>{
+        let completedArticles = userInfo ? userInfo.completedArticles : []
+        return section.articles.map((article,index) => {
+            let completedArticle = completedArticles
+                .find(item => item.articleId===getArticleId(index))
+            return{
+                ...article,
+                section:section.name,
+                id:index,
+                completed:completedArticle?true:false,
+                visited:false,
+                articleId: getArticleId(index),
+                current: startingArticle,
+                score:completedArticle?completedArticle.score:null
+            }})
     }
 
     const navigate = (direction,status,navigation,setNavigation) => {
         if(status==='unavailable') return
         let current = direction
         let element = null
-
         if(current==='start'){
             element = document.getElementById('tableOfContent')
         }else if(current==='recap'){
@@ -42,17 +45,22 @@ export function ArticleNav(section,testing=false,startfrom){
         const navCopy={...navigation}
         navCopy.articles[articleIndex].completed=true
         navCopy.articles[articleIndex].score=score
-        console.log(score,navCopy.articles[articleIndex])
         setNavigation(navCopy)
+        return navCopy.articles[articleIndex]
     }
 
     const getArticleId = (index)=>{
         return section.name+index
     }
+    
+    function init(section,userInfo){
+        return createArticles(section,userInfo)
+    }
 
     return{
         current:startingArticle,
-        articles:createArticles(section),
+        articles: createArticles(section),
+        init,
         navigate,
         complete,
     }

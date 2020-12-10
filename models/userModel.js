@@ -1,12 +1,17 @@
 const mongoose = require('mongoose')
 
-const completedArticlesSchema = new mongoose.Schema({
-    section:{type: String, required: true},
-    articleId:{type: String, required: true},
+const score = {
     correct:{type: Number, default:0,required: true},
     wrong:{type: Number, default:0,required: true},
     notAnswered:{type: Number, default:0,required: true},
-    total:{type: Number, default:0,required: true},
+    total:{type: Number, default:0,required: true},  
+    _id : false   
+}
+
+const completedArticlesSchema = new mongoose.Schema({
+    section:{type: String, required: true},
+    articleId:{type: String, required: true},
+    score:score
 },{
     timestamps:true
 })

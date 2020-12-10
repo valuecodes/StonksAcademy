@@ -12,11 +12,12 @@ const getToken = (user) => {
 }
 
 const isAuth = (req, res, next) => {
-
+    
     let token = null
     if(req.cookies.auth){
         token = JSON.parse(req.cookies.auth)
     }
+
     if(token){
         jwt.verify(token, process.env.JWT_SECRET, (err, decode) => {
             if (err) {

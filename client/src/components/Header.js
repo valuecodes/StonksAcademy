@@ -24,6 +24,7 @@ function Navigation(){
     const { userInfo } = userSignin
 
     useEffect(()=>{
+        console.log('auth')
         dispatch(userAuth())
     },[])
 

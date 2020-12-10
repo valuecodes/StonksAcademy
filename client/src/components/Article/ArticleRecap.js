@@ -15,8 +15,8 @@ export default function ArticleRecap({navigation}){
                 <li>
                     <h4>Section Score</h4>
                     <div className='recapScore'>
-                        {navigation.articles.map(item =>
-                            <div className='scoreContainer'>
+                        {navigation.articles.map((item,index) =>
+                            <div key={index} className='scoreContainer'>
                                 <h3>{item.name}</h3>
                                 {item.score&&
                                     <h4>Score {item.score.correct}/{item.score.total}</h4>

@@ -12,7 +12,7 @@ export default function DragAndDrop(props) {
     } = props
 
     const [dragAndDrop, setDragAndDrop] = useState([])
-    const [score,setScore] = useState({wrongAnswerCount:0})
+    const [score,setScore] = useState({wrong:0})
 
     useEffect(()=>{
 
@@ -79,7 +79,7 @@ export default function DragAndDrop(props) {
                     movedItem.correct=true            
                 }else{
                     movedItem.correct=false
-                    score.wrongAnswerCount++
+                    score.wrong++
                 }                  
             }
             calculateScore(dragAndDrop)
@@ -91,19 +91,18 @@ export default function DragAndDrop(props) {
         let newScore={
             total:0,
             correct:0,
-            wrong:0,
-            def:0,
-            wrongAnswerCount:score.wrongAnswerCount
+            wrong:score.wrong,
+            notAnswered:0
         }
 
         dragAndDrop.forEach(column =>{
             column.draggables.forEach(item => {
                 if(item.correct===true) newScore.correct++
-                if(item.correct===false) newScore.wrong++
-                if(item.correct===null) newScore.def++
+                // if(item.correct===false) newScore.wrong++
                 newScore.total++
             })
         })
+        console.log(newScore)
         setScore(newScore)
         getScore(newScore)
     }
