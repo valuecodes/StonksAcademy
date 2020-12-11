@@ -1,14 +1,15 @@
-import { Share, ArticleTest } from './stockMarket/Components'
-import { AssetsAndLiabilities, ValueInvestingAndIntrinsicValue,InvestingCategories } from './investing/Components'
+import { 
+    AssetsAndLiabilities, ValueInvesting, InvestingCategories 
+} from './courseMaterial/investing/investingCourse'
 
-console.log(AssetsAndLiabilities)
+import { Share } from './courseMaterial/stockMarket/stockMarketCourse'
 
 const COURSES = [
     {
         name:'investing',
         desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         tier:'free',
-        articles:[
+        sections:[
             {
                 name: 'Assets And Liabilities',
                 desc: 'What is the difference between asset and liability',
@@ -19,7 +20,7 @@ const COURSES = [
                 name: 'Value Investing And Intrinsic Value',
                 desc: 'What is the difference market price and real value of asset',
                 articleTerms: ['Value investing','Intrinsic value'],
-                component: ValueInvestingAndIntrinsicValue
+                component: ValueInvesting
             },
             {
                 name: 'Investing categories',
@@ -33,25 +34,25 @@ const COURSES = [
         name:'stock-market',
         desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         tier:'free',
-        articles:[
+        sections:[
             {
                 name: 'Share',
                 desc: 'What is share of a company and what it represents',
                 articleTerms: ['Share','Shares Outstanding','Market Cap'],
                 component: Share
             },
-            {
-                name: 'Share Financial Ratios',
-                desc: 'What is earnings per share and book value and how to calculate them',
-                articleTerms: ['Earnings','Earnings per Share','Equity','Book value'],
-                component: ArticleTest            
-            },
-            {
-                name: 'Stock Market',
-                desc: 'What is stock market and how it works',
-                articleTerms: ['Stock Market','Broker','IPO'],
-                component: ArticleTest                        
-            },
+            // {
+            //     name: 'Share Financial Ratios',
+            //     desc: 'What is earnings per share and book value and how to calculate them',
+            //     articleTerms: ['Earnings','Earnings per Share','Equity','Book value'],
+            //     component: Share2            
+            // },
+            // {
+            //     name: 'Stock Market',
+            //     desc: 'What is stock market and how it works',
+            //     articleTerms: ['Stock Market','Broker','IPO'],
+            //     component: ArticleTest                        
+            // },
         ]
     },
     {

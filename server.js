@@ -15,10 +15,10 @@ connectDB()
 app.use(passport.initialize())
 
 const authRoute = require('./routes/authRoute');
-const articleRoute = require('./routes/articleRoute')
+const courseRoute = require('./routes/courseRoute')
 
 app.use('/auth', authRoute);
-app.use('/api/article',articleRoute)
+app.use('/api/course',courseRoute)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT,console.log(`Server started on ${PORT}`))

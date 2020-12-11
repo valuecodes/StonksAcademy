@@ -1,0 +1,29 @@
+.sectionHeader{
+    border-bottom: 1px solid black;  
+    display: flex;
+    align-items: center;
+}
+
+.sectionHeader h2{
+    margin-right: 2rem;
+}
+
+
+.sectionNav{
+    /* position: relative;
+    z-index: 1;
+    width: 0;
+    margin-top: 0.5rem;
+    display: grid;
+    grid-template-columns: 9rem 9rem;
+    grid-auto-rows: 4rem;
+    grid-gap: 1rem; */
+  }
+  
+  .sectionNav button{
+    padding: 0;
+    height: 3rem;
+    background-color: none;
+    border: none;
+    cursor: pointer;
+  }

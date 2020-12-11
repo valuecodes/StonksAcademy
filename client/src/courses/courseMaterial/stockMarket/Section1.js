@@ -1,29 +1,30 @@
 import React,{useState,useEffect} from 'react'
-import { SubArticleNav } from '../../utils/subArticleNav'
-import ArticleHeader from '../../components/Article/ArticleHeader'
-import ArticleExerciseStats from '../../components/Article/ArticleExerciseStats'
-import ArticleQuestionnary from '../../components/Article/ArticleQuestionnary'
-import MaterialIcon from '../../components/MaterialIcon'
-import TextList from '../../components/Article/TextList'
+import SectionContainer from '../../../components/Section/SectionContainer'
+import MaterialIcon from '../../../components/MaterialIcon'
+import ArticleExerciseStats from '../../../components/Article/ArticleExerciseStats'
+import TextList from '../../../components/Article/TextList'
+import ArticleQuestionnary from '../../../components/Article/ArticleQuestionnary'
 
-export function Share({article,completeArticle}){
-    const [articleSubNav, setArticleSubNav] = useState(new SubArticleNav(['Practise','Exercise']))
+export default function Share({section,completeArticle}){
+
+    const sectionComponents = [
+        {name:'Practice',article: SharePractice},
+        {name:'Exercise',article: ShareExercise,props:{section,completeArticle}} 
+    ]
+
     return(
-        <div id={article.articleId} className='articleContainer'>
-            <ArticleHeader 
-                header={article.name} 
-                articleSubNav={articleSubNav} 
-                setArticleSubNav={setArticleSubNav}
+        <div id={section.sectionId} className='sectionContainer'>
+            <SectionContainer 
+                sectionComponents={sectionComponents} 
+                section={section} 
+                completeArticle={completeArticle}
             />
-            <div className='articleSubPages' style={articleSubNav.subPageStyle(articleSubNav)}>
-                <SharePractice/>
-                <ShareExercise article={article} completeArticle={completeArticle}/>
-            </div>
         </div>
     )
 }
 
-function ShareExercise({article,completeArticle}){
+
+function ShareExercise({section,completeArticle}){
 
     const [score,setScore] = useState({
         total:0,
@@ -33,10 +34,10 @@ function ShareExercise({article,completeArticle}){
     })    
 
     useEffect(()=>{
-        if(article.score){
-            setScore(article.score)
+        if(section.score){
+            setScore(section.score)
         }
-    },[article])
+    },[section])
 
     const [questions, setQuestions] = useState([
         {id:1,parameters:[{name:'Share Price',value:10},{name:'Share Count',value:10}],solve:{name:'Market Cap',value:''},result:100},
@@ -73,7 +74,7 @@ function ShareExercise({article,completeArticle}){
         })
         setScore(result)
 
-        completeArticle(article.id,result)
+        completeArticle(section.id,result)
     }
 
     return(
@@ -81,17 +82,16 @@ function ShareExercise({article,completeArticle}){
             <div className='articleExerciseHeader'>
                 <h2>Solve the following questions</h2>
             </div>
-            <ArticleQuestionnary questions={questions} setQuestionAswer={setQuestionAswerHandler} readOnly={article.completed}/>
-            <ArticleResults article={article} completeExercise={completeExerciseHandler} score={score}/>
+            <ArticleQuestionnary questions={questions} setQuestionAswer={setQuestionAswerHandler} readOnly={section.completed}/>
+            <ArticleResults section={section} completeExercise={completeExerciseHandler} score={score}/>
         </div>
     )
 }
 
-
-function ArticleResults({article,completeExercise, score}){
+function ArticleResults({section,completeExercise, score}){
     return(
         <div className='articleResults'>
-            {!article.completed&&
+            {!section.completed&&
                 <button onClick={completeExercise} className='button'>
                     Complete Exercise
                 </button>            
@@ -132,7 +132,7 @@ function SharePractice(){
     }
 
     return(
-        <div className='articleSubPage'>
+        <div className='sectionSubPage'>
             <TextList
                 content={[
                     {
@@ -211,20 +211,6 @@ function SharePractice(){
                 </div>            
             
             } 
-        </div>
-    )
-}
-
-export function ArticleTest({article}){
-    const [articleSubNav, setArticleSubNav] = useState(new SubArticleNav(['Practise','Exercise']))
-    return(
-        <div  id={article.articleId} className='articleContainer'>
-            <ArticleHeader 
-                header={article.name} 
-                articleSubNav={articleSubNav} 
-                setArticleSubNav={setArticleSubNav}
-            />
-
         </div>
     )
 }

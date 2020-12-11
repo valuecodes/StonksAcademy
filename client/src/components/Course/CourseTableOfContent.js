@@ -1,15 +1,15 @@
 import React from 'react'
-import ArticleHeader from './ArticleHeader'
-import './Article.css'
+import SectionHeader from '../Section/SectionHeader'
+import './Course.css'
 
-export default function ArticleTableOfContent({course, moveTo}){
+export default function CourseTableOfContent({course, moveTo}){
     return(
-        <div id='tableOfContent' className='articleContainer'>
-            <ArticleHeader 
+        <div id='tableOfContent' className='sectionContainer'>
+            <SectionHeader 
                 header={'Table of content'} 
             />            
             <ul className='tableOfContent'>
-                {course.articles.map((item,index) =>
+                {course.sections.map((item,index) =>
                     <li key={index}>
                         <h3>{index+1}. {item.name}</h3>
                         <p>{item.desc}</p>

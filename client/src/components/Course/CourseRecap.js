@@ -1,21 +1,21 @@
 import React from 'react'
-import ArticleHeader from './ArticleHeader'
-import './Article.css'
+import SectionHeader from '../Section/SectionHeader'
+import './Course.css'
 
-export default function ArticleRecap({course}){
+export default function CourseRecap({course}){
     
-    let allArticleTerms = course.articles.map(item => item.articleTerms).flat(1)
+    let allArticleTerms = course.sections.map(item => item.articleTerms).flat(1)
 
     return(
-        <div id='recap' className='articleContainer'>
-            <ArticleHeader 
+        <div id='recap' className='sectionContainer'>
+            <SectionHeader 
                 header={'Recap'} 
             />
             <ul className='tableOfContent'>
                 <li>
                     <h4>Section Score</h4>
                     <div className='recapScore'>
-                        {course.articles.map((item,index) =>
+                        {course.sections.map((item,index) =>
                             <div key={index} className='scoreContainer'>
                                 <h3>{item.name}</h3>
                                 {item.score&&

@@ -38,7 +38,7 @@ export default function CourseNavigation({moveTo,course,}){
                         icon={'TocIcon'} 
                     />
                 </button>
-                {course.articles.map((item,index) =>
+                {course.sections.map((item,index) =>
                     <button
                         onClick={()=> moveTo(item.id,'')}
                         key={item.id}

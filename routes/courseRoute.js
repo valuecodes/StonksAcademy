@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const { isAuth } = require('../utils');
-const { completeArticle, deleteArticles } = require('../controllers/articleController')
+const { completeSection, deleteArticles } = require('../controllers/courseController')
 
 router
     .route('/')
-    .post(isAuth, completeArticle)
+    .post(isAuth, completeSection)
     .delete(isAuth, deleteArticles)
 
 module.exports = router

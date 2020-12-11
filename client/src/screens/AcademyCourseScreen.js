@@ -2,18 +2,18 @@ import React,{ useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import SectionHeader from '../components/SectionHeader'
-import ArticleTableOfContent from '../components/Article/ArticleTableOfContent'
-import ArticleRecap from '../components/Article/ArticleRecap'
-import CourseNavigation from '../components/Article/CourseNavigation'
+import CourseTableOfContent from '../components/Course/CourseTableOfContent'
+import CourseRecap from '../components/Course/CourseRecap'
+import CourseNavigation from '../components/Course/CourseNavigation'
 import COURSES from '../courses/courses'
 import { camelCaseToString } from '../utils/utils';
 import { Course } from '../utils/course';
-import { completeArticle } from '../actions/articleActions';
+import { completeSection } from '../actions/courseActions';
 
 export default function AcademyCourseScreen() {
 
     const { id } = useParams()
-    const [course, setCourse] = useState({articles:[]})
+    const [course, setCourse] = useState({sections:[]})
     const dispatch = useDispatch()
     const userSignin = useSelector(state => state.userSignin)
     const { userInfo } = userSignin
@@ -30,31 +30,31 @@ export default function AcademyCourseScreen() {
         course.navigate(direction,status,course,setCourse)
     }
 
-    const completeArticleHandler=(id,score)=>{
+    const completeSectionHandler=(id,score)=>{
         let completedArticle = course.complete(id,score,course,setCourse)
-        dispatch(completeArticle(completedArticle))
+        dispatch(completeSection(completedArticle))
     }
 
-    let articles = []
+    let sections = []
 
-    course.articles.forEach(item =>{
-        let Article = item.component
-        articles.push(Article)
+    course.sections.forEach(item =>{
+        let Section = item.component
+        sections.push(Section)
     })
 
     return (
-        <div className='academySection'>     
+        <div className='academyCourseScreen'>     
             <SectionHeader header={camelCaseToString(id)}/> 
-            <div className='academyArticles' id={'academyArticles'} >
-                <ArticleTableOfContent course={course} moveTo={handleNavigate}/>
-                {articles.map((Article,index) =>
-                    <Article 
-                        key={course.articles[index].articleId}
-                        article={course.articles[index]} 
-                        completeArticle={completeArticleHandler}
+            <div className='academySections' id={'academySections'} >
+                <CourseTableOfContent course={course} moveTo={handleNavigate}/>
+                {sections.map((Section,index) =>
+                    <Section 
+                        key={course.sections[index].sectionId}
+                        section={course.sections[index]} 
+                        completeArticle={completeSectionHandler}
                     />
                 )}
-                <ArticleRecap course={course}/>    
+                <CourseRecap course={course}/>    
             </div>
             <CourseNavigation moveTo={handleNavigate} course={course}/>
         </div>

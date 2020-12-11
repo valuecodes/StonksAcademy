@@ -1,23 +1,29 @@
 export function Course(courseContent,userInfo=null){
 
-    const startingArticle = 'start'
+    const startingSection = 'start'
 
-    const createArticles=(courseContent,userInfo)=>{
-        let completedArticles = userInfo ? userInfo.completedArticles : []
-        return courseContent.articles.map((article,index) => {
-            let completedArticle = completedArticles
-                .find(item => item.articleId===getArticleId(index))
+    const createSections=(courseContent,userInfo)=>{
+        let completedSections = userInfo ? userInfo.completedSections : []
+        console.log(courseContent,completedSections)
+        return courseContent.sections.map((section,index) => {
+            let completedSection = null
+            
+            if(completedSections){
+                completedSection = completedSections
+                    .find(item => item.sectionId===getSectionId(index))
+            }
+
             return{
-                ...article,
+                ...section,
                 course:courseContent.name,
                 id:index,
-                name:article.name,
-                completed:completedArticle?true:false,
+                name:section.name,
+                completed:completedSection?true:false,
                 visited:false,
-                articleId: getArticleId(index),
-                current: startingArticle,
-                score:completedArticle?completedArticle.score:null,
-                component:article.component
+                sectionId: getSectionId(index),
+                current: startingSection,
+                score:completedSection?completedSection.score:null,
+                component:section.component
             }})
     }
 
@@ -30,12 +36,12 @@ export function Course(courseContent,userInfo=null){
         }else if(current==='recap'){
             element = document.getElementById('recap')            
         }else{
-            element = document.getElementById(getArticleId(current))
+            element = document.getElementById(getSectionId(current))
         }
 
         if(element){
             element.scrollIntoView({behavior: "smooth"});
-            navigation.articles.forEach(item => {
+            navigation.sections.forEach(item => {
                 item.current=current
             })
             setCourse({...navigation,current:current})
@@ -43,25 +49,25 @@ export function Course(courseContent,userInfo=null){
     }
 
     const complete = (id,score,navigation,setCourse) => {
-        const articleIndex = navigation.articles.findIndex(item => item.id===id)
+        const sectionIndex = navigation.sections.findIndex(item => item.id===id)
         const navCopy={...navigation}
-        navCopy.articles[articleIndex].completed=true
-        navCopy.articles[articleIndex].score=score
+        navCopy.sections[sectionIndex].completed=true
+        navCopy.sections[sectionIndex].score=score
         setCourse(navCopy)
-        return navCopy.articles[articleIndex]
+        return navCopy.sections[sectionIndex]
     }
 
-    const getArticleId = (index)=>{
+    const getSectionId = (index)=>{
         return courseContent.name+index
     }
     
     function init(courseContent,userInfo){
-        return createArticles(courseContent,userInfo)
+        return createSections(courseContent,userInfo)
     }
 
     return{
-        current:startingArticle,
-        articles: createArticles(courseContent,userInfo),
+        current:startingSection,
+        sections: createSections(courseContent,userInfo),
         init,
         navigate,
         complete,

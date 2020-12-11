@@ -8,10 +8,10 @@ const score = {
     _id : false   
 }
 
-const completedArticlesSchema = new mongoose.Schema({
+const completedSectionsSchema = new mongoose.Schema({
     course:{type: String, required: true},
     name:{type: String, required: true},
-    articleId:{type: String, required: true},
+    sectionId:{type: String, required: true},
     score:score
 },{
     timestamps:true
@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
     email:{type: String, required:true, unique: true},
     isAdmin:{type: Boolean, default: false, required: true},
     score:{type: Number, default:0},
-    completedArticles:[completedArticlesSchema],
+    completedSections:[completedSectionsSchema],
 },{
     timestamps: true
 })

@@ -42,7 +42,7 @@ router.post("/userInfo", isAuth, async (req, res) => {
         name: user.name,
         isAdmin: user.isAdmin,
         email: user.email,
-        completedArticles:user.completedArticles,
+        completedSections:user.completedSections,
         score:user.score,
         createdAt:user.createdAt,
         updatedAt:user.updatedAt,
