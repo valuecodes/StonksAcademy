@@ -1,8 +1,15 @@
 /* Table Of Content */
 .tableOfContent{
     margin-top: 2rem;
+    padding: 0 2.4rem;
     display: grid;
     grid-gap: 3rem;
+  }
+
+  .sectionContent{
+    overflow-y: scroll; 
+    height: 40rem;  
+    padding: 2.4rem;
   }
   
   .articleTerms{

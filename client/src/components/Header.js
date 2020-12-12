@@ -1,18 +1,31 @@
 import React,{useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import {ReactComponent as Logo} from '../images/Logo.svg'
+import {ReactComponent as Logo} from '../images/LogoWhite.svg'
 import GoogleButton from 'react-google-button'
 import { useSelector, useDispatch} from 'react-redux'
 import { signin, logout, userAuth } from '../actions/userActions';
 import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+
+const useStyles = makeStyles((theme) => ({
+    AppBar:{
+        margin:0,
+        padding:0,
+        backgroundColor:'var(--secondary-color)'
+    }
+  }));
 
 export default function Header() {
+    const classes = useStyles();
     return (
         <header className='header'>
-            <div className='container'>
-                <Link className='mainLogo' to='/'><Logo/></Link>
-                <Navigation/>                
-            </div>
+            <AppBar className={classes.AppBar} position="static">
+                <div className='container'>
+                    <Link className='mainLogo' to='/'><Logo/></Link>
+                    <Navigation/>                
+                </div>
+            </AppBar>
         </header>
     )
 }

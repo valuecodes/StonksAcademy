@@ -11,7 +11,7 @@ html{
 }
 
 :root{
-  --primary-color:#DCDF51;
+  /* --primary-color:#DCDF51;
   --secondary-color:#777777;
   --positive-color:rgb(86, 223, 81);;
   --neutral-color:#E7EA5D;
@@ -19,7 +19,16 @@ html{
   --background-color:#DEDEDE;
   --text-light:#DEDEDE;
   --text-dark:rgb(88, 88, 88);
-  --light-color:rgb(131, 131, 131);
+  --light-color:rgb(131, 131, 131); */
+  --primary-color:#4DA5EE;
+  --secondary-color:#52677A;
+  --positive-color:rgb(86, 223, 81);;
+  --neutral-color:#E7EA5D;
+  --negative-color:#DF5951;
+  --background-color:#DEDEDE;
+  --text-light:rgb(236, 236, 236);
+  --text-dark:rgb(88, 88, 88);
+  --light-color:rgb(107, 128, 148);
 }
 
 body{
@@ -27,12 +36,17 @@ body{
   font-size: 1.6rem;
   height: 100vh;
   color: var(--text-dark);
+  max-width: 100vw;
+  width: 100vw;
 }
 
 .app{
-  min-height: 100vh;
+  height: 100vh;
   display: grid;
   grid-template-rows: 6rem 1fr 6rem;
+  max-width: 100vw;
+  width: 100vw;
+  /* grid-template-rows: 6rem 100rem 6rem; */
 }
 
 h1{
@@ -58,9 +72,11 @@ a{
 
 .container{
   height: 100%;
-  max-width: 1400px;
+  width: 1400px;
+  max-width: 95vw;
+  /* width: calc(100vw-2vw); */
+  overflow: hidden;
   margin: auto;
-  padding: 0 1rem;
 }
 
 .backButton{
@@ -93,13 +109,13 @@ a{
 /* Header */
 .header{
   height: 6rem;
-  width: 100%; 
   background-color: var(--secondary-color);
 }
 
 .header div{
   display: flex;
-  align-items: center;
+  width: 1400px;
+  max-width: 100vw;
   justify-content: space-between;
 }
 
@@ -122,6 +138,7 @@ a{
 
 .mainNav ul li a:hover{
   background-color: var(--light-color);
+  
 }
 
 .googleLogin{
@@ -138,6 +155,11 @@ a{
 /* Footer */
 .footer{
   background-color: var(--secondary-color);
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-light);
 }
 
 .footer div{
@@ -145,7 +167,7 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--primary-color);
+  color: var(--text-light);
 }
 
 /* LandingScreen */
@@ -158,7 +180,9 @@ a{
 
 .landingPageContainer{
   width: 60rem;
+  max-width: 100vw;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
@@ -175,12 +199,14 @@ a{
   background-color: rgb(235, 235, 235);
 }
 
-/* SectionHeader */
-.sectionHeader{
+/* ScreenHeader */
+.screenHeader{
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 0;
+  grid-column: 1/3;
+  /* border-bottom: 1px solid var(--light-color); */
 }
 
 .trainingStatus{
@@ -214,9 +240,11 @@ a{
   font-size: 3rem;
   display: flex;
   align-items: flex-end;
+  grid-column: 1/3;
 }
 
 .academyCourses{
+  grid-column: 1/3;
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(25rem, 1fr));
   grid-auto-rows: 35rem;
@@ -271,10 +299,6 @@ a{
   grid-template-rows: auto 60rem;
   /* margin: 0 2rem; */
   /* overflow: hidden; */
-}
-
-.academyCourseScreen .sectionHeader{
-  grid-column: 1/3;
 }
 
 .dropzone{
@@ -386,8 +410,14 @@ a{
 .sectionContainer{  
   max-width:inherit;
   height: 60rem;
+  /* height: 90rem; */
 }
 
+.courseTest{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 2rem;
+}
 
 /* ArticleContent */
 .article{
@@ -399,12 +429,13 @@ a{
 .articleNavigationContainer{
   position: relative;
   top: 50%;
-  right: 5.5rem;
+  right: 7rem;
   height: 0;
+  z-index: 10;
 }
 
 .articleNavigation{
-  margin-top: -24rem;
+  margin-top: -20rem;
   padding: 0.7rem 0.5rem;
   padding-bottom: 1rem;
   border-radius: 2rem;
@@ -413,7 +444,8 @@ a{
   grid-auto-rows: 4rem;
   grid-gap: 3rem;
   justify-content: center;
-  background-color: var(--background-color);
+  background-color: white;
+  border: 2px solid var(--background-color);
 }
 
 .articleNavigation button:hover{
@@ -518,12 +550,13 @@ a{
 }
 
 .sectionArticles{
-  margin-top: 3rem;
+  margin: 3 0rem;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(10,100%);
   transition: margin 0.4s;
-  height: 50rem;
+  min-height: 50rem;
+  height: auto;
 }
 
 .articleSubPage{

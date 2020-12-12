@@ -1,19 +1,29 @@
 import React from 'react'
 import MaterialIcon from '../MaterialIcon'
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import { makeStyles } from '@material-ui/core/styles';
+import TocIcon from '@material-ui/icons/Toc';
+import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
+
+const useStyles = makeStyles((theme) => ({
+    fab:{
+        fontSize:'16px',
+        backgroundColor:'var(--background-color)',
+        color:'var(--primary-variant)'
+    },
+    icon:{
+        fontSize:'30px'
+    }
+  }));
 
 export default function CourseNavigation({moveTo,course,}){
 
+    const classes = useStyles();
     const getBorderStyle=(item,index)=>{
         let color=item.id===course.current?'var(--secondary-color)':'rgba(255, 255, 255,0.0)'
         return '0.2rem solid '+color
     }
-
-    // const getNextButtonStatus=(course)=>{
-    //     let currentArticle = course.articles.find(item => item.id===course.current)
-    //     if(!currentArticle) return ''
-    //     if(course.current===course.articles.length-1) return 'unavailable'
-    //     return currentArticle.completed?'available':'unavailable'
-    // }
 
     const getButtonStyle=(id)=>{
         let color=course.current===id?'var(--secondary-color)':'rgba(255, 255, 255,0.0)'
@@ -28,36 +38,38 @@ export default function CourseNavigation({moveTo,course,}){
     return(
         <div className='articleNavigationContainer'>
             <div className='articleNavigation'>
-                
-                <button onClick={()=> moveTo('start',prevButtonStatus)}
-                    className='articleNavButton'
+                <Fab 
                     style={{border: getButtonStyle('start')}}
+                    onClick={()=> moveTo('start',prevButtonStatus)}
+                    size='small' 
+                    className={classes.fab} 
+                    color="primary" 
+                    aria-label="add"
                 >
-                    <MaterialIcon 
-                        className={`navigationIcon ${prevButtonStatus}`}
-                        icon={'TocIcon'} 
-                    />
-                </button>
+                    <TocIcon className={classes.icon} />
+                </Fab>
                 {course.sections.map((item,index) =>
-                    <button
-                        onClick={()=> moveTo(item.id,'')}
-                        key={item.id}
-                        style={{border: getBorderStyle(item,index)}}
-                        className='navigationCheckpoint'
+                    <Fab 
+                        style={{border: getBorderStyle(item,index)}} 
+                        onClick={()=> moveTo(item.id,'')} 
+                        size='small' 
+                        className={classes.fab} 
+                        color="primary" 
+                        aria-label="add"
                     >
-                    {index+1}
-                </button> 
+                        {index+1}
+                    </Fab>
                 )}
-
-                <button onClick={()=> moveTo('recap',nextButtonStatus)}
-                     className='articleNavButton'
-                     style={{border: getButtonStyle('recap')}}
+                <Fab 
+                    style={{border: getButtonStyle('recap')}}
+                    onClick={()=> moveTo('recap',nextButtonStatus)}
+                    size='small' 
+                    className={classes.fab} 
+                    color="primary" 
+                    aria-label="add"
                 >
-                    <MaterialIcon 
-                        icon={'EmojiFlagsIcon'} 
-                        className={`navigationIcon ${nextButtonStatus}`}
-                    />
-                </button>
+                    <EmojiFlagsIcon className={classes.icon} />
+                </Fab>
             </div>            
         </div>
     )

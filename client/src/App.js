@@ -14,6 +14,7 @@ function App() {
         <main>
           <div className='container'>
             {/* <Route path='/academy/stock-market' component={AcademyStockMarketScreen}/> */}
+
             <Route path='/profile' component={ProfileScreen} />
             <Route path='/academy/:id' component={AcademyCourseScreen}/>
             <Route exact={true} path='/academy' component={AcademyScreen} />

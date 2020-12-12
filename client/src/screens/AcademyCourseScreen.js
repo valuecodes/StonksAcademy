@@ -1,7 +1,7 @@
 import React,{ useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import SectionHeader from '../components/SectionHeader'
+import ScreenHeader from '../components/ScreenHeader'
 import CourseTableOfContent from '../components/Course/CourseTableOfContent'
 import CourseRecap from '../components/Course/CourseRecap'
 import CourseNavigation from '../components/Course/CourseNavigation'
@@ -9,6 +9,8 @@ import COURSES from '../courses/courses'
 import { camelCaseToString } from '../utils/utils';
 import { Course } from '../utils/course';
 import { completeSection } from '../actions/courseActions';
+import CourseHeader from '../components/Course/CourseHeader'
+import CourseNav from '../components/Course/CourseNav'
 
 export default function AcademyCourseScreen() {
 
@@ -44,19 +46,27 @@ export default function AcademyCourseScreen() {
 
     return (
         <div className='academyCourseScreen'>     
-            <SectionHeader header={camelCaseToString(id)}/> 
-            <div className='academySections' id={'academySections'} >
-                <CourseTableOfContent course={course} moveTo={handleNavigate}/>
-                {sections.map((Section,index) =>
-                    <Section 
-                        key={course.sections[index].sectionId}
-                        section={course.sections[index]} 
-                        completeArticle={completeSectionHandler}
-                    />
-                )}
-                <CourseRecap course={course}/>    
+            <CourseHeader header={camelCaseToString(id)} moveTo={handleNavigate} course={course}/>
+            {/* <ScreenHeader header={camelCaseToString(id)}/>  */}
+            <div className='courseTest'>
+                <CourseNav moveTo={handleNavigate} course={course}/>
+                <div className='academySections' id={'academySections'} >
+                {/* <CourseNavigation moveTo={handleNavigate} course={course}/> */}
+                    
+                    <CourseTableOfContent course={course} moveTo={handleNavigate}/>
+                    {sections.map((Section,index) =>
+                        <Section 
+                            key={course.sections[index].sectionId}
+                            section={course.sections[index]} 
+                            completeArticle={completeSectionHandler}
+                        />
+                    )}
+                    <CourseRecap course={course}/>    
+                </div>                
             </div>
-            <CourseNavigation moveTo={handleNavigate} course={course}/>
+
+            
+            {/* <CourseNavigation moveTo={handleNavigate} course={course}/> */}
         </div>
     )
 }

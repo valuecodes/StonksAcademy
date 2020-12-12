@@ -109,7 +109,8 @@ function AssetsAndLiabilitiesPractice(){
           }
       };
 
-    const demoStartHandler=()=>{
+    
+      const demoStartHandler=()=>{
 
         setStartDemo(true)
 
@@ -144,7 +145,7 @@ function AssetsAndLiabilitiesPractice(){
     }
 
     return(
-        <div className='aalDemo'>
+        <div className='aalDemo sectionContent'>
             <TextList
                 content={[
                     {header:'Assets',text:'Assets generate income and make you wealthier  even though you dont need use time and energy. Assets include items like stocks, bonds, real estate etc that generate passive income.'},
@@ -220,7 +221,7 @@ function AssetsAndLiabilitiesExercise({section,completeArticle}){
     }
 
     return(
-        <div className='dragAndDropExercise articleSubPage'>
+        <div className='dragAndDropExercise articleSubPage sectionContent'>
             <DragAndDrop 
                 columns={[                    
                     {name:'Drag and drop items to Assets and Liabilities',id:1,

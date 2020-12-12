@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from 'react'
-import SectionHeader from '../components/SectionHeader'
+import ScreenHeader from '../components/ScreenHeader'
 import { camelCaseToString, truncate } from '../utils/utils';
 import { Link } from 'react-router-dom'
 import MaterialIcon from '../components/MaterialIcon'
@@ -15,7 +15,7 @@ export default function AcademyScreen(){
 
     return (
         <section className='academyScreen'>
-            <SectionHeader header={'Academy'}/>
+            <ScreenHeader header={'Academy'}/>
             <h2 className='academyCoursesHeader'>Featured Courses</h2>
             <div className='academyCourses'>    
                 {academyCourses.map(course => 

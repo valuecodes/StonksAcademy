@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import SectionHeader from '../components/SectionHeader'
+import ScreenHeader from '../components/ScreenHeader'
 
 export default function ProfileScreen() {
 
@@ -13,7 +13,7 @@ export default function ProfileScreen() {
             <Redirect to='/'/>
         :
         <div className='profileScreen'>
-            <SectionHeader header={'Profile'} /> 
+            <ScreenHeader header={'Profile'} /> 
             <h2>{userInfo.name}</h2>
             <h2>{userInfo.email}</h2>
         </div>

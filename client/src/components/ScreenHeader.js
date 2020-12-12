@@ -9,7 +9,7 @@ export default function SectionHeader({header,subHeader,back}) {
     }
 
     return (
-        <header className='sectionHeader'>
+        <header className='screenHeader'>
             <h1>{header}</h1>
             {back&& <BackButton linkTo={back} />} 
             <h2>{subHeader}</h2>

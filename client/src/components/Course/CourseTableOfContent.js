@@ -8,7 +8,7 @@ export default function CourseTableOfContent({course, moveTo}){
             <SectionHeader 
                 header={'Table of content'} 
             />            
-            <ul className='tableOfContent'>
+            <ul className='tableOfContent sectionContent'>
                 {course.sections.map((item,index) =>
                     <li key={index}>
                         <h3>{index+1}. {item.name}</h3>
