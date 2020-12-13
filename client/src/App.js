@@ -5,24 +5,70 @@ import Footer from './components/Footer'
 import AcademyScreen from './screens/AcademyScreen';
 import ProfileScreen from './screens/ProfileScreen'
 import AcademyCourseScreen from './screens/AcademyCourseScreen';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+import purple from '@material-ui/core/colors/purple';
+import green from '@material-ui/core/colors/green';
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontSize: 16,
+    // display4: {
+    //   fontSize: 13,
+    // },
+    // display3: {
+    //   fontSize: 13,
+    // },
+    // display2: {
+    //   fontSize: 13,
+    // },
+    // display1: {
+    //   fontSize: 13,
+    // },
+    // headline: {
+    //   fontSize: 13,
+    // },
+    // title: {
+    //   fontSize: 13,
+    // },
+    // subheading: {
+    //   fontSize: 13,
+    // },
+    // body2: {
+    //   fontSize: 13,
+    // },
+    // body1: {
+    //   fontSize: 13,
+    // },
+    // caption: {
+    //   fontSize: 13,
+    // },
+    // button: {
+    //   fontSize: 13,
+    // },
+  },
+});
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="app">
-        <Header/>
-        <main>
-          <div className='container'>
-            {/* <Route path='/academy/stock-market' component={AcademyStockMarketScreen}/> */}
+      <ThemeProvider theme={theme}>
+        <div className="app">
+          <Header/>
+          <main>
+            <div className='container'>
+              {/* <Route path='/academy/stock-market' component={AcademyStockMarketScreen}/> */}
 
-            <Route path='/profile' component={ProfileScreen} />
-            <Route path='/academy/:id' component={AcademyCourseScreen}/>
-            <Route exact={true} path='/academy' component={AcademyScreen} />
-            <Route exact={true} path='/' component={LandingScreen}/>            
-          </div>
-        </main> 
-        <Footer/> 
-      </div>    
+              <Route path='/profile' component={ProfileScreen} />
+              <Route path='/academy/:id' component={AcademyCourseScreen}/>
+              <Route exact={true} path='/academy' component={AcademyScreen} />
+              <Route exact={true} path='/' component={LandingScreen}/>            
+            </div>
+          </main> 
+          <Footer/> 
+        </div>    
+        </ThemeProvider>
     </BrowserRouter>
   );
 }

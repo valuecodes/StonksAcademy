@@ -8,14 +8,9 @@ export default function SectionNav(sectionComponents){
             }
         })
     }
-
-    const subPageStyle = (articleSubNav) => {
-        return {marginLeft:`${articleSubNav.current*-100}%`}
-    }
-
+    
     return{
-        current:0,
+        current:1,
         articlePages: createArticlePages(sectionComponents),
-        subPageStyle
     }
 }

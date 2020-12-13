@@ -17,3 +17,22 @@ export function camelCaseToString(s) {
 export function truncate(text, maxChars=50){
     return text.replace(/(.{77})..+/, "$1…")
 }
+
+export function formatNumber(value,format){
+
+    value = +value.toFixed(0)
+    let text = value.toLocaleString('en-US', { minimumFractionDigits: 0 }).replaceAll(',', ' ') 
+
+    // if(sign){
+    //     if(value>0) text = '+'+text
+    //     if(value<0) text = '-'+text
+    // }    
+
+    if(format==='%'){
+        return text+' %'
+    }
+    if(format==='Y'){
+        return text+' Years'
+    }
+    return text+' €'
+}

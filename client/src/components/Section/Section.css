@@ -2,3 +2,30 @@
 .sectionHeader h2{
     margin-right: 2rem;
 }
+
+.sectionContentContainer{
+    height: 100%;
+    overflow-y: auto; 
+    padding: 2.4rem;
+}
+
+.sectionContent{
+    height: auto;
+    margin-bottom: 5rem;
+}
+
+.sectionGrid{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.sectionGrid2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media only screen and (max-width: 800px) {
+    .sectionGrid{
+        grid-template-columns: 1fr;
+    }
+  }

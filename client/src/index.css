@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600&display=swap');
 
 html{
-  font-size: 62.5%;
+  font-size: 62.5%!important;
   box-sizing: border-box;
 }
 
@@ -38,6 +38,7 @@ body{
   color: var(--text-dark);
   max-width: 100vw;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 .app{
@@ -121,6 +122,7 @@ a{
 
 .mainLogo{
   display: flex;
+  margin-left: 1rem;
 }
 
 .mainNav ul{
@@ -197,6 +199,27 @@ a{
 
 .landingPageContainer a:hover{
   background-color: rgb(235, 235, 235);
+}
+
+/* Example */
+.example{
+  display: grid;
+  grid-gap: 1rem;
+  min-width: 25rem;
+}
+
+.card{
+  padding: 1rem;
+  /* margin: 0.6rem; */
+}
+
+.assetsResult{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+
+.resultBig{
+  font-size: 4rem;
 }
 
 /* ScreenHeader */
@@ -294,9 +317,10 @@ a{
 
 /* AcademySection */
 .academyCourseScreen{
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 0;
-  grid-template-rows: auto 60rem;
+  grid-template-rows: 10rem 1fr;
   /* margin: 0 2rem; */
   /* overflow: hidden; */
 }
@@ -400,23 +424,31 @@ a{
 
 /* AcademySections */
 .academySections{
-  display: grid;
   grid-template-columns: 100%;
-  grid-gap: 5rem;
-  height: 60rem;
+  height: 70vh;
   overflow: hidden;
+}
+
+.teste > div > div{
+  overflow: hidden!important;
+}
+
+@media only screen and (max-width: 800px) {
+  .academySections{
+    display: grid;
+    grid-template-columns: 100%;
+    /* grid-auto-rows: inherit; */
+    grid-gap: 20rem;
+    height: 100vh;
+  }
 }
 
 .sectionContainer{  
   max-width:inherit;
-  height: 60rem;
-  /* height: 90rem; */
-}
-
-.courseTest{
+  height: inherit;
+  min-height: 50rem;
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 2rem;
+  grid-template-rows: auto 1fr;
 }
 
 /* ArticleContent */
@@ -497,11 +529,11 @@ a{
   /* background-color:var(--positive-color); */
 }
 
-.aalDemo{
+/* .aalDemo{
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   padding-right: 5rem;
-}
+} */
 
 .dragAndDropExercise{
   display: grid;
@@ -509,7 +541,7 @@ a{
 }
 
 .aalDemoResult{
-  padding: 2rem;
+  /* padding: 2rem; */
 }
 
 .aalDemoResult ul{

@@ -13,19 +13,21 @@ function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
+    
+        <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`vertical-tabpanel-${index}`}
+        aria-labelledby={`vertical-tab-${index}`}
+        
+        {...other}
+        >
+        {value === index && (
+            <Box p={3}>
+            <Typography>{children}</Typography>
+            </Box>
+        )}
+        </div>        
   );
 }
 
@@ -46,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width:200,
         flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: 'rgba(255,255,255,0.6)',
         display: 'flex',
         height: 'auto',  
     },
@@ -90,50 +92,49 @@ export default function CourseNav({moveTo,course}) {
   };
 
   return (
-        <div className={classes.root}>
-        <Tabs
-            orientation="vertical"
-            variant="scrollable"
-            value={value}
-            onChange={handleChange}
-            aria-label="Vertical tabs example"
-            className={classes.tabs}
-            TabIndicatorProps={{
-                style: {
-                    backgroundColor: "var(--primary-color)",
-                    width:'0.3rem'
-                }
-                }}
-        >
-            <Tab label={
-                <div>
-                    <TocIcon className={classes.icon}/>
-                    Table of Content
-                </div>
-                
-                } {...a11yProps(0)} />
-            
-            {course.sections.map((section,index) =>
-                <Tab className={classes.tab} 
+        <div className={classes.root +' courseNav'}>
+            <Tabs
+                orientation="vertical"
+                variant="scrollable"
+                value={value}
+                onChange={handleChange}
+                aria-label="Vertical tabs example"
+                className={classes.tabs}
+                TabIndicatorProps={{
+                    style: {
+                        backgroundColor: "var(--primary-color)",
+                        width:'0.3rem'
+                    }
+                    }}
+            >
+                <Tab label={
+                    <div>
+                        <TocIcon className={classes.icon}/>
+                        Table of Content
+                    </div>
+                    
+                    } {...a11yProps(0)} />
+                {course.sections.map((section,index) =>
+                    <Tab key={section.id} className={classes.tab} 
+                        label={
+                            <div>
+                                <h2 className={classes.number}>{index+1}</h2>
+                                {section.name}
+                            </div> 
+                        }
+                        {...a11yProps(index+1)} 
+                        
+                    />
+                )}
+                <Tab {...a11yProps(course.sections.length+1)} 
                     label={
                         <div>
-                            <h2 className={classes.number}>{index+1}</h2>
-                            {section.name}
-                        </div> 
+                            <EmojiFlagsIcon className={classes.icon}/>
+                            Course Recap
+                        </div>                    
                     }
-                    {...a11yProps(index+1)} 
-                    
                 />
-            )}
-            <Tab {...a11yProps(course.sections.length+1)} 
-                label={
-                    <div>
-                        <EmojiFlagsIcon className={classes.icon}/>
-                        Course Recap
-                    </div>                    
-                }
-            />
-            </Tabs>
+                </Tabs>
         </div>          
 
   );

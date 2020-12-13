@@ -5,12 +5,6 @@
     display: grid;
     grid-gap: 3rem;
   }
-
-  .sectionContent{
-    overflow-y: scroll; 
-    height: 40rem;  
-    padding: 2.4rem;
-  }
   
   .articleTerms{
     display: flex;
@@ -34,4 +28,29 @@
     width: 20rem;
     padding: 1rem;
     background-color: var(--background-color);
+}
+
+.courseContainer{
+  max-height: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 2rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .courseContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .courseNav{
+    position: fixed;
+    bottom: 50%;
+    right: -150px;
+    z-index: 20;
+  }
+  .courseNav .MuiTabs-flexContainer {
+    display: flex!important;
+    flex-direction: column!important;
+    background-color: rgba(255, 255, 255, 0)!important;
+  }
 }

@@ -1,10 +1,9 @@
-import React,{ useEffect, useState } from 'react'
+import React,{ useEffect, useState, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import ScreenHeader from '../components/ScreenHeader'
 import CourseTableOfContent from '../components/Course/CourseTableOfContent'
 import CourseRecap from '../components/Course/CourseRecap'
-import CourseNavigation from '../components/Course/CourseNavigation'
 import COURSES from '../courses/courses'
 import { camelCaseToString } from '../utils/utils';
 import { Course } from '../utils/course';
@@ -13,6 +12,9 @@ import CourseHeader from '../components/Course/CourseHeader'
 import CourseNav from '../components/Course/CourseNav'
 
 export default function AcademyCourseScreen() {
+
+    const courseContainer = useRef()
+    const academySections = useRef()
 
     const { id } = useParams()
     const [course, setCourse] = useState({sections:[]})
@@ -27,6 +29,13 @@ export default function AcademyCourseScreen() {
             setCourse({...updatedCourse})            
         }
     }, [id,userInfo])
+
+    useEffect(()=>{
+        // let courseContainer = document.getElementById('courseContainer')
+        let height = courseContainer.current.clientHeight
+        console.log(academySections.current.style.maxHeight = height)
+        // academySections.current.clientHeight = height
+    },[])
 
     const handleNavigate=(direction,status)=>{
         course.navigate(direction,status,course,setCourse)
@@ -47,12 +56,9 @@ export default function AcademyCourseScreen() {
     return (
         <div className='academyCourseScreen'>     
             <CourseHeader header={camelCaseToString(id)} moveTo={handleNavigate} course={course}/>
-            {/* <ScreenHeader header={camelCaseToString(id)}/>  */}
-            <div className='courseTest'>
+            <div className='courseContainer' ref={courseContainer} id='courseContainer'>
                 <CourseNav moveTo={handleNavigate} course={course}/>
-                <div className='academySections' id={'academySections'} >
-                {/* <CourseNavigation moveTo={handleNavigate} course={course}/> */}
-                    
+                <div className='academySections' ref={academySections} id={'academySections'} >
                     <CourseTableOfContent course={course} moveTo={handleNavigate}/>
                     {sections.map((Section,index) =>
                         <Section 
@@ -64,9 +70,6 @@ export default function AcademyCourseScreen() {
                     <CourseRecap course={course}/>    
                 </div>                
             </div>
-
-            
-            {/* <CourseNavigation moveTo={handleNavigate} course={course}/> */}
         </div>
     )
 }

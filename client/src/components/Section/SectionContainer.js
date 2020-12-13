@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import SectionHeader from './SectionHeader'
 import SectionNav from '../../utils/sectionNav';
+import SwipeableViews from "react-swipeable-views";
 
 export default function SectionContainer({section,sectionComponents,completeArticle}) {
 
@@ -8,7 +9,7 @@ export default function SectionContainer({section,sectionComponents,completeArti
 
     useEffect(() => {
         let newSectionNav = new SectionNav(sectionComponents)
-        setSectionNav(newSectionNav)
+        setSectionNav({...newSectionNav,current:0})
     }, [])
 
     let components = []
@@ -20,6 +21,11 @@ export default function SectionContainer({section,sectionComponents,completeArti
         props.push(item.props)
     })
     
+
+    const changePageHandler = (newIndex)=>{
+        setSectionNav({...sectionNav,current:newIndex})
+    }
+
     return (
         <>
             <SectionHeader 
@@ -27,14 +33,23 @@ export default function SectionContainer({section,sectionComponents,completeArti
                 sectionNav={sectionNav} 
                 setSectionNav={setSectionNav}
             />
-            <div className='sectionArticles' style={sectionNav.subPageStyle(sectionNav)}>
-                {components.map((Article,index) =>
-                    <Article 
-                        key={index}
-                        {...props[index]}
-                    />
-                )}                
-            </div>
+                <SwipeableViews
+                    onChangeIndex={e => changePageHandler(e)}
+                    resistance
+                    // animateHeight
+                    index={sectionNav.current}
+                    className='teste'
+                >
+                    {components.map((Article,index) =>
+                        <div className='sectionContentContainer'>
+                            <Article 
+                                key={index}
+                                {...props[index]}
+                            />                            
+                        </div>
+
+                    )}      
+                </SwipeableViews>          
         </>
     )
 }
