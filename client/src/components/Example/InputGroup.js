@@ -41,9 +41,9 @@ export default function InputGroup({header,inputs,setInputs}) {
             
         <h2>{header}</h2>
         {Object.keys(inputs).map(input=>
-                inputs[input].type=='slider'?
+                inputs[input].type==='slider'?
                     <SliderInput key={input} input={input} inputs={inputs} changeValueHandler={changeValueHandler}/>:
-                    inputs[input].type=='switch'?
+                    inputs[input].type==='switch'?
                     <SwitchInput key={input} input={input} inputs={inputs} changeValueHandler={changeValueHandler}/>:
                     <></>         
         )}

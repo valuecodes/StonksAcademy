@@ -1,10 +1,8 @@
 import React from 'react'
 import './Section.css'
 import SectionNav from '../Section/SectionNav'
-import AppBar from '@material-ui/core/AppBar';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
         borderRadius:'0.5rem',
         flexWrap:'wrap'
     },
+    title:{
+        fontSize:24,
+        paddingTop:4
+    }
   }));
 
 export default function SectionHeader({header,sectionNav,setSectionNav}) {
@@ -28,9 +30,9 @@ export default function SectionHeader({header,sectionNav,setSectionNav}) {
     return (
         <div className='sectionHeader'>
             <Toolbar className={classes.appBar}  >
-                <Typography className={classes.title} variant="h6" noWrap>
-                    <h2>{header}</h2>
-                </Typography>
+                {/* <Typography className={classes.title} noWrap> */}
+                    <h2 className={classes.title}>{header}</h2>
+                {/* </Typography> */}
                 {sectionNav&&
                     <SectionNav sectionNav={sectionNav} setSectionNav={setSectionNav}/>
                 }

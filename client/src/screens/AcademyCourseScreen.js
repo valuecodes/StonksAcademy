@@ -1,7 +1,6 @@
 import React,{ useEffect, useState, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import ScreenHeader from '../components/ScreenHeader'
 import CourseTableOfContent from '../components/Course/CourseTableOfContent'
 import CourseRecap from '../components/Course/CourseRecap'
 import COURSES from '../courses/courses'
@@ -30,19 +29,14 @@ export default function AcademyCourseScreen() {
         }
     }, [id,userInfo])
 
-    useEffect(()=>{
-        // let courseContainer = document.getElementById('courseContainer')
-        let height = courseContainer.current.clientHeight
-        console.log(academySections.current.style.maxHeight = height)
-        // academySections.current.clientHeight = height
-    },[])
-
     const handleNavigate=(direction,status)=>{
         course.navigate(direction,status,course,setCourse)
     }
 
     const completeSectionHandler=(id,score)=>{
+        
         let completedArticle = course.complete(id,score,course,setCourse)
+        console.log(completedArticle)
         dispatch(completeSection(completedArticle))
     }
 
@@ -64,7 +58,7 @@ export default function AcademyCourseScreen() {
                         <Section 
                             key={course.sections[index].sectionId}
                             section={course.sections[index]} 
-                            completeArticle={completeSectionHandler}
+                            completeSection={completeSectionHandler}
                         />
                     )}
                     <CourseRecap course={course}/>    

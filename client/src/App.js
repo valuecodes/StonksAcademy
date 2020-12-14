@@ -7,9 +7,6 @@ import ProfileScreen from './screens/ProfileScreen'
 import AcademyCourseScreen from './screens/AcademyCourseScreen';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
-
 const theme = createMuiTheme({
   typography: {
     fontFamily: 'Roboto, Helvetica, Arial, sans-serif',

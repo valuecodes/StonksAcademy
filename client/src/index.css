@@ -22,9 +22,9 @@ html{
   --light-color:rgb(131, 131, 131); */
   --primary-color:#4DA5EE;
   --secondary-color:#52677A;
-  --positive-color:rgb(86, 223, 81);;
+  --positive-color:rgb(158, 223, 156);
   --neutral-color:#E7EA5D;
-  --negative-color:#DF5951;
+  --negative-color:rgb(223, 156, 156);
   --background-color:#DEDEDE;
   --text-light:rgb(236, 236, 236);
   --text-dark:rgb(88, 88, 88);
@@ -203,14 +203,13 @@ a{
 
 /* Example */
 .example{
-  display: grid;
-  grid-gap: 1rem;
   min-width: 25rem;
 }
 
 .card{
+  height: auto;
   padding: 1rem;
-  /* margin: 0.6rem; */
+  margin-top: 1rem;
 }
 
 .assetsResult{
@@ -549,7 +548,8 @@ a{
 }
 
 .chartContainer{
-  height: 100%;
+  max-height: 40rem;
+  height: 40rem;
   width: 1fr;
 }
 

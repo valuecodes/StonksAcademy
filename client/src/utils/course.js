@@ -4,7 +4,6 @@ export function Course(courseContent,userInfo=null){
 
     const createSections=(courseContent,userInfo)=>{
         let completedSections = userInfo ? userInfo.completedSections : []
-        console.log(courseContent,completedSections)
         return courseContent.sections.map((section,index) => {
             let completedSection = null
             

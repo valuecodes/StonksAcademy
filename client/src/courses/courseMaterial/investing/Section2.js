@@ -1,10 +1,10 @@
 
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import SectionContainer from '../../../components/Section/SectionContainer'
 import MaterialIcon from '../../../components/MaterialIcon'
 import ArticleExerciseStats from '../../../components/Article/ArticleExerciseStats'
 import TextList from '../../../components/Article/TextList'
-import { Line, Bar } from 'react-chartjs-2'
+import {  Bar } from 'react-chartjs-2'
 /* eslint-disable */
 import { datalabels } from 'chartjs-plugin-datalabels'
 import annotation from "chartjs-plugin-annotation";

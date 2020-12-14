@@ -41,9 +41,8 @@ export default function SectionContainer({section,sectionComponents,completeArti
                     className='teste'
                 >
                     {components.map((Article,index) =>
-                        <div className='sectionContentContainer'>
+                        <div key={index} className='sectionContentContainer'>
                             <Article 
-                                key={index}
                                 {...props[index]}
                             />                            
                         </div>

@@ -24,6 +24,13 @@
     grid-template-columns: 1fr 1fr;
 }
 
+.gridCenter{
+    height: 40rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media only screen and (max-width: 800px) {
     .sectionGrid{
         grid-template-columns: 1fr;

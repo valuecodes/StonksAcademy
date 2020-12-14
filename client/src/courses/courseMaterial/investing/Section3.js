@@ -1,9 +1,9 @@
 
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 import SectionContainer from '../../../components/Section/SectionContainer'
 import DragAndDrop from '../../../components/DragAndDrop'
 import TextList from '../../../components/Article/TextList'
-import { Line, Bar } from 'react-chartjs-2'
+import { Bar } from 'react-chartjs-2'
 
 
 export default function InvestingCategories({section,completeArticle}){
