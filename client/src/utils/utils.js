@@ -36,3 +36,8 @@ export function formatNumber(value,format){
     }
     return text+' €'
 }
+
+export function formatDate(date=new Date()){
+    date = new Date(date)
+    return date.toLocaleDateString('en-GB')
+}

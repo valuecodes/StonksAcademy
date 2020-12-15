@@ -10,6 +10,7 @@ export default function SectionContainer({section,sectionComponents,completeArti
     useEffect(() => {
         let newSectionNav = new SectionNav(sectionComponents)
         setSectionNav({...newSectionNav,current:0})
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     let components = []
@@ -51,13 +52,4 @@ export default function SectionContainer({section,sectionComponents,completeArti
                 </SwipeableViews>          
         </>
     )
-}
-
-const createArticle=(items)=>{
-    return items.map((item,index) => {
-        return{
-            name:item,
-            id:index
-        }
-    })
 }

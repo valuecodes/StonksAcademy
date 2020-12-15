@@ -30,13 +30,12 @@ export default function AcademyCourseScreen() {
     }, [id,userInfo])
 
     const handleNavigate=(direction,status)=>{
+        console.log(direction,status)
         course.navigate(direction,status,course,setCourse)
     }
 
-    const completeSectionHandler=(id,score)=>{
-        
+    const completeSectionHandler=(id,score)=>{     
         let completedArticle = course.complete(id,score,course,setCourse)
-        console.log(completedArticle)
         dispatch(completeSection(completedArticle))
     }
 
@@ -46,6 +45,8 @@ export default function AcademyCourseScreen() {
         let Section = item.component
         sections.push(Section)
     })
+
+
 
     return (
         <div className='academyCourseScreen'>     

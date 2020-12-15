@@ -15,12 +15,11 @@ import Chip from '@material-ui/core/Chip';
 import DoneIcon from '@material-ui/icons/Done';
 import ExposureNeg1Icon from '@material-ui/icons/ExposureNeg1';
 import './Exercise.css'
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Box from '@material-ui/core/Box';
 import Fab from '@material-ui/core/Fab';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import { completeSection } from '../../actions/courseActions';
 import { useSelector } from 'react-redux'
+import ExersiceCompleted from './ExerciseCompleted'
+import ExerciseScore from './ExerciseScore'
+import { formatDate } from '../../utils/utils';
 
 const useStyles = makeStyles({
   root: {
@@ -46,35 +45,33 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Exercise({section,completeSection}){
+export default function ExerciseQuiz({section,completeSection,questions=[]}){
 
     const [quiz,setQuiz] = useState({
         stage:'initial',//initial, quiz, results, completed
         currentQuestion:0,
-        questions:[
-            {id:1,question:'Bond is asset',options:['True','False','Both'],answer:'True',userAnswer:null},
-            {id:2,question:'Car is',options:['Asset','Liability','None'],answer:'Liability',userAnswer:null},
-            {id:3,question:'Reinvesting dividends accelerates compounding',options:['True','False'],answer:'True',userAnswer:null},
-            {id:4,question:'Stock is',options:['Asset','Liability'],answer:'Asset',userAnswer:null},
-            {id:5,question:'Car insurance is',options:['Variable Cost','Fixed Cost'],answer:'Fixed Cost',userAnswer:null},
-            {id:6,question:'Car gas is',options:['Variable Cost','Fixed Cost','Temperary Cost'],answer:'Variable Cost',userAnswer:null},
-            {id:7,question:'Boat is',options:['Asset','Liability'],answer:'Liability',userAnswer:null},            
-        ],
-        completedAt:new Date().toLocaleDateString()
+        questions:[],
+        completedAt:formatDate()
     })
 
     const userSignin = useSelector(state => state.userSignin)
     const { userInfo } = userSignin
+
+    useEffect(()=>{
+        setQuiz({...quiz,questions:questions})
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
 
     useEffect(() => {
         if(userInfo){
             let sectionCompleted = userInfo.completedSections
                 .find(item => item.sectionId===section.sectionId)
             if(sectionCompleted){
-                let completedAt = new Date(sectionCompleted.updatedAt).toLocaleDateString()
+                let completedAt = formatDate(sectionCompleted.updatedAt) 
                 setQuiz({...quiz,stage:'completed',score:sectionCompleted.score,completedAt:completedAt})
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userInfo])
     
     const startExerciseHandler=()=>{
@@ -99,7 +96,7 @@ export default function Exercise({section,completeSection}){
 
     const completeQuizHandler=()=>{
         completeSection(section.id,quiz.score)
-        setQuiz({...quiz,stage:'completed'})
+        setQuiz({...quiz,completedAt:formatDate(),stage:'completed',})
     }
 
     const tryAgainHandler=()=>{
@@ -109,7 +106,7 @@ export default function Exercise({section,completeSection}){
     }
 
     return(
-        <div className='quizGrid sectionContent'>
+        <div className='quizGrid'>
             {quiz.stage==='initial'&&
                 <div className='quizInitial'>
                     <Fab onClick={startExerciseHandler} variant="extended">
@@ -140,59 +137,15 @@ export default function Exercise({section,completeSection}){
             {quiz.stage==='results'&&
                 <>
                     <QuizResults quiz={quiz} completeQuiz={completeQuizHandler} tryAgain={tryAgainHandler}/>
-                    <QuizScore quiz={quiz}/>
+                    <ExerciseScore section={quiz}/>
                 </>
             }
             {quiz.stage==='completed'&&
-                <Card className='quizCompleted'>
-                    <div className='quizCompletedHeader'>
-                        <h2>Quiz Completed</h2>
-                        {/* <h2>12.12.2020</h2> */}
-                        <Chip className='competedQuiz' label={`Completed ${quiz.completedAt.replaceAll('/','.')}`} variant="outlined" />
-                    </div>
-                    <QuizScore quiz={quiz}/>
-                    <div className='quizCompletedFooter'>
-                        <Button onClick={tryAgainHandler} color="primary" variant="outlined">Try Again</Button>
-                    </div>
-                </Card>
+                <ExersiceCompleted section={quiz} tryAgain={tryAgainHandler}/>
             }
 
         </div>        
     )
-}
-
-function QuizScore({quiz}){
-    const { correct, total } = quiz.score
-    return(
-        <div className='quizScore'>
-            <h2>Score</h2>
-            <CircularProgressWithLabel quiz={quiz} />
-        </div>
-    )
-}
-
-function CircularProgressWithLabel({quiz}) {
-    const { correct, total } = quiz.score
-    return (
-      <Box  position="relative" display="inline-flex">
-        <CircularProgress className='quizScoreProgress' variant="determinate" value={(correct/total)*100} />
-        <Box
-            className='quizScoreProgress'
-            top={0}
-            left={0}
-            bottom={0}
-            right={0}
-            position="absolute"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-        >
-          <Typography className='quizScoreText' variant="caption" component="div" color="textSecondary">
-            {correct}/{total}
-          </Typography>
-        </Box>
-      </Box>
-    );
 }
   
 function QuizResults({quiz,completeQuiz,tryAgain}){

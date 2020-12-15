@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import SectionContainer from '../../../components/Section/SectionContainer'
-import { Line, Bar } from 'react-chartjs-2'
+import { Line } from 'react-chartjs-2'
 import TextList from '../../../components/Article/TextList'
 import ArticleAccordion from '../../../components/Article/ArticleAccordion'
 import { lineChartOptions, assetChartOptions } from '../../../utils/chartOptions'
@@ -8,15 +8,25 @@ import InputGroup from '../../../components/Example/InputGroup'
 import { formatNumber } from '../../../utils/utils';
 import { colors } from '../../../utils/colors'
 import ResultCard from '../../../components/Example/ResultCard'
-import Exercise from '../../../components/Exercise/Excersise'
+import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz';
 
 export default function AssetsAndLiabilities({section,completeSection}){ 
+
+    const questions=[
+        {id:1,question:'Bond is asset',options:['True','False','Both'],answer:'True',userAnswer:null},
+        {id:2,question:'Car is',options:['Asset','Liability','None'],answer:'Liability',userAnswer:null},
+        {id:3,question:'Reinvesting dividends accelerates compounding',options:['True','False'],answer:'True',userAnswer:null},
+        {id:4,question:'Stock is',options:['Asset','Liability'],answer:'Asset',userAnswer:null},
+        {id:5,question:'Car insurance is',options:['Variable Cost','Fixed Cost'],answer:'Fixed Cost',userAnswer:null},
+        {id:6,question:'Car gas is',options:['Variable Cost','Fixed Cost','Temperary Cost'],answer:'Variable Cost',userAnswer:null},
+        {id:7,question:'Boat is',options:['Asset','Liability'],answer:'Liability',userAnswer:null},            
+    ]
 
     const sectionComponents = [
         {name:'OverView',article: OverView},
         {name:'Asset',article: Asset},
         {name:'Liability',article: Liability},
-        {name:'Exercise',article:Exercise,props:{section,completeSection}}
+        {name:'Exercise',article:ExerciseQuiz,props:{section,completeSection,questions}}
     ]
 
     return(
@@ -59,7 +69,6 @@ function OverView(){
         }
         setChartData({...chartData,labels:newLabels})
         setOptions(lineChartOptions)
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
@@ -120,75 +129,74 @@ function OverView(){
     }
 
     return(
-            <div className='sectionGrid sectionContent'>
-                <div>
-                <TextList
-                    content={[
-                        {header:'Assets',text:'Assets generate income and make you wealthier  even though you dont need use time and energy. Assets include items like stocks, bonds, real estate etc that generate passive income.'},
-                        {header:'Liabilities',text:'Liabilities loses value over time, for example cars, boats motorcycles. Liabilities loses value over time, for example it needs maintenence, fuel etc.'},
-                        {buttons:[{text:'Demonstrate',onClick:demoStartHandler}]}
-                    ]}
-                />
-                </div>
-                {startDemo &&
-                <>
-                <div>
-                    <div className='chartContainer'>
-                        <Line data={data} options={options} />
-                    </div>
-                </div>
-                
-                <div className='aalDemoResult'>
-                    <h3>Asset vs liability in 10 years</h3>
-                    <ul >
-                        <li>
-                            <h3>Asset</h3>
-                            <ul className='list'>
-                                <li>
-                                    <p>Initial Investment:</p> 
-                                    <p>{(10000).toFixed(2)}</p>
-                                </li>
-                                <li>
-                                    <p>Interest (6% year): </p> 
-                                    <p>{chartData.interest.toFixed(2)}</p>
-                                </li>
-                                <li>
-                                    <p>Total: </p> 
-                                    <h3>{(chartData.interest+10000).toFixed(2)}</h3>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <h3>Liability</h3>
-                            <ul className='list'>
-                                <li>
-                                    <p>Car price:</p> 
-                                    <p>{(10000).toFixed(2)}</p>
-                                </li>
-                                <li>
-                                    <p>Depreciation (10% year): </p> 
-                                    <p>{chartData.depreciation.toFixed(2)}</p>
-                                </li>
-                                <li>
-                                    <p>Gas (1500$ year : </p> 
-                                    <p>{(chartData.gas).toFixed(2)}</p>
-                                </li>
-                                <li>
-                                    <p>Insurance (900$ year): </p> 
-                                    <p>{(chartData.insurance).toFixed(2)}</p>
-                                </li>
-                                <li>
-                                    <p>Total: </p> 
-                                    <h3>{(chartData.totalLiability).toFixed(2)}</h3>
-                                </li>                        
-                            </ul>
-                        </li>
-                    </ul>                
-                </div>     
-                </>   
-                }                 
+        <div className='sectionGrid'>
+            <div>
+            <TextList
+                content={[
+                    {header:'Assets',text:'Assets generate income and make you wealthier  even though you dont need use time and energy. Assets include items like stocks, bonds, real estate etc that generate passive income.'},
+                    {header:'Liabilities',text:'Liabilities loses value over time, for example cars, boats motorcycles. Liabilities loses value over time, for example it needs maintenence, fuel etc.'},
+                    {buttons:[{text:'Demonstrate',onClick:demoStartHandler}]}
+                ]}
+            />
             </div>
-
+            {startDemo &&
+            <>
+            <div>
+                <div className='chartContainer'>
+                    <Line data={data} options={options} />
+                </div>
+            </div>
+            
+            <div className='aalDemoResult'>
+                <h3>Asset vs liability in 10 years</h3>
+                <ul >
+                    <li>
+                        <h3>Asset</h3>
+                        <ul className='list'>
+                            <li>
+                                <p>Initial Investment:</p> 
+                                <p>{(10000).toFixed(2)}</p>
+                            </li>
+                            <li>
+                                <p>Interest (6% year): </p> 
+                                <p>{chartData.interest.toFixed(2)}</p>
+                            </li>
+                            <li>
+                                <p>Total: </p> 
+                                <h3>{(chartData.interest+10000).toFixed(2)}</h3>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Liability</h3>
+                        <ul className='list'>
+                            <li>
+                                <p>Car price:</p> 
+                                <p>{(10000).toFixed(2)}</p>
+                            </li>
+                            <li>
+                                <p>Depreciation (10% year): </p> 
+                                <p>{chartData.depreciation.toFixed(2)}</p>
+                            </li>
+                            <li>
+                                <p>Gas (1500$ year : </p> 
+                                <p>{(chartData.gas).toFixed(2)}</p>
+                            </li>
+                            <li>
+                                <p>Insurance (900$ year): </p> 
+                                <p>{(chartData.insurance).toFixed(2)}</p>
+                            </li>
+                            <li>
+                                <p>Total: </p> 
+                                <h3>{(chartData.totalLiability).toFixed(2)}</h3>
+                            </li>                        
+                        </ul>
+                    </li>
+                </ul>                
+            </div>     
+            </>   
+            }                 
+        </div>
     )
 }
 
@@ -275,6 +283,7 @@ function Asset(){
             interest:formatNumber((total-deposits),'€'),
             total:formatNumber(total,'€')
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[inputs])
 
     const content = [
@@ -283,7 +292,7 @@ function Asset(){
     ]
 
     return(
-        <div className='sectionGrid sectionContent'>
+        <div className='sectionGrid'>
             <div> 
                 <TextList
                     content={[
@@ -366,7 +375,6 @@ function Liability(){
         let insuranceCostPerYear = inputs.insuranceCostPerYear.value
 
         let newLabels = []        
-        let asset = 10000
         let liability = carPrice
         let gas = -0.1
         let insurance = -0.1
@@ -399,6 +407,7 @@ function Liability(){
         setResults({
             totalCost:formatNumber(totalCost,'€'),
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[inputs])
 
     const content = [
@@ -408,7 +417,7 @@ function Liability(){
     ]
 
     return(
-        <div className='sectionGrid sectionContent'>
+        <div className='sectionGrid'>
             <div> 
                 <TextList
                     content={[

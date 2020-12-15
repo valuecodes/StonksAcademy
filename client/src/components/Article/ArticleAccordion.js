@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heading: {
     fontSize:16,
+    flexBasis: '93.33%',
   },
 }));
 
@@ -33,12 +34,15 @@ export default function ArticleAccordion({content}) {
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
                 >
-                <Typography className={classes.heading}>{item.header}</Typography>
+                <Typography className={classes.heading}>{item.header}
+                </Typography>
+                {item.chip}
                 </AccordionSummary>
                 <AccordionDetails>
-                <Typography>
-                    {item.text}
-                </Typography>
+
+                  <Typography>
+                      {item.text}
+                  </Typography>
                 </AccordionDetails>
             </Accordion>   
         )}

@@ -79,7 +79,6 @@ const useStyles = makeStyles((theme) => ({
 export default function CourseNav({moveTo,course}) {
 
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
         let sectionId = newValue
@@ -87,15 +86,20 @@ export default function CourseNav({moveTo,course}) {
         if(sectionId===-1) sectionId='start'
         if(sectionId===course.sections.length) sectionId = 'recap' 
         moveTo(sectionId)
-        setValue(newValue);
   };
+
+  let tabIndex = course.current
+  if(tabIndex==='start') tabIndex = -1
+  if(tabIndex==='recap') tabIndex = course.sections.length
+  tabIndex++
+  if(!course.current&&course.current!==0) tabIndex=0
 
   return (
         <div className={classes.root +' courseNav'}>
             <Tabs
                 orientation="vertical"
                 variant="scrollable"
-                value={value}
+                value={tabIndex}
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
                 className={classes.tabs}

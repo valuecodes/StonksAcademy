@@ -1,5 +1,6 @@
 import React from 'react'
 import './Article.css'
+import ArticleButton from './ArticleButton'
 
 export default function TextList({content}) {
     return (
@@ -17,17 +18,11 @@ export default function TextList({content}) {
 }
 
 function Buttons({item}){
-
     return(
         <>
-        {item.buttons.map((button,index) =>
-            <button className='button'
-                onClick={button.onClick}
-                key={index}
-            >
-                {button.text}
-            </button>
-        )}
+            {item.buttons.map((button,index) =>
+                <ArticleButton key={index} onClick={button.onClick} text={button.text} />
+            )}
         </>
     )
 }

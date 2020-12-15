@@ -1,6 +1,8 @@
 import React from 'react'
 import SectionHeader from '../Section/SectionHeader'
 import './Course.css'
+import { ArticleTermList } from '../Article/ArticleTerm';
+import ArticleButton from '../Article/ArticleButton'
 
 export default function CourseTableOfContent({course, moveTo}){
     return(
@@ -9,26 +11,19 @@ export default function CourseTableOfContent({course, moveTo}){
                     header={'Table of content'} 
                 />            
                 <ul className=' sectionContentContainer'>
-                    <div className='tableOfContent sectionContent'>
+                    <div className='tableOfContent'>
                         {course.sections.map((item,index) =>
                             <li key={index}>
                                 <h3>{index+1}. {item.name}</h3>
                                 <p>{item.desc}</p>
                                 <h4>Terms covered</h4>
-                                <div className='articleTerms'>
-                                    {item.articleTerms.map((term,index) =>
-                                        <p key={index}>{term}</p>
-                                    )}
-                                </div>
+                                <ArticleTermList articleTerms={item.articleTerms} />
                             </li>                
                         )}
                         <li>
-                            <button onClick={()=>moveTo(0)} className='button'>
-                                Start Section
-                            </button>
+                            <ArticleButton onClick={()=>moveTo(0)} text={'Start Section'} />
                         </li>                        
                     </div>
-
                 </ul>                
         </div>
     )

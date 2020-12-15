@@ -1,21 +1,22 @@
 
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import SectionContainer from '../../../components/Section/SectionContainer'
 import MaterialIcon from '../../../components/MaterialIcon'
-import ArticleExerciseStats from '../../../components/Article/ArticleExerciseStats'
 import TextList from '../../../components/Article/TextList'
 import {  Bar } from 'react-chartjs-2'
 /* eslint-disable */
 import { datalabels } from 'chartjs-plugin-datalabels'
 import annotation from "chartjs-plugin-annotation";
 /* eslint-enable */
+import { useSelector } from 'react-redux'
+import { formatDate } from '../../../utils/utils';
+import ExcerciseCompleted from '../../../components/Exercise/ExerciseCompleted'
 
-
-export default function ValueInvestingAndIntrinsicValue({section,completeArticle}){
+export default function ValueInvestingAndIntrinsicValue({section,completeSection}){
 
     const sectionComponents = [
         {name:'Practice',article: ValueInvesting},
-        {name:'Exercise',article: ValueInvestingExercise,props:{section,completeArticle}} 
+        {name:'Exercise',article: ValueInvestingExercise,props:{section,completeSection}} 
     ]
 
     return(
@@ -23,17 +24,38 @@ export default function ValueInvestingAndIntrinsicValue({section,completeArticle
             <SectionContainer 
                 sectionComponents={sectionComponents} 
                 section={section} 
-                completeArticle={completeArticle}
+                completeSection={completeSection}
             />
         </div>
     )
 }
 
-function ValueInvestingExercise({section, completeArticle}){
+function ValueInvestingExercise({section, completeSection}){
+
+    const [exercise,setExercise]=useState({
+        stage:'exercise',
+        score:{},
+        completedAt:formatDate()
+    })
+
+    const userSignin = useSelector(state => state.userSignin)
+    const { userInfo } = userSignin
+
+    useEffect(() => {
+        if(userInfo){
+            let sectionCompleted = userInfo.completedSections
+                .find(item => item.sectionId===section.sectionId)
+            if(sectionCompleted){
+                let completedAt = formatDate(sectionCompleted.updatedAt) 
+                setExercise({...exercise,stage:'completed',score:sectionCompleted.score,completedAt:completedAt})
+            }
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [userInfo])
 
     const [houses, setHouses] = useState([
-        {price:95,size:50},
-        {price:130,size:55},
+        {price:100,size:50},
+        {price:110,size:55},
         {price:80,size:40},
         {price:null,size:75, estimate:true},
     ])
@@ -46,57 +68,69 @@ function ValueInvestingExercise({section, completeArticle}){
     }
 
     const submitScoreHandler = () => {
+
         const score={
-            total:0,
+            total:20,
             wrong:0,
             correct:0,
             notAnswered:0,
         }
-        score.total++
-        if(houses[3].price>145&&houses[3].price<170){
-            score.correct++
-        }else{
-            score.wrong++
+        let correct=0;
+        let dist = Math.abs((150-houses[3].price))
+        if(dist<20){
+            correct = 20-dist
         }
-        completeArticle(section.id,score)
+        score.correct=correct
+        completeSection(section.id,score)
+        setExercise({...exercise,stage:'completed',score:score,completedAt:formatDate()})
+    }
+
+    const tryAgainHandler=()=>{
+        setExercise({...exercise,stage:'exercise'})
     }
 
     return(
-        <div className='articleSubPage'>
-            <div className='articleExerciseHeader'>
-                <h2>Estimate the intrinsic value of house 4 based on price per square meter</h2>
-            </div>
-            <div className='articleMiddle'>
-                <div className='housePrices exerciseContainer'>    
-                    {houses.map((item,index) =>
-                        <div key={index} className='housePrice houseCard'>
-                            <MaterialIcon icon={'HomeIcon'} className='houseIcon'/>
-                            <h3>House {index+1}</h3>
-                            <ul className='list smallList'>   
-                                <li>                            
-                                    <label>Price</label>
-                                     <h3>{item.price}k</h3>
-                                </li>                                
-                                <li>
-                                    <label>Size</label>
-                                    <h3>{item.size}/m2</h3>
-                                </li>
-                                <li>
-                                    <label>Price/m2</label>
-                                    <h3>{(item.price/item.size).toFixed(2)}k</h3>
-                                </li>
-                                <li></li>
-                            </ul>                            
-                        </div>
-                    )}    
-                    <div className='estimateHousePrice'>
-                        <h3>Estimate</h3>
-                        <input min={50} max={200} type='range' onChange={(e) => modifyPriceHandler(e)}/>  
-                        <button onClick={submitScoreHandler} className='button'>Submit Estimate</button>
-                    </div>                    
-                </div>  
-            </div>
-            <ArticleExerciseStats score={{}} />
+        <div className='quizGrid '>
+            {exercise.stage==='exercise' &&
+                <>
+                <div className='articleExerciseHeader'>
+                    <h2>Estimate the intrinsic value of house 4 based on price per square meter</h2>
+                </div>                
+                <div className='articleMiddle'>
+                    <div className='housePrices exerciseContainer'>    
+                        {houses.map((item,index) =>
+                            <div key={index} className='housePrice houseCard'>
+                                <MaterialIcon icon={'HomeIcon'} className='houseIcon'/>
+                                <h3>House {index+1}</h3>
+                                <ul className='list smallList'>   
+                                    <li>                            
+                                        <label>Price</label>
+                                        <h3>{item.price}k</h3>
+                                    </li>                                
+                                    <li>
+                                        <label>Size</label>
+                                        <h3>{item.size}/m2</h3>
+                                    </li>
+                                    <li>
+                                        <label>Price/m2</label>
+                                        <h3>{(item.price/item.size).toFixed(2)}k</h3>
+                                    </li>
+                                    <li></li>
+                                </ul>                            
+                            </div>
+                        )}    
+                        <div className='estimateHousePrice'>
+                            <h3>Estimate</h3>
+                            <input min={50} max={200} step={5} type='range' onChange={(e) => modifyPriceHandler(e)}/>  
+                            <button onClick={submitScoreHandler} className='button'>Submit Estimate</button>
+                        </div>                    
+                    </div>  
+                </div> 
+                </>
+            }
+            {exercise.stage==='completed'&&
+                <ExcerciseCompleted section={exercise} tryAgain={tryAgainHandler}/>
+            }
         </div>
     )
 }
@@ -187,7 +221,7 @@ function ValueInvesting(){
       };
 
     return(
-        <div className='articleSubPage'>
+        <div className='sectionGrid'>
             <TextList
                 content={[
                     {header:'Value Investing',text:'Buying assets which value is higher than the price.'},
@@ -201,15 +235,16 @@ function ValueInvesting(){
                                 <Bar data={chartData} options={chartOptions}/>
                             }
                         </div>
-                        <h2>Neighborhood with 4 houses</h2>
+                        
                         <div className='housePrices'>    
                             {housePrices.map((item,index) =>
                                 <div key={index} className='housePrice'>
                                     <MaterialIcon icon={'HomeIcon'} className='houseIcon'/>
                                     <h3>{item}k</h3>
                                 </div>
-                            )}                        
-                        </div>                             
+                            )}                           
+                        </div>
+                        <h2>Neighborhood with 4 houses</h2>                              
                 </div>
         </div>
     )

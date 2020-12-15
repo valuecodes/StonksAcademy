@@ -27,9 +27,12 @@ export function Course(courseContent,userInfo=null){
     }
 
     const navigate = (direction,status,navigation,setCourse) => {
+
         if(status==='unavailable') return
         let current = direction
         let element = null
+        
+        
         if(current==='start'){
             element = document.getElementById('tableOfContent')
         }else if(current==='recap'){

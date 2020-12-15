@@ -1,16 +1,27 @@
 
 import React,{useState} from 'react'
 import SectionContainer from '../../../components/Section/SectionContainer'
-import DragAndDrop from '../../../components/DragAndDrop'
 import TextList from '../../../components/Article/TextList'
 import { Bar } from 'react-chartjs-2'
+import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
+import ArticleAccordion from '../../../components/Article/ArticleAccordion'
+import Chip from '@material-ui/core/Chip';
 
+export default function InvestingCategories({section,completeSection}){
 
-export default function InvestingCategories({section,completeArticle}){
+    const questions = [
+        {id:1,question:'Bond yields are always positive',options:['True','False'],answer:'False',userAnswer:null},
+        {id:2,question:'Goverment Bonds are safer than Corporate Bonds',options:['True','False'],answer:'True',userAnswer:null},
+        {id:3,question:'REITs invest in',options:['Real Estate','Stocks','Bonds'],answer:'Real Estate',userAnswer:null},
+        {id:4,question:'Derivates are less riskier than ETFs',options:['True','False'],answer:'False',userAnswer:null},
+        {id:5,question:'Mutual Fund value is calculated at the end of the day',options:['True','False'],answer:'True',userAnswer:null},
+        {id:6,question:'Commodities includes gold and oil',options:['True','False'],answer:'True',userAnswer:null},
+    ]
 
     const sectionComponents = [
-        {name:'Practice',article: InvestingCategoriesPractice},
-        {name:'Exercise',article: InvestingCategoriesExercise,props:{section,completeArticle}}
+        {name:'Overview',article:Overview},
+        {name:'Investing Risk Ladder',article: InvestingCategoriesPractice},
+        {name:'Exercise',article: ExerciseQuiz,props:{section,completeSection,questions}}
     ]
 
     return(
@@ -18,62 +29,54 @@ export default function InvestingCategories({section,completeArticle}){
             <SectionContainer 
                 sectionComponents={sectionComponents} 
                 section={section} 
-                completeArticle={completeArticle}
+                completeSection={completeSection}
             />
         </div>
     )
 }
 
-function InvestingCategoriesExercise({section,completeArticle}){
+function Overview(){
 
-    const [score,setScore] = useState({})
-    
-    const scoreHandler=(newScore)=>{
-        setScore(newScore)
-        if((newScore.correct+newScore.wrong)===newScore.total){
-            completeArticle(section.id,score)
-        }
-    }
+    const content = [
+        {
+            header:'Cash',chip:<Chip className='lowRisk' label="Low Risk" variant="outlined" />,
+            text:'Cash is the most simplest and safest investment. Investors get small fixed interest on the bank deposit. Downside of cash is that the interest earned is very small and and usually below inflation.'},
+        {
+            header:'Goverment Bonds',chip:<Chip className='lowRisk' label="Low Risk" variant="outlined" />,
+            text:'Bond is a debt instrument which yields fixed rate. Bond Yield is determined by central bank interes rates. Currently goverment bonds yield very little or even negative returns'},
+        {
+            header:'Corporate Bonds',chip:<Chip className='lowRisk' label="Low Risk" variant="outlined" />,
+            text:'Corporate bond is similar to the goverment bonds and can offer better yields but are more riskier'},
+        {
+            header:'Mutual funds',chip:<Chip className='lowRisk' label="Low Risk" variant="outlined" />,
+            text:'Mutual fund is an investment vehicle that pools money from indivisual investors and buys securities such as stocks bonds. When investing in mutual funds, investor gets diversified portfolio without having to make individual investment by self. Mutual funds are valued at the end of the day'},
+        {
+            header:'ETFs',chip:<Chip className='mediumRisk' label="Medium Risk" variant="outlined" />,
+            text:'Exhange Traded Funds are similar to mutual funds but they are traded throughout the day'},
+        {
+            header:'REITs',chip:<Chip className='mediumRisk' label="Medium Risk" variant="outlined" />,
+            text:'Real Estate Investment Trusts is investment vehicle that pools money from investors and buys real estate'},
+        {
+            header:'Stocks',chip:<Chip className='mediumRisk' label="Medium Risk" variant="outlined" />,
+            text:'Investor can become owner of individual company by buing shares. '},
+        {
+            header:'Commodities',chip:<Chip className='highRisk' label="High Risk" variant="outlined" />,
+            text:'Commodities includes precious metals like gold and silver and energy resources like oil. Investor can in commodities by buing commodity funds'},
+        {
+            header:'Derivates',chip:<Chip className='highRisk' label="High Risk" variant="outlined" />,
+            text:'Derivate is a contract to sell or buy underlining assets at a certain price. Derivates includes options, swaps and futures'},
+        {
+            header:'Crypto Currencies',chip:<Chip className='highRisk' label="High Risk" variant="outlined" />,
+            text:'Digital or virtual currency'
+        },
+    ]
 
     return(
-        <div className='dragAndDropExercise'>
-            <DragAndDrop 
-                columns={[                    
-                    {name:'Drag and drop assets to correct risk category',id:0,
-                        exercise:true,
-                        starting:true},
-                    {
-                        name:'Low',
-                        id:1,
-                        icon:'AttachMoneyIcon'
-                    },
-                    {
-                        name:'Medium',
-                        id:2,
-                        icon:'MoneyOffIcon'
-                    },                    
-                    {
-                        name:'High',
-                        id:3,
-                        icon:'MoneyOffIcon'
-                    },                    
-                ]}
-                items={[
-                    {name:'Stock',start:0,target:2},
-                    {name:'Goverment Bonds',start:0,target:1},
-                    {name:'Derivates',start:0,target:3},
-                    {name:'Cryptocurrencies',start:0,target:3},
-                    {name:'Mutual funds',start:0,target:1},
-                    {name:'Reits',start:0,target:2},
-                    {name:'Private Equity',start:0,target:3},
-                    {name:'Corporate Bonds',start:0,target:2},
-                    {name:'Commodities',start:0,target:3},
-                    {name:'ETFs',start:0,target:2},
-                    {name:'Cash',start:0,target:1},
-                ]}
-                getScore={scoreHandler}
-                startExercise={true}
-            />
+        <div className='sectionGrid'>
+            <h2>Investing categories</h2>
+            <div className='accordionWide'>
+                <ArticleAccordion content={content}/>                
+            </div>
         </div>
     )
 }
@@ -85,8 +88,8 @@ function InvestingCategoriesPractice(){
     const investingCategories=[
         {name:'Cash',riskCategory:1,risk:1},
         {name:'Goverment Bonds',riskCategory:1,risk:1.5},
-        {name:'Mutual fund',riskCategory:1,risk:3},
-        {name:'Corporate Bonds',riskCategory:2,risk:3.5},        
+        {name:'Corporate Bonds',riskCategory:1,risk:3},
+        {name:'Mutual funds',riskCategory:2,risk:4},        
         {name:'ETFs',riskCategory:2,risk:4},
         {name:'REITs',riskCategory:2,risk:4.5},
         {name:'Stock',riskCategory:2,risk:5},
@@ -128,18 +131,9 @@ function InvestingCategoriesPractice(){
                     beginAtZero: true
                 }
             }],
-            xAxes:[{
-                ticks:{
-                    maxRotation: 0,
-                    minRotation: 0
-                }
-            }]
         },
         legend:{
             display:false,
-        },
-        tooltips: {
-          enabled: false,
         },
         plugins: {
             datalabels: {
