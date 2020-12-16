@@ -154,7 +154,7 @@ function InvestingCategoriesPractice(){
                     {buttons:[{text:'Risk Ladder',onClick:demoStartHandler}]}
                 ]}
             />
-            <div className='articleExample'>
+            <div className='categoryChart'>
                 {startDemo &&
                     <Bar data={data} options={options} />
                 }

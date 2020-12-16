@@ -2,7 +2,7 @@ import React from 'react'
 import SectionHeader from '../Section/SectionHeader'
 import './Course.css'
 import { ArticleTermList } from '../Article/ArticleTerm';
-import ArticleButton from '../Article/ArticleButton'
+import ArticleButtonPrimary from '../Article/ArticleButtonPrimary'
 
 export default function CourseTableOfContent({course, moveTo}){
     return(
@@ -21,7 +21,7 @@ export default function CourseTableOfContent({course, moveTo}){
                             </li>                
                         )}
                         <li>
-                            <ArticleButton onClick={()=>moveTo(0)} text={'Start Section'} />
+                            <ArticleButtonPrimary onClick={()=>moveTo(0)} text={'Start Course'} />
                         </li>                        
                     </div>
                 </ul>                

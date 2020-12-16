@@ -3,6 +3,7 @@ import Card from '@material-ui/core/Card';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import ExerciseScore from './ExerciseScore'
+import ArticleButton from '../Article/ArticleButton'
 
 export default function ExerciseCompleted({section,tryAgain}) {
     return (

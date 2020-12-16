@@ -1,6 +1,8 @@
 import React from 'react'
 import './Article.css'
 import ArticleButton from './ArticleButton'
+import Card from '@material-ui/core/Card';
+
 
 export default function TextList({content}) {
     return (
@@ -41,8 +43,8 @@ function TextItem({item}){
 
 function Formula({formula}){
     return(
-        <div className='formula'>
+        <Card className='formula'>
             {formula}
-        </div>
+        </Card>
     )
 }

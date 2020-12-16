@@ -287,8 +287,8 @@ function Asset(){
     },[inputs])
 
     const content = [
-        {header:'Compound Interest',text:''},
-        {header:'ReInvesting',text:''},
+        {header:'Compound Interest',text:'Compound interest is result of reinvesting interest rather than paying it out.'},
+        {header:'ReInvesting',text:'Reinvesting dividends and interest fastens the compounding effect'},
     ]
 
     return(
@@ -411,7 +411,7 @@ function Liability(){
     },[inputs])
 
     const content = [
-        {header:'Depreciation',text:''},
+        {header:'Depreciation',text:'Decrease of item value'},
         {header:'Fixed Cost',text:''},
         {header:'Variable Cost',text:''},
     ]
@@ -421,7 +421,7 @@ function Liability(){
             <div> 
                 <TextList
                     content={[
-                        {header:'Assets',text:'Assets generate income and make you wealthier  even though you dont need use time and energy. Assets include items like stocks, bonds, real estate etc that generate passive income.'},
+                        {header:'Assets',text:'Liabilities loses value over time, for example cars, boats motorcycles. Liabilities loses value over time, for example it needs maintenence, fuel etc.'},
                     ]}
                 /> 
                 <ArticleAccordion content={content}/>

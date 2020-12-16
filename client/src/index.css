@@ -11,16 +11,8 @@ html{
 }
 
 :root{
-  /* --primary-color:#DCDF51;
-  --secondary-color:#777777;
-  --positive-color:rgb(86, 223, 81);;
-  --neutral-color:#E7EA5D;
-  --negative-color:#DF5951;
-  --background-color:#DEDEDE;
-  --text-light:#DEDEDE;
-  --text-dark:rgb(88, 88, 88);
-  --light-color:rgb(131, 131, 131); */
   --primary-color:#4DA5EE;
+  --primary-variant:#1f98ff;
   --secondary-color:#52677A;
   --positive-color:rgb(158, 223, 156);
   --neutral-color:rgb(242, 245, 59);
@@ -39,6 +31,7 @@ body{
   max-width: 100vw;
   width: 100vw;
   overflow-x: hidden;
+  /* background-color:lightg; */
 }
 
 .app{
@@ -657,24 +650,27 @@ a{
   margin-top: 10rem;
 }
 
-.articleExample{
-  grid-column: 2/5;
-  padding-right: 5rem;
-}
-
 .exampleGrid{
   display: grid;
   grid-template-columns:  1fr 1fr 1fr; 
+  grid-gap: 2rem;
+  align-items: start
+}
+
+.exampleGrid div p{
+  padding: 2rem;
 }
 
 .shareExample{
-  margin-top: 5rem;
+  margin-top: 4rem;
+  padding: 2rem 0;
   display: grid;
   grid-template-columns: 60%;
   grid-template-rows: 5rem 20rem 3rem 2rem;
   justify-content: center;
   align-items: center;
   text-align: center;
+  max-height:30rem;
 }
 
 .shareExample p{

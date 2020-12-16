@@ -20,6 +20,7 @@ const userAuth = () => async (dispatch) => {
 const logout = () => async (dispatch) => {
     await axios.post('/auth/logout', { } , { withCredentials: true })
     dispatch({type: USER_LOGOUT})
+    window.location.reload();
 }
 
 export { signin, logout, userAuth }

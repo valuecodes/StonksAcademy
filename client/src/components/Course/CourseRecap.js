@@ -4,7 +4,7 @@ import './Course.css'
 import Card from '@material-ui/core/Card';
 import ExerciseScore from '../Exercise/ExerciseScore'
 import {ArticleTermList} from '../../components/Article/ArticleTerm'
-import ArticleButton from '../Article/ArticleButton'
+import ArticleButtonPrimary from '../Article/ArticleButtonPrimary'
 
 export default function CourseRecap({course}){
     
@@ -44,7 +44,7 @@ export default function CourseRecap({course}){
                             <ArticleTermList articleTerms={allArticleTerms}/>     
                         </li>
                         <li>
-                            <ArticleButton text={'Start next section'} />
+                            <ArticleButtonPrimary text={'Start next section'} />
                         </li>
                     </ul>              
                     <Card className='courseScore'>
@@ -53,9 +53,6 @@ export default function CourseRecap({course}){
                     </Card>              
                 </div>                
             </div>
-
-
-
         </div>
     )
 }

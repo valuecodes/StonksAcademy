@@ -20,6 +20,7 @@ import { useSelector } from 'react-redux'
 import ExersiceCompleted from './ExerciseCompleted'
 import ExerciseScore from './ExerciseScore'
 import { formatDate } from '../../utils/utils';
+import { InputSlider }  from '../Other/Sliders'
 
 const useStyles = makeStyles({
   root: {
@@ -102,7 +103,7 @@ export default function ExerciseQuiz({section,completeSection,questions=[]}){
     const tryAgainHandler=()=>{
         const quizCopy = {...quiz}
         quizCopy.questions.forEach(item => item.userAnswer=null)
-        setQuiz({...quizCopy,stage:'quiz',currentQuestion:0})
+        setQuiz({...quizCopy,stage:'quiz',currentQuestion:0,questions:questions})
     }
 
     return(
@@ -117,21 +118,34 @@ export default function ExerciseQuiz({section,completeSection,questions=[]}){
             {quiz.stage==='quiz'&&
                 <Card className='quiz'>
                     <h2>Question: {quiz.currentQuestion+1}</h2>
-                    <p>{quiz.questions[quiz.currentQuestion].question}</p>
-                    <div>
-                        <ButtonGroup className={'quizButtons'} aria-label="outlined button group">
-                            {quiz.questions[quiz.currentQuestion].options.map((option,index) =>
-                                <Button 
-                                    onClick={()=>answerQuestionHandler(option,quiz.currentQuestion)} 
-                                    id={index}
-                                    className={quiz.questions[quiz.currentQuestion].userAnswer===option&&'selected'}
-                                >
-                                    {option}
-                                </Button>
-                            )}
-                        </ButtonGroup>                 
-                    </div>
-                    <QuizNav quiz={quiz} setQuiz={setQuiz} finishQuiz={finishQuizHandler}/>
+                    {quiz.questions[quiz.currentQuestion]&&
+                        <>
+                        <p>{quiz.questions[quiz.currentQuestion].question}</p>
+                        <div>
+                            {quiz.questions[quiz.currentQuestion].options&&
+                                <ButtonOptions quiz={quiz} answerQuestionHandler={answerQuestionHandler}/>
+                            }
+                            {quiz.questions[quiz.currentQuestion].slider&&
+                                <SliderOption quiz={quiz} answerQuestionHandler={answerQuestionHandler}/>
+                            }   
+                            {/* <ButtonGroup className={'quizButtons'} aria-label="outlined button group">
+                                {quiz.questions[quiz.currentQuestion].options.map((option,index) =>
+                                    <Button 
+                                        key={index}
+                                        onClick={()=>answerQuestionHandler(option,quiz.currentQuestion)} 
+                                        id={index}
+                                        className={quiz.questions[quiz.currentQuestion].userAnswer===option&&'selected'}
+                                    >
+                                        {option}
+                                    </ButtonOpt>
+                                )}
+                            </ButtonGroup>                  */}
+
+                        </div>
+                        <QuizNav quiz={quiz} setQuiz={setQuiz} finishQuiz={finishQuizHandler}/>    
+                        </>                                 
+                    }
+
                 </Card>        
             }
             {quiz.stage==='results'&&
@@ -145,6 +159,43 @@ export default function ExerciseQuiz({section,completeSection,questions=[]}){
             }
 
         </div>        
+    )
+}
+
+function SliderOption({quiz,answerQuestionHandler}){
+    let currentQuestion=quiz.questions[quiz.currentQuestion]
+    let currentValue = currentQuestion.userAnswer===null?0:currentQuestion.userAnswer
+
+    const onChange=(e,value)=>{
+        answerQuestionHandler(value,quiz.currentQuestion)
+    }
+
+    return(
+        <div className='quizSlider'>
+            <InputSlider
+                value={currentValue}
+                onChange={onChange}
+                {...currentQuestion.slider}
+            />
+            <h2>{currentValue}{currentQuestion.slider.format}</h2>
+        </div>
+    )
+}
+
+function ButtonOptions({quiz,answerQuestionHandler}){
+    return(
+        <ButtonGroup className={'quizButtons'} aria-label="outlined button group">
+            {quiz.questions[quiz.currentQuestion].options.map((option,index) =>
+                <Button 
+                    key={index}
+                    onClick={()=>answerQuestionHandler(option,quiz.currentQuestion)} 
+                    id={index}
+                    className={quiz.questions[quiz.currentQuestion].userAnswer===option&&'selected'}
+                >
+                    {option}
+                </Button>
+            )}
+        </ButtonGroup>   
     )
 }
   
@@ -162,19 +213,19 @@ function QuizResults({quiz,completeQuiz,tryAgain}){
             <h2>Results</h2>
             <div>
                 {quiz.questions.map((question,index) =>
-                    <Accordion expanded={expanded === 'panel'+index} onChange={handleChange('panel'+index)}>
+                    <Accordion key={index} expanded={expanded === 'panel'+index} onChange={handleChange('panel'+index)}>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls={`panel${index}bh-content`}
                         id={`panel${index}bh-header`}
                     >
-                    <Typography  className='questionHeader'>
+                    <div  className='questionHeader'>
                         <h3>{`Question ${index+1}.   `}</h3>
                         {question.correct?
-                            <DoneIcon className={'correct icon'} fontSize="medium"/>
+                            <DoneIcon className={'correct icon'}/>
                             :
-                            <ExposureNeg1Icon className={'wrong icon'} fontSize="medium"/>}
-                    </Typography>
+                            <ExposureNeg1Icon className={'wrong icon'} />}
+                    </div>
                     </AccordionSummary>
                     <AccordionDetails  className={classes.details}>                
                         <Typography className={classes.detailsQuestion}>

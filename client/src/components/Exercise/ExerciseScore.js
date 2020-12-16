@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 export default function ExerciseScore({section,size,showText=true}){
     return(
         <div className='exerciseScore'>
-            {showText && <h2>Score</h2>} 
+            {/* {showText && <h2>Score</h2>}  */}
             <CircularProgressWithLabel section={section} size={size} />
         </div>
     )
