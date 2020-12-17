@@ -2,7 +2,7 @@ import {
     AssetsAndLiabilities, ValueInvesting, InvestingCategories 
 } from './courseMaterial/investing/investingCourse'
 
-import { Share, FinancialRatios1 } from './courseMaterial/stockMarket/stockMarketCourse'
+import { Share, FinancialRatios1, StockMarket } from './courseMaterial/stockMarket/stockMarketCourse'
 
 const COURSES = [
     {
@@ -47,24 +47,24 @@ const COURSES = [
                 articleTerms: ['Earnings','Earnings per Share','Equity','Book value'],
                 component: FinancialRatios1          
             },
-            // {
-            //     name: 'Stock Market',
-            //     desc: 'What is stock market and how it works',
-            //     articleTerms: ['Stock Market','Broker','IPO'],
-            //     component: ArticleTest                        
-            // },
+            {
+                name: 'Stock Market',
+                desc: 'What is stock market and how it works',
+                articleTerms: ['Stock Market','Broker','IPO'],
+                component: StockMarket                        
+            },
         ]
     },
-    {
-        name:'financials',
-        desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        tier:'free',
-    },
-    {
-        name:'financial-ratios',
-        desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        tier:'free',
-    },
+    // {
+    //     name:'financials',
+    //     desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    //     tier:'free',
+    // },
+    // {
+    //     name:'financial-ratios',
+    //     desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    //     tier:'free',
+    // },
     // {
     //     name:'companyTypes',
     //     desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',

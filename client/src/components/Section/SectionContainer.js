@@ -3,7 +3,7 @@ import SectionHeader from './SectionHeader'
 import SectionNav from '../../utils/sectionNav';
 import SwipeableViews from "react-swipeable-views";
 
-export default function SectionContainer({section,sectionComponents,completeArticle}) {
+export default function SectionContainer({section,sectionComponents,completeArticle,moveTo}) {
 
     const [sectionNav, setSectionNav] = useState(new SectionNav([]))
 
@@ -22,7 +22,6 @@ export default function SectionContainer({section,sectionComponents,completeArti
         props.push(item.props)
     })
     
-
     const changePageHandler = (newIndex)=>{
         setSectionNav({...sectionNav,current:newIndex})
     }
@@ -45,6 +44,7 @@ export default function SectionContainer({section,sectionComponents,completeArti
                     <div key={index} className='sectionContentContainer'>
                         <Article 
                             {...props[index]}
+                            moveTo={moveTo}
                         />                            
                     </div>
 

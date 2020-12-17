@@ -7,7 +7,7 @@ import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 import ArticleAccordion from '../../../components/Article/ArticleAccordion'
 import Chip from '@material-ui/core/Chip';
 
-export default function InvestingCategories({section,completeSection}){
+export default function InvestingCategories({section,completeSection,moveTo}){
 
     const questions = [
         {id:1,question:'Bond yields are always positive',options:['True','False'],answer:'False',userAnswer:null},
@@ -29,6 +29,7 @@ export default function InvestingCategories({section,completeSection}){
             sectionComponents={sectionComponents} 
             section={section} 
             completeSection={completeSection}
+            moveTo={moveTo}
         />
     )
 }

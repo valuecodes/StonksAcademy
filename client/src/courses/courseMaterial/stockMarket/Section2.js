@@ -5,7 +5,7 @@ import MaterialIcon from '../../../components/MaterialIcon'
 import ShareExample from '../../../components/Example/ShareExample'
 import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 
-export default function FinancialRatios1({section,completeSection}) {
+export default function FinancialRatios1({section,completeSection,moveTo}) {
 
     const questions=[
         {
@@ -48,6 +48,7 @@ export default function FinancialRatios1({section,completeSection}) {
             sectionComponents={sectionComponents} 
             section={section} 
             completeSection={completeSection}
+            moveTo={moveTo}
         />
     )
 }

@@ -10,7 +10,7 @@ import { colors } from '../../../utils/colors'
 import ResultCard from '../../../components/Example/ResultCard'
 import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz';
 
-export default function AssetsAndLiabilities({section,completeSection}){ 
+export default function AssetsAndLiabilities({section,completeSection,moveTo}){ 
 
     const questions=[
         {id:1,question:'Bond is asset',options:['True','False','Both'],answer:'True',userAnswer:null},
@@ -34,6 +34,7 @@ export default function AssetsAndLiabilities({section,completeSection}){
             sectionComponents={sectionComponents} 
             section={section} 
             completeSection={completeSection}
+            moveTo={moveTo}
         />
     )
 }

@@ -29,9 +29,18 @@ export function Course(courseContent,userInfo=null){
     const navigate = (direction,status,navigation,setCourse) => {
 
         if(status==='unavailable') return
+
         let current = direction
         let element = null
-        
+
+        if(current==='next'){
+            let sectionsLength = navigation.sections.length
+            current=navigation.current
+            current++
+            if(current===sectionsLength){
+                current='recap'
+            }
+        }
         
         if(current==='start'){
             element = document.getElementById('tableOfContent')
@@ -67,11 +76,18 @@ export function Course(courseContent,userInfo=null){
         return createSections(courseContent,userInfo)
     }
 
+    function moveToStart(){
+        const element = document.getElementById('tableOfContent')
+        element.scrollIntoView();
+    }
+
     return{
         current:startingSection,
+        nextCourse:courseContent.nextCourse,
         sections: createSections(courseContent,userInfo),
         init,
         navigate,
         complete,
+        moveToStart
     }
 }

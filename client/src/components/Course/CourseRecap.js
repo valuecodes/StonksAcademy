@@ -5,11 +5,13 @@ import Card from '@material-ui/core/Card';
 import ExerciseScore from '../Exercise/ExerciseScore'
 import {ArticleTermList} from '../../components/Article/ArticleTerm'
 import ArticleButtonPrimary from '../Article/ArticleButtonPrimary'
+import { Link } from 'react-router-dom'
 
 export default function CourseRecap({course}){
     
     let allArticleTerms = course.sections.map(item => item.articleTerms).flat(1)
     let totalScore = { correct:0,wrong:0,notAnswered:0,total:0 }
+
     course.sections.forEach(item => {
         if(item.score){
             Object.keys(item.score).forEach(key => totalScore[key]+=item.score[key])
@@ -44,7 +46,11 @@ export default function CourseRecap({course}){
                             <ArticleTermList articleTerms={allArticleTerms}/>     
                         </li>
                         <li>
-                            <ArticleButtonPrimary text={'Start next section'} />
+                            {course.nextCourse&& 
+                                <Link to={course.nextCourse||'/academy'}>
+                                    <ArticleButtonPrimary text={'Start next course'}  />
+                                </Link>
+                            }
                         </li>
                     </ul>              
                     <Card className='courseScore'>

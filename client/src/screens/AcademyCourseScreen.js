@@ -10,7 +10,7 @@ import { completeSection } from '../actions/courseActions';
 import CourseHeader from '../components/Course/CourseHeader'
 import CourseNav from '../components/Course/CourseNav'
 
-export default function AcademyCourseScreen() {
+export default function AcademyCourseScreen(props) {
 
     const courseContainer = useRef()
     const academySections = useRef()
@@ -23,9 +23,16 @@ export default function AcademyCourseScreen() {
 
     useEffect(() => {
         let courseContent = COURSES.find(item => item.name===id)
+        if(!courseContent) props.history.push("/academy")
+
+        let courseIndex = COURSES.findIndex(item => item.name===id)
+        let nextCourse = COURSES[courseIndex+1]?COURSES[courseIndex+1].name:null
+        courseContent.nextCourse = nextCourse
         if(courseContent){
             let updatedCourse = new Course(courseContent,userInfo)
-            setCourse({...updatedCourse})            
+            updatedCourse.moveToStart()
+            setCourse({...updatedCourse})     
+            
         }
     }, [id,userInfo])
 
@@ -57,6 +64,7 @@ export default function AcademyCourseScreen() {
                             key={course.sections[index].sectionId}
                             section={course.sections[index]} 
                             completeSection={completeSectionHandler}
+                            moveTo={handleNavigate}
                         />
                     )}
                     <CourseRecap course={course}/>    

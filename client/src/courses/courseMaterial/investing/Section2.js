@@ -12,11 +12,11 @@ import { useSelector } from 'react-redux'
 import { formatDate } from '../../../utils/utils';
 import ExcerciseCompleted from '../../../components/Exercise/ExerciseCompleted'
 
-export default function ValueInvestingAndIntrinsicValue({section,completeSection}){
+export default function ValueInvestingAndIntrinsicValue({section,completeSection,moveTo}){
 
     const sectionComponents = [
         {name:'Practice',article: ValueInvesting},
-        {name:'Exercise',article: ValueInvestingExercise,props:{section,completeSection}} 
+        {name:'Exercise',article: ValueInvestingExercise,props:{section,completeSection,moveTo}} 
     ]
 
     return(
@@ -24,11 +24,12 @@ export default function ValueInvestingAndIntrinsicValue({section,completeSection
             sectionComponents={sectionComponents} 
             section={section} 
             completeSection={completeSection}
+            moveTo={moveTo}
         />
     )
 }
 
-function ValueInvestingExercise({section, completeSection}){
+function ValueInvestingExercise({section, completeSection,moveTo}){
 
     const [exercise,setExercise]=useState({
         stage:'exercise',
@@ -127,7 +128,7 @@ function ValueInvestingExercise({section, completeSection}){
                 </>
             }
             {exercise.stage==='completed'&&
-                <ExcerciseCompleted section={exercise} tryAgain={tryAgainHandler}/>
+                <ExcerciseCompleted section={exercise} tryAgain={tryAgainHandler} moveTo={moveTo}/>
             }
         </div>
     )

@@ -5,7 +5,7 @@ import TextList from '../../../components/Article/TextList'
 import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 import ShareExample from '../../../components/Example/ShareExample'
 
-export default function Share({section,completeSection}){
+export default function Share({section,completeSection,moveTo}){
 
     const questions=[
         {
@@ -24,7 +24,7 @@ export default function Share({section,completeSection}){
         },          
         {
             id:3,
-            question:'Share count is 5pcs and Market cap 200pcs. How much is the share price?',
+            question:'Share count is 5pcs and Market cap 200$. How much is the share price?',
             slider:{max:15,step:1,format:'$'},            
             answer:10,
             userAnswer:null
@@ -45,18 +45,17 @@ export default function Share({section,completeSection}){
         },          
     ]
 
-
     const sectionComponents = [
         {name:'Overview',article: Overview},
         {name:'Example',article: Example},
         {name:'Exercise',article: ExerciseQuiz,props:{section,completeSection,questions}},
     ]
-
     return(
         <SectionContainer 
             sectionComponents={sectionComponents} 
             section={section} 
             completeSection={completeSection}
+            moveTo={moveTo}
         />
     )
 }

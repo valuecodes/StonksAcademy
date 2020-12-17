@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function ExerciseQuiz({section,completeSection,questions=[]}){
+export default function ExerciseQuiz({section,completeSection,questions=[],moveTo}){
 
     const [quiz,setQuiz] = useState({
         stage:'initial',//initial, quiz, results, completed
@@ -146,7 +146,7 @@ export default function ExerciseQuiz({section,completeSection,questions=[]}){
                 </>
             }
             {quiz.stage==='completed'&&
-                <ExersiceCompleted section={quiz} tryAgain={tryAgainHandler}/>
+                <ExersiceCompleted section={quiz} tryAgain={tryAgainHandler} moveTo={moveTo}/>
             }
 
         </div>        
