@@ -4,9 +4,9 @@ import ArticleButton from './ArticleButton'
 import Card from '@material-ui/core/Card';
 
 
-export default function TextList({content}) {
+export default function TextList({content,className=''}) {
     return (
-        <ul className='textList'>
+        <ul className={`textList ${className}`}>
             {content.map((item,index) =>
                 <li key={index}>
                     {item.buttons?

@@ -2,7 +2,7 @@ import {
     AssetsAndLiabilities, ValueInvesting, InvestingCategories 
 } from './courseMaterial/investing/investingCourse'
 
-import { Share } from './courseMaterial/stockMarket/stockMarketCourse'
+import { Share, FinancialRatios1 } from './courseMaterial/stockMarket/stockMarketCourse'
 
 const COURSES = [
     {
@@ -41,12 +41,12 @@ const COURSES = [
                 articleTerms: ['Share','Shares Outstanding','Market Cap'],
                 component: Share
             },
-            // {
-            //     name: 'Share Financial Ratios',
-            //     desc: 'What is earnings per share and book value and how to calculate them',
-            //     articleTerms: ['Earnings','Earnings per Share','Equity','Book value'],
-            //     component: Share2            
-            // },
+            {
+                name: 'Financial Ratios 1',
+                desc: 'What is earnings per share and book value and how to calculate them',
+                articleTerms: ['Earnings','Earnings per Share','Equity','Book value'],
+                component: FinancialRatios1          
+            },
             // {
             //     name: 'Stock Market',
             //     desc: 'What is stock market and how it works',

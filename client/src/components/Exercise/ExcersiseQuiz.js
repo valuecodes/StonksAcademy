@@ -59,6 +59,10 @@ export default function ExerciseQuiz({section,completeSection,questions=[]}){
     const { userInfo } = userSignin
 
     useEffect(()=>{
+        questions.forEach((item,index)=>{
+            item.userAnswer = null
+            item.id = index
+        })
         setQuiz({...quiz,questions:questions})
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
@@ -128,19 +132,6 @@ export default function ExerciseQuiz({section,completeSection,questions=[]}){
                             {quiz.questions[quiz.currentQuestion].slider&&
                                 <SliderOption quiz={quiz} answerQuestionHandler={answerQuestionHandler}/>
                             }   
-                            {/* <ButtonGroup className={'quizButtons'} aria-label="outlined button group">
-                                {quiz.questions[quiz.currentQuestion].options.map((option,index) =>
-                                    <Button 
-                                        key={index}
-                                        onClick={()=>answerQuestionHandler(option,quiz.currentQuestion)} 
-                                        id={index}
-                                        className={quiz.questions[quiz.currentQuestion].userAnswer===option&&'selected'}
-                                    >
-                                        {option}
-                                    </ButtonOpt>
-                                )}
-                            </ButtonGroup>                  */}
-
                         </div>
                         <QuizNav quiz={quiz} setQuiz={setQuiz} finishQuiz={finishQuizHandler}/>    
                         </>                                 
@@ -254,7 +245,6 @@ function QuizNav({quiz,setQuiz,finishQuiz}) {
 
     const handleNext = (next) => {
         const nextStep = quiz.currentQuestion + next
-        console.log(nextStep,steps)
         if(nextStep< steps){
            setQuiz({...quiz,currentQuestion:nextStep}) 
         }else{

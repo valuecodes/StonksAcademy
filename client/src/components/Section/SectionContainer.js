@@ -28,28 +28,28 @@ export default function SectionContainer({section,sectionComponents,completeArti
     }
 
     return (
-        <>
+        <div id={section.sectionId} className='sectionContainer'>
             <SectionHeader 
                 header={section.name} 
                 sectionNav={sectionNav} 
                 setSectionNav={setSectionNav}
             />
-                <SwipeableViews
-                    onChangeIndex={e => changePageHandler(e)}
-                    resistance
-                    // animateHeight
-                    index={sectionNav.current}
-                    className='teste'
-                >
-                    {components.map((Article,index) =>
-                        <div key={index} className='sectionContentContainer'>
-                            <Article 
-                                {...props[index]}
-                            />                            
-                        </div>
+            <SwipeableViews
+                onChangeIndex={e => changePageHandler(e)}
+                resistance
+                // animateHeight
+                index={sectionNav.current}
+                className='teste'
+            >
+                {components.map((Article,index) =>
+                    <div key={index} className='sectionContentContainer'>
+                        <Article 
+                            {...props[index]}
+                        />                            
+                    </div>
 
-                    )}      
-                </SwipeableViews>          
-        </>
+                )}      
+            </SwipeableViews>          
+        </div>
     )
 }

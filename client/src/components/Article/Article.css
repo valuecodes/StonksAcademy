@@ -14,6 +14,7 @@
   padding: 1rem;
   padding-top: 1.3rem;
   border-left: 0.5rem solid var(--secondary-color);
+  max-width: 40rem;
 }
 
 .accordionDetails{

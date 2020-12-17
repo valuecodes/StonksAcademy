@@ -27,6 +27,15 @@
     grid-template-columns: 1fr 1fr;
 }
 
+.sectionGrid3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.gridItemWide{
+    grid-column: 1/3;
+}
+
 .gridCenter{
     height: 40rem;
     display: flex;

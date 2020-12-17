@@ -21,6 +21,7 @@ html{
   --text-light:rgb(236, 236, 236);
   --text-dark:rgb(88, 88, 88);
   --light-color:rgb(107, 128, 148);
+  --bg-color:#f3f3f3;
 }
 
 body{
@@ -31,7 +32,7 @@ body{
   max-width: 100vw;
   width: 100vw;
   overflow-x: hidden;
-  /* background-color:lightg; */
+  background-color:var(--bg-color);
 }
 
 .app{
@@ -662,15 +663,18 @@ a{
 }
 
 .shareExample{
-  margin-top: 4rem;
   padding: 2rem 0;
   display: grid;
-  grid-template-columns: 60%;
+  grid-template-columns: 65%;
   grid-template-rows: 5rem 20rem 3rem 2rem;
   justify-content: center;
   align-items: center;
   text-align: center;
   max-height:30rem;
+}
+
+.shareExample h2{
+
 }
 
 .shareExample p{

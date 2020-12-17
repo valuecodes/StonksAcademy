@@ -30,13 +30,11 @@ export default function AssetsAndLiabilities({section,completeSection}){
     ]
 
     return(
-        <div id={section.sectionId} className='sectionContainer'>
-            <SectionContainer 
-                sectionComponents={sectionComponents} 
-                section={section} 
-                completeSection={completeSection}
-            />
-        </div>
+        <SectionContainer 
+            sectionComponents={sectionComponents} 
+            section={section} 
+            completeSection={completeSection}
+        />
     )
 }
 

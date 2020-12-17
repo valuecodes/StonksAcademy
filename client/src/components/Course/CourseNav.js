@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width:200,
         flexGrow: 1,
-        backgroundColor: 'rgba(255,255,255,0.6)',
+        // backgroundColor: 'rgba(255,255,255,0.6)',
         display: 'flex',
         height: 'auto',  
     },

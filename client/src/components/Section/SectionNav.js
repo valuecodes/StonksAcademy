@@ -25,7 +25,6 @@ function a11yProps(index) {
 export default function SectionNav({sectionNav,setSectionNav}) {
     const classes = useStyles();
     const handleChange = (event, newValue) => {
-        console.log(newValue)
         setSectionNav({...sectionNav,current:newValue})
     };
 

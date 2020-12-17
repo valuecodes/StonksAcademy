@@ -10,6 +10,8 @@ import MenuBookIcon from '@material-ui/icons/MenuBook';
 import TocIcon from '@material-ui/icons/Toc';
 import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
 import BusinessIcon from '@material-ui/icons/Business';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 
 export default function MaterialIcon({icon,color='black',size='large',className,scale=1}){
 
@@ -36,6 +38,10 @@ export default function MaterialIcon({icon,color='black',size='large',className,
             return <EmojiFlagsIcon className={className}/>
         case 'BusinessIcon':
             return <BusinessIcon className={className} style={{transform:`scale(${scale})`}}/>
+        case 'MonetizationOnIcon':
+            return <MonetizationOnIcon className={className} style={{transform:`scale(${scale})`}}/>
+        case 'AccountBalanceIcon':
+            return <AccountBalanceIcon className={className} style={{transform:`scale(${scale})`}}/>
         default: return null
     }
 }
