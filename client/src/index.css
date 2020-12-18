@@ -14,9 +14,11 @@ html{
   --primary-color:#4DA5EE;
   --primary-variant:#1f98ff;
   --secondary-color:#52677A;
-  --positive-color:rgb(158, 223, 156);
+  /* --positive-color:rgb(158, 223, 156); */
+  --positive-color:rgb(85, 189, 82);
   --neutral-color:rgb(242, 245, 59);
-  --negative-color:rgb(223, 156, 156);
+  /* --negative-color:rgb(223, 156, 156); */
+  --negative-color:rgb(197, 85, 85);
   --background-color:#DEDEDE;
   --text-light:rgb(236, 236, 236);
   --text-dark:rgb(88, 88, 88);
@@ -99,6 +101,11 @@ a{
 
 .positive{
   color: var(--positive-color);
+}
+
+.negative{
+  color: var(--negative-color);
+  
 }
 
 /* Header */
@@ -652,6 +659,7 @@ a{
 }
 
 .exampleGrid{
+  grid-column: 2/4;
   display: grid;
   grid-template-columns:  1fr 1fr 1fr; 
   grid-gap: 2rem;
@@ -666,15 +674,15 @@ a{
   padding: 2rem 0;
   display: grid;
   grid-template-columns: 65%;
-  grid-template-rows: 5rem 20rem 3rem 2rem;
+  grid-template-rows: 5rem 20rem 5rem 2rem;
   justify-content: center;
   align-items: center;
   text-align: center;
-  max-height:30rem;
+  max-height:35rem;
 }
 
 .shareExample h2{
-
+  font-size: 2rem;
 }
 
 .shareExample p{

@@ -2,7 +2,8 @@ import React from 'react'
 import SectionHeader from '../Section/SectionHeader'
 import './Course.css'
 import { ArticleTermList } from '../Article/ArticleTerm';
-import ArticleButtonPrimary from '../Article/ArticleButtonPrimary'
+import { ArticleButtonPrimary } from '../Other/Buttons'
+
 
 export default function CourseTableOfContent({course, moveTo}){
     return(

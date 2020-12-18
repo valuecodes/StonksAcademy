@@ -72,7 +72,17 @@ function Equity(){
     }
 
     return(
-        <div className='sectionGrid1'>
+        <div className='sectionGrid'>
+            <div>
+                <TextList
+                    content={[
+                        {
+                            header:'Equity playground',
+                            text:'One share is like the whole company in miniature size.'
+                        },
+                    ]}
+                />
+            </div>
             <div className='exampleGrid'>
                 <ShareExample 
                     header={'Equity'}
@@ -90,7 +100,7 @@ function Equity(){
                     input={{onChange:shareCountHandler,min:6,max:25,step:1,name:'Share Count'}}
                     iconStyle={{
                         transform:`scale(${(inputs.equity/70)/(inputs.shareCount*0.4)})`,
-                        width:22+(inputs.shareCount)+'%'
+                        width:30+(inputs.shareCount)+'%'
                     }}
                     value={{number:inputs.shareCount,toFixed:0,format:'pcs'}}
                     showMore={'Number of shares the company has'}
@@ -129,7 +139,17 @@ function Earnings(){
     }
 
     return(
-        <div className='sectionGrid1'>
+        <div className='sectionGrid'>
+            <div>
+            <TextList
+                content={[
+                    {
+                        header:'Earnings playground',
+                        text:'One share is like the whole company in miniature size.'
+                    },
+                ]}
+            />
+            </div>
             <div className='exampleGrid'>
                 <ShareExample 
                     header={'Net Income'}
@@ -147,7 +167,7 @@ function Earnings(){
                     input={{onChange:shareCountHandler,min:6,max:25,step:1,name:'Share count: '}}
                     iconStyle={{
                         transform:`scale(${(inputs.earnings/70)/(inputs.shareCount*0.4)})`,
-                        width:18+(inputs.shareCount)+'%'
+                        width:30+(inputs.shareCount)+'%'
                     }}
                     value={{number:inputs.shareCount,toFixed:0,format:'pcs'}}
                     showMore={'Number of shares the company has'}

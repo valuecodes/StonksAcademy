@@ -83,7 +83,17 @@ function Example(){
     }
 
     return(
-        <div className='sectionGrid1'>
+        <div className='sectionGrid'>
+            <div>
+            <TextList
+                content={[
+                    {
+                        header:'Market Cap playground',
+                        text:'One share is like the whole company in miniature size.'
+                    },
+                ]}
+            />
+            </div>
             <div className='exampleGrid'>
                 <ShareExample 
                     header={'Share'}
@@ -100,7 +110,7 @@ function Example(){
                     ) }
                     input={{onChange:shareCountHandler,min:10,max:100,step:1,name:'Shares Outstanding:'}}
                     iconStyle={{
-                        transform:`scale(${company.sharePrice/10})`,
+                        transform:`scale(${company.sharePrice/12})`,
                         width:50+(company.shareCount/2)+'%'
                     }}
                     value={{number:company.shareCount,toFixed:0,format:'pcs'}}

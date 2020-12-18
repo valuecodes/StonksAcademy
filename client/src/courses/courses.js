@@ -1,8 +1,8 @@
 import { 
-    AssetsAndLiabilities, ValueInvesting, InvestingCategories 
+    AssetsAndLiabilities, ValueInvesting, BusinessModel
 } from './courseMaterial/investing/investingCourse'
 
-import { Share, FinancialRatios1, StockMarket } from './courseMaterial/stockMarket/stockMarketCourse'
+import { Share, FinancialRatios1, StockMarket, InvestingCategories  } from './courseMaterial/stockMarket/stockMarketCourse'
 
 const COURSES = [
     {
@@ -17,16 +17,16 @@ const COURSES = [
                 component: AssetsAndLiabilities
             },
             {
-                name: 'Value Investing And Intrinsic Value',
+                name: 'Value Investing',
                 desc: 'What is the difference market price and real value of asset',
                 articleTerms: ['Value investing','Intrinsic value'],
                 component: ValueInvesting
             },
             {
-                name: 'Investing categories',
-                desc: 'Different investing categories',
-                articleTerms: ['Investment Risk Ladder','Stock','Bond'],
-                component: InvestingCategories
+                name: 'Business model',
+                desc: 'How business works, what are the common financial numbers and how money flows trough the business',
+                articleTerms: ['Business','Revenue','Cost of Revenue','Net income'],
+                component: BusinessModel
             },
         ]
     },
@@ -52,6 +52,12 @@ const COURSES = [
                 desc: 'What is stock market and how it works',
                 articleTerms: ['Stock Market','Broker','IPO'],
                 component: StockMarket                        
+            },            
+            {
+                name: 'Investing categories',
+                desc: 'Different investing categories',
+                articleTerms: ['Investment Risk Ladder','Stock','Bond'],
+                component: InvestingCategories
             },
         ]
     },

@@ -4,7 +4,7 @@ import './Course.css'
 import Card from '@material-ui/core/Card';
 import ExerciseScore from '../Exercise/ExerciseScore'
 import {ArticleTermList} from '../../components/Article/ArticleTerm'
-import ArticleButtonPrimary from '../Article/ArticleButtonPrimary'
+import { ArticleButtonPrimary } from '../Other/Buttons'
 import { Link } from 'react-router-dom'
 
 export default function CourseRecap({course}){

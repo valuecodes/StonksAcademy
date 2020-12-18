@@ -258,19 +258,20 @@ function Asset(){
         const monthlyDeposits = inputs.monthlyDeposits.value
         const timePeriod = inputs.timePeriod.value
         let deposits = startingValue
-        for(var i=0;i<=timePeriod;i++){
+        
+        for(var i=0;i<timePeriod;i++){
             let label = `Year ${i}`
             if(i===0) label=''
             newLabels.push(label)
             startingValue+=(monthlyDeposits*12) 
-            deposits+=(monthlyDeposits*12)          
+            deposits+=(monthlyDeposits*12)
+            startingValue*=((annualReturn/100)+1)          
             data.push(startingValue)
             depositData.push(deposits)
             interestData.push(startingValue-deposits)
             yearlyInterestData.push(startingValue*((annualReturn/100)+1)-startingValue)
-            startingValue*=((annualReturn/100)+1)
         }
-
+       
         let total = data[data.length-1]
         const chartCopy=chartData
         chartCopy.datasets[0].data=depositData

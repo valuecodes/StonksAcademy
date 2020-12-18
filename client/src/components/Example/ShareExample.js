@@ -14,10 +14,7 @@ export default function ShareExample({header,icon,iconStyle,value,input=null,sho
                 </div>
                 {input?
                     <>
-                    <div className='shareExampleInput'>
-                        <label>{input.name}</label>
-                        <h3 className='shareExampleNumber'>{(value.number).toFixed(value.toFixed)}{value.format}</h3>                           
-                    </div>
+                    <h3 className='shareExampleNumber'>{(value.number).toFixed(value.toFixed)}{value.format}</h3>                        
                     <InputSlider
                         min={input.min}
                         max={input.max} 
@@ -29,7 +26,7 @@ export default function ShareExample({header,icon,iconStyle,value,input=null,sho
                     <h3 className='shareExampleNumber'>{value.number.toFixed(value.toFixed)}$</h3>   
                 }                    
             </div>
-            <ShowMore text={showMore}/>  
+            <ShowMore className='shareExampleShowMore' text={showMore}/>  
         </Card>
     )
 }

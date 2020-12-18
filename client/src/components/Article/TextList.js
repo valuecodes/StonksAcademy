@@ -1,8 +1,7 @@
 import React from 'react'
 import './Article.css'
-import ArticleButton from './ArticleButton'
+import { ArticleButton } from '../Other/Buttons'
 import Card from '@material-ui/core/Card';
-
 
 export default function TextList({content,className=''}) {
     return (

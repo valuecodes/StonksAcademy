@@ -224,7 +224,7 @@ function ValueInvesting(){
             <TextList
                 content={[
                     {header:'Value Investing',text:'Buying assets which value is higher than the price.'},
-                    {header:'Intrinsic Value',text:'The real value of item. Market value often differs from the real value of the item. Your job as an investor is the calculate the real value'},
+                    {header:'Intrinsic Value',text:'The real value of item. Market value often differs from the real value of the item. Your job as an investor is the calculate the real value by using financial numbers and gaining information overview of the business'},
                     {buttons:[{text:'Demonstrate',onClick:demoStartHandler}]}
                 ]}
             />

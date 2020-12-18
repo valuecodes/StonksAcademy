@@ -1,30 +1,25 @@
-
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import SectionContainer from '../../../components/Section/SectionContainer'
 import TextList from '../../../components/Article/TextList'
-import { Bar } from 'react-chartjs-2'
-import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
-import ArticleAccordion from '../../../components/Article/ArticleAccordion'
-import Chip from '@material-ui/core/Chip';
+import VerticalStepper from '../../../components/Other/VerticalStepper'
+import MaterialIcon from '../../../components/MaterialIcon'
+import { InputSlider } from '../../../components/Other/Sliders';
+import { BusinessCard } from '../../../components/Example/BusinessExample';
+import Card from '@material-ui/core/Card';
 
-export default function InvestingCategories({section,completeSection,moveTo}){
 
-    const questions = [
-        {id:1,question:'Bond yields are always positive',options:['True','False'],answer:'False',userAnswer:null},
-        {id:2,question:'Goverment Bonds are safer than Corporate Bonds',options:['True','False'],answer:'True',userAnswer:null},
-        {id:3,question:'REITs invest in',options:['Real Estate','Stocks','Bonds'],answer:'Real Estate',userAnswer:null},
-        {id:4,question:'Derivates are less riskier than ETFs',options:['True','False'],answer:'False',userAnswer:null},
-        {id:5,question:'Mutual Fund value is calculated at the end of the day',options:['True','False'],answer:'True',userAnswer:null},
-        {id:6,question:'Commodities includes gold and oil',options:['True','False'],answer:'True',userAnswer:null},
-    ]
+export default function BusinessModel({section,completeSection,moveTo}) {
+
 
     const sectionComponents = [
-        {name:'Overview',article:Overview},
-        {name:'Investing Risk Ladder',article: InvestingCategoriesPractice},
-        {name:'Exercise',article: ExerciseQuiz,props:{section,completeSection,questions}}
+        {name:'OverView',article: OverView},
+        {name:'Business',article: Business}
+        // {name:'Asset',article: Asset},
+        // {name:'Liability',article: Liability},
+        // {name:'Exercise',article:ExerciseQuiz,props:{section,completeSection,questions}}
     ]
 
-    return(
+    return (
         <SectionContainer 
             sectionComponents={sectionComponents} 
             section={section} 
@@ -34,129 +29,145 @@ export default function InvestingCategories({section,completeSection,moveTo}){
     )
 }
 
-function Overview(){
+function Business(){
 
-    const content = [
-        {
-            header:'Cash',chip:<Chip className='lowRisk' label="Low Risk" variant="outlined" />,
-            text:'Cash is the most simplest and safest investment. Investors get small fixed interest on the bank deposit. Downside of cash is that the interest earned is very small and and usually below inflation.'},
-        {
-            header:'Goverment Bonds',chip:<Chip className='lowRisk' label="Low Risk" variant="outlined" />,
-            text:'Bond is a debt instrument which yields fixed rate. Bond Yield is determined by central bank interes rates. Currently goverment bonds yield very little or even negative returns'},
-        {
-            header:'Corporate Bonds',chip:<Chip className='lowRisk' label="Low Risk" variant="outlined" />,
-            text:'Corporate bond is similar to the goverment bonds and can offer better yields but are more riskier'},
-        {
-            header:'Mutual funds',chip:<Chip className='lowRisk' label="Low Risk" variant="outlined" />,
-            text:'Mutual fund is an investment vehicle that pools money from indivisual investors and buys securities such as stocks bonds. When investing in mutual funds, investor gets diversified portfolio without having to make individual investment by self. Mutual funds are valued at the end of the day'},
-        {
-            header:'ETFs',chip:<Chip className='mediumRisk' label="Medium Risk" variant="outlined" />,
-            text:'Exhange Traded Funds are similar to mutual funds but they are traded throughout the day'},
-        {
-            header:'REITs',chip:<Chip className='mediumRisk' label="Medium Risk" variant="outlined" />,
-            text:'Real Estate Investment Trusts is investment vehicle that pools money from investors and buys real estate'},
-        {
-            header:'Stocks',chip:<Chip className='mediumRisk' label="Medium Risk" variant="outlined" />,
-            text:'Investor can become owner of individual company by buing shares. '},
-        {
-            header:'Commodities',chip:<Chip className='highRisk' label="High Risk" variant="outlined" />,
-            text:'Commodities includes precious metals like gold and silver and energy resources like oil. Investor can in commodities by buing commodity funds'},
-        {
-            header:'Derivates',chip:<Chip className='highRisk' label="High Risk" variant="outlined" />,
-            text:'Derivate is a contract to sell or buy underlining assets at a certain price. Derivates includes options, swaps and futures'},
-        {
-            header:'Crypto Currencies',chip:<Chip className='highRisk' label="High Risk" variant="outlined" />,
-            text:'Digital or virtual currency'
-        },
-    ]
+    const [business,setBusiness] = useState({
+        mealsSold:100,
+        revenue:50,
+        costOfRevenue:30,
+        operatingExpenses:100,
+        netIncome:100,
+        mealPrice:10,
+        costPerMeal:6,
+        rent:300
+    })
+
+
+    function changeInputHandler(e,value,name){
+        const businessCopy = {...business}
+        businessCopy[name]=+value
+        updateBusinessValues(businessCopy)
+    }
+
+    const updateBusinessValues=(businessCopy)=>{
+
+        const revenue = businessCopy.mealsSold*businessCopy.mealPrice
+        const costOfRevenue = businessCopy.mealsSold*businessCopy.costPerMeal
+        const netIncome = revenue-costOfRevenue-businessCopy.rent
+        const grossMargin = (((revenue-costOfRevenue)/revenue)*100).toFixed(1)
+        const profitMargin = ((netIncome / revenue)*100).toFixed(1)
+
+        setBusiness({
+            ...businessCopy,
+            revenue,
+            costOfRevenue,
+            netIncome,
+            grossMargin,
+            profitMargin
+        })
+        
+    }
+
+    // const revenue = business.mealsSold*business.mealPrice
+    // const costOfRevenue = business.mealsSold*business.costPerMeal
+    // const operatingExpenses = business.rent
 
     return(
         <div className='sectionGrid'>
-            <h2>Investing categories</h2>
-            <div className='accordionWide'>
-                <ArticleAccordion content={content}/>                
+            <TextList
+                content={[
+                    {
+                        header:'Business playground',
+                        text:'One share is like the whole company in miniature size.'
+                    },
+                ]}
+            />
+            <div className='businessPlaygroundGrid'>
+                <div className='businessInputHeader'>
+                    <BusinessCard header={'Meal price'} value={business.mealPrice} icon='FastfoodIcon' name='mealPrice' onChange={changeInputHandler}/>
+                    <BusinessCard header={'Cost per meal'} value={business.costPerMeal} icon='GrainIcon' name='costPerMeal' onChange={changeInputHandler}/>
+                    <BusinessCard header={'Rent'} value={business.rent} icon='StoreIcon' name='rent' onChange={changeInputHandler}/>
+                </div>
+                <div className=''>
+                    <div className='businessInputMain'>
+                        <h2>Meals Sold</h2>
+                        <h2 className='businessInputValue'>{business.mealsSold}pcs</h2>     
+                    </div>
+                    <InputSlider 
+                        onChange={changeInputHandler}
+                        value={business.mealsSold}
+                        max={200}
+                        min={1}
+                        name='mealsSold'
+                    />
+                    <div className='businessExampleIcons'>
+                        {[ ...Array(business.mealsSold).keys()].map((item,index) =>
+                            <MaterialIcon icon='FastfoodIcon' className='businessModelIcon'/>
+                        )}   
+                    </div>                       
+                </div>
             </div>
+            <Card className='businessExampleResultsCard'>
+                <ul className='businessExampleResults'>
+                    <li>
+                        <h2>Business earnings</h2>
+                    </li>
+                    <li>
+                        <h3>Revenue</h3>
+                        <h2>{business.revenue}$</h2>                        
+                    </li>
+                    <li>
+                        <h3>Cost of Revenue</h3>
+                        <h2>{business.costOfRevenue}$</h2>                        
+                    </li>
+                    <li className='businessMargin'>
+                        <h3>Gross Margin</h3>
+                        <h2>{business.grossMargin}%</h2>     
+                    </li>
+                    <li>
+                        <h3>Operating Expenses</h3>
+                        <h2>{business.rent}$</h2>                        
+                    </li>
+                    <li className='businessMargin'>
+                        <h3>Profit Margin</h3>
+                        <h2>{business.profitMargin}%
+                        </h2>      
+                    </li>
+                    <li>
+                        <h3>Net Income</h3>
+                        <h2 className={business.netIncome>0?'positive':'negative'}>
+                        {business.netIncome}$</h2>                        
+                    </li>
+                </ul>
+            </Card>
         </div>
     )
 }
 
-function InvestingCategoriesPractice(){
+function OverView(){
 
-    const [startDemo,setStartDemo] = useState(false)
-
-    const investingCategories=[
-        {name:'Cash',riskCategory:1,risk:1},
-        {name:'Goverment Bonds',riskCategory:1,risk:1.5},
-        {name:'Corporate Bonds',riskCategory:1,risk:3},
-        {name:'Mutual funds',riskCategory:2,risk:4},        
-        {name:'ETFs',riskCategory:2,risk:4},
-        {name:'REITs',riskCategory:2,risk:4.5},
-        {name:'Stock',riskCategory:2,risk:5},
-        {name:'Private Equity',riskCategory:3,risk:7},
-        {name:'Commodities',riskCategory:3,risk:7.5},
-        {name:'Derivates',riskCategory:3,risk:9},
-        {name:'CryptoCurrencies',riskCategory:3,risk:10},
+    const steps=[
+        {label:'Revenue',icon:'MoneyIcon',text:'Topline, company total sales'},
+        {label:'Cost of Revenue',icon:'BuildIcon',text:'Direct costs that increase when revenue increases for example material'},
+        {label:'Operating Expenses',icon:'StoreIcon',text:'Indirect costs for example rent, equiment, inventory costs, insurance'},
+        {label:'Net Income',icon:'MonetizationOnIcon2',text:'Bottom line, revenue minus all the costs'},
     ]
 
-    const demoStartHandler = () =>{
-        setStartDemo(!startDemo)
-    }
-
-    const data = {
-        labels: investingCategories.map(item => item.name),
-        datasets: [
-          {
-            fill: false,
-            borderColor: 'rgba(115, 222, 146,1)',
-            backgroundColor:investingCategories.map(item =>{
-                if(item.riskCategory===1) return 'green'
-                if(item.riskCategory===2) return 'orange'
-                if(item.riskCategory===3) return 'red'
-                return''
-            }),
-            pointRadius: 0,
-            pointHitRadius: 0,
-            data: investingCategories.map((item,index) => item.risk),
-          },
-        ]
-      };
-
-      const options = {
-        responsive:true,
-        maintainAspectRatio: false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }],
-        },
-        legend:{
-            display:false,
-        },
-        plugins: {
-            datalabels: {
-                display:false
-            }
-          }
-      };
-
-
     return(
-        <div className='articleSubPage'>
+        <div className='sectionGrid3'>
+            <div className='gridItemWide'>
             <TextList
                 content={[
-                    {header:'Investment category risk ladder',text:'In investing risk and reward goes hand and hand.'},
-                    {header:'Level 1 - Cash and goverment bonds',text:'Relatively safe investment with minimun risk of losing capital.'},
-                    {header:'Level 2 - Corporate bonds and stocks ',text:'Medium risk and reward.'},
-                    {header:'Level 3 - Other investments and derivates ',text:'High risk with change of losing capital'},
-                    {buttons:[{text:'Risk Ladder',onClick:demoStartHandler}]}
+                    {header:'Business',text:'When investing in stock you become also an owner of that business so important to understand how business works and how money flows trough business'},
+                    {header:'Revenue',text:'Revenue is the money company receives, when it sells goods or services'},
+                    {header:'Cost of Revenue',text:'Cost of revenue refers costs that are related to the manufacturing, marketing and delivering of that product. For example restaraunt sells meal for 10$ and the ingredients costs 6$. Cost of revenue rises steadily with the revenue as the company sells more meals.'},
+                    {header:'Operating Exenses',text:'Operating expenses are the cost that are not related to the revenue. For example restaurant renting the property for 1000$ month. If no one visits the restaurant and its revenue is 0$, it still needs to pay the rent'},
+                    {header:'Net income',text:'Net income is the sum that is left after all the expenses and taxes'},
                 ]}
             />
-            <div className='categoryChart'>
-                {startDemo &&
-                    <Bar data={data} options={options} />
-                }
+            </div> 
+            <div>
+                <VerticalStepper steps={steps}/>
             </div>
         </div>
     )

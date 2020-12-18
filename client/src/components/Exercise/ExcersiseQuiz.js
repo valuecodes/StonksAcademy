@@ -21,6 +21,7 @@ import ExersiceCompleted from './ExerciseCompleted'
 import ExerciseScore from './ExerciseScore'
 import { formatDate } from '../../utils/utils';
 import { InputSlider }  from '../Other/Sliders'
+import { DeleteButton } from '../Other/Buttons'
 
 const useStyles = makeStyles({
   root: {
@@ -110,6 +111,12 @@ export default function ExerciseQuiz({section,completeSection,questions=[],moveT
         setQuiz({...quizCopy,stage:'quiz',currentQuestion:0,questions:questions})
     }
 
+    const quitQuizHandler=()=>{
+        const quizCopy = {...quiz}
+        quizCopy.questions.forEach(item => item.userAnswer=null)
+        setQuiz({...quizCopy,stage:'completed'})
+    }
+
     return(
         <div className='quizGrid'>
             {quiz.stage==='initial'&&
@@ -121,7 +128,11 @@ export default function ExerciseQuiz({section,completeSection,questions=[],moveT
             }
             {quiz.stage==='quiz'&&
                 <Card className='quiz'>
-                    <h2>Question: {quiz.currentQuestion+1}</h2>
+                    <div className='quizHeader'>
+                        <h2>Question: {quiz.currentQuestion+1}</h2>
+                        <DeleteButton deleteItem={quitQuizHandler}/>
+                    </div>
+                    
                     {quiz.questions[quiz.currentQuestion]&&
                         <>
                         <p>{quiz.questions[quiz.currentQuestion].question}</p>

@@ -9,6 +9,13 @@
     min-height: 25rem;
 }
 
+.quizHeader{
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .quiz p{
     margin: auto 0;
 }
@@ -21,6 +28,13 @@
 .quizButtons button{
     width: 100%;
     height: 4rem;
+}
+
+.quitButton{
+    align-self: flex-start;
+    font-size: 1.4rem!important;
+    border: none!important;
+    background-color: none!important;
 }
 
 .icon{
@@ -62,11 +76,6 @@
 }
 .quizGrid > div{
     padding: 1rem;
-}
-
-.quizHeader{
-    grid-column: 1/4;
-    display: flex;
 }
 
 .questionHeader{

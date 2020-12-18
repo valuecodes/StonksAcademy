@@ -8,19 +8,20 @@ export function InputSlider(props) {
         max=100, 
         step=1, 
         onChange,
-        value=0
+        value=0,
+        name=''
     } = props
 
     return (
         <Slider
         value={+value.toFixed(1)} 
         aria-labelledby="discrete-slider"
-        valueLabelDisplay="auto"
+        // valueLabelDisplay="auto"
         step={step}
         // marks
         min={min}
         max={max}
-        onChange={onChange&&((e,value)=>onChange(e,value))} 
+        onChange={onChange&&((e,value)=>onChange(e,value,name))} 
     />
     )
 }

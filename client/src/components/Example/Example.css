@@ -1,0 +1,66 @@
+.businessPlaygroundGrid{
+    padding: 0 1rem;
+}
+
+.businessInputHeader{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.businessExampleCard{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 5rem;
+    padding: 0.5rem 1rem ;
+}
+
+.businessExampleCard h2{
+    font-size: 2rem;    
+    grid-column: 1/3;
+}
+
+.businessExampleCardInput div input{
+    font-size: 3rem!important;
+    padding: 0;
+}
+
+.businessCardIcon{
+    width: 4rem!important;
+    height: 4rem!important;
+    margin-bottom: 1.8rem;
+    margin-left: auto;
+}
+
+.businessExampleResults{
+    display: grid;
+    padding: 1rem;
+}
+
+.businessExampleResults li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.businessExampleResults li:last-child{
+    border-top: 2px solid var(--light-color);
+}
+
+.businessInputMain{
+    display: flex;
+    align-items: center;
+}
+
+.businessInputValue{
+    font-size: 4rem;
+    padding: 1rem 0;
+    margin-left: 5rem;
+    grid-column: 1/2;
+}
+
+.businessMargin{
+    font-size: 1.2rem;
+    color: rgb(116, 116, 116);
+}

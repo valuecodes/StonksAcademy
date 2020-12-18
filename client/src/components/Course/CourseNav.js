@@ -46,9 +46,9 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
     root: {
         width:200,
-        flexGrow: 1,
+        // flexGrow: 1,
         // backgroundColor: 'rgba(255,255,255,0.6)',
-        display: 'flex',
+        // display: 'flex',
         height: 'auto',  
     },
     tabs: {        

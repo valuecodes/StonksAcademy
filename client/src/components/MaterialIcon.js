@@ -12,6 +12,12 @@ import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
 import BusinessIcon from '@material-ui/icons/Business';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import MoneyIcon from '@material-ui/icons/Money';
+import BuildIcon from '@material-ui/icons/Build';
+import StoreIcon from '@material-ui/icons/Store';
+import FastfoodIcon from '@material-ui/icons/Fastfood';
+import GrainIcon from '@material-ui/icons/Grain';
+
 
 export default function MaterialIcon({icon,color='black',size='large',className,scale=1}){
 
@@ -42,6 +48,19 @@ export default function MaterialIcon({icon,color='black',size='large',className,
             return <MonetizationOnIcon className={className} style={{transform:`scale(${scale})`}}/>
         case 'AccountBalanceIcon':
             return <AccountBalanceIcon className={className} style={{transform:`scale(${scale})`}}/>
+        case 'MoneyIcon':
+            return <MoneyIcon className={className} />
+        case 'BuildIcon':
+            return <BuildIcon className={className} />
+        case 'StoreIcon':
+            return <StoreIcon className={className} />
+        case 'MonetizationOnIcon2':
+            return <MonetizationOnIcon className={className} />
+        case 'FastfoodIcon':
+            return <FastfoodIcon className={className} />
+        case 'GrainIcon':
+            return <GrainIcon className={className} />
+
         default: return null
     }
 }
