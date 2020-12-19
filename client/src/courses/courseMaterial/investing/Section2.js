@@ -11,20 +11,20 @@ import annotation from "chartjs-plugin-annotation";
 import { useSelector } from 'react-redux'
 import { formatDate } from '../../../utils/utils';
 import ExcerciseCompleted from '../../../components/Exercise/ExerciseCompleted'
+import { ArticleButton } from '../../../components/Other/Buttons';
+import { InputSlider } from '../../../components/Other/Sliders';
 
-export default function ValueInvestingAndIntrinsicValue({section,completeSection,moveTo}){
+export default function ValueInvestingAndIntrinsicValue(props){
 
     const sectionComponents = [
         {name:'Practice',article: ValueInvesting},
-        {name:'Exercise',article: ValueInvestingExercise,props:{section,completeSection,moveTo}} 
+        {name:'Exercise',article: ValueInvestingExercise} 
     ]
 
     return(
         <SectionContainer 
             sectionComponents={sectionComponents} 
-            section={section} 
-            completeSection={completeSection}
-            moveTo={moveTo}
+            {...props}            
         />
     )
 }
@@ -59,8 +59,8 @@ function ValueInvestingExercise({section, completeSection,moveTo}){
         {price:null,size:75, estimate:true},
     ])
 
-    const modifyPriceHandler = (e) =>{
-        const {value} = e.target
+    const modifyPriceHandler = (e,value) =>{
+        // const {value} = e.target
         const housesCopy=[...houses]
         housesCopy[3].price=value
         setHouses(housesCopy)
@@ -93,7 +93,7 @@ function ValueInvestingExercise({section, completeSection,moveTo}){
             {exercise.stage==='exercise' &&
                 <>
                 <div className='articleExerciseHeader'>
-                    <h2>Estimate the intrinsic value of house 4 based on price per square meter</h2>
+                    <h3>Estimate the intrinsic value of the last house based on price per square meter</h3>
                 </div>                
                 <div className='articleMiddle'>
                     <div className='housePrices exerciseContainer'>    
@@ -120,8 +120,8 @@ function ValueInvestingExercise({section, completeSection,moveTo}){
                         )}    
                         <div className='estimateHousePrice'>
                             <h3>Estimate</h3>
-                            <input min={50} max={200} step={5} type='range' onChange={(e) => modifyPriceHandler(e)}/>  
-                            <button onClick={submitScoreHandler} className='button'>Submit Estimate</button>
+                            <InputSlider min={50} max={200} step={5} value={houses[3].price||0} onChange={modifyPriceHandler}/>
+                            <ArticleButton onClick={submitScoreHandler} text={'Submit Estimate'}/>
                         </div>                    
                     </div>  
                 </div> 
@@ -243,7 +243,7 @@ function ValueInvesting(){
                                 </div>
                             )}                           
                         </div>
-                        <h2>Neighborhood with 4 houses</h2>                              
+                        <h2>Neighborhood with 4 identical houses</h2>                              
                 </div>
         </div>
     )

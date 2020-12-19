@@ -14,11 +14,11 @@ html{
   --primary-color:#4DA5EE;
   --primary-variant:#1f98ff;
   --secondary-color:#52677A;
-  /* --positive-color:rgb(158, 223, 156); */
-  --positive-color:rgb(85, 189, 82);
+  --positive-color:rgb(158, 223, 156);
+  --positive-dark-color:rgb(85, 189, 82);
   --neutral-color:rgb(242, 245, 59);
-  /* --negative-color:rgb(223, 156, 156); */
-  --negative-color:rgb(197, 85, 85);
+  --negative-color:rgb(223, 156, 156);
+  --negative-dark-color:rgb(197, 85, 85);
   --background-color:#DEDEDE;
   --text-light:rgb(236, 236, 236);
   --text-dark:rgb(88, 88, 88);
@@ -100,11 +100,11 @@ a{
 }
 
 .positive{
-  color: var(--positive-color);
+  color: var(--positive-dark-color);
 }
 
 .negative{
-  color: var(--negative-color);
+  color: var(--negative-dark-color);
   
 }
 
@@ -523,27 +523,14 @@ a{
   top: 2px;
 }
 
-.unavailable{
-  /* color: rgb(187, 187, 187); */
-}
-
-.available{
-  /* background-color:var(--positive-color); */
-}
-
-/* .aalDemo{
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  padding-right: 5rem;
-} */
-
 .dragAndDropExercise{
   display: grid;
   grid-template-columns: 3fr 1fr;
 }
 
 .aalDemoResult{
-  /* padding: 2rem; */
+  margin-top: 1rem;
+  padding: 1rem;
 }
 
 .aalDemoResult ul{
@@ -602,7 +589,7 @@ a{
 
 .houseIcon{
   transform: scale(5);
-  color: black;
+  color: var(--secondary-color);
 }
 
 .valueInvestingDemo{
@@ -647,7 +634,8 @@ a{
 .estimateHousePrice{
   display: grid;
   grid-gap: 1rem;
-  grid-template-rows: 2rem 1fr auto;
+  grid-template-rows: 3.5rem 1fr auto;
+  align-items: center;
 }
 .estimateHousePrice button{
   height: 3rem;

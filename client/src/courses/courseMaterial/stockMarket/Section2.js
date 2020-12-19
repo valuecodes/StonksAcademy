@@ -5,50 +5,19 @@ import MaterialIcon from '../../../components/MaterialIcon'
 import ShareExample from '../../../components/Example/ShareExample'
 import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 
-export default function FinancialRatios1({section,completeSection,moveTo}) {
-
-    const questions=[
-        {
-            question:'Company net income is 1000$ and it has 100 shares outstanding. What is the earnings per share',
-            slider:{max:50,step:5,format:'$'},
-            answer:10,
-        },          
-        {
-            question:'Equity is the liquadation value of the company',
-            options:['True','False'],           
-            answer:'True',
-        },          
-        {
-            question:'Company book value per share is 50$ and it has 20 shares outstanding. What is the equity of the company',
-            slider:{max:1500,step:100,format:'$'},            
-            answer:1000,
-        },          
-        {
-            question:'Year and quarter are the most common timeperiods to measure financial ratios',
-            options:['True','False'],           
-            answer:'True',
-        },          
-        {
-            question:'EPS is 50$ and there are 100 shares outstanding. How much is the net income',
-            slider:{max:600,step:10,format:'pcs'},            
-            answer:500,
-        },          
-    ]
-
+export default function FinancialRatios1(props) {
 
     const sectionComponents = [
         {name:'OverView',article: OverView},
         {name:'Earnings',article:Earnings},
         {name:'Equity',article:Equity},
-        {name:'Exercise',article: ExerciseQuiz,props:{section,completeSection,questions}},
+        {name:'Exercise',article: ExerciseQuiz},
     ]
 
     return (
         <SectionContainer 
             sectionComponents={sectionComponents} 
-            section={section} 
-            completeSection={completeSection}
-            moveTo={moveTo}
+            {...props}
         />
     )
 }

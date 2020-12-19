@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import TocIcon from '@material-ui/icons/Toc';
 import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
+import { camelCaseToString } from '../../utils/utils';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -122,7 +123,7 @@ export default function CourseNav({moveTo,course}) {
                         label={
                             <div>
                                 <h2 className={classes.number}>{index+1}</h2>
-                                {section.name}
+                                {camelCaseToString(section.name)}
                             </div> 
                         }
                         {...a11yProps(index+1)} 

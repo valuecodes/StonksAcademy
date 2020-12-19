@@ -22,6 +22,7 @@ import ExerciseScore from './ExerciseScore'
 import { formatDate } from '../../utils/utils';
 import { InputSlider }  from '../Other/Sliders'
 import { DeleteButton } from '../Other/Buttons'
+import QUESTIONS from '../../courses/questions'
 
 const useStyles = makeStyles({
   root: {
@@ -47,7 +48,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function ExerciseQuiz({section,completeSection,questions=[],moveTo}){
+export default function ExerciseQuiz({section,completeSection,moveTo}){
 
     const [quiz,setQuiz] = useState({
         stage:'initial',//initial, quiz, results, completed
@@ -60,6 +61,7 @@ export default function ExerciseQuiz({section,completeSection,questions=[],moveT
     const { userInfo } = userSignin
 
     useEffect(()=>{
+        const questions = QUESTIONS[section.course][section.name]
         questions.forEach((item,index)=>{
             item.userAnswer = null
             item.id = index
@@ -108,13 +110,14 @@ export default function ExerciseQuiz({section,completeSection,questions=[],moveT
     const tryAgainHandler=()=>{
         const quizCopy = {...quiz}
         quizCopy.questions.forEach(item => item.userAnswer=null)
-        setQuiz({...quizCopy,stage:'quiz',currentQuestion:0,questions:questions})
+        setQuiz({...quizCopy,stage:'quiz',currentQuestion:0})
     }
 
     const quitQuizHandler=()=>{
         const quizCopy = {...quiz}
         quizCopy.questions.forEach(item => item.userAnswer=null)
-        setQuiz({...quizCopy,stage:'completed'})
+        let newStage = quizCopy.score?'completed':'initial'
+        setQuiz({...quizCopy,stage:newStage})
     }
 
     return(

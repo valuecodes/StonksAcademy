@@ -61,7 +61,6 @@
 }
 
 .quizInitial{
-    /* height: 40rem; */
     grid-column: 2/3;
     display: flex;
     justify-content: center;
@@ -141,11 +140,6 @@
 .categoryChart{
     grid-column: 2/5;
 }
-
-/* .recapScore{
-    height: 10rem!important;
-    width: 10rem!important;
-} */
 
 .exerciseCompleted{
     grid-column: 1/3;

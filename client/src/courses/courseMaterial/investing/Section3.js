@@ -6,25 +6,21 @@ import MaterialIcon from '../../../components/MaterialIcon'
 import { InputSlider } from '../../../components/Other/Sliders';
 import { BusinessCard } from '../../../components/Example/BusinessExample';
 import Card from '@material-ui/core/Card';
+import { InfoTooltip } from '../../../components/Other/Tooltip'
+import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 
-
-export default function BusinessModel({section,completeSection,moveTo}) {
-
+export default function BusinessModel(props) {
 
     const sectionComponents = [
         {name:'OverView',article: OverView},
-        {name:'Business',article: Business}
-        // {name:'Asset',article: Asset},
-        // {name:'Liability',article: Liability},
-        // {name:'Exercise',article:ExerciseQuiz,props:{section,completeSection,questions}}
+        {name:'Business',article: Business},
+        {name:'Exercise',article: ExerciseQuiz}
     ]
 
     return (
         <SectionContainer 
             sectionComponents={sectionComponents} 
-            section={section} 
-            completeSection={completeSection}
-            moveTo={moveTo}
+            {...props}
         />
     )
 }
@@ -32,15 +28,23 @@ export default function BusinessModel({section,completeSection,moveTo}) {
 function Business(){
 
     const [business,setBusiness] = useState({
-        mealsSold:100,
-        revenue:50,
-        costOfRevenue:30,
-        operatingExpenses:100,
-        netIncome:100,
+        mealsSold:200,
+        revenue:2000,
+        costOfRevenue:1400,
+        operatingExpenses:300,
+        netIncome:300,
         mealPrice:10,
-        costPerMeal:6,
-        rent:300
+        costPerMeal:7,
+        rent:300,
+        expPercent:0.7,
+        rentPercent:0.3,
+        profitIcons:1
     })
+
+    useEffect(()=>{
+        updateBusinessValues({...business})
+        // eslint-disable-next-line react-hooks/exhaustive-deps        
+    },[])
 
 
     function changeInputHandler(e,value,name){
@@ -56,6 +60,10 @@ function Business(){
         const netIncome = revenue-costOfRevenue-businessCopy.rent
         const grossMargin = (((revenue-costOfRevenue)/revenue)*100).toFixed(1)
         const profitMargin = ((netIncome / revenue)*100).toFixed(1)
+        const expPercent = businessCopy.costPerMeal/businessCopy.mealPrice
+        const rentPercent = (businessCopy.rent/1000)
+
+        const profitIcons = +(10*(netIncome/1000)).toFixed(0)
 
         setBusiness({
             ...businessCopy,
@@ -63,30 +71,51 @@ function Business(){
             costOfRevenue,
             netIncome,
             grossMargin,
-            profitMargin
-        })
-        
+            profitMargin,
+            expPercent,
+            rentPercent,
+            profitIcons
+        })      
     }
-
-    // const revenue = business.mealsSold*business.mealPrice
-    // const costOfRevenue = business.mealsSold*business.costPerMeal
-    // const operatingExpenses = business.rent
 
     return(
         <div className='sectionGrid'>
-            <TextList
-                content={[
-                    {
-                        header:'Business playground',
-                        text:'One share is like the whole company in miniature size.'
-                    },
-                ]}
-            />
+            <div>
+                <TextList
+                    content={[
+                        {
+                            header:'Business playground',
+                            text:`Learn how business works with restaurant example. Adjust different inputs to see how it effects the company earnings`,
+                        },
+                    ]}
+                />                             
+            </div>
             <div className='businessPlaygroundGrid'>
                 <div className='businessInputHeader'>
-                    <BusinessCard header={'Meal price'} value={business.mealPrice} icon='FastfoodIcon' name='mealPrice' onChange={changeInputHandler}/>
-                    <BusinessCard header={'Cost per meal'} value={business.costPerMeal} icon='GrainIcon' name='costPerMeal' onChange={changeInputHandler}/>
-                    <BusinessCard header={'Rent'} value={business.rent} icon='StoreIcon' name='rent' onChange={changeInputHandler}/>
+                    <BusinessCard 
+                        header={'Meal price'} 
+                        value={business.mealPrice} 
+                        icon='FastfoodIcon' 
+                        name='mealPrice' 
+                        onChange={changeInputHandler}
+                        step={1}
+                    />
+                    <BusinessCard 
+                        header={'Cost per meal'} 
+                        value={business.costPerMeal} 
+                        icon='GrainIcon' 
+                        name='costPerMeal' 
+                        onChange={changeInputHandler}
+                        step={1}                        
+                    />
+                    <BusinessCard 
+                        header={'Rent'} 
+                        value={business.rent} 
+                        icon='StoreIcon' 
+                        name='rent' 
+                        onChange={changeInputHandler}
+                        step={50}                        
+                    />
                 </div>
                 <div className=''>
                     <div className='businessInputMain'>
@@ -96,17 +125,37 @@ function Business(){
                     <InputSlider 
                         onChange={changeInputHandler}
                         value={business.mealsSold}
-                        max={200}
-                        min={1}
+                        max={320}
+                        min={10}
+                        step={10}
                         name='mealsSold'
                     />
-                    <div className='businessExampleIcons'>
-                        {[ ...Array(business.mealsSold).keys()].map((item,index) =>
-                            <MaterialIcon icon='FastfoodIcon' className='businessModelIcon'/>
-                        )}   
-                    </div>                       
                 </div>
-            </div>
+            </div>                    
+            <div className='businessExampleIcons'>
+                {[ ...Array(business.mealsSold/10).keys()].map((item,index) =>
+                    <MaterialIcon key={index} icon='FastfoodIcon' className='businessModelIcon'/>
+                )}   
+            </div>   
+            <div className='businessExampleIcons'>
+                {[ ...Array(+((business.mealsSold/10)*business.expPercent).toFixed(0)).keys()].map((item,index) =>
+                    <MaterialIcon key={index} icon='GrainIcon' className='businessModelIcon'/>
+                )}   
+            </div>   
+            <div className='businessExampleIcons'>
+                {[ ...Array(+(10*business.rentPercent).toFixed(0)).keys()].map((item,index) =>
+                    <MaterialIcon key={index} icon='StoreIcon' className='businessModelIcon'/>
+                )}   
+            </div>   
+            <div className='businessExampleIcons'
+                style={{
+                    marginLeft:business.profitIcons<0? 17*business.profitIcons+'px' :0
+                }}
+            >
+                {[ ...Array(Math.abs(business.profitIcons)).keys()].map((item,index) =>
+                    <MaterialIcon key={index} icon='MonetizationOnIcon2' className={` ${business.netIncome>0?'positive':'negative'}`}/>
+                )}   
+            </div>   
             <Card className='businessExampleResultsCard'>
                 <ul className='businessExampleResults'>
                     <li>
@@ -121,22 +170,22 @@ function Business(){
                         <h2>{business.costOfRevenue}$</h2>                        
                     </li>
                     <li className='businessMargin'>
-                        <h3>Gross Margin</h3>
+                        <h3>Gross Margin <InfoTooltip text={`How much money company is making from each sale after paying all of the variable costs\n\n(Revenue - Cost of Revenue) / Revenue`}/> </h3>
                         <h2>{business.grossMargin}%</h2>     
                     </li>
                     <li>
                         <h3>Operating Expenses</h3>
                         <h2>{business.rent}$</h2>                        
                     </li>
-                    <li className='businessMargin'>
-                        <h3>Profit Margin</h3>
-                        <h2>{business.profitMargin}%
-                        </h2>      
-                    </li>
                     <li>
                         <h3>Net Income</h3>
                         <h2 className={business.netIncome>0?'positive':'negative'}>
                         {business.netIncome}$</h2>                        
+                    </li>                    
+                    <li className='businessMargin'>
+                        <h3>Profit Margin <InfoTooltip text={'How much money company is making from each sale after paying paying all of the costs\n\nNet Income / Revenue'}/></h3>
+                        <h2>{business.profitMargin}%
+                        </h2>      
                     </li>
                 </ul>
             </Card>
@@ -147,10 +196,10 @@ function Business(){
 function OverView(){
 
     const steps=[
-        {label:'Revenue',icon:'MoneyIcon',text:'Topline, company total sales'},
-        {label:'Cost of Revenue',icon:'BuildIcon',text:'Direct costs that increase when revenue increases for example material'},
-        {label:'Operating Expenses',icon:'StoreIcon',text:'Indirect costs for example rent, equiment, inventory costs, insurance'},
-        {label:'Net Income',icon:'MonetizationOnIcon2',text:'Bottom line, revenue minus all the costs'},
+        {label:'Revenue',icon:'MoneyIcon',text:'Topline\nCompany total sales'},
+        {label:'Cost of Revenue',icon:'GrainIcon',text:'Materials\nIngredients\nProduction Labor'},
+        {label:'Operating Expenses',icon:'StoreIcon',text:'Rent\nMainetenence and Repairs\nInsurance\nLicence Fees'},
+        {label:'Net Income',icon:'MonetizationOnIcon2',text:'Bottom line\nRevenue minus all the costs'},
     ]
 
     return(

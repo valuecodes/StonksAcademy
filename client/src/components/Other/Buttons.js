@@ -2,7 +2,6 @@ import React from 'react'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 export function ArticleButton({text,onClick,disabled=false}) {
     return <Button 
@@ -44,7 +43,6 @@ export function DeleteButton({deleteItem}){
         deleteItem()
         console.info('You clicked the delete icon.');
     };
-    const classes = useStyles();
     return(
         <Chip
             className={'quitButton'}

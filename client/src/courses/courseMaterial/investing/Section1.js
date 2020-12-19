@@ -9,32 +9,21 @@ import { formatNumber } from '../../../utils/utils';
 import { colors } from '../../../utils/colors'
 import ResultCard from '../../../components/Example/ResultCard'
 import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz';
+import Card from '@material-ui/core/Card';
 
-export default function AssetsAndLiabilities({section,completeSection,moveTo}){ 
-
-    const questions=[
-        {id:1,question:'Bond is asset',options:['True','False','Both'],answer:'True',userAnswer:null},
-        {id:2,question:'Car is',options:['Asset','Liability','None'],answer:'Liability',userAnswer:null},
-        {id:3,question:'Reinvesting dividends accelerates compounding',options:['True','False'],answer:'True',userAnswer:null},
-        {id:4,question:'Stock is',options:['Asset','Liability'],answer:'Asset',userAnswer:null},
-        {id:5,question:'Car insurance is',options:['Variable Cost','Fixed Cost'],answer:'Fixed Cost',userAnswer:null},
-        {id:6,question:'Car gas is',options:['Variable Cost','Fixed Cost','Temperary Cost'],answer:'Variable Cost',userAnswer:null},
-        {id:7,question:'Boat is',options:['Asset','Liability'],answer:'Liability',userAnswer:null},            
-    ]
+export default function AssetsAndLiabilities(props){ 
 
     const sectionComponents = [
         {name:'OverView',article: OverView},
         {name:'Asset',article: Asset},
         {name:'Liability',article: Liability},
-        {name:'Exercise',article:ExerciseQuiz,props:{section,completeSection,questions}}
+        {name:'Exercise',article: ExerciseQuiz}
     ]
 
     return(
         <SectionContainer 
             sectionComponents={sectionComponents} 
-            section={section} 
-            completeSection={completeSection}
-            moveTo={moveTo}
+            {...props}
         />
     )
 }
@@ -132,8 +121,8 @@ function OverView(){
             <div>
             <TextList
                 content={[
-                    {header:'Assets',text:'Assets generate income and make you wealthier  even though you dont need use time and energy. Assets include items like stocks, bonds, real estate etc that generate passive income.'},
-                    {header:'Liabilities',text:'Liabilities loses value over time, for example cars, boats motorcycles. Liabilities loses value over time, for example it needs maintenence, fuel etc.'},
+                    {header:'Assets',text:"Assets generate income and make you wealthier even though you don't need use lot of time and energy. Assets include items like stocks, bonds, real estate etc that generate passive income."},
+                    {header:'Liabilities',text:'Liabilities loses value over time and are costly to maintain. For example cars, boats and  motorcycles values are dropping every year and they need lot of money for gas, insurance and maintenence etc.'},
                     {buttons:[{text:'Demonstrate',onClick:demoStartHandler}]}
                 ]}
             />
@@ -146,52 +135,54 @@ function OverView(){
                 </div>
             </div>
             
-            <div className='aalDemoResult'>
-                <h3>Asset vs liability in 10 years</h3>
-                <ul >
-                    <li>
-                        <h3>Asset</h3>
-                        <ul className='list'>
-                            <li>
-                                <p>Initial Investment:</p> 
-                                <p>{(10000).toFixed(2)}</p>
-                            </li>
-                            <li>
-                                <p>Interest (6% year): </p> 
-                                <p>{chartData.interest.toFixed(2)}</p>
-                            </li>
-                            <li>
-                                <p>Total: </p> 
-                                <h3>{(chartData.interest+10000).toFixed(2)}</h3>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h3>Liability</h3>
-                        <ul className='list'>
-                            <li>
-                                <p>Car price:</p> 
-                                <p>{(10000).toFixed(2)}</p>
-                            </li>
-                            <li>
-                                <p>Depreciation (10% year): </p> 
-                                <p>{chartData.depreciation.toFixed(2)}</p>
-                            </li>
-                            <li>
-                                <p>Gas (1500$ year : </p> 
-                                <p>{(chartData.gas).toFixed(2)}</p>
-                            </li>
-                            <li>
-                                <p>Insurance (900$ year): </p> 
-                                <p>{(chartData.insurance).toFixed(2)}</p>
-                            </li>
-                            <li>
-                                <p>Total: </p> 
-                                <h3>{(chartData.totalLiability).toFixed(2)}</h3>
-                            </li>                        
-                        </ul>
-                    </li>
-                </ul>                
+            <div>
+                <Card  className='aalDemoResult'>
+                    <h3>Asset vs liability in 10 years</h3>
+                    <ul >
+                        <li>
+                            <h3>Asset</h3>
+                            <ul className='list'>
+                                <li>
+                                    <p>Initial Investment:</p> 
+                                    <p>{formatNumber(10000)}</p>
+                                </li>
+                                <li>
+                                    <p>Interest (6% year): </p> 
+                                    <p>{formatNumber(chartData.interest)}</p>
+                                </li>
+                                <li>
+                                    <p>Total: </p> 
+                                    <h3 className='positive'>{formatNumber(chartData.interest+10000)}</h3>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3>Liability</h3>
+                            <ul className='list'>
+                                <li>
+                                    <p>Car price:</p> 
+                                    <p>{formatNumber(10000)}</p>
+                                </li>
+                                <li>
+                                    <p>Depreciation (10% year): </p> 
+                                    <p>{formatNumber(chartData.depreciation)}</p>
+                                </li>
+                                <li>
+                                    <p>Gas (1500$ year : </p> 
+                                    <p>{formatNumber(chartData.gas)}</p>
+                                </li>
+                                <li>
+                                    <p>Insurance (900$ year): </p> 
+                                    <p>{formatNumber(chartData.insurance)}</p>
+                                </li>
+                                <li>
+                                    <p>Total: </p> 
+                                    <h3 className='negative'>{formatNumber(chartData.totalLiability)}</h3>
+                                </li>                        
+                            </ul>
+                        </li>
+                    </ul>   
+                </Card>
             </div>     
             </>   
             }                 
@@ -258,10 +249,15 @@ function Asset(){
         const monthlyDeposits = inputs.monthlyDeposits.value
         const timePeriod = inputs.timePeriod.value
         let deposits = startingValue
-        
+
+        data.push(startingValue)
+        depositData.push(deposits)
+        interestData.push(0)
+        yearlyInterestData.push(0)
+        newLabels.push(`Year ${0}`)
+
         for(var i=0;i<timePeriod;i++){
-            let label = `Year ${i}`
-            if(i===0) label=''
+            let label = `Year ${i+1}`
             newLabels.push(label)
             startingValue+=(monthlyDeposits*12) 
             deposits+=(monthlyDeposits*12)
@@ -296,7 +292,7 @@ function Asset(){
             <div> 
                 <TextList
                     content={[
-                        {header:'Assets',text:'Assets generate income and make you wealthier  even though you dont need use time and energy. Assets include items like stocks, bonds, real estate etc that generate passive income.'},
+                        {header:'Asset Playground',text:"Assets generate income and make you wealthier even though you don't need use lot of time and energy. Assets include items like stocks, bonds, real estate etc that generate passive income."},
                     ]}
                 /> 
                 <ArticleAccordion content={content}/>
@@ -411,9 +407,9 @@ function Liability(){
     },[inputs])
 
     const content = [
-        {header:'Depreciation',text:'Decrease of item value'},
-        {header:'Fixed Cost',text:''},
-        {header:'Variable Cost',text:''},
+        {header:'Depreciation',text:'Decrease of item value over time. Car value usually decreases 10 % a year.'},
+        {header:'Fixed Cost',text:"Costs that are independent of the company activities or item usage. For example car insurance have to paid even if you don't drive at all."},
+        {header:'Variable Cost',text:'Costs that are tied to the company production output or item usage. For example car gas is variable cost because is tied to the kilometers you.'},
     ]
 
     return(
@@ -421,7 +417,7 @@ function Liability(){
             <div> 
                 <TextList
                     content={[
-                        {header:'Assets',text:'Liabilities loses value over time, for example cars, boats motorcycles. Liabilities loses value over time, for example it needs maintenence, fuel etc.'},
+                        {header:'Liability Playground',text:'Liabilities loses value over time and are costly to maintain. For example cars, boats and  motorcycles values are dropping every year and they need lot of money for gas, insurance and maintenence etc.'},
                     ]}
                 /> 
                 <ArticleAccordion content={content}/>

@@ -3,6 +3,7 @@ import './Section.css'
 import SectionNav from '../Section/SectionNav'
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
+import { camelCaseToString } from '../../utils/utils';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,7 +32,7 @@ export default function SectionHeader({header,sectionNav,setSectionNav}) {
         <div className='sectionHeader'>
             <Toolbar className={classes.appBar}  >
                 {/* <Typography className={classes.title} noWrap> */}
-                    <h2 className={classes.title}>{header}</h2>
+                    <h2 className={classes.title}>{camelCaseToString(header)}</h2>
                 {/* </Typography> */}
                 {sectionNav&&
                     <SectionNav sectionNav={sectionNav} setSectionNav={setSectionNav}/>

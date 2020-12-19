@@ -1,62 +1,22 @@
-import React,{ useEffect } from 'react'
+import React from 'react'
 import SectionContainer from '../../../components/Section/SectionContainer'
 import TextList from '../../../components/Article/TextList'
 import Table from '../../../components/Other/Table'
 import ExcersiseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 
-export default function StockMarket({section,completeSection,moveTo}){
-
-    const questions=[
-        {
-            question:'In which country Nasdaq-stock exhange is located',
-            options:['Germany','Japan','United States'],           
-            answer:'United States',
-        },          
-        {
-            question:'Which region has the biggest stock exhanges by market cap',
-            options:['Shanghai','United States','Japan'],           
-            answer:'United States',
-        },       
-        {
-            question:'Stock market is only for the instutional investors',
-            options:['True','False'],           
-            answer:'False',
-        },       
-        {
-            question:'Select correct region for Nikkei index',
-            options:['South Korea','Taiwan','Japan'],           
-            answer:'Japan',
-        },        
-        {
-            question:'IPO is correct term company issuing shares first time in stock exhange',
-            options:['True','False'],           
-            answer:'True',
-        },             
-        {
-            question:'Select correct region for Dax index',
-            options:['Germany','South Korea','United States'],           
-            answer:'Germany',
-        },          
-        {
-            question:'Index is a group securities tracked in a standardized way',
-            options:['True','False'],           
-            answer:'True',
-        },          
-    ]
+export default function StockMarket(props){
 
     const sectionComponents = [
         {name: 'Overview', article: Overview},
         {name: 'Stock Exhanges', article:StockExhanges},
         {name: 'Indexes', article:Indexes},
-        {name: 'Excercise', article:ExcersiseQuiz,props:{section,completeSection,questions}}
+        {name: 'Excercise', article:ExcersiseQuiz}
     ]
 
     return(
         <SectionContainer 
             sectionComponents={sectionComponents} 
-            section={section} 
-            completeSection={completeSection}
-            moveTo={moveTo}
+            {...props}
         />
     )
 }

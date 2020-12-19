@@ -3,7 +3,6 @@ import Card from '@material-ui/core/Card';
 import Chip from '@material-ui/core/Chip';
 import Button from '@material-ui/core/Button';
 import ExerciseScore from './ExerciseScore'
-import { ArticleButton } from '../Other/Buttons'
 import { ArticleButtonPrimary } from '../Other/Buttons'
 
 

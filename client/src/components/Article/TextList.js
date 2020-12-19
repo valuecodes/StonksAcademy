@@ -33,10 +33,23 @@ function TextItem({item}){
         <>
             <h3>{item.header}</h3>
             <p>{item.text}</p>    
+            {item.list &&
+                <List list={item.list}/>
+            }
             {item.formula&&
                 <Formula formula={item.formula}/>
             }
         </>
+    )
+}
+
+function List({list}){
+    return(
+        <ul className='textListList'>
+            {list.map(item =>
+                <li>{item}</li>
+            )}
+        </ul>
     )
 }
 

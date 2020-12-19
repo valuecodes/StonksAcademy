@@ -1,6 +1,10 @@
 /* TextList */
 .textList li{
   margin-bottom: 2rem;
+  /* white-space: pre-wrap; */
+}
+.textList li h3{
+  font-size: 2rem;
 }
 
 .textList li button{
@@ -15,6 +19,13 @@
   padding-top: 1.3rem;
   border-left: 0.5rem solid var(--secondary-color);
   max-width: 40rem;
+}
+
+.textListList li{
+  margin: 0;
+  font-weight: 500;
+  /* list-style-type: circle; */
+  /* margin-left: 4rem; */
 }
 
 .accordionDetails{

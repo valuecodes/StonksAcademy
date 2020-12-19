@@ -3,7 +3,7 @@ import SectionHeader from '../Section/SectionHeader'
 import './Course.css'
 import { ArticleTermList } from '../Article/ArticleTerm';
 import { ArticleButtonPrimary } from '../Other/Buttons'
-
+import { camelCaseToString } from '../../utils/utils';
 
 export default function CourseTableOfContent({course, moveTo}){
     return(
@@ -15,7 +15,7 @@ export default function CourseTableOfContent({course, moveTo}){
                     <div className='tableOfContent'>
                         {course.sections.map((item,index) =>
                             <li key={index}>
-                                <h3>{index+1}. {item.name}</h3>
+                                <h3>{index+1}. {camelCaseToString(item.name)}</h3>
                                 <p>{item.desc}</p>
                                 <h4>Terms covered</h4>
                                 <ArticleTermList articleTerms={item.articleTerms} />

@@ -24,7 +24,6 @@ export default function AcademyCourseScreen(props) {
     useEffect(() => {
         let courseContent = COURSES.find(item => item.name===id)
         if(!courseContent) props.history.push("/academy")
-
         let courseIndex = COURSES.findIndex(item => item.name===id)
         let nextCourse = COURSES[courseIndex+1]?COURSES[courseIndex+1].name:null
         courseContent.nextCourse = nextCourse
@@ -34,6 +33,7 @@ export default function AcademyCourseScreen(props) {
             setCourse({...updatedCourse})     
             
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps        
     }, [id,userInfo])
 
     const handleNavigate=(direction,status)=>{

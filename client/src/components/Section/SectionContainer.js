@@ -3,7 +3,7 @@ import SectionHeader from './SectionHeader'
 import SectionNav from '../../utils/sectionNav';
 import SwipeableViews from "react-swipeable-views";
 
-export default function SectionContainer({section,sectionComponents,completeArticle,moveTo}) {
+export default function SectionContainer({section,sectionComponents,completeSection,moveTo}) {
 
     const [sectionNav, setSectionNav] = useState(new SectionNav([]))
 
@@ -45,6 +45,8 @@ export default function SectionContainer({section,sectionComponents,completeArti
                         <Article 
                             {...props[index]}
                             moveTo={moveTo}
+                            section={section}
+                            completeSection={completeSection}
                         />                            
                     </div>
 

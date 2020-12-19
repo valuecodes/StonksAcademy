@@ -7,7 +7,7 @@ export function camelCaseToString(s) {
         return s.toUpperCase()
     }
     
-    let string = s.split(/(?=[A-Z])/).map(function(p) {
+    let string = s.split(/(?=[A-Z0-9])/).map(function(p) {
         return p.charAt(0).toUpperCase() + p.slice(1);
     }).join(' ');
 

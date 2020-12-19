@@ -5,57 +5,17 @@ import TextList from '../../../components/Article/TextList'
 import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 import ShareExample from '../../../components/Example/ShareExample'
 
-export default function Share({section,completeSection,moveTo}){
-
-    const questions=[
-        {
-            id:1,
-            question:'Share price is 10$ and share count 10pcs. What is the market cap?',
-            slider:{max:250,step:10,format:'$'},
-            answer:100,
-            userAnswer:null
-        },          
-        {
-            id:2,
-            question:'Number of shares affects the market cap',
-            options:['True','False'],           
-            answer:'False',
-            userAnswer:null
-        },          
-        {
-            id:3,
-            question:'Share count is 5pcs and Market cap 200$. How much is the share price?',
-            slider:{max:15,step:1,format:'$'},            
-            answer:10,
-            userAnswer:null
-        },          
-        {
-            id:4,
-            question:'One share is miniature version of the whole company',
-            options:['True','False'],           
-            answer:'True',
-            userAnswer:null
-        },          
-        {
-            id:5,
-            question:'Market cap is 300$ and share price 15$. How many shares outstanding there are?',
-            slider:{max:25,step:1,format:'pcs'},            
-            answer:20,
-            userAnswer:null
-        },          
-    ]
+export default function Share(props){
 
     const sectionComponents = [
         {name:'Overview',article: Overview},
         {name:'Example',article: Example},
-        {name:'Exercise',article: ExerciseQuiz,props:{section,completeSection,questions}},
+        {name:'Exercise',article: ExerciseQuiz},
     ]
     return(
         <SectionContainer 
             sectionComponents={sectionComponents} 
-            section={section} 
-            completeSection={completeSection}
-            moveTo={moveTo}
+            {...props}
         />
     )
 }

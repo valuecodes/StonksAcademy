@@ -13,15 +13,15 @@ export default function BusinessExample() {
 }
 
 
-export function BusinessCard({header,value,icon,onChange,name}){
+export function BusinessCard({header,value,icon,onChange,name,step}){
     return(
         <Card className='businessExampleCard'>
             <h2>{header}</h2>
-            {/* <h3>{value}$</h3> */}
             <TextField
                 id="standard-number"
                 label=""
                 type="number"
+                inputProps={{step:step,min:step===1?1:0}}
                 className='businessExampleCardInput'
                 value={value}
                 onChange={onChange&&((e,value)=>onChange(e,e.target.value,name))}

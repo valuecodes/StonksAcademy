@@ -7,29 +7,18 @@ import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 import ArticleAccordion from '../../../components/Article/ArticleAccordion'
 import Chip from '@material-ui/core/Chip';
 
-export default function InvestingCategories({section,completeSection,moveTo}){
-
-    const questions = [
-        {id:1,question:'Bond yields are always positive',options:['True','False'],answer:'False',userAnswer:null},
-        {id:2,question:'Goverment Bonds are safer than Corporate Bonds',options:['True','False'],answer:'True',userAnswer:null},
-        {id:3,question:'REITs invest in',options:['Real Estate','Stocks','Bonds'],answer:'Real Estate',userAnswer:null},
-        {id:4,question:'Derivates are less riskier than ETFs',options:['True','False'],answer:'False',userAnswer:null},
-        {id:5,question:'Mutual Fund value is calculated at the end of the day',options:['True','False'],answer:'True',userAnswer:null},
-        {id:6,question:'Commodities includes gold and oil',options:['True','False'],answer:'True',userAnswer:null},
-    ]
+export default function InvestingCategories(props){
 
     const sectionComponents = [
         {name:'Overview',article:Overview},
         {name:'Investing Risk Ladder',article: InvestingCategoriesPractice},
-        {name:'Exercise',article: ExerciseQuiz,props:{section,completeSection,questions}}
+        {name:'Exercise',article: ExerciseQuiz}
     ]
 
     return(
         <SectionContainer 
             sectionComponents={sectionComponents} 
-            section={section} 
-            completeSection={completeSection}
-            moveTo={moveTo}
+            {...props}
         />
     )
 }
