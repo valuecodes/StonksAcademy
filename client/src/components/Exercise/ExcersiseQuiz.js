@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     color:'lightgreen',    
   },
   finish:{
-    backgroundColor:'lightgreen',
+    backgroundColor:'var(--positive-color)',
     "&:hover":{
         backgroundColor:'lightgreen'
     }
@@ -45,10 +45,16 @@ const useStyles = makeStyles({
   detailsQuestion:{
       gridColumn:'1/4',
       fontSize:14
+  },
+  quizInitial:{
+    color:'var(--primary-color)',
+    backgroundColor:'var(--secondary-variant)',
   }
 });
 
 export default function ExerciseQuiz({section,completeSection,moveTo}){
+
+    const classes = useStyles();
 
     const [quiz,setQuiz] = useState({
         stage:'initial',//initial, quiz, results, completed
@@ -124,7 +130,7 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
         <div className='quizGrid'>
             {quiz.stage==='initial'&&
                 <div className='quizInitial'>
-                    <Fab onClick={startExerciseHandler} variant="extended">
+                    <Fab className={classes.quizInitial} onClick={startExerciseHandler} variant="extended">
                         Start Quiz
                     </Fab>
                 </div>

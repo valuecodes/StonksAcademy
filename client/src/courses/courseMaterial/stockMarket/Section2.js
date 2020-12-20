@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import SectionContainer from '../../../components/Section/SectionContainer'
 import TextList from '../../../components/Article/TextList'
-import MaterialIcon from '../../../components/MaterialIcon'
+import MaterialIcon from '../../../components/Other/MaterialIcon'
 import ShareExample from '../../../components/Example/ShareExample'
 import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 

@@ -1,0 +1,63 @@
+/* Header */
+.header{
+    height: 6rem;
+}
+
+.header div{
+    display: flex;
+    width: 1400px;
+    max-width: 100vw;
+    justify-content: space-between;
+}
+
+.mainLogo{
+    display: flex;
+    margin-left: 1rem;
+}
+
+.mainNav ul{
+    display: grid;
+    grid-template-columns: repeat(5,auto);
+    height: 6rem;
+}
+
+.mainNav ul li a{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.mainNav ul li a:hover{
+    background-color: var(--light-color);
+
+}
+  
+.googleLogin{
+align-self: center;
+transform: scale(0.8);
+}
+
+.logoutButton{
+display: flex;
+align-self: center;
+height: 3rem;
+}
+  
+/* Footer */
+.footer{
+  background-color: var(--secondary-color);
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-light);
+}
+
+.footer div{
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-light);
+}

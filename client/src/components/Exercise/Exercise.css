@@ -139,6 +139,7 @@
 
 .categoryChart{
     grid-column: 2/5;
+    min-height: 30rem;
 }
 
 .exerciseCompleted{
@@ -161,22 +162,35 @@
     font-size: 1rem;
 }
 
+
+
+
 @media only screen and (max-width: 800px) {
+
+    .quizInitial{
+        grid-column: 1/2;
+        height: 100%;
+        padding: 0!important;
+        margin: 0!important;
+    }
 
     .quiz{
         grid-column: 1/2;
     }
     
-    .quizGrid > div{
-        padding: 1rem;
-    }
-
     .quizGrid{
         display: grid;
         grid-template-columns: 1fr;
+        padding: 0!important;
+        min-height: 10rem;
+        height: 100%;  
     }
 
     .exerciseCompletedHeader h2{
         font-size: 1.4rem;
+    }
+    .exerciseCompleted{
+        margin-top: 1rem;
+        max-height: 40rem;
     }
   }

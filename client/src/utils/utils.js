@@ -15,7 +15,7 @@ export function camelCaseToString(s) {
 }
 
 export function truncate(text, maxChars=50){
-    return text.replace(/(.{77})..+/, "$1…")
+    return text.replace(/(.{68})..+/, "$1…")
 }
 
 export function formatNumber(value,format){

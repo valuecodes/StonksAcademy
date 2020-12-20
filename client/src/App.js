@@ -1,7 +1,7 @@
 import { BrowserRouter, Route } from 'react-router-dom'
-import Header from './components/Header'
+import Header from './components/Page/Header'
 import LandingScreen from './screens/LandingScreen'
-import Footer from './components/Footer'
+import Footer from './components/Page/Footer'
 import AcademyScreen from './screens/AcademyScreen';
 import ProfileScreen from './screens/ProfileScreen'
 import AcademyCourseScreen from './screens/AcademyCourseScreen';
@@ -55,8 +55,6 @@ function App() {
           <Header/>
           <main>
             <div className='container'>
-              {/* <Route path='/academy/stock-market' component={AcademyStockMarketScreen}/> */}
-
               <Route path='/profile' component={ProfileScreen} />
               <Route path='/academy/:id' component={AcademyCourseScreen}/>
               <Route exact={true} path='/academy' component={AcademyScreen} />

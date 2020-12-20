@@ -43,7 +43,6 @@ body{
   grid-template-rows: 6rem 1fr 6rem;
   max-width: 100vw;
   width: 100vw;
-  /* grid-template-rows: 6rem 100rem 6rem; */
 }
 
 h1{
@@ -70,8 +69,7 @@ a{
 .container{
   height: 100%;
   width: 1400px;
-  max-width: 95vw;
-  /* width: calc(100vw-2vw); */
+  max-width: 100vw;
   overflow: hidden;
   margin: auto;
 }
@@ -105,72 +103,6 @@ a{
 
 .negative{
   color: var(--negative-dark-color);
-  
-}
-
-/* Header */
-.header{
-  height: 6rem;
-  background-color: var(--secondary-color);
-}
-
-.header div{
-  display: flex;
-  width: 1400px;
-  max-width: 100vw;
-  justify-content: space-between;
-}
-
-.mainLogo{
-  display: flex;
-  margin-left: 1rem;
-}
-
-.mainNav ul{
-  display: grid;
-  grid-template-columns: repeat(5,auto);
-  height: 6rem;
-}
-
-.mainNav ul li a{
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0 1rem;
-}
-
-.mainNav ul li a:hover{
-  background-color: var(--light-color);
-  
-}
-
-.googleLogin{
-  align-self: center;
-  transform: scale(0.8);
-}
-
-.logoutButton{
-  display: flex;
-  align-self: center;
-  height: 3rem;
-}
-
-/* Footer */
-.footer{
-  background-color: var(--secondary-color);
-  height: 6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--text-light);
-}
-
-.footer div{
-  height: 6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--text-light);
 }
 
 /* LandingScreen */
@@ -179,20 +111,29 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: unset;  
+  height: 100%;
+  overflow: hidden;
 }
 
 .landingPageContainer{
-  width: 60rem;
-  max-width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  width: 100vw;
+  position: relative;
+}
+
+.landingPageButtons{
+  display: grid;
+  grid-template-columns: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+  grid-gap: 2rem;
+  margin-bottom: 5rem;  
+  margin-left: 2rem;
 }
 
 .landingPageContainer a{
-  font-size: 5rem;
-  padding: 1rem;
-  margin-bottom: 5rem;
+  font-size: 4rem;
+  padding: 0 1rem;
   color: var(--secondary-color);
   border: 1px solid var(--light-color);
   border-radius: 0.5rem;
@@ -202,53 +143,13 @@ a{
   background-color: rgb(235, 235, 235);
 }
 
-/* Example */
-.example{
-  min-width: 25rem;
-}
-
-.card{
-  height: auto;
-  padding: 1rem;
-  margin-top: 1rem;
-}
-
-.assetsResult{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-}
-
-.resultBig{
-  font-size: 4rem;
-}
-
 /* ScreenHeader */
 .screenHeader{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
+  padding: 5rem 0;
   grid-column: 1/3;
-  /* border-bottom: 1px solid var(--light-color); */
-}
-
-.trainingStatus{
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-}
-
-.trainingStatus div{
-  background-color: var(--secondary-color);
-  height: 10rem;
-  width: 10rem;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--text-light);
-  font-size: 4.5rem;
-  margin-left: 2rem;
 }
 
 /* AcademyScreen */
@@ -272,24 +173,19 @@ a{
   grid-template-columns: repeat(auto-fill,minmax(25rem, 1fr));
   grid-auto-rows: 35rem;
   grid-gap: 3rem;
+  margin-bottom: 3rem;
 } 
 
 .academyCourse{
-  height: inherit;
+  height: 100%;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  border: 1px solid var(--light-color);
   border-radius: 0.5rem;
   color: var(--text-dark);
-  transition: box-shadow 0.2s;
-}
-
-.academyCourse:hover{
-  box-shadow: 0px 0px 1px 1px var(--light-color);
 }
 
 .academyCourse:hover .academyCourseHeader{
-  border-bottom: 1px solid rgb(112, 112, 112);
+  border-bottom: 1px solid var(--primary-color);
 }
 
 .academyCourseHeader{
@@ -312,7 +208,11 @@ a{
 
 .categoryBook{
   transform: scale(4);
-  color: var(--light-color);
+  color: var(--secondary-color);
+}
+
+.academyCourseCard:hover{
+  box-shadow: 1px 1px 5px 0px var(--secondary-color);
 }
 
 /* AcademySection */
@@ -321,105 +221,6 @@ a{
   display: grid;
   grid-template-columns: 1fr 0;
   grid-template-rows: 10rem 1fr;
-  /* margin: 0 2rem; */
-  /* overflow: hidden; */
-}
-
-.dropzone{
-  position: relative;
-  z-index: 1;
-  background-color: lightgray;
-}
-
-.articleItem{
-
-}
-
-/* DragAndDrop */
-.dragAndDrop{
-  display: flex;
-}
-
-.droppableContainer{
-  height: auto;
-  background-color: var(--background-color);
-  margin: 2rem;
-  padding: 2rem;
-  display: grid;
-  grid-template-rows: 5rem 23rem auto;
-  width: 250px;
-  border-radius: 1rem;
-  
-}
-
-.draggingAreaContainer{
-  height: 23rem;
-  max-height: 23rem;
-  border-radius: 0.5rem;
-  border: 1px solid rgb(201, 201, 201);  
-  overflow: hidden;
-}
-
-.draggingArea{
-  padding: 1rem;
-  padding-bottom: 0;
-  max-height: 20rem;
-  position: relative;
-}
-
-.dragAndDropHeader{
-  text-align: center;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.draggableItem{
-  color: var(--text-light);
-  border-radius: 0.2rem;
-  font-size: 2.5rem;
-  padding: 1rem;
-  position: relative;
-  opacity: 0.9;
-  z-index: 1;
-}
-
-.dragAndDropInfoText{
-  padding: 0.5rem;
-}
-
-.dndIcon{
-  height: 0;
-  position: absolute;
-  margin-left: 10.5rem;
-  margin-top: 10rem;
-  transform: scale(16);
-  color: rgb(161, 161, 161);
-}
-
-.starting{
-  display: grid;
-  grid-template-rows: 10rem 1fr; 
-  background-color: white!important;
-  border: none;
-}
-
-.starting div{
-  border: none;  
-}
-
-.starting .dragAndDropHeader{
-  margin-top: 2rem;
-}
-
-.starting div .draggingAreaContainer{
-  height: 22rem!important;
-  max-height: 22rem;
-  overflow: hidden;
-  border: none;  
 }
 
 /* AcademySections */
@@ -429,141 +230,42 @@ a{
   overflow: hidden;
 }
 
-.teste  {
+.swipeableContainer  {
   overflow: hidden!important;
 }
 
-.teste > div{
+.swipeableContainer > div{
   height: 100%;
 }
-.teste > div > div{
+.swipeableContainer > div > div{
   overflow: hidden!important;
 }
 
-@media only screen and (max-width: 800px) {
-  .academySections{
-    display: grid;
-    grid-template-columns: 100%;
-    /* grid-auto-rows: inherit; */
-    grid-gap: 20rem;
-    height: 100vh;
-  }
+.bgImageContainer, .bgImage{
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  width: 80%;
+  z-index:-1!important;
+}
+
+.mobileNav{
+  display: none!important;
+  display: flex!important;
+  justify-content: flex-end!important;
+}
+
+.mobileNav button{
+  display: flex;
+  margin-left: auto;
 }
 
 .sectionContainer{  
   max-width:inherit;
   height: 100%;
-  /* min-height: 50rem; */
   display: grid;
   grid-template-rows: auto 1fr;
   margin-bottom: 10rem;
-}
-
-/* ArticleNavigation */
-.articleNavigationContainer{
-  position: relative;
-  top: 50%;
-  right: 7rem;
-  height: 0;
-  z-index: 10;
-}
-
-.articleNavigation{
-  margin-top: -20rem;
-  padding: 0.7rem 0.5rem;
-  padding-bottom: 1rem;
-  border-radius: 2rem;
-  width: 4.5rem;
-  display: grid;
-  grid-auto-rows: 4rem;
-  grid-gap: 3rem;
-  justify-content: center;
-  background-color: white;
-  border: 2px solid var(--background-color);
-}
-
-.articleNavigation button:hover{
-  transition: background-color 0.2s; 
-  background-color:rgb(199, 199, 199);
-}
-
-.articleNavButton{
-  height: 4.5rem;
-  width: 4.5rem;
-  border-radius: 50%;
-  border: none;
-  outline: none;
-  transition: 0.3s border;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.navigationIcon{
-  transform: scale(2.5);
-  color: var(--secondary-color);
-  cursor: pointer;
-}
-
-.navigationCheckpoint{
-  height:4rem;
-  width: 4rem;
-  display: flex;
-  justify-self: center;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: 0.3s border;
-  cursor: pointer;
-  outline: none!important;
-}
-
-.navigatioCheckpoint p{
-  position: relative;
-  top: 2px;
-}
-
-.dragAndDropExercise{
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-}
-
-.aalDemoResult{
-  margin-top: 1rem;
-  padding: 1rem;
-}
-
-.aalDemoResult ul{
-  display: grid;
-}
-
-.chartContainer{
-  max-height: 40rem;
-  height: 40rem;
-  width: 1fr;
-}
-
-/* List */
-.list li{
-  width: 25rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.list li:last-child{
-  border-top: 1px solid var(--light-color);
-}
-
-.smallList li{
-  position: relative;
-  width:13rem!important;
-  /* flex-wrap: wrap; */
-}
-
-/* ExerciseStats */
-.exerciseStats{
-  padding: 2rem;
-  display: grid;
 }
 
 .selected{
@@ -571,160 +273,59 @@ a{
   color: var(--text-light);
 }
 
-.sectionArticles{
-  margin: 3 0rem;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(10,100%);
-  transition: margin 0.4s;
-  min-height: 50rem;
-  height: auto;
+.chartContainer{
+  max-height: 40rem;
+  height: 40rem;
+  width: 1fr;
+  max-width: 100vw;
 }
 
-.articleSubPage{
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  padding-right: 5rem;
+@media only screen and (min-width: 800px) {
+  .mobileNav{
+    display: none!important;
+  }
 }
 
-.houseIcon{
-  transform: scale(5);
-  color: var(--secondary-color);
+@media only screen and (max-width: 800px) {  
+  .chartContainer{
+    height: 20rem;
+  }
+  .academySections{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 20rem;
+    height: 100vh;
+  }
+  .academyScreen{
+    grid-template-rows: auto auto 1fr;
+    margin:  0rem;
+  }
+  .screenHeader{
+    padding: 1rem 0;
+  }
+
+  .academyCourseScreen{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 0;
+    grid-template-rows: 4rem 1fr;
+  }  .bgImageContainer, .bgImage{
+    top: 48%;
+    left: -8rem;
+    height: 50vh;
+    width: auto;
+  }  
+  .landingScreen{
+    height: 75%;
+  }
 }
 
-.valueInvestingDemo{
-  grid-column: 2/4;
-  height: 35rem;
-  width: 50rem;
-  margin: auto;
-  display: grid;
-  grid-template-rows: 1fr 0 0;
+@media only screen and (max-width: 1100px) {  
+  .mainNav{
+    display: none;
+  }
+  .mobileNav{
+    display: block!important;
+  }
 }
 
-.housePrices{
-  display: flex;
-  justify-content: space-between;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.housePrices .housePrice{
-  width: 10rem;
-  display: grid;
-  grid-gap: 3rem;
-  justify-items: center;
-  margin-top: -4.5rem;
-}
-
-.valueInvestingDemo h2{
-  position: relative;
-  top: 4rem;
-  left: 2rem;
-}
-
-.articleExerciseHeader{
-  margin-top: 7rem;
-}
-
-.articleMiddle{
-  margin:  auto 0;
-  grid-column: 2/4;
-}
-
-.estimateHousePrice{
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-rows: 3.5rem 1fr auto;
-  align-items: center;
-}
-.estimateHousePrice button{
-  height: 3rem;
-  padding: 0;
-}
-
-.exerciseContainer{
-  margin-top: 10rem;
-}
-
-.exampleGrid{
-  grid-column: 2/4;
-  display: grid;
-  grid-template-columns:  1fr 1fr 1fr; 
-  grid-gap: 2rem;
-  align-items: start
-}
-
-.exampleGrid div p{
-  padding: 2rem;
-}
-
-.shareExample{
-  padding: 2rem 0;
-  display: grid;
-  grid-template-columns: 65%;
-  grid-template-rows: 5rem 20rem 5rem 2rem;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  max-height:35rem;
-}
-
-.shareExample h2{
-  font-size: 2rem;
-}
-
-.shareExample p{
-  align-self: flex-start;
-}
-
-.shareExampleInput{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-  align-items: center;
-}
-
-.shareExampleInput label{
-  line-height: 20px;
-}
-
-.shareExampleNumber{
-  font-size: 3rem;
-}
-
-.companyContainer{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: auto;
-}
-
-.exerciseQuestions{
-  grid-column: 2/4;
-  padding: 5rem;
-}
-
-.exerciseQuestion{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  border-bottom: 1px solid var(--background-color);
-  margin-bottom: 3rem;
-}
-
-.exerciseQuestion li{
-  font-size: 2rem;
-  display: grid;  
-  padding-bottom: 1rem;
-}
-
-.exerciseQuestion li:last-child input{
-  font-weight: bold;
-  font-size: 2rem;
-  width: auto;
-  padding: 0.5rem;
-}
-
-/* ArticleResults */
-.articleResults{
-  padding-top: 7rem;
-}

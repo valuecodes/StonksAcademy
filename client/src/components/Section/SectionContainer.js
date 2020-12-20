@@ -38,7 +38,7 @@ export default function SectionContainer({section,sectionComponents,completeSect
                 resistance
                 // animateHeight
                 index={sectionNav.current}
-                className='teste'
+                className='swipeableContainer'
             >
                 {components.map((Article,index) =>
                     <div key={index} className='sectionContentContainer'>

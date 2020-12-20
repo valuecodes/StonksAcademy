@@ -90,11 +90,73 @@
 }
 
 @media only screen and (max-width: 800px) {
-    .sectionContentContainer{
-        padding: 0;
-        max-width: 100vw;
+    .sectionHeader > div{
+        padding: 0 0.5rem!important;
+        margin: 0!important;
     }
+    .sectionContentContainer{
+        padding: 0!important;
+        margin:  0 0.5rem!important;
+        max-height: calc(100vh - 220px);
+    }
+    .sectionContentContainer > div{
+        /* max-height: calc(100% - 20px); */
+    }
+
     .sectionGrid{
+        overflow: hidden;
+        padding: 0!important;
+        margin: 0!important;
         grid-template-columns: 1fr;
+    }
+    .valueInvestingDemo{
+        grid-column: 1/2;
+        max-width: 100vw;
+      }
+      .houseChart{
+          max-width: 100vw;
+      }
+      .tableOfContent{
+        padding: 0!important;
+        margin: 0!important;
+        grid-template-columns: 1fr;
+    }
+      .sectionGrid{
+        padding: 0!important;
+        margin: 0!important;
+        grid-template-columns: 1fr;
+    }
+      .sectionGrid1{
+        padding: 0!important;
+        margin: 0!important;
+        grid-template-columns: 1fr;
+    }
+      .sectionGrid2{
+        padding: 0!important;
+        margin: 0!important;
+        grid-template-columns: 1fr;
+    }
+      .sectionGrid3{
+        padding: 0!important;
+        margin: 0!important;
+        grid-template-columns: 1fr;
+    }
+      .recapGrid{
+        padding: 0!important;
+        margin: 0!important;
+        grid-template-columns: 1fr!important;
+    }
+      .quizResults{
+        padding: 0!important;
+        margin: 0!important;
+        grid-template-columns: 1fr!important;
+    }
+    .quizResultButtons{
+        max-width: 95vw;
+        margin-bottom: 5rem;
+    }
+    .exerciseScore{
+        margin: 0;
+        padding: 0;
     }
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Example.css'
 import Card from '@material-ui/core/Card';
-import MaterialIcon from '../MaterialIcon'
+import MaterialIcon from '../Other/MaterialIcon'
 import TextField from '@material-ui/core/TextField';
 
 export default function BusinessExample() {

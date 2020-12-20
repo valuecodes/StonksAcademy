@@ -6,6 +6,7 @@ import ExerciseScore from '../Exercise/ExerciseScore'
 import {ArticleTermList} from '../../components/Article/ArticleTerm'
 import { ArticleButtonPrimary } from '../Other/Buttons'
 import { Link } from 'react-router-dom'
+import { camelCaseToString } from '../../utils/utils';
 
 export default function CourseRecap({course}){
     
@@ -32,7 +33,7 @@ export default function CourseRecap({course}){
                                 <div className='recapScore'>
                                     {course.sections.map((item,index) =>
                                         <Card key={index} className='scoreContainer'>
-                                            <h3>{index+1}{'. '}{item.name}</h3>
+                                            <h3>{index+1}{'. '}{camelCaseToString(item.name)}</h3>
                                             {item.score&&
                                                 <ExerciseScore section={item} size={'small'} showText={false}/>
                                             } 

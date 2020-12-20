@@ -1,6 +1,6 @@
 import React,{ useState,useEffect } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import MaterialIcon from './MaterialIcon'
+import MaterialIcon from './Other/MaterialIcon'
 
 export default function DragAndDrop(props) {
 

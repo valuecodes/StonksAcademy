@@ -1,0 +1,92 @@
+/* DragAndDrop */
+
+.dragAndDropExercise{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
+
+.dragAndDrop{
+    display: flex;
+  }
+  
+  .droppableContainer{
+    height: auto;
+    background-color: var(--background-color);
+    margin: 2rem;
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: 5rem 23rem auto;
+    width: 250px;
+    border-radius: 1rem;
+    
+  }
+  
+  .draggingAreaContainer{
+    height: 23rem;
+    max-height: 23rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(201, 201, 201);  
+    overflow: hidden;
+  }
+  
+  .draggingArea{
+    padding: 1rem;
+    padding-bottom: 0;
+    max-height: 20rem;
+    position: relative;
+  }
+  
+  .dragAndDropHeader{
+    text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .draggableItem{
+    color: var(--text-light);
+    border-radius: 0.2rem;
+    font-size: 2.5rem;
+    padding: 1rem;
+    position: relative;
+    opacity: 0.9;
+    z-index: 1;
+  }
+  
+  .dragAndDropInfoText{
+    padding: 0.5rem;
+  }
+  
+  .dndIcon{
+    height: 0;
+    position: absolute;
+    margin-left: 10.5rem;
+    margin-top: 10rem;
+    transform: scale(16);
+    color: rgb(161, 161, 161);
+  }
+  
+  .starting{
+    display: grid;
+    grid-template-rows: 10rem 1fr; 
+    background-color: white!important;
+    border: none;
+  }
+  
+  .starting div{
+    border: none;  
+  }
+  
+  .starting .dragAndDropHeader{
+    margin-top: 2rem;
+  }
+  
+  .starting div .draggingAreaContainer{
+    height: 22rem!important;
+    max-height: 22rem;
+    overflow: hidden;
+    border: none;  
+  }

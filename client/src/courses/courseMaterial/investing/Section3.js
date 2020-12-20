@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import SectionContainer from '../../../components/Section/SectionContainer'
 import TextList from '../../../components/Article/TextList'
 import VerticalStepper from '../../../components/Other/VerticalStepper'
-import MaterialIcon from '../../../components/MaterialIcon'
+import MaterialIcon from '../../../components/Other/MaterialIcon'
 import { InputSlider } from '../../../components/Other/Sliders';
 import { BusinessCard } from '../../../components/Example/BusinessExample';
 import Card from '@material-ui/core/Card';
@@ -197,8 +197,8 @@ function OverView(){
 
     const steps=[
         {label:'Revenue',icon:'MoneyIcon',text:'Topline\nCompany total sales'},
-        {label:'Cost of Revenue',icon:'GrainIcon',text:'Materials\nIngredients\nProduction Labor'},
-        {label:'Operating Expenses',icon:'StoreIcon',text:'Rent\nMainetenence and Repairs\nInsurance\nLicence Fees'},
+        {label:'Cost of Revenue',icon:'GrainIcon',text:'Fixed costs:\nMaterials\nIngredients\nProduction Labor'},
+        {label:'Operating Expenses',icon:'StoreIcon',text:'Variable Costs:\nRent\nMainetenence and Repairs\nInsurance\nLicence Fees'},
         {label:'Net Income',icon:'MonetizationOnIcon2',text:'Bottom line\nRevenue minus all the costs'},
     ]
 

@@ -74,10 +74,203 @@
 }
 
 .businessExampleIcons{
-    /* grid-row: 2/3; */
     grid-column: 2/4;
 }
 
 .businessModelIcon{
     color:rgb(175, 175, 175)!important;
+}
+
+.exampleGrid{
+  grid-column: 2/4;
+  display: grid;
+  grid-template-columns:  1fr 1fr 1fr; 
+  grid-gap: 2rem;
+  align-items: start
+}
+
+.exampleGrid div p{
+  padding: 2rem;
+}
+
+.shareExample{
+  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: 65%;
+  grid-template-rows: 5rem 20rem 5rem 2rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-height:35rem;
+}
+
+.shareExample h2{
+  font-size: 2rem;
+}
+
+.shareExample p{
+  align-self: flex-start;
+}
+
+.shareExampleInput{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  align-items: center;
+}
+
+.shareExampleInput label{
+  line-height: 20px;
+}
+
+.shareExampleNumber{
+  font-size: 3rem;
+}
+
+.companyContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.exerciseContainer{
+    margin-top: 10rem;
+}
+
+.houseIcon{
+    transform: scale(5);
+    color: var(--secondary-color);
+}
+
+.valueInvestingDemo{
+    grid-column: 2/4;
+    height: 35rem;
+    width: 50rem;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 1fr 0 0;
+}
+
+.housePrices{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.housePrices .housePrice{
+    width: 10rem;
+    display: grid;
+    grid-gap: 3rem;
+    justify-items: center;
+    margin-top: -4.5rem;
+}
+
+.valueInvestingDemo h2{
+    position: relative;
+    top: 4rem;
+    left: 2rem;
+}
+
+.articleMiddle{
+    margin:  auto 0;
+    grid-column: 2/4;
+}
+
+.estimateHousePrice{
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-rows: 3.5rem 1fr auto;
+    align-items: center;
+}
+.estimateHousePrice button{
+    height: 3rem;
+    padding: 0;
+}
+
+.aalDemoResult{
+    margin-top: 1rem;
+    padding: 1rem;
+}
+  
+.aalDemoResult ul{
+    display: grid;
+}
+
+/* AssetExample */
+.example{
+    min-width: 25rem;
+}
+
+.card{
+    height: auto;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.assetsResult{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.resultBig{
+    font-size: 4rem;
+}
+
+/* List */
+.list li{
+    width: 25rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list li:last-child{
+    border-top: 1px solid var(--light-color);
+}
+
+.smallList li{
+    position: relative;
+    width:13rem!important;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .businessInputHeader div h2, .MuiInput-input{
+        font-size: 1rem!important;
+    }
+
+    .businessExampleCardInput{
+        grid-column: 1/3;
+    }
+    .businessCardIcon{
+        display: none!important;;
+    }
+    .MuiInputBase-input{
+        font-size: 1rem!important;
+    }
+    .businessExampleResultsCard{
+        grid-row:2/3;
+        grid-column:1/2;
+    }
+
+    .businessExampleIcons{
+        grid-column: 1/2;
+        height: 2rem;
+    }
+    .businessInputMain{
+        display: flex;
+        align-items: center;
+        margin-top: 0rem;
+    }
+    .businessInputMain h2{
+        font-size: 2rem;
+    }
+
+    .exampleGrid{
+        grid-column: 1/2;
+        grid-template-columns:  1fr; 
+        grid-gap: 1rem;
+    }
+
 }

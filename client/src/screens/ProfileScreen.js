@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import ScreenHeader from '../components/ScreenHeader'
+import ScreenHeader from '../components/Page/ScreenHeader'
 
 export default function ProfileScreen() {
 

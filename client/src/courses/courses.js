@@ -7,7 +7,7 @@ import { Share, FinancialRatios1, StockMarket, InvestingCategories  } from './co
 const COURSES = [
     {
         name:'investing',
-        desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        desc:'Course covering basics investing priciples, vocabulary and business model',
         tier:'free',
         sections:[
             {
@@ -32,7 +32,7 @@ const COURSES = [
     },
     {
         name:'stock-market',
-        desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        desc:'Course covering basic stock market vocabulary, financial ratios and investing categories',
         tier:'free',
         sections:[
             {
@@ -61,32 +61,6 @@ const COURSES = [
             },
         ]
     },
-    // {
-    //     name:'financials',
-    //     desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    //     tier:'free',
-    // },
-    // {
-    //     name:'financial-ratios',
-    //     desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    //     tier:'free',
-    // },
-    // {
-    //     name:'companyTypes',
-    //     desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    // },
-    // {
-    //     name:'sectors',
-    //     desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    // },
-    // {
-    //     name:'ETF',
-    //     desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    // },
-    // {
-    //     name:'strategies',
-    //     desc:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    // }
 ]
 
 export default COURSES

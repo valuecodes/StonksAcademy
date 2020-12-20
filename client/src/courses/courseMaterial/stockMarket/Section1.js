@@ -1,6 +1,6 @@
 import React,{ useState } from 'react'
 import SectionContainer from '../../../components/Section/SectionContainer'
-import MaterialIcon from '../../../components/MaterialIcon'
+import MaterialIcon from '../../../components/Other/MaterialIcon'
 import TextList from '../../../components/Article/TextList'
 import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 import ShareExample from '../../../components/Example/ShareExample'

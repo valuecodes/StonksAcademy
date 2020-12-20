@@ -1,7 +1,7 @@
 
 import React,{useState,useEffect} from 'react'
 import SectionContainer from '../../../components/Section/SectionContainer'
-import MaterialIcon from '../../../components/MaterialIcon'
+import MaterialIcon from '../../../components/Other/MaterialIcon'
 import TextList from '../../../components/Article/TextList'
 import {  Bar } from 'react-chartjs-2'
 /* eslint-disable */
@@ -92,9 +92,14 @@ function ValueInvestingExercise({section, completeSection,moveTo}){
         <div className='quizGrid '>
             {exercise.stage==='exercise' &&
                 <>
-                <div className='articleExerciseHeader'>
-                    <h3>Estimate the intrinsic value of the last house based on price per square meter</h3>
-                </div>                
+                <TextList
+                    content={[
+                        {
+                            header:'Value Investing Exercise',
+                            text:'Estimate the intrinsic value of the last house based on price per square mete'
+                        },
+                    ]}
+                />
                 <div className='articleMiddle'>
                     <div className='housePrices exerciseContainer'>    
                         {houses.map((item,index) =>
