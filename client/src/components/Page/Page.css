@@ -48,16 +48,38 @@ height: 3rem;
 .footer{
   background-color: var(--secondary-color);
   height: 6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--text-light);
 }
 
-.footer div{
-  height: 6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--text-light);
+.footer > div{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    color: var(--text-light);
+}
+
+.trademark{
+    margin: auto;
+}
+
+.footerLinks{
+    font-size: 1.4rem;
+    margin-left: auto;
+    margin-right: 2rem;
+}
+
+.footerLinks a{
+    color: rgb(209, 209, 209);
+}
+
+.privacyPolicyScreen a{
+    color: blue;
+}
+
+@media only screen and (max-width: 800px) {  
+    .footerLinks{
+        display: none;
+    }
+    .footer > div{
+        display: flex;
+    }
 }

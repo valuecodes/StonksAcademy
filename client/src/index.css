@@ -280,6 +280,10 @@ a{
   max-width: 100vw;
 }
 
+.privacyPolicyScreen{
+  margin: 2rem;
+}
+
 @media only screen and (min-width: 800px) {
   .mobileNav{
     display: none!important;

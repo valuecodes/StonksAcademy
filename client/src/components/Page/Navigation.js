@@ -59,7 +59,7 @@ export function MobileMenu({userInfo,login,logout,menuItems}) {
           onClose={handleClose}
         >
         {menuItems.map((item,index) =>
-            validateItem(item,userInfo)&&
+            validateItem(item,userInfo,'mobile')&&
                 <Link key={index} to={item.linkTo}>
                     <MenuItem className={classes.menuItem} key={index} selected={item.text === 'Pyxis'} onClick={handleClose}>
                     {item.text}
@@ -82,10 +82,9 @@ export function NavigationBar({userInfo,login,logout,menuItems}){
         <nav className='mainNav'>
             <ul >
                 {menuItems.map((item,index) =>
-                    validateItem(item,userInfo)&&
+                    validateItem(item,userInfo,'navbar')&&
                         <li key={index}><Link to={item.linkTo}>{item.text}</Link></li>
                 )}
-
                 {userInfo?
                     <li className='logoutButton'>
                         <Button onClick={logout}  variant="contained">Log out</Button>
@@ -97,7 +96,12 @@ export function NavigationBar({userInfo,login,logout,menuItems}){
     )
 }
 
-const validateItem=(item,userInfo)=>{
+const validateItem=(item,userInfo,type)=>{
+
+    if(item.mobileOnly&&type!=='mobile'){
+        return false
+    }
+
     if(item.loginRequired&&!userInfo){
         return false
     }
