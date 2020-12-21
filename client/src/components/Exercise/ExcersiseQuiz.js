@@ -52,6 +52,15 @@ const useStyles = makeStyles({
   }
 });
 
+const createQuizQuestions=(section)=>{
+    const questions = QUESTIONS[section.course][section.name]
+    questions.forEach((item,index)=>{
+        item.userAnswer = null
+        item.id = index
+    })
+    return questions
+}
+
 export default function ExerciseQuiz({section,completeSection,moveTo}){
 
     const classes = useStyles();
@@ -67,12 +76,8 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
     const { userInfo } = userSignin
 
     useEffect(()=>{
-        const questions = QUESTIONS[section.course][section.name]
-        questions.forEach((item,index)=>{
-            item.userAnswer = null
-            item.id = index
-        })
-        setQuiz({...quiz,questions:questions})
+        const questions = createQuizQuestions(section)
+        setQuiz({...quiz,questions})
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
@@ -87,9 +92,12 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userInfo])
+
+
     
     const startExerciseHandler=()=>{
-        setQuiz({...quiz,stage:'quiz'})
+        const questions = createQuizQuestions(section)
+        setQuiz({...quiz,stage:'quiz',questions})
     }
 
     const answerQuestionHandler = (option,index) =>{
