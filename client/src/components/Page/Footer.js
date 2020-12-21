@@ -1,10 +1,19 @@
 import React from 'react'
 import './Page.css'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (
-        <footer className='footer'> 
-            Stonks Academy 2020 ® 
+        <footer className='footer'>
+            <div className='container'>
+                <div></div>
+                <div className='trademark'>
+                    Stonks Academy 2020 ® 
+                </div>
+                <div className='footerLinks'>
+                    <Link to='/privacy-policy'>Privacy Policy</Link>
+                </div>                
+            </div> 
         </footer>
     )
 }

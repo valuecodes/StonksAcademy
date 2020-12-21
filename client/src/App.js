@@ -6,6 +6,7 @@ import AcademyScreen from './screens/AcademyScreen';
 import ProfileScreen from './screens/ProfileScreen'
 import AcademyCourseScreen from './screens/AcademyCourseScreen';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import PrivacyPolicyScreen from './screens/PrivacyPolicyScreen';
 
 const theme = createMuiTheme({
   typography: {
@@ -55,6 +56,7 @@ function App() {
           <Header/>
           <main>
             <div className='container'>
+              <Route path='/privacy-policy' component={PrivacyPolicyScreen}/>
               <Route path='/profile' component={ProfileScreen} />
               <Route path='/academy/:id' component={AcademyCourseScreen}/>
               <Route exact={true} path='/academy' component={AcademyScreen} />

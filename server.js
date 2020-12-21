@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser')
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use(cookieParser())
-
+   
 require('./config/passport')(passport)
 connectDB()
 app.use(passport.initialize())

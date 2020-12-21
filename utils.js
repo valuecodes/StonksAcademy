@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const rateLimit = require("express-rate-limit");
 
 const getToken = (user) => {
     return jwt.sign({
@@ -39,4 +40,16 @@ const isAdmin = (req,res,next) => {
     return res.status(401).send({msg: 'Admin token is not valid'})
 }
 
-module.exports = { getToken, isAuth ,isAdmin }
+const loginLimiter = rateLimit({
+    windowMs: 1 * 60 * 1000,
+    max: 5,
+    message:'Too many requests, try again in 1 minute'
+});
+
+const courseLimiter = rateLimit({
+    windowMs: 1 * 60 * 1000,
+    max: 10,
+    message:'Too many requests, try again in 1 minute'
+});
+
+module.exports = { getToken, isAuth ,isAdmin, loginLimiter, courseLimiter }

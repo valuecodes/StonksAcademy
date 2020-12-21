@@ -1,7 +1,7 @@
 const express = require('express')
 const passport = require('passport')
 const router = express.Router()
-const { getToken, isAuth } = require('../utils');
+const { getToken, isAuth, loginLimiter } = require('../utils');
 const User = require('../models/userModel')
 
 /**
@@ -9,6 +9,7 @@ const User = require('../models/userModel')
  *  @router  GET /auth/google 
  */
 router.get('/google', 
+  loginLimiter,
   passport.authenticate('google',{scope: ['profile', 'email']})
 )
 
@@ -32,7 +33,7 @@ router.get(
  *  @desc    Returns user info
  *  @router  POST /auth/userInfo
  */
-router.post("/userInfo", isAuth, async (req, res) => {
+router.post("/userInfo", loginLimiter, isAuth, async (req, res) => {
 
     const userId = req.user._id
     const user = await User.findById(userId)
