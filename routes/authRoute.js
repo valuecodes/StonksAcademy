@@ -25,7 +25,7 @@ router.get(
     }),(req, res) => {
         let token = getToken(req.user)
         res.cookie('auth', JSON.stringify(token),{httpOnly: true, sameSite:'Strict' })
-        return res.redirect('http://localhost:3000');
+        return res.redirect('/');
     }    
 )
 

@@ -4,7 +4,7 @@ import {
 import axios from 'axios'
 
 const signin = () => (dispatch) => {
-    window.location.assign("http://localhost:5000/auth/google");
+    window.location.assign("/auth/google");
 }
 
 const userAuth = () => async (dispatch) => {
