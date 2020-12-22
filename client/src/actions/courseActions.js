@@ -1,6 +1,6 @@
 import axios from "axios";
 import { 
-    SECTION_COMPLETE_REQUEST, SECTION_COMPLETE_SUCCESS,  SECTION_COMPLETE_FAIL
+    SECTION_COMPLETE_REQUEST, SECTION_COMPLETE_SUCCESS,  SECTION_COMPLETE_FAIL, SECTION_RESET_STATUS
 } from "../constants/courseConstants";
 
 const completeSection = (section) => async (dispatch) => {
@@ -13,4 +13,9 @@ const completeSection = (section) => async (dispatch) => {
     }
 } 
 
-export { completeSection }
+
+const resetStatus = () => (dispatch) =>{
+    dispatch({type: SECTION_RESET_STATUS})
+} 
+
+export { completeSection, resetStatus }

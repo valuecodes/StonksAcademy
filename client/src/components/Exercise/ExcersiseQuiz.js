@@ -76,8 +76,8 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
     const { userInfo } = userSignin
 
     useEffect(()=>{
-        const questions = createQuizQuestions(section)
-        setQuiz({...quiz,questions})
+        const newQuestions = createQuizQuestions(section)
+        setQuiz({...quiz,questions:newQuestions})
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
@@ -93,11 +93,9 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userInfo])
 
-
-    
     const startExerciseHandler=()=>{
-        const questions = createQuizQuestions(section)
-        setQuiz({...quiz,stage:'quiz',questions})
+        const newQuestions = createQuizQuestions(section)
+        setQuiz({...quiz,stage:'quiz',questions:newQuestions})
     }
 
     const answerQuestionHandler = (option,index) =>{
@@ -122,9 +120,8 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
     }
 
     const tryAgainHandler=()=>{
-        const quizCopy = {...quiz}
-        quizCopy.questions.forEach(item => item.userAnswer=null)
-        setQuiz({...quizCopy,stage:'quiz',currentQuestion:0})
+        const newQuestions = createQuizQuestions(section)        
+        setQuiz({...quiz,stage:'quiz',currentQuestion:0,questions:newQuestions})
     }
 
     const quitQuizHandler=()=>{

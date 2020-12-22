@@ -6,12 +6,14 @@ import CourseRecap from '../components/Course/CourseRecap'
 import COURSES from '../courses/courses'
 import { camelCaseToString } from '../utils/utils';
 import { Course } from '../utils/course';
-import { completeSection } from '../actions/courseActions';
+import { completeSection, resetStatus } from '../actions/courseActions';
 import CourseHeader from '../components/Course/CourseHeader'
 import CourseNav from '../components/Course/CourseNav'
+import { useSnackbar } from 'notistack';
 
 export default function AcademyCourseScreen(props) {
 
+    const { enqueueSnackbar } = useSnackbar();
     const courseContainer = useRef()
     const academySections = useRef()
 
@@ -20,6 +22,18 @@ export default function AcademyCourseScreen(props) {
     const dispatch = useDispatch()
     const userSignin = useSelector(state => state.userSignin)
     const { userInfo } = userSignin
+    const sectionComplete = useSelector(state => state.sectionComplete)
+    let { error:completedError, success:completedSuccess } = sectionComplete
+
+    useEffect(()=>{
+        if(completedSuccess){
+            enqueueSnackbar('Progress saved successfully!', {variant:'success'});
+        }
+        if(completedError){
+            enqueueSnackbar('Please login to save progress', {variant:'warning'});
+        }
+        dispatch(resetStatus())        
+    },[completedError,completedSuccess])
 
     useEffect(() => {
         let courseContent = COURSES.find(item => item.name===id)
@@ -31,7 +45,6 @@ export default function AcademyCourseScreen(props) {
             let updatedCourse = new Course(courseContent,userInfo)
             updatedCourse.moveToStart()
             setCourse({...updatedCourse})     
-            
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps        
     }, [id,userInfo])
