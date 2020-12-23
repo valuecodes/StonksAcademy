@@ -284,6 +284,57 @@ a{
   margin: 2rem;
 }
 
+.profileScreen{
+  padding: 1rem;
+}
+
+.myCourses{
+  max-width: 50rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  align-items: flex-start;
+}
+
+.myCourse{
+  padding: 1.5rem;
+}
+
+.myCourseHeader{
+  display: grid;
+  grid-template-columns: 1fr auto 2rem;
+  align-items: center;
+}
+
+.courseProgress{
+  grid-column: 1/4;
+}
+
+.myCourseSectionHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--light-color);
+  margin-bottom: 0.5rem;
+}
+
+.MuiLinearProgress-colorPrimary{
+  background-color: rgba(255, 255, 255, 0)!important;
+}
+
+.myCourseCompletedSection{
+  display: flex;
+  justify-content: space-between;
+}
+
+.courseCompleteRate {
+  /* border-color: var(--background-color)!important; */
+  background-color: white!important;
+}
+.courseCompleteRate span{
+  font-size: 1.4rem;
+}
+
 @media only screen and (min-width: 800px) {
   .mobileNav{
     display: none!important;

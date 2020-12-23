@@ -64,6 +64,7 @@ router.post("/userInfo", loginLimiter, isAuth, async (req, res) => {
  */
 router.post('/logout', (req, res) => {
   res.clearCookie('auth')
+  res.clearCookie('userInfo')
   res.status(200).json({msg:'User Logged out'})
 })
 

@@ -1,6 +1,18 @@
 import { 
-    SECTION_COMPLETE_REQUEST, SECTION_COMPLETE_SUCCESS, SECTION_COMPLETE_FAIL, SECTION_RESET_STATUS } from "../constants/courseConstants";
+    SECTION_COMPLETE_REQUEST, SECTION_COMPLETE_SUCCESS, SECTION_COMPLETE_FAIL, SECTION_RESET_STATUS, SECTION_GET_COMPLETED_REQUEST, SECTION_GET_COMPLETED_SUCCESS, SECTION_GET_COMPLETED_FAIL } from "../constants/courseConstants";
 
+function sectionGetCompletedReducer(state={},action){
+    switch(action.type){
+        case SECTION_GET_COMPLETED_REQUEST:
+            return {loading:true}
+        case SECTION_GET_COMPLETED_SUCCESS:
+            console.log(action.payload)
+            return {loading:false, completedSections: action.payload}
+        case SECTION_GET_COMPLETED_FAIL:
+            return {loading:false, error: action.payload}
+        default: return state
+    }
+}
 
 function sectionCompleteReducer(state={}, action){
     switch(action.type){
@@ -16,4 +28,6 @@ function sectionCompleteReducer(state={}, action){
     }
 }
 
-export { sectionCompleteReducer }
+export { 
+    sectionCompleteReducer, sectionGetCompletedReducer 
+}

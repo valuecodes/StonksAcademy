@@ -11,7 +11,7 @@ export default function ExerciseScore({section,size,showText=true}){
     )
 }
 
-function CircularProgressWithLabel({section,size='large'}) {
+export function CircularProgressWithLabel({section,size='large'}) {
     const { correct, total } = section.score
 
     let circleClass='smallScore'

@@ -61,6 +61,13 @@ const COURSES = [
             },
         ]
     },
+    {
+        name:'third-course',
+        desc:'Course covering basic stock market vocabulary, financial ratios and investing categories',
+        tier:'free',
+        sections:[
+        ]
+    },
 ]
 
 export default COURSES

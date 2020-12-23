@@ -43,6 +43,10 @@ exports.completeSection = async (req,res) => {
     }     
 }
 
+/**
+ *  @desc    Resets user completed sections
+ *  @router  DELETE /api/course 
+ */
 exports.deleteArticles = async (req,res) => {
     console.log('deleting')
     const userId = req.user._id
@@ -54,4 +58,22 @@ exports.deleteArticles = async (req,res) => {
     )
     return res.status(200)
     console.log(result)
+}
+
+
+/**
+ *  @desc    Get user completed sections
+ *  @router  GET /api/course/completed 
+ */
+exports.getCompletedSections = async (req,res) => {
+    console.log('getting user',req.user)
+
+    const userId = req.user._id
+    const user = await User.findById(userId)
+    if(user){
+        console.log(user)
+        res.status(200).send({data:user.completedSections})
+    }else{
+        res.status(401).send({msg: 'User not found'})
+    }
 }
