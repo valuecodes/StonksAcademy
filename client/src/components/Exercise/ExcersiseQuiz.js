@@ -72,8 +72,8 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
         completedAt:formatDate()
     })
 
-    const userSignin = useSelector(state => state.userSignin)
-    const { userInfo } = userSignin
+    const sectionGetCompleted = useSelector(state => state.sectionGetCompleted)
+    const { completedSections } = sectionGetCompleted
 
     useEffect(()=>{
         const newQuestions = createQuizQuestions(section)
@@ -81,17 +81,16 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    useEffect(() => {
-        if(userInfo){
-            let sectionCompleted = userInfo.completedSections
+    useEffect(()=>{
+        if(completedSections){
+            let sectionCompleted = completedSections
                 .find(item => item.sectionId===section.sectionId)
             if(sectionCompleted){
                 let completedAt = formatDate(sectionCompleted.updatedAt) 
                 setQuiz({...quiz,stage:'completed',score:sectionCompleted.score,completedAt:completedAt})
             }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userInfo])
+    },[completedSections])
 
     const startExerciseHandler=()=>{
         const newQuestions = createQuizQuestions(section)

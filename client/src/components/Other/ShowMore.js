@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { camelCaseToString } from '../../utils/utils';
-import ExerciseScore, { CircularProgressWithLabel } from '../Exercise/ExerciseScore';
+import ExerciseScore from '../Exercise/ExerciseScore';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -87,7 +87,6 @@ export default function ShowMore({text}) {
     )
 }
 
-
 export function ShowSections({sections}){
 
   const classes = useStyles();
@@ -96,8 +95,6 @@ export function ShowSections({sections}){
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  console.log(sections)
 
   let totalScore = { correct:0,wrong:0,notAnswered:0,total:0 }
   sections.forEach(item => {
@@ -111,10 +108,11 @@ export function ShowSections({sections}){
   return(
     <>
     <CardActions className={classes.actions}>
-        <IconButton
-          className={clsx(classes.expand, {
+      <IconButton
+          className={clsx(classes.sections,classes.expand, {
             [classes.expandOpen]: expanded,
-          }), classes.sections}
+            
+          })}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
@@ -129,14 +127,16 @@ export function ShowSections({sections}){
             <h4>Score</h4>            
           </div>
           {sections.map((item,index) =>
-            <div className='myCourseCompletedSection'>
+            <div key={index} className='myCourseCompletedSection'>
               <h5>{index+1}. {camelCaseToString(item.name)}</h5>
               {item.score?
-                <p>{item.score.correct}/{item.score.total}</p>:
+                <p>{`${item.score.correct}/${item.score.total}`}</p>
+                :
                 <p>Not completed</p>
               }
             </div>       
           )}
+          <h3 className='myCourseScore'>Course Score</h3>
           <ExerciseScore section={{score:totalScore}} size={'small'} showText={false}/>
         </CardContent>
       </Collapse>

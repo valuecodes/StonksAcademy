@@ -24,7 +24,7 @@ exports.completeSection = async (req,res) => {
             }
         }
     })
-    console.log(found,newSection)
+
     if(found){
         await User.updateOne(
             { "_id": userId,"completedSections.sectionId": newSection.sectionId},
@@ -47,7 +47,7 @@ exports.completeSection = async (req,res) => {
  *  @desc    Resets user completed sections
  *  @router  DELETE /api/course 
  */
-exports.deleteArticles = async (req,res) => {
+exports.deleteCompletedSections = async (req,res) => {
     console.log('deleting')
     const userId = req.user._id
     let result = await User.updateOne(
@@ -56,8 +56,7 @@ exports.deleteArticles = async (req,res) => {
             "completedSections": [],
         }}
     )
-    return res.status(200)
-    console.log(result)
+    return res.status(200).send({msg:'Courses reseted succesfully!'})
 }
 
 
@@ -66,12 +65,9 @@ exports.deleteArticles = async (req,res) => {
  *  @router  GET /api/course/completed 
  */
 exports.getCompletedSections = async (req,res) => {
-    console.log('getting user',req.user)
-
     const userId = req.user._id
     const user = await User.findById(userId)
     if(user){
-        console.log(user)
         res.status(200).send({data:user.completedSections})
     }else{
         res.status(401).send({msg: 'User not found'})

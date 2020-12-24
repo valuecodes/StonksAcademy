@@ -43,7 +43,7 @@ router.post("/userInfo", loginLimiter, isAuth, async (req, res) => {
         name: user.name,
         isAdmin: user.isAdmin,
         email: user.email,
-        completedSections:user.completedSections,
+        // completedSections:user.completedSections,
         score:user.score,
         createdAt:user.createdAt,
         updatedAt:user.updatedAt,

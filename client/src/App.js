@@ -1,3 +1,4 @@
+import React,{ useRef } from 'react'
 import { Route } from 'react-router-dom'
 import Header from './components/Page/Header'
 import LandingScreen from './screens/LandingScreen'
@@ -8,16 +9,17 @@ import AcademyCourseScreen from './screens/AcademyCourseScreen';
 import PrivacyPolicyScreen from './screens/PrivacyPolicyScreen';
 import { SnackbarProvider } from 'notistack';
 import { makeStyles } from '@material-ui/core/styles';
-import { snackBarStyle, snackBarOptions } from './utils/styles';
+import { snackBarStyle, snackBarOptions } from './utils/snackbar';
 
 const useStyles = makeStyles(snackBarStyle)
 
 function App() {
 
+  const notistackRef = useRef();
   const classes = useStyles();
 
   return (
-    <SnackbarProvider {...snackBarOptions(classes)}>
+    <SnackbarProvider ref={notistackRef} {...snackBarOptions(classes,notistackRef)}>
       <div className="app">
         <Header/>
         <main>

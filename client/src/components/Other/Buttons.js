@@ -2,6 +2,7 @@ import React from 'react'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 export function ArticleButton({text,onClick,disabled=false}) {
     return <Button 
@@ -54,5 +55,19 @@ export function DeleteButton({deleteItem}){
             color="secondary"
       />
 
+    )
+}
+
+export function ResetButton({text,onClick}){
+    return(
+    <Button
+        variant="contained"
+        color="secondary"
+        onClick={onClick}
+        // className={classes.button}
+        startIcon={<DeleteIcon />}
+      >
+        {text}
+      </Button>
     )
 }

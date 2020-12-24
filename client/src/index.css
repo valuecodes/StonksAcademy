@@ -328,11 +328,32 @@ a{
 }
 
 .courseCompleteRate {
-  /* border-color: var(--background-color)!important; */
   background-color: white!important;
 }
 .courseCompleteRate span{
   font-size: 1.4rem;
+}
+
+.scoreChip{
+  margin-bottom: 0.5rem;
+}
+
+.completed{
+  border-color: var(--neutral-color)!important;
+}
+
+.myCourseScore{
+  margin-top: 2rem;
+}
+
+.MuiBadge-badge{
+  position: relative;
+  left: -2px;
+  top: -2px!important;
+}
+
+.hidden{
+  transform: scale(0);
 }
 
 @media only screen and (min-width: 800px) {

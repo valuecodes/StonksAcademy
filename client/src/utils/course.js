@@ -1,9 +1,9 @@
-export function Course(courseContent,userInfo=null){
+export function Course(courseContent,completedSections=null,setCourse){
+    this.setCourse = setCourse
 
     const startingSection = 'start'
 
-    const createSections=(courseContent,userInfo)=>{
-        let completedSections = userInfo ? userInfo.completedSections : []
+    const createSections=(courseContent,completedSections=[])=>{
         return courseContent.sections.map((section,index) => {
             let completedSection = null
             
@@ -11,7 +11,6 @@ export function Course(courseContent,userInfo=null){
                 completedSection = completedSections
                     .find(item => item.sectionId===getSectionId(index))
             }
-
             return{
                 ...section,
                 course:courseContent.name,
@@ -26,7 +25,7 @@ export function Course(courseContent,userInfo=null){
             }})
     }
 
-    const navigate = (direction,status,navigation,setCourse) => {
+    const navigate = (direction,status,navigation) => {
 
         if(status==='unavailable') return
 
@@ -55,16 +54,16 @@ export function Course(courseContent,userInfo=null){
             navigation.sections.forEach(item => {
                 item.current=current
             })
-            setCourse({...navigation,current:current})
+            this.setCourse({...navigation,current:current})
         }
     }
 
-    const complete = (id,score,navigation,setCourse) => {
+    const complete = (id,score,navigation) => {
         const sectionIndex = navigation.sections.findIndex(item => item.id===id)
         const navCopy={...navigation}
         navCopy.sections[sectionIndex].completed=true
         navCopy.sections[sectionIndex].score=score
-        setCourse(navCopy)
+        this.setCourse(navCopy)
         return navCopy.sections[sectionIndex]
     }
 
@@ -72,8 +71,8 @@ export function Course(courseContent,userInfo=null){
         return courseContent.name+index
     }
     
-    function init(courseContent,userInfo){
-        return createSections(courseContent,userInfo)
+    function init(courseContent,completedSections){
+        return createSections(courseContent,completedSections)
     }
 
     function moveToStart(){
@@ -84,10 +83,10 @@ export function Course(courseContent,userInfo=null){
     return{
         current:startingSection,
         nextCourse:courseContent.nextCourse,
-        sections: createSections(courseContent,userInfo),
+        sections: createSections(courseContent,completedSections),
         init,
         navigate,
         complete,
-        moveToStart
+        moveToStart,
     }
 }

@@ -8,6 +8,8 @@ import Box from '@material-ui/core/Box';
 import TocIcon from '@material-ui/icons/Toc';
 import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
 import { camelCaseToString } from '../../utils/utils';
+import Badge from '@material-ui/core/Badge';
+import DoneIcon from '@material-ui/icons/Done';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,9 +49,6 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
     root: {
         width:200,
-        // flexGrow: 1,
-        // backgroundColor: 'rgba(255,255,255,0.6)',
-        // display: 'flex',
         height: 'auto',  
     },
     tabs: {        
@@ -72,8 +71,22 @@ const useStyles = makeStyles((theme) => ({
         
     },
     number:{
-        fontSize:20,
-        justifySelf:'center'
+        justifySelf:'center',
+        "& h2":{
+            fontSize:20,
+        },
+        '& span':{
+            transform:'scale(0.7)',   
+            // backgroundColor:'rgba(82, 103, 122,0.8)',
+            backgroundColor:'var(--positive-color)',
+        }
+    },
+    badgeIcon:{
+        // color:'white',
+        // color:'var(--secondary-color)',
+        color:'black',
+        transform:'scale(1.5)!important',
+        width:8,
     }
 }));
 
@@ -94,7 +107,7 @@ export default function CourseNav({moveTo,course}) {
   if(tabIndex==='recap') tabIndex = course.sections.length
   tabIndex++
   if(!course.current&&course.current!==0) tabIndex=0
-
+ 
   return (
         <div className={classes.root +' courseNav'}>
             <Tabs
@@ -121,9 +134,11 @@ export default function CourseNav({moveTo,course}) {
                 {course.sections.map((section,index) =>
                     <Tab key={section.id} className={classes.tab} 
                         label={
-                            <div>
-                                <h2 className={classes.number}>{index+1}</h2>
-                                {camelCaseToString(section.name)}
+                            <div className='courseNavItem'>
+                                <Badge invisible={!section.completed} overlap="circle" className={classes.number} size='small' badgeContent={<DoneIcon className={`${classes.badgeIcon} ${!section.completed?'hidden':''}` }/>}>
+                                    <h2 >{index+1}</h2>
+                                </Badge>
+                                {camelCaseToString(section.name)}   
                             </div> 
                         }
                         {...a11yProps(index+1)} 

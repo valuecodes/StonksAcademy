@@ -37,12 +37,12 @@ function ValueInvestingExercise({section, completeSection,moveTo}){
         completedAt:formatDate()
     })
 
-    const userSignin = useSelector(state => state.userSignin)
-    const { userInfo } = userSignin
+    const sectionGetCompleted = useSelector(state => state.sectionGetCompleted)
+    const { completedSections } = sectionGetCompleted
 
     useEffect(() => {
-        if(userInfo){
-            let sectionCompleted = userInfo.completedSections
+        if(completedSections){
+            let sectionCompleted = completedSections
                 .find(item => item.sectionId===section.sectionId)
             if(sectionCompleted){
                 let completedAt = formatDate(sectionCompleted.updatedAt) 
@@ -50,7 +50,7 @@ function ValueInvestingExercise({section, completeSection,moveTo}){
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userInfo])
+    }, [completedSections])
 
     const [houses, setHouses] = useState([
         {price:100,size:50},
