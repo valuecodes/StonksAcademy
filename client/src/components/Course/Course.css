@@ -1,7 +1,7 @@
 /* Table Of Content */
 .tableOfContent{
     display: grid;
-    grid-gap: 3rem;
+    grid-gap: 2rem;
 }
 
 .articleTerms{
@@ -12,6 +12,14 @@
 .articleTerms div{
   margin: 0.2rem;
   font-size: 1.2rem;
+}
+
+.appBar{
+  background-color: white;
+  color:var(--secondary-color);
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0.5rem;
+  flex-wrap: wrap;
 }
 
   /* CourseRecap */
@@ -65,6 +73,10 @@
 }
 
 @media only screen and (max-width: 800px) {
+  .tableOfContent{
+    padding-bottom: 2rem;
+  }
+
   .courseContainer {
     grid-template-columns: 1fr;
     max-height: 50vh;
@@ -100,5 +112,10 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       grid-gap: 1rem; 
+  }
+
+  .appBar{
+    display: grid!important;
+    grid-template-columns: 1fr!important;
   }
 }

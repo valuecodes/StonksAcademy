@@ -68,7 +68,7 @@
 }
 
 .quizGrid{
-    min-height: 45rem;
+    min-height: 40rem;
     display: grid;
     grid-template-columns: 1fr minmax(40rem,1fr) 1fr;
     grid-gap: 1rem;

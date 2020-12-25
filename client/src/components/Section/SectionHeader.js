@@ -30,7 +30,7 @@ export default function SectionHeader({header,sectionNav,setSectionNav}) {
     const classes = useStyles();
     return (
         <div className='sectionHeader'>
-            <Toolbar className={classes.appBar}  >
+            <Toolbar className={'appBar'}  >
                 {/* <Typography className={classes.title} noWrap> */}
                     <h2 className={classes.title}>{camelCaseToString(header)}</h2>
                 {/* </Typography> */}

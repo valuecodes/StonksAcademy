@@ -6,13 +6,17 @@ import { ArticleButtonPrimary } from '../Other/Buttons'
 import { camelCaseToString } from '../../utils/utils';
 
 export default function CourseTableOfContent({course, moveTo}){
+    console.log(course)
     return(
         <div id='tableOfContent' className='sectionContainer'>
                 <SectionHeader 
                     header={'Table of content'} 
                 />            
-                <ul className=' sectionContentContainer'>
-                    <div className='tableOfContent'>
+                <div className='sectionContentContainer largeSection'>
+                    <ul className='tableOfContent'>
+                        <li>
+                            <h2>{camelCaseToString(course.name||'')} course</h2>
+                        </li>
                         {course.sections.map((item,index) =>
                             <li key={index}>
                                 <h3>{index+1}. {camelCaseToString(item.name)}</h3>
@@ -24,8 +28,8 @@ export default function CourseTableOfContent({course, moveTo}){
                         <li>
                             <ArticleButtonPrimary onClick={()=>moveTo(0)} text={'Start Course'} />
                         </li>                        
-                    </div>
-                </ul>                
+                    </ul>
+                </div>                
         </div>
     )
 }

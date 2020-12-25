@@ -24,7 +24,7 @@ export default function CourseRecap({course}){
             <SectionHeader 
                 header={'Recap'} 
             />
-            <div className='sectionContentContainer'>
+            <div className='sectionContentContainer largeSection'>
                 <div className='recapGrid'>
                     <ul className='sectionScores'>
                         <li>

@@ -79,9 +79,10 @@ export function Course(courseContent,completedSections=null,setCourse){
         const element = document.getElementById('tableOfContent')
         element.scrollIntoView();
     }
-
+    console.log(courseContent)
     return{
         current:startingSection,
+        name: courseContent.name,
         nextCourse:courseContent.nextCourse,
         sections: createSections(courseContent,completedSections),
         init,

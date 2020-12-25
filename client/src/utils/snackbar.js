@@ -5,22 +5,22 @@ export const snackBarStyle = {
     variantSuccess: { 
       backgroundColor: "var(--positive-color) !important" , 
       color:"var(--text-dark) !important",
-      fontSize:16
+      fontSize:15
     },
     variantError: { 
       backgroundColor: "var(--negative-color) !important" , 
       color:"var(--text-dark) !important",
-      fontSize:16
+      fontSize:15
     },
     variantWarning: { 
       backgroundColor: "var(--neutral-color) !important" , 
       color:"var(--text-dark) !important",
-      fontSize:16
+      fontSize:15
     },
     info: { 
       backgroundColor: "var(--positive-color) !important" , 
       color:"var(--text-dark) !important",
-      fontSize:16
+      fontSize:15
     },
     close:{
         margin:0,
