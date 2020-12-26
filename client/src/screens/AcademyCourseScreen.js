@@ -23,7 +23,7 @@ export default function AcademyCourseScreen(props) {
     let { error:completedError, success:completedSuccess } = sectionComplete
     const sectionGetCompleted = useSelector(state => state.sectionGetCompleted)
     const { completedSections } = sectionGetCompleted
-    
+
     useEffect(()=>{
         dispatch(getCompletedSections(id))
         // eslint-disable-next-line react-hooks/exhaustive-deps        
@@ -56,7 +56,7 @@ export default function AcademyCourseScreen(props) {
         let nextCourse = COURSES[courseIndex+1]?COURSES[courseIndex+1].name:null
         courseContent.nextCourse = nextCourse
         if(courseContent){
-            let updatedCourse = new Course(courseContent,completedSections,setCourse)
+            let updatedCourse = new Course(courseContent,completedSections)
             updatedCourse.moveToStart()
             setCourse({...updatedCourse})     
         }
@@ -64,14 +64,14 @@ export default function AcademyCourseScreen(props) {
     }, [completedSections])
 
     const handleNavigate=(direction,status)=>{
-        course.navigate(direction,status,course)
+        course.navigate(direction,status,course,setCourse)
     }
 
-    const completeSectionHandler=(id,score)=>{     
-        let completedArticle = course.complete(id,score,course)
+    const completeSectionHandler=(id,score,attempts)=>{     
+        let completedArticle = course.complete(id,score,attempts,course,setCourse)
         dispatch(completeSection(completedArticle))
     }
-
+ 
     return (
         <div className='academyCourseScreen'>     
             <CourseHeader header={camelCaseToString(id)} moveTo={handleNavigate} course={course}/>

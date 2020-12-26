@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useRef} from 'react'
 import Card from '@material-ui/core/Card';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
@@ -62,13 +62,16 @@ const createQuizQuestions=(section)=>{
 }
 
 export default function ExerciseQuiz({section,completeSection,moveTo}){
-
+    
     const classes = useStyles();
+    let intervalRef = useRef();
 
+    const [time,setTime] = useState(0)
     const [quiz,setQuiz] = useState({
         stage:'initial',//initial, quiz, results, completed
         currentQuestion:0,
         questions:[],
+        attempts:0,
         completedAt:formatDate()
     })
 
@@ -87,14 +90,19 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
                 .find(item => item.sectionId===section.sectionId)
             if(sectionCompleted){
                 let completedAt = formatDate(sectionCompleted.updatedAt) 
-                setQuiz({...quiz,stage:'completed',score:sectionCompleted.score,completedAt:completedAt})
+                setQuiz({...quiz,stage:'completed',attempts:sectionCompleted.attempts,score:sectionCompleted.score,completedAt:completedAt})
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps        
     },[completedSections])
+    
+    const increaseNum = () => setTime((prev) => prev + 1);
 
     const startExerciseHandler=()=>{
+        setTime(0)
+        intervalRef.current = setInterval(increaseNum, 1000);
         const newQuestions = createQuizQuestions(section)
-        setQuiz({...quiz,stage:'quiz',questions:newQuestions})
+        setQuiz({...quiz,stage:'quiz',currentQuestion:0,questions:newQuestions})
     }
 
     const answerQuestionHandler = (option,index) =>{
@@ -104,26 +112,24 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
     }
 
     const finishQuizHandler = (quiz) =>{
+        clearInterval(intervalRef.current);
         quiz.questions.forEach(item => item.correct = item.userAnswer===item.answer)
         let correct = quiz.questions.reduce((a,c)=>a+(c.userAnswer===c.answer?1:0),0)
         let total = quiz.questions.length
         let wrong = total-correct
         let notAnswered = 0
-        let score = { correct, total, wrong, notAnswered }
-        setQuiz({...quiz,stage:'results',score:score})
+        let score = { correct, total, wrong, notAnswered, time }
+        let attempts = quiz.attempts+1
+        setQuiz({...quiz,attempts,stage:'results',score:score})
     }
 
     const completeQuizHandler=()=>{
-        completeSection(section.id,quiz.score)
+        completeSection(section.id,quiz.score,quiz.attempts)
         setQuiz({...quiz,completedAt:formatDate(),stage:'completed',})
     }
 
-    const tryAgainHandler=()=>{
-        const newQuestions = createQuizQuestions(section)        
-        setQuiz({...quiz,stage:'quiz',currentQuestion:0,questions:newQuestions})
-    }
-
     const quitQuizHandler=()=>{
+        clearInterval(intervalRef.current);
         const quizCopy = {...quiz}
         quizCopy.questions.forEach(item => item.userAnswer=null)
         let newStage = quizCopy.score?'completed':'initial'
@@ -143,6 +149,7 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
                 <Card className='quiz'>
                     <div className='quizHeader'>
                         <h2>Question: {quiz.currentQuestion+1}</h2>
+                        <p>Time {time}</p>
                         <DeleteButton deleteItem={quitQuizHandler}/>
                     </div>
                     
@@ -165,14 +172,13 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
             }
             {quiz.stage==='results'&&
                 <>
-                    <QuizResults quiz={quiz} completeQuiz={completeQuizHandler} tryAgain={tryAgainHandler}/>
+                    <QuizResults quiz={quiz} completeQuiz={completeQuizHandler} tryAgain={startExerciseHandler}/>
                     <ExerciseScore section={quiz}/>
                 </>
             }
             {quiz.stage==='completed'&&
-                <ExersiceCompleted section={quiz} tryAgain={tryAgainHandler} moveTo={moveTo}/>
+                <ExersiceCompleted section={quiz} tryAgain={startExerciseHandler} moveTo={moveTo}/>
             }
-
         </div>        
     )
 }

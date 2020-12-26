@@ -1,23 +1,30 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import SectionHeader from '../Section/SectionHeader'
 import './Course.css'
 import Card from '@material-ui/core/Card';
-import ExerciseScore from '../Exercise/ExerciseScore'
+import { ScoreBig, ScoreMedium } from '../Exercise/ExerciseScore'
 import {ArticleTermList} from '../../components/Article/ArticleTerm'
 import { ArticleButtonPrimary } from '../Other/Buttons'
 import { Link } from 'react-router-dom'
 import { camelCaseToString } from '../../utils/utils';
 
-export default function CourseRecap({course}){
+export default function CourseRecap({course, }){
     
-    let allArticleTerms = course.sections.map(item => item.articleTerms).flat(1)
-    let totalScore = { correct:0,wrong:0,notAnswered:0,total:0 }
+    const [score,setScore] = useState({})
+    const [sections,setSections] = useState([])
 
-    course.sections.forEach(item => {
-        if(item.score){
-            Object.keys(item.score).forEach(key => totalScore[key]+=item.score[key])
+    let allArticleTerms = course.sections.map(item => item.articleTerms).flat(1)
+
+    useEffect(() => {
+        if(course.name){    
+            let newScore = course.getTotalScore(course.sections)
+            setScore({...newScore})      
         }
-    })
+        if(course.sections){
+            let updatedSections = [...course.sections]
+            setSections([...updatedSections])
+        }
+    }, [course])
 
     return(
         <div id='recap' className='sectionContainer'>
@@ -31,11 +38,13 @@ export default function CourseRecap({course}){
                             <div >
                                 <h3>Section Scores</h3>
                                 <div className='recapScore'>
-                                    {course.sections.map((item,index) =>
+                                    {sections.map((item,index) =>
                                         <Card key={index} className='scoreContainer'>
                                             <h3>{index+1}{'. '}{camelCaseToString(item.name)}</h3>
                                             {item.score&&
-                                                <ExerciseScore section={item} size={'small'} showText={false}/>
+                                                <div className='recapScoreProgress'>
+                                                    <ScoreMedium section={item}/>
+                                                </div>
                                             } 
                                         </Card>                        
                                     )}
@@ -56,7 +65,7 @@ export default function CourseRecap({course}){
                     </ul>              
                     <Card className='courseScore'>
                         <h2>Course Score</h2>
-                        <ExerciseScore section={{score:totalScore}} showText={false}/>
+                        <ScoreBig score={score}/>
                     </Card>              
                 </div>                
             </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,7 +8,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { camelCaseToString } from '../../utils/utils';
-import ExerciseScore from '../Exercise/ExerciseScore';
+import { ScoreBig } from '../Exercise/ExerciseScore';
+import { calculateTotalScore } from '../../utils/course';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -92,19 +93,17 @@ export function ShowSections({sections}){
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
+  const [score,setScore]=useState({})
+
+  useEffect(() => {
+    let score = calculateTotalScore(sections);
+    setScore(score)
+  },[sections])
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  let totalScore = { correct:0,wrong:0,notAnswered:0,total:0 }
-  sections.forEach(item => {
-    if(item.score){
-        Object.keys(item.score).forEach(key => totalScore[key]+=item.score[key])
-    }else{
-      totalScore.total+=10
-    }
-  })
-
+  
   return(
     <>
     <CardActions className={classes.actions}>
@@ -137,7 +136,7 @@ export function ShowSections({sections}){
             </div>       
           )}
           <h3 className='myCourseScore'>Course Score</h3>
-          <ExerciseScore section={{score:totalScore}} size={'small'} showText={false}/>
+          <ScoreBig score={score}/>
         </CardContent>
       </Collapse>
         </>

@@ -34,6 +34,7 @@ html{
   --positive-color:rgb(158, 223, 156);
   --positive-dark-color:rgb(85, 189, 82);
   --neutral-color:rgb(242, 245, 59);
+  --neutral-color-dark:rgb(252, 217, 120);
   --negative-color:rgb(223, 156, 156);
   --negative-dark-color:rgb(197, 85, 85);
   --background-color:#DEDEDE;

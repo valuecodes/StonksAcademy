@@ -14,6 +14,7 @@ exports.completeSection = async (req,res) => {
         name:section.name,
         sectionId: section.sectionId,
         score: section.score,
+        attempts: section.attempts
     }
     
     let found = await User.findOne(
@@ -24,13 +25,14 @@ exports.completeSection = async (req,res) => {
             }
         }
     })
-
+    console.log(section)
     if(found){
         await User.updateOne(
             { "_id": userId,"completedSections.sectionId": newSection.sectionId},
             {"$set": { 
                 "completedSections.$.score": newSection.score,
-                "completedSections.$.name": newSection.name
+                "completedSections.$.name": newSection.name,
+                "completedSections.$.attempts": newSection.attempts,
             }},
         )  
         return res.status(200).json({msg:'Article updated succesfully',data:newSection})

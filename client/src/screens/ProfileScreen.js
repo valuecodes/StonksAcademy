@@ -57,15 +57,18 @@ export default function ProfileScreen() {
                 let courseIndex = newUserCourses.findIndex(item => item.name === course)
                 let sectionIndex = newUserCourses[courseIndex].sections.findIndex(item => item.name===name)
                 newUserCourses[courseIndex].sections[sectionIndex].score=item.score
+                newUserCourses[courseIndex].sections[sectionIndex].attempts=item.attempts
                 newUserCourses[courseIndex].completedSections.push(item)
                 newUserCourses[courseIndex].attended=true
+                newUserCourses[courseIndex].attempts=item.attempts
             });
-
+            
             newUserCourses.forEach(item => {
                 if(item.attended){
                     item.completeRate = +((item.completedSections.length / item.sections.length)*100).toFixed(0) 
                 }
             })
+
             setUserCourses(newUserCourses)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

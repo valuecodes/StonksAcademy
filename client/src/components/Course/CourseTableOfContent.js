@@ -6,7 +6,7 @@ import { ArticleButtonPrimary } from '../Other/Buttons'
 import { camelCaseToString } from '../../utils/utils';
 
 export default function CourseTableOfContent({course, moveTo}){
-    console.log(course)
+ 
     return(
         <div id='tableOfContent' className='sectionContainer'>
                 <SectionHeader 

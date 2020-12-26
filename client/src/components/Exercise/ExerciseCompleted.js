@@ -5,15 +5,13 @@ import Button from '@material-ui/core/Button';
 import ExerciseScore from './ExerciseScore'
 import { ArticleButtonPrimary } from '../Other/Buttons'
 
-
 export default function ExerciseCompleted({section,tryAgain,moveTo}) {
-
     const moveToHandler=()=>{
         if(moveTo){
             moveTo('next')
         }
     }
-    
+
     return (
         <Card className='exerciseCompleted'>
             <div className='exerciseCompletedHeader'>

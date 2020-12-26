@@ -5,6 +5,7 @@ const score = {
     wrong:{type: Number, default:0,required: true},
     notAnswered:{type: Number, default:0,required: true},
     total:{type: Number, default:0,required: true},  
+    time:{type: Number, default:0,required: true}, 
     _id : false   
 }
 
@@ -12,6 +13,7 @@ const completedSectionsSchema = new mongoose.Schema({
     course:{type: String, required: true},
     name:{type: String, required: true},
     sectionId:{type: String, required: true},
+    attempts:{type: Number, default:0,required: true}, 
     score:score
 },{
     timestamps:true
