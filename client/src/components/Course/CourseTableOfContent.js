@@ -10,13 +10,10 @@ export default function CourseTableOfContent({course, moveTo}){
     return(
         <div id='tableOfContent' className='sectionContainer'>
                 <SectionHeader 
-                    header={'Table of content'} 
+                    header={`${camelCaseToString(course.name||'')}`} 
                 />            
                 <div className='sectionContentContainer largeSection'>
                     <ul className='tableOfContent'>
-                        <li>
-                            <h2>{camelCaseToString(course.name||'')} course</h2>
-                        </li>
                         {course.sections.map((item,index) =>
                             <li key={index}>
                                 <h3>{index+1}. {camelCaseToString(item.name)}</h3>

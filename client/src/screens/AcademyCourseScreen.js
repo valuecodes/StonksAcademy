@@ -40,7 +40,7 @@ export default function AcademyCourseScreen(props) {
 
     useEffect(()=>{
         if(completedSuccess){
-            enqueueSnackbar('Progress saved successfully!', {variant:'success'});
+            // enqueueSnackbar('Progress saved successfully!', {variant:'success'});
         }
         if(completedError){
             enqueueSnackbar('Please login to save progress', {variant:'warning'});

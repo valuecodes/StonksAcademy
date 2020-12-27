@@ -31,10 +31,14 @@
 
 .courseScore{
   height: 40rem;
-  padding: 2rem;
+  padding: 2rem 0;
   display: grid;
   grid-template-rows: auto 1fr;
   align-items: center;
+}
+
+.courseScore h2{
+  margin-left: 2rem;
 }
 
 .sectionScores{

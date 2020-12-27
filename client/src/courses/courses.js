@@ -17,16 +17,16 @@ const COURSES = [
                 component: AssetsAndLiabilities
             },
             {
-                name: 'valueInvesting',
-                desc: 'What is the difference market price and real value of asset',
-                articleTerms: ['Value investing','Intrinsic value'],
-                component: ValueInvesting
-            },
-            {
                 name: 'businessModel',
                 desc: 'How business works, what are the common financial numbers and how money flows trough the business',
                 articleTerms: ['Business','Revenue','Cost of Revenue','Net income'],
                 component: BusinessModel
+            },            
+            {
+                name: 'valueInvesting',
+                desc: 'What is the difference market price and real value of asset',
+                articleTerms: ['Value investing','Intrinsic value'],
+                component: ValueInvesting
             },
         ]
     },
@@ -60,14 +60,29 @@ const COURSES = [
                 component: InvestingCategories
             },
         ]
-    },
+    },    
     {
-        name:'third-course',
-        desc:'Course covering basic stock market vocabulary, financial ratios and investing categories',
+        name:'financials',
+        desc:'',
+        tier:'free',
+        sections:[
+        ]
+    }, 
+    {
+        name:'financial-ratios',
+        desc:'',
+        tier:'free',
+        sections:[
+        ]
+    },   
+    {
+        name:'macro',
+        desc:'Macro course',
         tier:'free',
         sections:[
         ]
     },
+
 ]
 
 export default COURSES

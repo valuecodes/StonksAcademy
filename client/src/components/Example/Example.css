@@ -234,6 +234,12 @@
     width:13rem!important;
 }
 
+.earningsValuation{
+    display: grid;
+    grid-gap: 1rem;
+    max-width: 40rem;
+}
+
 @media only screen and (max-width: 800px) {
 
     .businessInputHeader div h2, .MuiInput-input{

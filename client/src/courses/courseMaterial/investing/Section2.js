@@ -13,11 +13,14 @@ import { formatDate } from '../../../utils/utils';
 import ExcerciseCompleted from '../../../components/Exercise/ExerciseCompleted'
 import { ArticleButton } from '../../../components/Other/Buttons';
 import { InputSlider } from '../../../components/Other/Sliders';
+import InputGroup from '../../../components/Example/InputGroup'
+import ResultCard from '../../../components/Example/ResultCard'
 
 export default function ValueInvestingAndIntrinsicValue(props){
 
     const sectionComponents = [
-        {name:'Practice',article: ValueInvesting},
+        {name:'Overview',article: Overview},
+        {name:'Valuate a business',article: ValueInvesting},
         {name:'Exercise',article: ValueInvestingExercise} 
     ]
 
@@ -26,6 +29,119 @@ export default function ValueInvestingAndIntrinsicValue(props){
             sectionComponents={sectionComponents} 
             {...props}            
         />
+    )
+}
+
+function Overview(){
+
+    const [startDemo,setStartDemo] = useState(false)
+
+    const demoStartHandler = () =>{
+        setStartDemo(!startDemo)
+    }
+
+    const housePrices=[100,110,80,105]
+    let colors=['orange','red','green','red']
+
+    let median = housePrices.reduce((a,c) => a+c,0)/housePrices.length
+    const chartData={
+        labels: housePrices.map((item,index) => `House ${index+1}`),
+        datasets: [{
+          label: "My First dataset",
+          borderWidth: 1,
+          data: housePrices,
+        }],
+        lineAtIndex: 2
+      }
+
+      let chartOptions = {
+        responsive:true,
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [{
+            stacked: true,
+            display:false,
+            gridLines: {
+                display:false
+            }
+          }],
+          yAxes: [{
+            stacked: true,
+            display:false,
+            gridLines: {
+                display:false
+            }
+          }]
+        },
+        legend:{
+            display:false
+        },
+        annotation: {
+            annotations: [
+                {
+                  drawTime: "afterDatasetsDraw",
+                  type: "line",
+                  mode: "horizontal",
+                  scaleID: "y-axis-0",
+                  value: 100,
+                  borderWidth:2,
+                  borderColor: "black",
+                  label: {
+                    content: "Median",
+                    enabled: true,
+                    position: "right",
+                  }
+                }
+              ]
+        },          
+        plugins: {
+            datalabels: {
+              align: 'end',
+              anchor: 'end',
+              size: 50,
+              font: {
+                weight: 'bold',
+                size: 14,
+              },                 
+              color: function(context) {
+                return colors[context.dataIndex]
+              },
+              formatter: function(value){
+                  if(value<median*0.95) return 'Undervalued'
+                  if(value>median*1.05) return 'Overvalued'
+                  return 'Fairlyvalued';
+              }
+            },
+          },
+      };
+
+    return(
+        <div className='sectionGrid'>
+            <TextList
+                content={[
+                    {header:'Value Investing',text:'Buying assets which value is higher than the price.'},
+                    {header:'Intrinsic Value',text:'The real value of item. Market value often differs from the real value of the item. Your job as an investor is the calculate the real value by using financial numbers and gaining information overview of the business'},
+                    {buttons:[{text:'Demonstrate',onClick:demoStartHandler}]}
+                ]}
+            />
+                <div className='valueInvestingDemo'>
+                        <div className='houseChart'>
+                            {startDemo&&
+                                <Bar data={chartData} options={chartOptions}/>
+                            }
+                        </div>
+                        
+                        <div className='housePrices'>    
+                            {housePrices.map((item,index) =>
+                                <div key={index} className='housePrice'>
+                                    <MaterialIcon icon={'HomeIcon'} className='houseIcon'/>
+                                    <h3>{item}k</h3>
+                                </div>
+                            )}                           
+                        </div>
+                        <h2>Neighborhood with 4 identical houses</h2>                              
+                </div>
+        </div>
     )
 }
 
@@ -140,116 +256,22 @@ function ValueInvestingExercise({section, completeSection,moveTo}){
 }
 
 function ValueInvesting(){
-
-    const [startDemo,setStartDemo] = useState(false)
-
-    const demoStartHandler = () =>{
-        setStartDemo(!startDemo)
-    }
-
-    const housePrices=[100,110,80,105]
-    let colors=['orange','red','green','red']
-
-    let median = housePrices.reduce((a,c) => a+c,0)/housePrices.length
-    const chartData={
-        labels: housePrices.map((item,index) => `House ${index+1}`),
-        datasets: [{
-          label: "My First dataset",
-          borderWidth: 1,
-          data: housePrices,
-        }],
-        lineAtIndex: 2
-      }
-
-      let chartOptions = {
-        responsive:true,
-        maintainAspectRatio: false,
-        scales: {
-          xAxes: [{
-            stacked: true,
-            display:false,
-            gridLines: {
-                display:false
-            }
-          }],
-          yAxes: [{
-            stacked: true,
-            display:false,
-            gridLines: {
-                display:false
-            }
-          }]
-        },
-        legend:{
-            display:false
-        },
-        annotation: {
-            annotations: [
-                {
-                  drawTime: "afterDatasetsDraw",
-                  type: "line",
-                  mode: "horizontal",
-                  scaleID: "y-axis-0",
-                  value: 100,
-                  borderWidth:2,
-                  borderColor: "black",
-                  label: {
-                    content: "Median",
-                    enabled: true,
-                    position: "right",
-                  }
-                }
-              ]
-        },          
-        plugins: {
-            datalabels: {
-              align: 'end',
-              anchor: 'end',
-              size: 50,
-              font: {
-                weight: 'bold',
-                size: 14,
-              },                 
-              color: function(context) {
-                return colors[context.dataIndex]
-              },
-              formatter: function(value){
-                  if(value<median*0.95) return 'Undervalued'
-                  if(value>median*1.05) return 'Overvalued'
-                  return 'Fairlyvalued';
-              }
-            },
-      
-          },
-
-      };
+    const [inputs,setInputs] = useState({
+        netIncome:{value:100,type:'slider',min:0,max:1000,step:10,format:'€'},
+        expectedReturn:{value:10,type:'slider',min:0,max:20,step:1,format:'%'},
+    })
 
     return(
-        <div className='sectionGrid'>
+        <div className='sectionGrid2'>
             <TextList
                 content={[
-                    {header:'Value Investing',text:'Buying assets which value is higher than the price.'},
-                    {header:'Intrinsic Value',text:'The real value of item. Market value often differs from the real value of the item. Your job as an investor is the calculate the real value by using financial numbers and gaining information overview of the business'},
-                    {buttons:[{text:'Demonstrate',onClick:demoStartHandler}]}
+                    {header:'How to valuate business',text:'One way to calculate the business value is to use earnings. If company has stable earnings and you would like to get 10% yearly return from the investment you can multiply earnings by ten.'},
                 ]}
             />
-                <div className='valueInvestingDemo'>
-                        <div className='houseChart'>
-                            {startDemo&&
-                                <Bar data={chartData} options={chartOptions}/>
-                            }
-                        </div>
-                        
-                        <div className='housePrices'>    
-                            {housePrices.map((item,index) =>
-                                <div key={index} className='housePrice'>
-                                    <MaterialIcon icon={'HomeIcon'} className='houseIcon'/>
-                                    <h3>{item}k</h3>
-                                </div>
-                            )}                           
-                        </div>
-                        <h2>Neighborhood with 4 identical houses</h2>                              
-                </div>
+            <div className='earningsValuation'>
+                <InputGroup header={'Earnings valuation'} inputs={inputs} setInputs={setInputs}/>
+                <ResultCard header={`Company value`} value={`${inputs.netIncome.value*inputs.expectedReturn.value}$`} />
+            </div>
         </div>
     )
 }
