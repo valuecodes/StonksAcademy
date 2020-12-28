@@ -4,8 +4,28 @@ import { makeStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-export function ArticleButton({text,onClick,disabled=false}) {
+const useStyles = makeStyles((theme) => ({
+    root: {
+        backgroundColor:'var(--secondary-color)',
+        color:'var(--text-light)',
+        borderColor:'var(--primary-color)',
+        "&:hover": {
+            // color:'dimgray',
+            backgroundColor:'var(--primary-color)',
+        },
+        
+    },
+    secondary:{
+        backgroundColor:'white',
+        borderColor:'var(--primary-color)'
+    }
+  }));
+
+  export function ArticleButton({text,onClick,disabled=false}) {
+    const classes = useStyles();
+
     return <Button 
+        className={classes.secondary}
         variant="outlined"
         onClick={onClick}
         size='large'
@@ -15,22 +35,12 @@ export function ArticleButton({text,onClick,disabled=false}) {
         </Button>
 }
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        backgroundColor:'var(--secondary-color)',
-        color:'var(--text-light)',
-        borderColor:'var(--primary-color)',
-        "&:hover": {
-            // color:'dimgray',
-            backgroundColor:'var(--primary-color)',
-        }
-    },
-  }));
 
-export function ArticleButtonPrimary({text,onClick}) {
+
+export function ArticleButtonPrimary({text,onClick,className}) {
     const classes = useStyles();
     return <Button
-        className={classes.root}
+        className={`${classes.root} ${className}`}
         variant="outlined"
         onClick={onClick}
         size='large'

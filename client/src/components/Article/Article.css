@@ -56,3 +56,7 @@
   background-color: var(--secondary-color)!important;
   color: var(--negative-color)!important; 
 }
+
+.newLine {
+  white-space: pre-wrap;
+}

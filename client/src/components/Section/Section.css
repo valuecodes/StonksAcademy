@@ -94,6 +94,15 @@
     font-size: 1rem!important;
 }
 
+.largeSectionTable{
+    padding-left: 0;
+}
+
+.MuiDivider-root{
+    margin-top: 0.5rem!important;
+    /* background-color: var(--secondary-color)!important; */
+}
+
 @media only screen and (max-width: 800px) {
     .sectionHeader > div{
         padding: 0 0.5rem!important;

@@ -1,7 +1,7 @@
 /* Table Of Content */
 .tableOfContent{
     display: grid;
-    grid-gap: 2rem;
+    grid-gap: 1rem;
 }
 
 .articleTerms{
@@ -22,7 +22,23 @@
   flex-wrap: wrap;
 }
 
-  /* CourseRecap */
+.tableOfContentContainer{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 4rem;
+  align-items: flex-start;
+}
+
+.courseIntroduction{
+  padding: 1rem;
+  min-width: 25rem;
+}
+
+.courseIntroduction h2{
+  margin-bottom: 1rem;
+}
+
+/* CourseRecap */
 .recapGrid{
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -81,9 +97,30 @@
   grid-template-columns: 2fr 1fr;
 }
 
+.introductionContent{
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.startCourseButton{
+  margin-top: 1rem!important;
+  width: 100%!important;
+}
+
+.tableOfContentSection{
+  background-color: #ffffff!important;
+  padding-left: 1rem;
+  border-left: 5px solid var(--secondary-color);
+  border-radius: 0.5rem;
+}
+
 @media only screen and (max-width: 800px) {
   .tableOfContent{
     padding-bottom: 2rem;
+  }
+
+  .tableOfContentContainer{
+    grid-template-columns: 1fr;
   }
 
   .courseContainer {

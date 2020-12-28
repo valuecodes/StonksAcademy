@@ -92,6 +92,7 @@ export function Course(courseContent,completedSections=null){
         name: courseContent.name,
         nextCourse:courseContent.nextCourse,
         sections: createSections(courseContent,completedSections),
+        introduction: courseContent.introduction, 
         init,
         navigate,
         complete,
