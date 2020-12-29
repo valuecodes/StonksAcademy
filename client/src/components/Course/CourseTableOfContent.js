@@ -14,35 +14,39 @@ export default function CourseTableOfContent({course, moveTo}){
     }
     return(
         <div id='tableOfContent' className='sectionContainer'>
-                <SectionHeader 
-                    header={`${camelCaseToString(course.name||'')}`} 
-                />            
-                <div className='sectionContentContainer largeSection'>
-                    <div className='tableOfContentContainer'>
-                        <ul className='tableOfContent'>
-                            <li><h2>Table of Content</h2></li>
-                            <Card className='tableOfContentSection'>
-                            {course.sections.map((item,index) =>
-                                <li key={index}>
-                                    
-                                        <h3>{index+1}. {camelCaseToString(item.name)}</h3>
-                                        <p>{item.desc}</p>
-                                        {/* <h4>Terms covered</h4> */}
-                                        {/* <ArticleTermList articleTerms={item.articleTerms} />    */}
-                                        <Divider/>     
-                                </li>    
-                            )}
-                            </Card> 
-                        </ul>   
-                        {Introduction&&
-                            <Card className='courseIntroduction'>
-                                <h2>Introduction</h2>
-                                <Introduction/>
-                                <ArticleButtonPrimary className='startCourseButton' onClick={()=>moveTo(0)} text={'Start Course'}/>
-                            </Card>
-                        }   
-                    </div>
-                </div>                
+                {(course.current==='start'||course.last==='start')&&
+                    <>
+                    <SectionHeader 
+                        header={`${camelCaseToString(course.name||'')}`} 
+                    />            
+                    <div className='sectionContentContainer largeSection'>
+                        <div className='tableOfContentContainer'>
+                            <ul className='tableOfContent'>
+                                <li><h2>Table of Content</h2></li>
+                                <Card className='tableOfContentSection'>
+                                {course.sections.map((item,index) =>
+                                    <li key={index}>
+                                        
+                                            <h3>{index+1}. {camelCaseToString(item.name)}</h3>
+                                            <p>{item.desc}</p>
+                                            {/* <h4>Terms covered</h4> */}
+                                            {/* <ArticleTermList articleTerms={item.articleTerms} />    */}
+                                            <Divider/>     
+                                    </li>    
+                                )}
+                                </Card> 
+                            </ul>   
+                            {Introduction&&
+                                <Card className='courseIntroduction'>
+                                    <h2>Introduction</h2>
+                                    <Introduction/>
+                                    <ArticleButtonPrimary className='startCourseButton' onClick={()=>moveTo(0)} text={'Start Course'}/>
+                                </Card>
+                            }   
+                        </div>
+                    </div> 
+                    </>                      
+                }
         </div>
     )
 }

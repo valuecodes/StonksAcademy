@@ -246,7 +246,9 @@ a{
 
 /* AcademySections */
 .academySections{
+  /* display: grid; */
   grid-template-columns: 100%;
+  /* grid-template-rows: 100vh; */
   height: calc(100vh - 228px);
   overflow: hidden;
 }
@@ -260,6 +262,10 @@ a{
 }
 .swipeableContainer > div > div{
   overflow: hidden!important;
+}
+
+.notVisible > div > div{
+  display: none;
 }
 
 .bgImageContainer, .bgImage{
@@ -384,21 +390,14 @@ a{
 }
 
 @media only screen and (max-width: 800px) {  
+  .courseHeader{
+    display: none;
+  }
   .chartContainer{
     height: 20rem;
   }
   .academySections{
-    display: grid;
-    grid-template-columns: 100%;
-    grid-gap: 20rem;
-    height: 100vh;
-  }
-  .academySections{
-    /* grid-template-columns: 100%; */
-    /* height: 70vh; */
-    /* height: calc(100vh - 128px)!important; */
-    /* height: 100vh; */
-    /* overflow: hidden; */
+    height: calc(100vh - 118px)!important;
   }
   
   .academyScreen{

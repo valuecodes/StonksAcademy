@@ -28,47 +28,51 @@ export default function CourseRecap({course, }){
 
     return(
         <div id='recap' className='sectionContainer'>
-            <SectionHeader 
-                header={'Recap'} 
-            />
-            <div className='sectionContentContainer largeSection'>
-                <div className='recapGrid'>
-                    <ul className='sectionScores'>
-                        <li>
-                            <div >
-                                <h3>Section Scores</h3>
-                                <div className='recapScore'>
-                                    {sections.map((item,index) =>
-                                        <Card key={index} className='scoreContainer'>
-                                            <h3>{index+1}{'. '}{camelCaseToString(item.name)}</h3>
-                                            {item.score&&
-                                                <div className='recapScoreProgress'>
-                                                    <ScoreMedium section={item}/>
-                                                </div>
-                                            } 
-                                        </Card>                        
-                                    )}
-                                </div>                        
-                            </div>
-                        </li>
-                        <li>
-                            <h4>Terms covered</h4>       
-                            <ArticleTermList articleTerms={allArticleTerms}/>     
-                        </li>
-                        <li>
-                            {course.nextCourse&& 
-                                <Link to={course.nextCourse||'/academy'}>
-                                    <ArticleButtonPrimary text={'Start next course'}  />
-                                </Link>
-                            }
-                        </li>
-                    </ul>              
-                    <Card className='courseScore'>
-                        <h2>Course Score</h2>
-                        <ScoreBig score={score}/>
-                    </Card>              
-                </div>                
-            </div>
+            {(course.current==='recap'||course.last==='recap')&&
+                <>
+                    <SectionHeader 
+                        header={'Recap'} 
+                    />
+                    <div className='sectionContentContainer largeSection'>
+                        <div className='recapGrid'>
+                            <ul className='sectionScores'>
+                                <li>
+                                    <div >
+                                        <h3>Section Scores</h3>
+                                        <div className='recapScore'>
+                                            {sections.map((item,index) =>
+                                                <Card key={index} className='scoreContainer'>
+                                                    <h3>{index+1}{'. '}{camelCaseToString(item.name)}</h3>
+                                                    {item.score&&
+                                                        <div className='recapScoreProgress'>
+                                                            <ScoreMedium section={item}/>
+                                                        </div>
+                                                    } 
+                                                </Card>                        
+                                            )}
+                                        </div>                        
+                                    </div>
+                                </li>
+                                <li>
+                                    <h4>Terms covered</h4>       
+                                    <ArticleTermList articleTerms={allArticleTerms}/>     
+                                </li>
+                                <li>
+                                    {course.nextCourse&& 
+                                        <Link to={course.nextCourse||'/academy'}>
+                                            <ArticleButtonPrimary text={'Start next course'}  />
+                                        </Link>
+                                    }
+                                </li>
+                            </ul>              
+                            <Card className='courseScore'>
+                                <h2>Course Score</h2>
+                                <ScoreBig score={score}/>
+                            </Card>              
+                        </div>                
+                    </div>
+                </>
+            }
         </div>
     )
 }

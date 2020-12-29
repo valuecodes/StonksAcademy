@@ -71,10 +71,10 @@ export default function AcademyCourseScreen(props) {
         let completedArticle = course.complete(id,score,attempts,course,setCourse)
         dispatch(completeSection(completedArticle))
     }
- 
+
     return (
         <div className='academyCourseScreen'>     
-            <CourseHeader header={camelCaseToString(id)} moveTo={handleNavigate} course={course}/>
+            <CourseHeader header={camelCaseToString(id)} moveTo={handleNavigate} course={course} className='courseHeader'/>
             <div className='courseContainer' id='courseContainer'>
                 <CourseNav moveTo={handleNavigate} course={course}/>
                 <div className='academySections' id={'academySections'} >
@@ -85,6 +85,7 @@ export default function AcademyCourseScreen(props) {
                             section={course.sections[index]} 
                             completeSection={completeSectionHandler}
                             moveTo={handleNavigate}
+                            course={course}
                         />
                     )}
                     <CourseRecap course={course}/>    

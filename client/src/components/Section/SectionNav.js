@@ -21,11 +21,11 @@ function a11yProps(index) {
     }
   }));
 
-
 export default function SectionNav({sectionNav,setSectionNav}) {
     const classes = useStyles();
     const handleChange = (event, newValue) => {
-        setSectionNav({...sectionNav,current:newValue})
+        const last = sectionNav.current 
+        setSectionNav({...sectionNav,current:newValue,last})
     };
 
     return (

@@ -17,10 +17,11 @@ export function Course(courseContent,completedSections=null){
                 attempts:completedSection?completedSection.attempts:0,
                 course:courseContent.name,
                 id:index,
+                sectionId:getSectionId(index),
                 completed:completedSection?true:false,
                 visited:false,
                 name:section.name,
-                sectionId: getSectionId(index),
+                last: startingSection,
                 current: startingSection,
                 score:completedSection?completedSection.score:null,
                 component:section.component
@@ -52,11 +53,13 @@ export function Course(courseContent,completedSections=null){
         }
 
         if(element){
+            const last = navigation.current
             element.scrollIntoView({behavior: "smooth"});
             navigation.sections.forEach(item => {
-                item.current=current
+                item.last = last
+                item.current = current
             })
-            setCourse({...navigation,current:current})
+            setCourse({...navigation,current:current,last})
         }
     }
 
@@ -89,6 +92,7 @@ export function Course(courseContent,completedSections=null){
 
     return{
         current:startingSection,
+        last:startingSection,
         name: courseContent.name,
         nextCourse:courseContent.nextCourse,
         sections: createSections(courseContent,completedSections),
