@@ -32,7 +32,7 @@ function TextItem({item}){
     return(
         <>
             <h3>{item.header}</h3>
-            <p>{item.text}</p>    
+            <p className='wordBreak'>{item.text}</p>    
             {item.list &&
                 <List list={item.list}/>
             }
@@ -46,8 +46,8 @@ function TextItem({item}){
 function List({list}){
     return(
         <ul className='textListList'>
-            {list.map(item =>
-                <li>{item}</li>
+            {list.map((item,index) =>
+                <li className='newLine' key={index}>{' '}{index+1}. {item}</li>
             )}
         </ul>
     )

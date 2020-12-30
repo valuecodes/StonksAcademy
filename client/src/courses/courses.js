@@ -66,7 +66,7 @@ const COURSES = [
     },    
     {
         name:'financials',
-        desc:'',
+        desc:'Course covering three main financials statements and use cases with examples',
         tier:'free',
         introduction: FinancialsIntroduction,
         sections:[

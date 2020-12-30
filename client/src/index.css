@@ -42,6 +42,8 @@ html{
   --text-dark:rgb(88, 88, 88);
   --light-color:rgb(107, 128, 148);
   --bg-color:#f3f3f3;
+  --course-container-height: calc(100vh - 368px);
+  --course-container-mobile-height: calc(100vh - 118px)!important;;
 }
 
 body{
@@ -121,6 +123,10 @@ a{
 
 .negative{
   color: var(--negative-dark-color);
+}
+
+.paddingTop{
+  padding-top: 2rem;
 }
 
 /* LandingScreen */

@@ -15,12 +15,17 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-export function InfoTooltip({text}) {
+export function InfoTooltip({text,className=''}) {
 
     const classes = useStyles();
 
     return (
-        <Tooltip  className={classes.tooltip} title={<p className={classes.text}>{text}</p>} placement="bottom-start">
+        <Tooltip  
+            className={`${classes.tooltip} ${className}`} 
+            title={<p className={classes.text}>{text}</p>} 
+            placement="bottom-start"
+            enterTouchDelay={500}
+        >
             <InfoIcon  />
         </Tooltip>
     )

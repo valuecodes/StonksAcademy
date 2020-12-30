@@ -23,9 +23,7 @@
 
 .textListList li{
   margin: 0;
-  font-weight: 500;
-  /* list-style-type: circle; */
-  /* margin-left: 4rem; */
+  /* font-weight: 500; */
 }
 
 .accordionDetails{
@@ -40,6 +38,10 @@
 
 .makeStyles-helper-375{
   word-break: normal;
+}
+
+.wordBreak{
+  white-space: pre-line;
 }
 
 .lowRisk{

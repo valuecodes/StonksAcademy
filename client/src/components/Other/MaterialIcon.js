@@ -17,6 +17,8 @@ import BuildIcon from '@material-ui/icons/Build';
 import StoreIcon from '@material-ui/icons/Store';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import GrainIcon from '@material-ui/icons/Grain';
+import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
+import ShowChartIcon from '@material-ui/icons/ShowChart';
 
 
 export default function MaterialIcon({icon,color='black',size='large',className,scale=1}){
@@ -60,6 +62,10 @@ export default function MaterialIcon({icon,color='black',size='large',className,
             return <FastfoodIcon className={className} />
         case 'GrainIcon':
             return <GrainIcon className={className} />
+        case 'AccountBalanceWalletIcon':
+            return <AccountBalanceWalletIcon className={className} />
+        case 'ShowChartIcon':
+            return <ShowChartIcon className={className} />
 
         default: return null
     }

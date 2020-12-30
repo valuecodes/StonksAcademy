@@ -6,6 +6,7 @@ import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
 import { makeStyles } from '@material-ui/core/styles';
+import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 
 const useStyles = makeStyles({
     dot:{
@@ -33,5 +34,28 @@ export function TimelineList({list=[]}) {
             </TimelineItem>            
         )}
       </Timeline>
+    );
+}
+
+export function TimelineListOpposite({list=[]}) {
+    const classes = useStyles();
+
+    return (
+        <Timeline >
+            {list.map((item,index) =>
+                <TimelineItem key={index} className={classes.timeline}>
+                    <TimelineOppositeContent className={classes.content}>
+                        {item[0]}
+                    </TimelineOppositeContent>
+                    <TimelineSeparator  className={classes.separator}>
+                    <TimelineDot  className={classes.dot} variant="outlined"/>
+                    {index<list.length-1 &&  <TimelineConnector />}
+                    </TimelineSeparator>
+                    <TimelineContent className={classes.content}>
+                        {item[1]}
+                    </TimelineContent>
+                </TimelineItem>            
+            )}
+        </Timeline>
     );
   }

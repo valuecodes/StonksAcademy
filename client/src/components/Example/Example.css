@@ -240,7 +240,70 @@
     max-width: 40rem;
 }
 
+.incomeExpample{
+    padding: 0 2rem;
+    display: grid;
+    grid-template-rows: repeat(4,10rem);
+    align-items: center;
+    grid-gap: 1rem;
+    grid-template-columns: 2fr 1fr;
+    background-color: var(--background-color)!important;
+}
+
+.incomeExpample svg{
+    height:6rem;
+    width: 6rem;
+}
+
+.padding{
+    padding: 2rem;
+}
+
+.statementContent li{
+    display: grid;
+    grid-template-columns: 1fr 7rem auto;
+    align-items: center;
+}
+
+.statementContent b{
+    font-size: 1.8rem;
+}
+
+.statementCompany{
+    color: var(--primary-color);
+    font-size: 2.2rem!important;
+}
+
+.statementSubHeader{
+    margin-top: 2rem;
+}
+
+.statementDate{
+    font-size: 1.2rem;
+}
+
+.statementExample{
+    height: var(--course-container-height);
+    overflow-y: scroll;
+}
+
+.statementPlaceHolder{
+    width: 2rem;
+}
+
+.timeLineHeader{
+    text-align: center;
+}
+
+.incomeTimeLine{
+    margin-top: 5rem;
+}
+
 @media only screen and (max-width: 800px) {
+
+    .statementExample{
+        height: 100%;
+    }
 
     .businessInputHeader div h2, .MuiInput-input{
         font-size: 1rem!important;

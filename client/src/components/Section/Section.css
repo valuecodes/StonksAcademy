@@ -21,22 +21,26 @@
 .sectionGrid{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-gap: 1rem;    
+    grid-gap: 2rem;    
     align-items: flex-start;
 }
 
 .sectionGrid1{
     display: grid;
     grid-template-columns: 1fr;
+    grid-gap: 2rem;
 }
 .sectionGrid2{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
 }
 
 .sectionGrid3{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    align-items: flex-start;
 }
 
 .gridItemWide{

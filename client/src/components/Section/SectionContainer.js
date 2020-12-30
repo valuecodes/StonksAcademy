@@ -47,6 +47,7 @@ export default function SectionContainer({section,sectionComponents,completeSect
                 className={`sectionContentContainer ${(sectionNav.current === index || sectionNav.last === index)?'active':'notVisible'}`}
                 >
                     {(course.current===section.id||course.last===section.id)&&  
+                        (sectionNav.current === index || sectionNav.last === index)&&
                         <Article 
                             {...props[index]}
                             moveTo={moveTo}
@@ -54,6 +55,7 @@ export default function SectionContainer({section,sectionComponents,completeSect
                             completeSection={completeSection}
                             className='testing'
                         />
+                        
                     }
                 </div>
             )}  
