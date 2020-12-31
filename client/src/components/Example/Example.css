@@ -269,6 +269,10 @@
     font-size: 1.8rem;
 }
 
+.statementHeader{
+    grid-template-columns: 1fr auto!important;
+}
+
 .statementCompany{
     color: var(--primary-color);
     font-size: 2.2rem!important;

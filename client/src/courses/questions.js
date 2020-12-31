@@ -219,6 +219,45 @@ const QUESTIONS={
                 answer:'True',
             },
         ]
+    },
+    "financials":{
+        incomeStatement:[
+            {
+                question:'Income Statement can be used for Year over Year and Quarter over Quarter comparison',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'EBIT stands for Earnings before interest and taxes',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'Gross profit is calculated by Net income - Cost of Revenue',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'Non-recurring Events includes one time and unusual events',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'Diluted Earnings per Share is usually bigger than Basic Earnings per Share',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'Depreciation and Amortization are non cash expenses',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'Income Statement is not suitable for management business decisions',
+                options:['True','False'],
+                answer:'False',
+            },
+        ]
     }
 }
 

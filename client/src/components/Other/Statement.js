@@ -18,7 +18,7 @@ export default function Statement({statement={}}) {
     return (
         <Card className='padding'>
             <ul className='statementContent'>
-                <li>
+                <li className='statementHeader'>
                     <h2>{statement.statement}</h2>
                     <b className='statementCompany'>{statement.company}</b>
                 </li>
@@ -28,7 +28,6 @@ export default function Statement({statement={}}) {
                     {statement.date.info&&
                         <InfoTooltip className={classes.tooltip} text={statement.date.info}/>
                     }
-                    
                 </li>
                 {statement.content.map((item,index) =>
                     item.header?<SubHeader key={index} item={item}/>:

@@ -1,18 +1,22 @@
 import React from 'react'
 import SectionContainer from '../../../components/Section/SectionContainer'
 import TextList from '../../../components/Article/TextList'
-import Statement from '../../../components/Other/Statement';
+import Statement from '../../../components/Other/Statement'
 import ArticleAccordion from '../../../components/Article/ArticleAccordion'
 import { Card } from '@material-ui/core';
 import { TimelineList, TimelineListOpposite } from '../../../components/Other/Timeline'
-import { ListSmall } from '../../../components/Other/Lists';
+import { ListSmall } from '../../../components/Other/Lists'
+import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz';
+
 
 export default function IncomeStatement(props) {
     const sectionComponents = [
         {name:'OverView',article: OverView},
         {name:'Structure',article: Structure},
         {name:'Example',article: Example},
+        {name:'Exercise',article: ExerciseQuiz}
     ]
+    
     return (
         <SectionContainer 
             sectionComponents={sectionComponents} 

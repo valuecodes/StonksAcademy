@@ -110,7 +110,8 @@
 .tableOfContentSection{
   background-color: #ffffff!important;
   padding-left: 1rem;
-  border-left: 5px solid var(--secondary-color);
+  /* border-left: 5px solid var(--secondary-color); */
+  border-left: 5px solid var(--light-color);
   border-radius: 0.5rem;
 }
 
