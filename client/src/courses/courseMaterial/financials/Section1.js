@@ -155,7 +155,6 @@ function OverView(){
                     ]}
                 /> 
                 <ListSmall list={accordion}/>
-                {/* <AccordionLight list={accordion}/>         */}
             </div>
             <div className='paddingTop'>
                 <TimelineList list={['Revenue','Expenses','Gains and Losses','Net Income']}/>

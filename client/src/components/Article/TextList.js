@@ -47,7 +47,7 @@ function List({list}){
     return(
         <ul className='textListList'>
             {list.map((item,index) =>
-                <li className='newLine' key={index}>{' '}{index+1}. {item}</li>
+                <li className='newLine' key={index}>{''}<b>{index+1}. </b>{item}</li>
             )}
         </ul>
     )
