@@ -15,6 +15,15 @@ const useStyles = makeStyles((theme) => ({
     fontSize:16,
     flexBasis: '93.33%',
   },
+  subHeader:{
+    fontWeight:500,
+    fontSize:15,
+    marginLeft:5,
+    padding:'10px 0px'
+  },
+  listText:{
+    marginLeft:10
+  }
 }));
 
 export default function ArticleAccordion({content}) {
@@ -40,13 +49,33 @@ export default function ArticleAccordion({content}) {
                 {item.chip}
                 </AccordionSummary>
                 <AccordionDetails>
-
-                  <Typography>
-                      {item.text}
-                  </Typography>
+                  {item.text&&
+                    <Typography>
+                        {item.text}
+                    </Typography>                  
+                  }
+                  {item.list&&
+                    <List list={item.list}/>
+                  }
                 </AccordionDetails>
             </Accordion>   
         )}
     </div>
   );
+}
+
+function List({list}) {
+  const classes = useStyles();
+  return(
+    <ul>
+      {list.map(item =>
+          <li>
+            <h4 className={classes.subHeader}>{item.subHeader}</h4>
+            <Typography className={classes.listText}>
+              {item.text}
+            </Typography>         
+          </li>
+        )}      
+    </ul>
+  ) 
 }

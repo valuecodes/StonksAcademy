@@ -26,6 +26,7 @@ export default function IncomeStatement(props) {
 }
 
 function Structure(){
+    
     const content = [
         {header:'Revenue',text:'The topline of the income statement. It includes total sales and all the direct costs that are included in the manufacturing and delivering the product or service to the customers'},
         {header:'Operating Expenses',text:'Operating expenses (OPEX) is an ongoing cost for running a business. It includes all the indirect costs of running a business'},
