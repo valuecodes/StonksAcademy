@@ -6,7 +6,7 @@ import ArticleAccordion from '../../../components/Article/ArticleAccordion'
 import { Card } from '@material-ui/core';
 import { TimelineList, TimelineListOpposite } from '../../../components/Other/Timeline'
 import { ListSmall } from '../../../components/Other/Lists'
-import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz';
+import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 
 
 export default function IncomeStatement(props) {

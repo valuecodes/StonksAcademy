@@ -257,6 +257,38 @@ const QUESTIONS={
                 options:['True','False'],
                 answer:'False',
             },
+        ],
+        balanceSheet:[
+            {
+                question:'Balance sheet shows if the company has positive net worth',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'Property Plant and Equiment are current assets',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'Accounts Receivables are current liabilities',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'Inventory is long term asset',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'Accrued Expenses are current liabilities',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'Goodwill is liability',
+                options:['True','False'],
+                answer:'False',
+            },
         ]
     }
 }

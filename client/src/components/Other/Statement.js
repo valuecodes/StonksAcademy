@@ -10,6 +10,10 @@ const useStyles = makeStyles((theme) => ({
     tooltip:{
         marginLeft:'auto',
         color:'var(--secondary-color)'
+    },
+    total:{
+        // fontWeight:600,
+        borderTop:'1px solid var(--background-color)'
     }
 }));
 
@@ -42,8 +46,8 @@ export default function Statement({statement={}}) {
 function Content({item}){
     const classes = useStyles();
     return <li>
-        <p>{item.name}</p>
-        {item.value&& <p>{item.value}</p>}
+        <p className={item.value&&item.total&&classes.total}>{item.name}</p>
+        <p className={item.value&&item.total&&classes.total}>{item.value}</p>
         {item.info?<InfoTooltip className={classes.tooltip} text={item.info}/>:<div className='statementPlaceHolder'></div>}
     </li>
 }

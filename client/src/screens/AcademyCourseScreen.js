@@ -25,6 +25,7 @@ export default function AcademyCourseScreen(props) {
     const { completedSections } = sectionGetCompleted
 
     useEffect(()=>{
+        console.log('updated')
         dispatch(getCompletedSections(id))
         // eslint-disable-next-line react-hooks/exhaustive-deps        
     },[id])
@@ -34,10 +35,10 @@ export default function AcademyCourseScreen(props) {
         course.sections.forEach(item =>{
             let Section = item.component
             newSections.push(Section)
-        })      
+        })    
         setSections(newSections)  
-    },[course])
-
+    },[course,id])
+ 
     useEffect(()=>{
         if(completedSuccess){
             // enqueueSnackbar('Progress saved successfully!', {variant:'success'});
@@ -61,7 +62,7 @@ export default function AcademyCourseScreen(props) {
             setCourse({...updatedCourse})     
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps        
-    }, [completedSections])
+    }, [completedSections,id])
 
     const handleNavigate=(direction,status)=>{
         course.navigate(direction,status,course,setCourse)
@@ -80,6 +81,7 @@ export default function AcademyCourseScreen(props) {
                 <div className='academySections' id={'academySections'} >
                     <CourseTableOfContent course={course} moveTo={handleNavigate}/>
                     {sections.map((Section,index) =>
+                        course.sections[index]&&
                         <Section 
                             key={course.sections[index].sectionId}
                             section={course.sections[index]} 
