@@ -6,13 +6,17 @@ import SectionContainer from '../../../components/Section/SectionContainer'
 import { Card } from '@material-ui/core'
 import ArticleAccordion from '../../../components/Article/ArticleAccordion'
 import Statement from '../../../components/Other/Statement'
+import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 
 export default function CashFlowStatement(props) {
+    
     const sectionComponents = [
         {name:'OverView',article: OverView},
         {name:'Structure',article: Structure},
-        {name:'Example',article: Example}
+        {name:'Example',article: Example},
+        {name:'Exercise',article: ExerciseQuiz}
     ]
+
     return (
         <SectionContainer 
             sectionComponents={sectionComponents} 

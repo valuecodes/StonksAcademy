@@ -289,6 +289,43 @@ const QUESTIONS={
                 options:['True','False'],
                 answer:'False',
             },
+        ],
+        cashFlowStatement:[
+            {
+                question:'Cashflow statement provides additional information about changes in assets, liabilities and equity',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'Positive Financing cash flow indicates that the company is paying back debt',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'Operating cash flow should cover company operating costs',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'Capital Expenditures are investing cash flow',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'Cash taxes paid are financing cash flow',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'Free cash flow is calculated by: Operating cash flow - Capital expenditures',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'Operating cash flow should be positive and Investing and Financing Negative',
+                options:['True','False'],
+                answer:'True',
+            },
         ]
     }
 }
