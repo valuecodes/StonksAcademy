@@ -171,7 +171,7 @@ function OverView(){
                 <TextList
                     content={[
                         {header:'Definition',text:"Balance sheet is used for reporting company company's assets, liabilities and shareholder equity. It is a snapshot of company's finances at a speficic date and represents what the company owns and owes."},
-                        {header:'Components',text:`Balance sheet consist of 4 main components:`}
+                        {header:'Components',text:`Balance sheet consist of 3 main components:`}
                     ]}
                 /> 
                 <ListSmall list={accordion}/>

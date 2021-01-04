@@ -82,12 +82,12 @@ const COURSES = [
                 articleTerms: ['Cash','Assets','Current Assets','Liabilities','Current Liabilities','Net Debt','Gross Debt'],
                 component: BalanceSheet
             },
-            // {
-            //     name: 'cashFlowStatement',
-            //     desc: 'Cash Flow statement basics',
-            //     articleTerms: ['Operating Cash Flow','Investing Cash Flow','Financing Cash Flow','Free Cash Flow'],
-            //     component: CashFlowStatement
-            // },
+            {
+                name: 'cashFlowStatement',
+                desc: 'Cash Flow statement basics',
+                articleTerms: ['Operating Cash Flow','Investing Cash Flow','Financing Cash Flow','Free Cash Flow'],
+                component: CashFlowStatement
+            },
         ]
     }, 
     // {
