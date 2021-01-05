@@ -11,6 +11,7 @@ import { SnackbarProvider } from 'notistack';
 import { makeStyles } from '@material-ui/core/styles';
 import { snackBarStyle, snackBarOptions } from './utils/snackbar';
 import DisclaimerScreen from './screens/DisclaimerScreen'
+import TermsOfServiceScreen from './screens/TermsOfServiceScreen'
 
 const useStyles = makeStyles(snackBarStyle)
 
@@ -25,6 +26,7 @@ function App() {
         <Header/>
         <main>
           <div className='container'>
+            <Route path='/terms-of-service' component={TermsOfServiceScreen}/>
             <Route path='/disclaimer' component={DisclaimerScreen}/>
             <Route path='/privacy-policy' component={PrivacyPolicyScreen}/>
             <Route path='/profile' component={ProfileScreen} />

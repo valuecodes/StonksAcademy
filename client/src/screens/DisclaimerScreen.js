@@ -3,13 +3,13 @@ import React from 'react'
 export default function DisclaimerScreen() {
     return (
         <div className='disclaimerScreen privacyPolicyScreen'>
-            <h2>Disclaimer for Stonks Academy</h2>
+            <h1>Disclaimer for Stonks Academy</h1>
             <p>Before using this site, please read the following information:</p>
             <br></br>
-            <h3>Do your own Research</h3>
+            <h2>Do your own Research</h2>
             <p>Content on this website is for informational purposes only. Stonks Academy is not a registered investment, legal or tax advisor. We are doing our best to prepare the content of this site but unintended errors and misprints may occur. In addition, to the extent permitted by the law, Stonks Academy shall not be responsible for any losses and/or damages due to the usage of the information on our website.</p>
             <br></br>
-            <h3>Not a financial advice</h3>
+            <h2>Not a financial advice</h2>
             <p>The information contained in this website shall not be taken as a financial advice. Investing is risky you may sustain a total loss greater than the amount you deposited. Stonks Academy recommends that you seek advice from professional before making investment decisions.</p>
             <br></br>
             <p>By using our website, you hereby consent to our disclaimer and agree to its terms.</p>

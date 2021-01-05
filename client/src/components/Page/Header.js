@@ -43,6 +43,7 @@ export default function Header() {
         {linkTo:'/profile',text:'Profile',loginRequired:true},
         {linkTo:'/privacy-policy',text:'Privacy Policy',mobileOnly:'true'},
         {linkTo:'/disclaimer',text:'Disclaimer',mobileOnly:'true'},
+        {linkTo:'/terms-of-service',text:'Terms of Service',mobileOnly:'true'},
     ]
 
     return (
