@@ -30,7 +30,6 @@
 
 .mainNav ul li a:hover{
     background-color: var(--light-color);
-
 }
   
 .googleLogin{
@@ -69,6 +68,7 @@ height: 3rem;
 
 .footerLinks a{
     color: rgb(209, 209, 209);
+    margin-left: 1rem;
 }
 
 .privacyPolicyScreen a{

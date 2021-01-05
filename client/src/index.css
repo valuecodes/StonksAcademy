@@ -389,6 +389,12 @@ a{
   transform: scale(0);
 }
 
+.disclaimerScreen{
+  padding: 2rem;
+  max-width: 60rem;
+  margin: auto;
+}
+
 @media only screen and (min-width: 800px) {
   .mobileNav{
     display: none!important;

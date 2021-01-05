@@ -11,6 +11,7 @@ export default function Footer() {
                     Stonks Academy 2020 ® 
                 </div>
                 <div className='footerLinks'>
+                    <Link to='/disclaimer'>Disclaimer</Link>
                     <Link to='/privacy-policy'>Privacy Policy</Link>
                 </div>                
             </div> 

@@ -7,6 +7,10 @@ export default function PrivacyPolicyScreen() {
             <p>Last updated: December 21, 2020</p>
             <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
             <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy has been created with the help of the <a href="https://www.privacypolicies.com/privacy-policy-generator/" target="_blank" rel="noreferrer">Privacy Policy Generator</a>.</p>
+            {/* Added---------------- */}
+            <br></br>
+            <p>Stonks Academy website administration is obliged to maintain your privacy on the Internet. We pay great attention to securing the data you provided to us. Our privacy policy is based on the <a href="https://ec.europa.eu/info/law/law-topic/data-protection_en" target="_blank" rel="noreferrer">General Data Protection Regulation (GDPR) of the European Union</a> . The purposes, for which we collect your personal data are: improvement of our service, communication with visitors to this site, user data processing for the purpose of online sales, providing services associated with the website’s specialization, and for other actions listed below.</p>
+            {/* --------------------------- */}
             <h1>Interpretation and Definitions</h1>
             <h2>Interpretation</h2>
             <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
@@ -53,7 +57,13 @@ export default function PrivacyPolicyScreen() {
             <h1>Collecting and Using Your Personal Data</h1>
             <h2>Types of Data Collected</h2>
             <h3>Personal Data</h3>
-            <p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:</p>
+            <p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. 
+            {/* Added-------------------------     */}
+            <br></br>
+             Collection and processing of your personal information is carried out in accordance with the laws of the European Union and the Finland.
+             <br></br>
+            {/* ----------------------- */}
+             Personally identifiable information may include, but is not limited to:</p>
             <ul>
             <li>
             <p>Email address</p>
@@ -163,15 +173,59 @@ export default function PrivacyPolicyScreen() {
             <h1>Links to Other Websites</h1>
             <p>Our Service may contain links to other websites that are not operated by Us. If You click on a third party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit.</p>
             <p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
+
+            {/* Added------------------------------------------------------ */}
+            <br></br>
+            <h1>Children’s personal information</h1> 
+            <p>If you are a parent or a legal guardian of an underage child, and you know that the child has provided us with their personal information without your consent, please contact us on: juhakangas55@gmail.com. It is forbidden to enter personal data of underage users without the agreement of parents or lawful guardians.</p>
+            <br></br>
+            <h1>Processing of personal data by other services</h1>
+            <p>
+                This website uses third-party online services, which perform data collecting, independent from us. Such services include: <b>Google Analytics</b> and <b>Google AdSense</b>.
+
+                <br></br>
+
+                Data collected by these services may be provided to other services within those organizations. They can use the data for advertising personalization of their own advertising network. You can learn about user agreements of those organizations on their websites. You can also refuse their collection of your personal data. For example, Google Analytics Opt-out Browser Add-on can be found <a href="https://tools.google.com/dlpage/gaoptout?hl=en" target="_blank" rel="noreferrer">here </a> . We do not pass any personal data to other organizations or services, which are not listed in this privacy policy. As an exception, the collected data may be provided on a lawful request of state authorities, that are authorized to request such information.                
+            </p>
+
+            <h1>Data storage, alteration, and removal</h1> 
+            <p>
+            The user, who has provided Stonks Academy with their personal data, has the right for their alteration and removal, as well as the right to recall the agreement to data processing. Time, during which your personal data will be stored is: time the personal data is used that is necessary for the website’s main activity. After finishing with the processing of your personal data, the website’s administration will permanently delete it. To access your personal data, you can contact the administration on: juhakangas55@gmail.com. We will be able to pass your data to a third party only with your willing consent. If the data was transferred to a third party, which is not associated with our organization, we cannot perform any changes to that data.                
+            </p>
+
+            <h1>Processing of visiting technical data</h1> 
+            <p>
+            Records of your IP address, time of visit, browser settings, operational system and other technical information is saved in the database when you visit Stonks Academy. This data is necessary for the correct display of the website’s content. It is impossible to identify the person of the visitor using this data.                
+            </p>
+
+            {/* ------------------------------------------------------------------ */}
+
             <h1>Changes to this Privacy Policy</h1>
             <p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.</p>
             <p>We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the &quot;Last updated&quot; date at the top of this Privacy Policy.</p>
             <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+
+            {/* ----------------------------------- */}
+            <br></br>
+            <p>
+            We are monitoring any changes in legislation, which is related to personal data in European Union and Finland. If your personal data, and more specifically, your contact information was entered incorrectly, we will not be able to contact you.
+            </p>
+            {/* -------------------------------- */}
+
             <h1>Contact Us</h1>
             <p>If you have any questions about this Privacy Policy, You can contact us:</p>
             <ul>
             <li>By visiting this page on our website: <a href="https://stonksacademy.herokuapp.com/contact" rel="external nofollow noreferrer" target="_blank">https://stonksacademy.herokuapp.com/contact</a></li>
             </ul>
+            {/* --------------------- */}
+
+            {/* <h1>Feedback and final clauses</h1>  */}
+               <p>
+                   If you do not agree with this privacy policy, you cannot use the services of Stonks Academy. In this case you should avoid visiting our website.
+                </p> 
+
+            {/* --------------------------- */}
+
         </div>
     )
 }
