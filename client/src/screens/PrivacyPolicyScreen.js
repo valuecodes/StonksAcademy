@@ -6,7 +6,7 @@ export default function PrivacyPolicyScreen() {
             <h1>Privacy Policy</h1>
             <p>Last updated: December 21, 2020</p>
             <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
-            <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy has been created with the help of the <a href="https://www.privacypolicies.com/privacy-policy-generator/" target="_blank" rel="noreferrer">Privacy Policy Generator</a>.</p>
+            <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>
             {/* Added---------------- */}
             <br></br>
             <p>Stonks Academy website administration is obliged to maintain your privacy on the Internet. We pay great attention to securing the data you provided to us. Our privacy policy is based on the <a href="https://ec.europa.eu/info/law/law-topic/data-protection_en" target="_blank" rel="noreferrer">General Data Protection Regulation (GDPR) of the European Union</a> . The purposes, for which we collect your personal data are: improvement of our service, communication with visitors to this site, user data processing for the purpose of online sales, providing services associated with the website’s specialization, and for other actions listed below.</p>
@@ -177,7 +177,7 @@ export default function PrivacyPolicyScreen() {
             {/* Added------------------------------------------------------ */}
             <br></br>
             <h1>Children’s personal information</h1> 
-            <p>If you are a parent or a legal guardian of an underage child, and you know that the child has provided us with their personal information without your consent, please contact us on: juhakangas55@gmail.com. It is forbidden to enter personal data of underage users without the agreement of parents or lawful guardians.</p>
+            <p>If you are a parent or a legal guardian of an underage child, and you know that the child has provided us with their personal information without your consent, please contact us on: <a href='mailto:&#115;&#116;&#111;&#110;&#107;&#115;&#97;&#99;&#97;&#100;&#101;&#109;&#121;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;'>&#115;&#116;&#111;&#110;&#107;&#115;&#97;&#99;&#97;&#100;&#101;&#109;&#121;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a> . It is forbidden to enter personal data of underage users without the agreement of parents or lawful guardians.</p>
             <br></br>
             <h1>Processing of personal data by other services</h1>
             <p>
@@ -190,7 +190,7 @@ export default function PrivacyPolicyScreen() {
 
             <h1>Data storage, alteration, and removal</h1> 
             <p>
-            The user, who has provided Stonks Academy with their personal data, has the right for their alteration and removal, as well as the right to recall the agreement to data processing. Time, during which your personal data will be stored is: time the personal data is used that is necessary for the website’s main activity. After finishing with the processing of your personal data, the website’s administration will permanently delete it. To access your personal data, you can contact the administration on: juhakangas55@gmail.com. We will be able to pass your data to a third party only with your willing consent. If the data was transferred to a third party, which is not associated with our organization, we cannot perform any changes to that data.                
+            The user, who has provided Stonks Academy with their personal data, has the right for their alteration and removal, as well as the right to recall the agreement to data processing. Time, during which your personal data will be stored is: time the personal data is used that is necessary for the website’s main activity. After finishing with the processing of your personal data, the website’s administration will permanently delete it. To access your personal data, you can contact the administration on: <a href='mailto:&#115;&#116;&#111;&#110;&#107;&#115;&#97;&#99;&#97;&#100;&#101;&#109;&#121;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;'>&#115;&#116;&#111;&#110;&#107;&#115;&#97;&#99;&#97;&#100;&#101;&#109;&#121;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a> . We will be able to pass your data to a third party only with your willing consent. If the data was transferred to a third party, which is not associated with our organization, we cannot perform any changes to that data.                
             </p>
 
             <h1>Processing of visiting technical data</h1> 
@@ -215,6 +215,7 @@ export default function PrivacyPolicyScreen() {
             <h1>Contact Us</h1>
             <p>If you have any questions about this Privacy Policy, You can contact us:</p>
             <ul>
+            <li>By sending Email to: <a href='mailto:&#115;&#116;&#111;&#110;&#107;&#115;&#97;&#99;&#97;&#100;&#101;&#109;&#121;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;'>&#115;&#116;&#111;&#110;&#107;&#115;&#97;&#99;&#97;&#100;&#101;&#109;&#121;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></li>
             <li>By visiting this page on our website: <a href="https://stonksacademy.herokuapp.com/contact" rel="external nofollow noreferrer" target="_blank">https://stonksacademy.herokuapp.com/contact</a></li>
             </ul>
             {/* --------------------- */}

@@ -14,6 +14,7 @@ export default function Footer() {
                     <Link to='/disclaimer'>Disclaimer</Link>
                     <Link to='/privacy-policy'>Privacy Policy</Link>
                     <Link to='/terms-of-service'>Terms Of Service</Link>
+                    <Link to='/contact'>Contact</Link>
                 </div>                
             </div> 
         </footer>

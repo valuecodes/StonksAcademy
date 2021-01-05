@@ -41,9 +41,10 @@ export default function Header() {
         {linkTo:'/academy',text:'Academy'},
         // {linkTo:'/academy',text:'Playground'},
         {linkTo:'/profile',text:'Profile',loginRequired:true},
-        {linkTo:'/privacy-policy',text:'Privacy Policy',mobileOnly:'true'},
         {linkTo:'/disclaimer',text:'Disclaimer',mobileOnly:'true'},
+        {linkTo:'/privacy-policy',text:'Privacy Policy',mobileOnly:'true'},
         {linkTo:'/terms-of-service',text:'Terms of Service',mobileOnly:'true'},
+        {linkTo:'/contact',text:'Contact',mobileOnly:'true'},
     ]
 
     return (
