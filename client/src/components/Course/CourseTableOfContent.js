@@ -1,11 +1,11 @@
 import React from 'react'
 import SectionHeader from '../Section/SectionHeader'
 import './Course.css'
-import { ArticleTermList } from '../Article/ArticleTerm';
 import { ArticleButtonPrimary } from '../Other/Buttons'
 import { camelCaseToString } from '../../utils/utils';
 import Card from '@material-ui/core/Card';
 import Divider from '@material-ui/core/Divider';
+import AdSense from 'react-adsense';
 
 export default function CourseTableOfContent({course, moveTo}){
     let Introduction = null
@@ -43,6 +43,14 @@ export default function CourseTableOfContent({course, moveTo}){
                                     <ArticleButtonPrimary className='startCourseButton' onClick={()=>moveTo(0)} text={'Start Course'}/>
                                 </Card>
                             }   
+                            <div className='add-adsense desktop-add'>
+                                <AdSense.Google
+                                    client='ca-pub-4976696279180454'
+                                    slot='7806394673'
+                                    style={{ width: 160, height: 600, float: '' }}
+                                    format=''
+                                    />
+                            </div>
                         </div>
                     </div> 
                     </>                      

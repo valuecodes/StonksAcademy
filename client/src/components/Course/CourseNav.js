@@ -10,6 +10,7 @@ import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
 import { camelCaseToString } from '../../utils/utils';
 import Badge from '@material-ui/core/Badge';
 import DoneIcon from '@material-ui/icons/Done';
+import AdSense from 'react-adsense';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

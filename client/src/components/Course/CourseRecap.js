@@ -7,6 +7,7 @@ import {ArticleTermList} from '../../components/Article/ArticleTerm'
 import { ArticleButtonPrimary } from '../Other/Buttons'
 import { Link } from 'react-router-dom'
 import { camelCaseToString } from '../../utils/utils';
+import AdSense from 'react-adsense';
 
 export default function CourseRecap({course, }){
     
@@ -37,8 +38,8 @@ export default function CourseRecap({course, }){
                         <div className='recapGrid'>
                             <ul className='sectionScores'>
                                 <li>
-                                    <div >
-                                        <h3>Section Scores</h3>
+                                    <h3>Section Scores</h3>
+                                    <div className='recapScoreContainer'>    
                                         <div className='recapScore'>
                                             {sections.map((item,index) =>
                                                 <Card key={index} className='scoreContainer'>
@@ -51,6 +52,10 @@ export default function CourseRecap({course, }){
                                                 </Card>                        
                                             )}
                                         </div>                        
+                                    <Card className='courseScore'>
+                                        <h2>Course Score</h2>
+                                        <ScoreBig score={score}/>
+                                    </Card>  
                                     </div>
                                 </li>
                                 <li>
@@ -64,11 +69,24 @@ export default function CourseRecap({course, }){
                                         </Link>
                                     }
                                 </li>
-                            </ul>              
-                            <Card className='courseScore'>
-                                <h2>Course Score</h2>
-                                <ScoreBig score={score}/>
-                            </Card>              
+                                
+                            </ul>    
+                            <div>
+                                <div className='add-adsense desktop-add'>
+                                    <AdSense.Google
+                                        client='ca-pub-4976696279180454'
+                                        slot='7806394673'
+                                        style={{ width: 300, height: 600, float: '' }}
+                                        format=''
+                                        />
+                                </div>                                 
+                                {/* <Card className='courseScore'>
+                                    <h2>Course Score</h2>
+                                    <ScoreBig score={score}/>
+                                </Card>                                    */}
+                            </div>          
+
+
                         </div>                
                     </div>
                 </>

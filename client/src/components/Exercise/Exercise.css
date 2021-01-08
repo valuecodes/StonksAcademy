@@ -72,7 +72,9 @@
     display: grid;
     grid-template-columns: 1fr minmax(40rem,1fr) 1fr;
     grid-gap: 1rem;
+    align-items: flex-start;
 }
+
 .quizGrid > div{
     padding: 1rem;
 }

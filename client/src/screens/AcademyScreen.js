@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import MaterialIcon from '../components/Other/MaterialIcon'
 import COURSES from '../courses/courses'
 import Card from '@material-ui/core/Card';
+import AdSense from 'react-adsense';
 
 export default function AcademyScreen(){
     
@@ -16,12 +17,22 @@ export default function AcademyScreen(){
 
     return (
         <section className='academyScreen'>
-            <ScreenHeader header={'Academy'}/>
-            <h2 className='academyCoursesHeader'>Featured Courses</h2>
-            <div className='academyCourses'>    
-                {academyCourses.map(course => 
-                    <AcademyCourse key={course.name} course={course}/>
-                )}
+            <div className='academyContent'>
+                <ScreenHeader header={'Academy'}/>
+                <h2 className='academyCoursesHeader'>Featured Courses</h2>
+                <div className='academyCourses'>    
+                    {academyCourses.map(course => 
+                        <AcademyCourse key={course.name} course={course}/>
+                    )}
+                </div>   
+            </div>
+            <div className='add-adsense desktop-add add-big'>
+                <AdSense.Google
+                    client='ca-pub-4976696279180454'
+                    slot='7806394673'
+                    style={{ width: 300, height: 600, float: '' }}
+                    format=''
+                />
             </div>
         </section>
     )

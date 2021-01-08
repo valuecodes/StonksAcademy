@@ -32,6 +32,7 @@
     "notistack": "^1.0.2",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
+    "react-adsense": "^0.1.0",
     "react-beautiful-dnd": "^13.0.0",
     "react-chartjs-2": "^2.11.1",
     "react-google-button": "^0.7.1",

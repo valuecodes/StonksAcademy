@@ -23,6 +23,7 @@ import { formatDate } from '../../utils/utils';
 import { InputSlider }  from '../Other/Sliders'
 import { DeleteButton } from '../Other/Buttons'
 import QUESTIONS from '../../courses/questions'
+import AdSense from 'react-adsense';
 
 const useStyles = makeStyles({
   root: {
@@ -177,7 +178,17 @@ export default function ExerciseQuiz({section,completeSection,moveTo}){
                 </>
             }
             {quiz.stage==='completed'&&
-                <ExersiceCompleted section={quiz} tryAgain={startExerciseHandler} moveTo={moveTo}/>
+                <>
+                    <ExersiceCompleted section={quiz} tryAgain={startExerciseHandler} moveTo={moveTo}/>
+                    <div className='add-adsense desktop-add'>
+                        <AdSense.Google
+                            client='ca-pub-4976696279180454'
+                            slot='7806394673'
+                            style={{ width: 336, height: 280, float: 'right' }}
+                            format=''
+                        />
+                    </div>
+                </>
             }
         </div>        
     )
