@@ -39,7 +39,7 @@ export default function Header() {
     const menuItems=[
         {linkTo:'/',text:'Home'},
         {linkTo:'/academy',text:'Academy'},
-        // {linkTo:'/academy',text:'Playground'},
+        {linkTo:'/playground',text:'Playground'},
         {linkTo:'/profile',text:'Profile',loginRequired:true},
         {linkTo:'/disclaimer',text:'Disclaimer',mobileOnly:'true'},
         {linkTo:'/privacy-policy',text:'Privacy Policy',mobileOnly:'true'},

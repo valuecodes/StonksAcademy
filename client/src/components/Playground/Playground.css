@@ -1,0 +1,30 @@
+.playgroundListItem{
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 18rem auto;
+}
+
+.playgroundItemHeader{
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.playgroundIcon{
+    height: 9rem!important;
+    width: 9rem!important;
+    color: var(--secondary-color);
+    opacity: 0.4;
+    margin:0 2rem;
+}
+
+
+@media only screen and (max-width: 800px) {  
+    .playgroundListItem{
+        grid-template-columns: 1fr auto;
+    }
+    .playgroundIconContainer{
+        display: none;
+    }
+}
+  
+  

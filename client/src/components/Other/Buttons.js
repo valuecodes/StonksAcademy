@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
         color:'var(--text-light)',
         borderColor:'var(--primary-color)',
         "&:hover": {
-            // color:'dimgray',
             backgroundColor:'var(--primary-color)',
         },
         
@@ -18,6 +17,13 @@ const useStyles = makeStyles((theme) => ({
     secondary:{
         backgroundColor:'white',
         borderColor:'var(--primary-color)'
+    },
+    actionButton:{
+        backgroundColor:'var(--secondary-color)',
+        color:'white',
+        "&:hover": {
+            backgroundColor:'var(--primary-color)',
+        },
     }
   }));
 
@@ -74,10 +80,24 @@ export function ResetButton({text,onClick}){
         variant="contained"
         color="secondary"
         onClick={onClick}
-        // className={classes.button}
         startIcon={<DeleteIcon />}
       >
         {text}
       </Button>
     )
+}
+
+export function ActionButton({text}){
+    const classes = useStyles();
+
+    return(
+        <Button
+            variant="contained"
+            size='large'
+            // onClick={onClick}
+            className={classes.actionButton}
+          >
+            {text}
+          </Button>
+        )
 }

@@ -20,7 +20,7 @@ import GrainIcon from '@material-ui/icons/Grain';
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import ShowChartIcon from '@material-ui/icons/ShowChart';
 import AssessmentIcon from '@material-ui/icons/Assessment';
-
+import EqualizerIcon from '@material-ui/icons/Equalizer';
 
 export default function MaterialIcon({icon,color='black',size='large',className,scale=1}){
 
@@ -69,7 +69,8 @@ export default function MaterialIcon({icon,color='black',size='large',className,
             return <ShowChartIcon className={className} />
         case 'AssessmentIcon':
             return <AssessmentIcon className={className} />
-
+        case 'EqualizerIcon':
+            return <EqualizerIcon className={className} />
         default: return null
     }
 }
