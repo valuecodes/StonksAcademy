@@ -14,6 +14,7 @@ import DisclaimerScreen from './screens/DisclaimerScreen'
 import TermsOfServiceScreen from './screens/TermsOfServiceScreen'
 import ContactScreen from './screens/ContactScreen'
 import PlaygroundScreen from './screens/PlaygroundScreen'
+import PlaygroundSectionScreen from './screens/PlaygroundSectionScreen'
 
 const useStyles = makeStyles(snackBarStyle)
 
@@ -33,7 +34,8 @@ function App() {
             <Route path='/disclaimer' component={DisclaimerScreen}/>
             <Route path='/privacy-policy' component={PrivacyPolicyScreen}/>
             <Route path='/profile' component={ProfileScreen} />
-            <Route path='/playground' component={PlaygroundScreen}/>
+            <Route exact={true} path='/playground/:id' component={PlaygroundSectionScreen}/>
+            <Route exact={true} path='/playground' component={PlaygroundScreen}/>
             <Route path='/academy/:id' component={AcademyCourseScreen}/>
             <Route exact={true} path='/academy' component={AcademyScreen} />
             <Route exact={true} path='/' component={LandingScreen}/> 

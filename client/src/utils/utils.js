@@ -1,5 +1,5 @@
 export function camelCaseToString(s) {
-    if(s===null) return ''
+    if(s===null||s===undefined) return ''
 
     s = s.replace(/-./g, x=>x.toUpperCase()[1])
 

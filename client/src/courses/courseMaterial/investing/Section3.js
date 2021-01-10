@@ -25,7 +25,7 @@ export default function BusinessModel(props) {
     )
 }
 
-function Business(){
+export function Business(){
 
     const [business,setBusiness] = useState({
         mealsSold:200,

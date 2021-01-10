@@ -21,12 +21,13 @@ import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 import ShowChartIcon from '@material-ui/icons/ShowChart';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 export default function MaterialIcon({icon,color='black',size='large',className,scale=1}){
 
     switch(icon){
         case 'ArrowBackIosIcon':
-            return <ArrowBackIosIcon fontSize={size} style={{color}}/>
+            return <ArrowBackIosIcon fontSize={size} style={{color}}  className={className}/>
         case 'MoneyOffIcon':
             return <MoneyOffIcon className={className} />
         case 'AttachMoneyIcon':
@@ -71,6 +72,8 @@ export default function MaterialIcon({icon,color='black',size='large',className,
             return <AssessmentIcon className={className} />
         case 'EqualizerIcon':
             return <EqualizerIcon className={className} />
+        case 'ArrowBackIcon':
+            return <ArrowBackIcon className={className} />
         default: return null
     }
 }

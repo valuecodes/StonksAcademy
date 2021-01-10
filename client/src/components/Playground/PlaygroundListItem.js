@@ -4,8 +4,16 @@ import { Card } from '@material-ui/core'
 import { camelCaseToString } from '../../utils/utils'
 import { ActionButton } from '../Other/Buttons'
 import MaterialIcon from '../Other/MaterialIcon'
+import {useHistory} from 'react-router-dom';
 
 export default function PlaygroundListItem({item}) {
+
+    const history = useHistory();
+    
+    const onClickHandler=()=>{
+        history.push('/playground/'+item.name)
+    }
+
     return (
         <Card className='playgroundListItem'>
             <div className='playgroundItemHeader'>
@@ -16,7 +24,7 @@ export default function PlaygroundListItem({item}) {
                 <MaterialIcon icon={item.icon}className='playgroundIcon' />
             </div>
             <div>
-                <ActionButton text={'Play'}/>
+                <ActionButton text={'Play'} onClick={onClickHandler}/>
             </div>
         </Card>   
     )

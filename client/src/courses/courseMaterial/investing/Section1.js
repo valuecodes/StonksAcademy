@@ -190,7 +190,7 @@ function OverView(){
     )
 }
 
-function Asset(){
+export function Asset(){
 
     const [chartData,setChartData] = useState({
         labels: [],
@@ -308,7 +308,7 @@ function Asset(){
     )
 }
 
-function Liability(){
+export function Liability(){
 
     const [chartData,setChartData] = useState({
         labels: [],

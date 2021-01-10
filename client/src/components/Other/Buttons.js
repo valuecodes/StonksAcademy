@@ -87,14 +87,14 @@ export function ResetButton({text,onClick}){
     )
 }
 
-export function ActionButton({text}){
+export function ActionButton({text,onClick}){
     const classes = useStyles();
 
     return(
         <Button
             variant="contained"
             size='large'
-            // onClick={onClick}
+            onClick={onClick}
             className={classes.actionButton}
           >
             {text}
