@@ -1,3 +1,4 @@
+import { FinancialsRatiosIntroduction } from './courseMaterial/financialRatios/financialsRatiosCourse'
 import { FinancialsIntroduction, IncomeStatement, BalanceSheet, CashFlowStatement} from './courseMaterial/financials/financialsCourse'
 import { 
     AssetsAndLiabilities, ValueInvesting, BusinessModel, InvestingIntroduction
@@ -90,13 +91,14 @@ const COURSES = [
             },
         ]
     }, 
-    // {
-    //     name:'financial-ratios',
-    //     desc:'',
-    //     tier:'free',
-    //     sections:[
-    //     ]
-    // },   
+    {
+        name:'financial-ratios',
+        desc:'Basic financial ratios and stock valuation',
+        tier:'free',
+        introduction: FinancialsRatiosIntroduction,
+        sections:[
+        ]
+    },   
     // {
     //     name:'macro',
     //     desc:'Macro course',

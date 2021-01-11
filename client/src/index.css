@@ -227,6 +227,7 @@ a{
   grid-auto-rows: 35rem;
   grid-gap: 3rem;
   margin-bottom: 3rem;
+  overflow: auto;
 } 
 
 .academyCourse{
