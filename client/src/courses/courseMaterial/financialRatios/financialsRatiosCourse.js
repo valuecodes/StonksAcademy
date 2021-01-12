@@ -1,3 +1,4 @@
 import FinancialsRatiosIntroduction from './Introduction'
+import PriceRatios from './Section1'
 
-export { FinancialsRatiosIntroduction }
+export { FinancialsRatiosIntroduction, PriceRatios }

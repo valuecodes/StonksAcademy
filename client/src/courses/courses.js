@@ -1,4 +1,4 @@
-import { FinancialsRatiosIntroduction } from './courseMaterial/financialRatios/financialsRatiosCourse'
+import { FinancialsRatiosIntroduction, PriceRatios } from './courseMaterial/financialRatios/financialsRatiosCourse'
 import { FinancialsIntroduction, IncomeStatement, BalanceSheet, CashFlowStatement} from './courseMaterial/financials/financialsCourse'
 import { 
     AssetsAndLiabilities, ValueInvesting, BusinessModel, InvestingIntroduction
@@ -97,6 +97,12 @@ const COURSES = [
         tier:'free',
         introduction: FinancialsRatiosIntroduction,
         sections:[
+            {
+                name: 'priceRatios',
+                desc: 'Ratios based on the stock price',
+                articleTerms: ['Operating Cash Flow','Investing Cash Flow','Financing Cash Flow','Free Cash Flow'],
+                component: PriceRatios
+            },
         ]
     },   
     // {
