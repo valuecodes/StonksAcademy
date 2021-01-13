@@ -14,10 +14,10 @@
 .formula{
   font-size: 1.4rem;
   font-weight: bold;
-  background-color: var(--background-color)!important;
+  /* background-color: var(--background-color)!important; */
   padding: 1rem;
   padding-top: 1.3rem;
-  border-left: 0.5rem solid var(--secondary-color);
+  border-left: 0.5rem solid var(--primary-color);
   max-width: 40rem;
 }
 
@@ -61,4 +61,65 @@
 
 .newLine {
   white-space: pre-wrap;
+}
+
+.prosAndConsList{
+  padding: 0.5rem;
+}
+
+.prosAndCons{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  grid-gap: 1rem;
+}
+
+.prosAndCons svg{
+  position: relative;
+  bottom: 0.2rem;
+  height: 3rem;
+  width: 3rem;
+}
+
+.shareInputs{
+  margin-top: 1rem;
+  padding: 1rem;
+  display: grid;
+  grid-gap: 4rem;
+  max-width: 30rem;
+}
+
+.shareInputs li h2{
+  font-size: 3rem;
+  height: 2rem;
+}
+
+.sharePriceInput{
+  display: grid;
+  font-size: 3rem;
+  font-weight: 500;
+  grid-template-columns: 1fr 5rem;
+}
+
+.shareInput input{
+  font-size: 3rem!important;
+  text-align: right;
+  height: 4rem;
+}
+
+.shareInputSlider{
+  position: relative;
+  top: -1.4rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .shareInputSlider{
+    position: relative;
+    top: -2.2rem;
+  }
+
+  .shareInputs{
+    max-width: none;
+    grid-gap: 0;
+  }
 }

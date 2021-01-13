@@ -22,6 +22,8 @@ import ShowChartIcon from '@material-ui/icons/ShowChart';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 
 export default function MaterialIcon({icon,color='black',size='large',className,scale=1}){
 
@@ -74,6 +76,10 @@ export default function MaterialIcon({icon,color='black',size='large',className,
             return <EqualizerIcon className={className} />
         case 'ArrowBackIcon':
             return <ArrowBackIcon className={className} />
+        case 'AddIcon':
+            return <AddIcon className={className} />
+        case 'RemoveIcon':
+            return <RemoveIcon className={className} />
         default: return null
     }
 }

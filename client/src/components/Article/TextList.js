@@ -2,6 +2,7 @@ import React from 'react'
 import './Article.css'
 import { ArticleButton } from '../Other/Buttons'
 import Card from '@material-ui/core/Card';
+import MaterialIcon from '../Other/MaterialIcon';
 
 export default function TextList({content,className=''}) {
     return (
@@ -39,7 +40,30 @@ function TextItem({item}){
             {item.formula&&
                 <Formula formula={item.formula}/>
             }
+            {item.prosAndCons&&
+                <ProsAndCons prosAndCons={item.prosAndCons}/>
+            }
         </>
+    )
+}
+
+function ProsAndCons({prosAndCons}){
+    
+    return(
+        <Card className='prosAndConsList'>
+            {prosAndCons.pros.map((item,index) =>
+                <div key={index} className='prosAndCons pros'>
+                    <MaterialIcon icon='AddIcon' className='prosAndConsIcon'/>
+                   <p>{item}</p>
+                </div>
+            )}
+            {prosAndCons.cons.map((item,index) =>
+                <div key={index} className='prosAndCons cons'>
+                    <MaterialIcon icon='RemoveIcon' className='prosAndConsIcon'/>
+                    <p>{item}</p>
+                </div>   
+            )}
+        </Card>
     )
 }
 
