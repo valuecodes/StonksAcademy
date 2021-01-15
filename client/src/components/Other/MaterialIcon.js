@@ -24,6 +24,9 @@ import EqualizerIcon from '@material-ui/icons/Equalizer';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import CallMadeIcon from '@material-ui/icons/CallMade';
+import SettingsIcon from '@material-ui/icons/Settings';
+import DoneIcon from '@material-ui/icons/Done';
 
 export default function MaterialIcon({icon,color='black',size='large',className,scale=1}){
 
@@ -80,6 +83,12 @@ export default function MaterialIcon({icon,color='black',size='large',className,
             return <AddIcon className={className} />
         case 'RemoveIcon':
             return <RemoveIcon className={className} />
+        case 'CallMadeIcon':
+            return <CallMadeIcon className={className} />
+        case 'SettingsIcon':
+            return <SettingsIcon className={className} />
+        case 'DoneIcon':
+            return <DoneIcon className={className} />
         default: return null
     }
 }

@@ -1,4 +1,4 @@
-import { FinancialsRatiosIntroduction, PriceRatios } from './courseMaterial/financialRatios/financialsRatiosCourse'
+import { DebtRatios, FinancialsRatiosIntroduction, PriceRatios } from './courseMaterial/financialRatios/financialsRatiosCourse'
 import { FinancialsIntroduction, IncomeStatement, BalanceSheet, CashFlowStatement} from './courseMaterial/financials/financialsCourse'
 import { 
     AssetsAndLiabilities, ValueInvesting, BusinessModel, InvestingIntroduction
@@ -100,8 +100,14 @@ const COURSES = [
             {
                 name: 'priceRatios',
                 desc: 'Ratios based on the stock price',
-                articleTerms: ['Operating Cash Flow','Investing Cash Flow','Financing Cash Flow','Free Cash Flow'],
+                articleTerms: ['PE-ratio','PB-ratio','Dividend Yield','Payout ratio'],
                 component: PriceRatios
+            },
+            {
+                name: 'debtRatios',
+                desc: 'Ratios based on the company long and short term debt',
+                articleTerms: ['Current Ratio'],
+                component: DebtRatios
             },
         ]
     },   
