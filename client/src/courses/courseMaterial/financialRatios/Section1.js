@@ -8,6 +8,7 @@ import SectionContainer from '../../../components/Section/SectionContainer'
 import TextField from '@material-ui/core/TextField';
 import ResultCard from '../../../components/Example/ResultCard'
 import MaterialIcon from '../../../components/Other/MaterialIcon'
+import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 
 export default function PriceRatios(props) {
     const sectionComponents = [
@@ -15,6 +16,7 @@ export default function PriceRatios(props) {
         {name:'PE-Ratio',article: PERatio},
         {name:'PB-Ratio',article: PBRatio},
         {name:'Dividend Yield',article: DividendYield},
+        {name:'Exercise',article: ExerciseQuiz}
     ]
     
     return (

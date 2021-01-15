@@ -327,6 +327,50 @@ const QUESTIONS={
                 answer:'True',
             },
         ]
+    },
+    "financial-ratios":{
+        priceRatios:[
+            {
+                question:'Price ratios can be used to valuate company based on share price',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'PE ratio of 10 results in 10% Earnings Yield',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'PB ratio can be used to value asset light sectors like tech',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'Dividend yield is simple estimation of future returns',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'Company can sustainable pay more dividends than eps',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'PE-ratio works with negative earnings',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'PE-ratio and PB-ratio includes debt and cash',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'PB-ratio works with negative earnings',
+                options:['True','False'],
+                answer:'True',
+            },
+        ]
     }
 }
 
