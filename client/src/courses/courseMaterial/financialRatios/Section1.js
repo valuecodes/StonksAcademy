@@ -7,12 +7,14 @@ import { TimelineList } from '../../../components/Other/Timeline'
 import SectionContainer from '../../../components/Section/SectionContainer'
 import TextField from '@material-ui/core/TextField';
 import ResultCard from '../../../components/Example/ResultCard'
+import MaterialIcon from '../../../components/Other/MaterialIcon'
 
 export default function PriceRatios(props) {
     const sectionComponents = [
         {name:'OverView',article: OverView},
-        {name:'PE-Ratio',article:PERatio},
-        {name:'PB-Ratio',article:PBRatio},
+        {name:'PE-Ratio',article: PERatio},
+        {name:'PB-Ratio',article: PBRatio},
+        {name:'Dividend Yield',article: DividendYield},
     ]
     
     return (
@@ -23,11 +25,154 @@ export default function PriceRatios(props) {
     )
 }
 
+function DividendYield(){
+
+    const [div, setDiv] = useState({
+        sharePrice:150,
+        dividend:7,
+        eps:10,
+        yield:4.7,
+        payout:70
+    })
+
+    function changeInputHandler(e,value,name){
+        const divCopy = {...div}
+        divCopy[name]=+value
+        divCopy.yield = +((divCopy.dividend / divCopy.sharePrice)*100).toFixed(1)
+        divCopy.payout = +((divCopy.dividend / divCopy.eps)*100).toFixed(1)
+        setDiv(divCopy)
+    }
+
+    const textListContent=[
+        {
+            text:"Dividend Yield is the percentage that company pays dividend to shareholders related to the current price.",
+            formula:'Dividend Yield = Share price / Dividend per Share'
+        },
+        {
+            header:'Payout ratio',
+            text:'How much dividend is paid from the eps. If the payout ratio is more than 100%, company is paying more than it is earning and dividend cut might be coming.',
+            formula:'Payout Ratio = Dividend per Share / Earnings per Share'
+        },
+        {
+            header:'Pros and Cons',
+            prosAndCons:{
+                pros:['Simple estimation of the future returns','Payout ratio helps figuring out how safe the dividend is'],
+                cons:[]
+            },
+        },
+    ]
+
+    const handleGetYieldColor = (ratio) => {
+        if(ratio>=6) return 'var(--positive-color)'
+        if(ratio>3) return 'var(--neutral-color)'
+        if(ratio>0) return 'var(--negative-color)'
+    }
+    const handleGetColor = (ratio) => {
+        if(ratio<=50) return 'var(--positive-color)'
+        if(ratio<=100) return 'var(--neutral-color)'
+        if(ratio>100) return 'var(--negative-color)'
+    }
+
+    return(
+        <div className='sectionGrid3'>
+            <div>
+                <h2>Dividend Yield</h2>
+                <TextList content={textListContent}/>
+            </div>
+            <Card className='shareInputCard'>
+                <ul className='shareInputs'>
+                    <li>
+                        <h2><MaterialIcon className='shareInputIcon' icon='ShowChartIcon'/> Share Price</h2>
+                        <div className='sharePriceInput'>
+                            <TextField
+                                onChange={(e,value)=>changeInputHandler(e,e.target.value,'sharePrice')} 
+                                className='shareInput' 
+                                id="standard-basic" 
+                                label="" 
+                                type="number"
+                                name='sharePrice'
+                                value={div.sharePrice}
+                            />
+                            <p>$</p>
+                            <InputSlider 
+                                onChange={changeInputHandler}
+                                value={div.sharePrice}
+                                max={250}
+                                min={1}
+                                step={1}
+                                name='sharePrice'
+                                className='shareInputSlider' 
+                            />
+                        </div>                    
+                    </li>
+                    <li>
+                        <h2><MaterialIcon className='shareInputIcon' icon='MonetizationOnIcon'/>Dividend</h2>
+                        <div className='sharePriceInput'>
+                            <TextField 
+                                onChange={(e,value)=>changeInputHandler(e,e.target.value,'dividend')} 
+                                className='shareInput'
+                                id="standard-basic" label="" type="number"
+                                name='dividend'
+                                value={div.dividend}
+                            />     
+                            <p></p>
+                            <InputSlider
+                                onChange={changeInputHandler}
+                                value={div.dividend}
+                                max={30}
+                                min={1}
+                                step={0.5}
+                                name='dividend'
+                                className='shareInputSlider' 
+                            />
+                        </div>
+                    </li>
+                    <li>
+                        <h2><MaterialIcon className='shareInputIcon' icon='MoneyIcon'/>EPS</h2>
+                        <div className='sharePriceInput'>
+                            <TextField 
+                                onChange={(e,value)=>changeInputHandler(e,e.target.value,'eps')} 
+                                className='shareInput'
+                                id="standard-basic" label="" type="number"
+                                name='eps'
+                                value={div.eps}
+                            />     
+                            <p></p>
+                            <InputSlider
+                                onChange={changeInputHandler}
+                                value={div.eps}
+                                max={20}
+                                min={1}
+                                step={0.5}
+                                name='eps'
+                                className='shareInputSlider' 
+                            />
+                        </div>
+                    </li>
+                </ul>                
+            </Card>
+
+            <div>
+                <ResultCard 
+                    header={'Dividend Yield'} 
+                    value={div.yield+'%'} 
+                    color={handleGetYieldColor(div.yield)}
+                />
+                <ResultCard 
+                    header={'Payout Ratio'} 
+                    value={div.payout+'%'} 
+                    color={handleGetColor(div.payout)}
+                />
+            </div>
+        </div>
+    )
+}
+
 function PBRatio(){
 
     const [pb, setPB] = useState({
-        sharePrice:80,
-        bvps:80,
+        sharePrice:60,
+        bvps:60,
         pb:1,
         liquid:100
     })
@@ -66,10 +211,10 @@ function PBRatio(){
                 <h2>PB-ratio</h2>
                 <TextList content={textListContent}/>
             </div>
-            <div>
+            <Card className='shareInputCard'>
                 <ul className='shareInputs'>
                     <li>
-                        <h2>Share Price</h2>
+                        <h2><MaterialIcon className='shareInputIcon' icon='ShowChartIcon'/> Share Price</h2>
                         <div className='sharePriceInput'>
                             <TextField
                                 onChange={(e,value)=>changeInputHandler(e,e.target.value,'sharePrice')} 
@@ -93,7 +238,7 @@ function PBRatio(){
                         </div>                    
                     </li>
                     <li>
-                        <h2>BVPS</h2>
+                        <h2><MaterialIcon className='shareInputIcon' icon='AccountBalanceIcon'/> BVPS</h2>
                         <div className='sharePriceInput'>
                             <TextField 
                                 onChange={(e,value)=>changeInputHandler(e,e.target.value,'bvps')} 
@@ -107,7 +252,7 @@ function PBRatio(){
                                 onChange={changeInputHandler}
                                 value={pb.bvps}
                                 max={200}
-                                min={0}
+                                min={1}
                                 step={1}
                                 name='bvps'
                                 className='shareInputSlider' 
@@ -115,7 +260,7 @@ function PBRatio(){
                         </div>
                     </li>
                 </ul>                
-            </div>
+            </Card>
 
             <div>
                 <ResultCard 
@@ -137,8 +282,8 @@ function PBRatio(){
 function PERatio(){
 
     const [pe, setPE] = useState({
-        sharePrice:120,
-        eps:8,
+        sharePrice:60,
+        eps:4,
         pe:15,
         yield:6.7,
     })
@@ -178,10 +323,10 @@ function PERatio(){
                 <h2>PE-ratio</h2>
                 <TextList content={textListContent}/>
             </div>
-            <div>
+            <Card className='shareInputCard'>
                 <ul className='shareInputs'>
                     <li>
-                        <h2>Share Price</h2>
+                        <h2><MaterialIcon className='shareInputIcon' icon='ShowChartIcon'/>Share Price</h2>
                         <div className='sharePriceInput'>
                             <TextField
                                 onChange={(e,value)=>changeInputHandler(e,e.target.value,'sharePrice')} 
@@ -205,7 +350,7 @@ function PERatio(){
                         </div>                    
                     </li>
                     <li>
-                        <h2>EPS</h2>
+                        <h2><MaterialIcon className='shareInputIcon' icon='MonetizationOnIcon2'/>EPS</h2>
                         <div className='sharePriceInput'>
                             <TextField 
                                 onChange={(e,value)=>changeInputHandler(e,e.target.value,'eps')} 
@@ -227,7 +372,7 @@ function PERatio(){
                         </div>
                     </li>
                 </ul>                
-            </div>
+            </Card>
 
             <div>
                 <ResultCard 
