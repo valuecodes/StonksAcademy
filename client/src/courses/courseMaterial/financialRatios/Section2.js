@@ -13,7 +13,8 @@ export default function DebtRatios(props) {
 
     const sectionComponents = [
         {name:'OverView',article: OverView},
-        {name:'Current Ratio',article:CurrentRatio}
+        {name:'Current Ratio',article:CurrentRatio},
+        {name:'Debt to Equity',article:DebtToEquity},
     ]
 
     return (
@@ -24,20 +25,120 @@ export default function DebtRatios(props) {
     )
 }
 
+function DebtToEquity(){
+
+    const [debtToEquity, setDebtToEquity] = useState({
+        totalLiabilities:50,
+        shareholdersEquity:100,
+        debtToEquity:50,
+    })
+
+    function changeInputHandler(e,value,name){
+        const debtToEquityCopy = {...debtToEquity}
+        debtToEquityCopy[name]=+value
+        debtToEquityCopy.debtToEquity = +(debtToEquityCopy.totalLiabilities / debtToEquityCopy.shareholdersEquity).toFixed(1)
+        setDebtToEquity(debtToEquityCopy)
+    }
+
+    const textListContent=[
+        {
+            text:"Debt to Eqyity is used to evaluate company's financial leverage. It calculates the weight of total debt against total shareholder's equity. If debt to equity has risen with the growth of the company, the company may be funding the growth with debt.",
+            formula:"Debt to Equity = Total Liabilities / Total Shareholder's equity"
+        },
+        {
+            header:'Pros and Cons',
+            prosAndCons:{
+                pros:['Comparison between companies within the same sector'],
+                cons:['Difficult to compare between different sectors','Depends on the nature of the business and industry']
+            }
+        },
+    ]
+
+    const handleGetColor = (ratio) => {
+        if(ratio<=1) return 'var(--positive-color)'
+        if(ratio<=2) return 'var(--neutral-color)'
+        if(ratio>2) return 'var(--negative-color)'
+    }
+
+    return(
+        <div className='sectionGrid3'>
+            <div>
+                <h2>Debt to Equity</h2>
+                <TextList content={textListContent}/>
+            </div>
+            <Card className='shareInputCard'>
+                <ul className='shareInputs'>
+                    <li>
+                        <h2><MaterialIcon className='shareInputIcon' icon='MoneyIcon'/>Total Liabilities</h2>
+                        <div className='sharePriceInput'>
+                            <TextField
+                                onChange={(e,value)=>changeInputHandler(e,e.target.value,'totalLiabilities')} 
+                                className='shareInput' 
+                                id="standard-basic" 
+                                label="" 
+                                type="number"
+                                name='totalLiabilities'
+                                value={debtToEquity.totalLiabilities}
+                            />
+                            <p>$</p>
+                            <InputSlider 
+                                onChange={changeInputHandler}
+                                value={debtToEquity.totalLiabilities}
+                                max={150}
+                                min={1}
+                                step={1}
+                                name='totalLiabilities'
+                                className='shareInputSlider' 
+                            />
+                        </div>                    
+                    </li>
+                    <li>
+                        <h2><MaterialIcon className='shareInputIcon' icon='MoneyOffIcon'/>Shareholder's Equity</h2>
+                        <div className='sharePriceInput'>
+                            <TextField 
+                                onChange={(e,value)=>changeInputHandler(e,e.target.value,'shareholdersEquity')} 
+                                className='shareInput'
+                                id="standard-basic" label="" type="number"
+                                name='eps'
+                                value={debtToEquity.shareholdersEquity}
+                            />     
+                            <p></p>
+                            <InputSlider
+                                onChange={changeInputHandler}
+                                value={debtToEquity.shareholdersEquity}
+                                max={100}
+                                min={-10}
+                                step={1}
+                                name='shareholdersEquity'
+                                className='shareInputSlider' 
+                            />
+                        </div>
+                    </li>
+                </ul>                
+            </Card>
+            <div>
+                <ResultCard 
+                    header={'Debt to Equity'} 
+                    value={debtToEquity.debtToEquity} 
+                    color={handleGetColor(debtToEquity.debtToEquity)}
+                />
+            </div>
+        </div>
+    )
+}
+
 function CurrentRatio(){
 
     const [currentRatio, setCurrentRatio] = useState({
-        sharePrice:60,
-        currentAssets:4,
-        currentLiabilities:15,
-        currentRatio:6.7,
+        currentAssets:60,
+        currentLiabilities:25,
+        currentRatio:2.4,
     })
 
     function changeInputHandler(e,value,name){
         const currentRatioCopy = {...currentRatio}
         currentRatioCopy[name]=+value
         currentRatioCopy.currentRatio = +(currentRatioCopy.currentAssets / currentRatioCopy.currentLiabilities).toFixed(1)
-        // currentRatioCopy.yield = ((currentRatioCopy.eps / currentRatioCopy.sharePrice)*100).toFixed(1)
         setCurrentRatio(currentRatioCopy)
     }
 
