@@ -8,6 +8,7 @@ import MaterialIcon from '../../../components/Other/MaterialIcon'
 import TextField from '@material-ui/core/TextField';
 import { InputSlider } from '../../../components/Other/Sliders'
 import ResultCard from '../../../components/Example/ResultCard'
+import ExerciseQuiz from '../../../components/Exercise/ExcersiseQuiz'
 
 export default function DebtRatios(props) {
 
@@ -15,6 +16,7 @@ export default function DebtRatios(props) {
         {name:'OverView',article: OverView},
         {name:'Current Ratio',article:CurrentRatio},
         {name:'Debt to Equity',article:DebtToEquity},
+        {name:'Exercise',article: ExerciseQuiz}
     ]
 
     return (
@@ -29,8 +31,8 @@ function DebtToEquity(){
 
     const [debtToEquity, setDebtToEquity] = useState({
         totalLiabilities:50,
-        shareholdersEquity:100,
-        debtToEquity:50,
+        shareholdersEquity:30,
+        debtToEquity:1.7,
     })
 
     function changeInputHandler(e,value,name){
@@ -107,7 +109,7 @@ function DebtToEquity(){
                                 onChange={changeInputHandler}
                                 value={debtToEquity.shareholdersEquity}
                                 max={100}
-                                min={-10}
+                                min={1}
                                 step={1}
                                 name='shareholdersEquity'
                                 className='shareInputSlider' 
@@ -210,7 +212,7 @@ function CurrentRatio(){
                                 onChange={changeInputHandler}
                                 value={currentRatio.currentLiabilities}
                                 max={100}
-                                min={-10}
+                                min={1}
                                 step={1}
                                 name='currentLiabilities'
                                 className='shareInputSlider' 

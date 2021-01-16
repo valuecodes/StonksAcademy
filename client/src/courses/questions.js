@@ -370,6 +370,33 @@ const QUESTIONS={
                 options:['True','False'],
                 answer:'True',
             },
+        ],
+        debtRatios:[
+            {
+                question:'Below 1 current ratio means company have more current assets than current liabilities',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'Current ratio is used to measure the relationship between current assets and current liabilities',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'Debt to equity can be used to compare companies between different sectors',
+                options:['True','False'],
+                answer:'False',
+            },
+            {
+                question:'If debt to equity raises dramatically with the company growth, company might be funding the growth with debt',
+                options:['True','False'],
+                answer:'True',
+            },
+            {
+                question:'There is a good debt to equity ratio that is suitable for all industries',
+                options:['True','False'],
+                answer:'False',
+            },
         ]
     }
 }
