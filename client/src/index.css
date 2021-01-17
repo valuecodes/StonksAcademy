@@ -479,6 +479,8 @@ a{
   margin-bottom: 6rem;
 }
 
+/* Scroll Bar */
+
 @media only screen and (min-width: 800px) {
   .mobileNav{
     display: none!important;

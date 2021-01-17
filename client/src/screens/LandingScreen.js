@@ -9,7 +9,6 @@ export default function LandingScreen(props) {
             <div className='landingPageContainer'>
                 <div className='landingPageButtons'>
                     <Link to='/academy'>Academy</Link> 
-                    {/* <Link to='/academy'>Playground</Link> */}
                 </div>
                 <div  className='bgImageContainer'>
                     <img className='bgImage' src={image} alt={'World Map'}/>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import MaterialIcon from '../components/Other/MaterialIcon'
 import COURSES from '../courses/courses'
 import Card from '@material-ui/core/Card';
-import AdSense from 'react-adsense';
+// import AdSense from 'react-adsense';
 
 export default function AcademyScreen(){
     
@@ -27,12 +27,12 @@ export default function AcademyScreen(){
                 </div>   
             </div>
             <div className='add-adsense desktop-add add-big'>
-                <AdSense.Google
+                {/* <AdSense.Google
                     client='ca-pub-4976696279180454'
                     slot='7806394673'
                     style={{ width: 300, height: 600, float: '' }}
                     format=''
-                />
+                /> */}
             </div>
         </section>
     )

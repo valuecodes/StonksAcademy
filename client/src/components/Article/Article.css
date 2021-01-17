@@ -120,6 +120,16 @@
   height: 4rem;
 }
 
+.numberInput input{
+  font-size: 3rem!important;
+  text-align: right;
+  height: 4rem;
+}
+
+.numberInput label{
+  font-size: 2.4rem!important;
+}
+
 .shareInputSlider{
   position: relative;
   top: -1.4rem;

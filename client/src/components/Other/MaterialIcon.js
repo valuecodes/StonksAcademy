@@ -27,6 +27,7 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import CallMadeIcon from '@material-ui/icons/CallMade';
 import SettingsIcon from '@material-ui/icons/Settings';
 import DoneIcon from '@material-ui/icons/Done';
+import TimelineIcon from '@material-ui/icons/Timeline';
 
 export default function MaterialIcon({icon,color='black',size='large',className,scale=1}){
 
@@ -89,6 +90,8 @@ export default function MaterialIcon({icon,color='black',size='large',className,
             return <SettingsIcon className={className} />
         case 'DoneIcon':
             return <DoneIcon className={className} />
+        case 'TimelineIcon':
+            return <TimelineIcon className={className} />
         default: return null
     }
 }

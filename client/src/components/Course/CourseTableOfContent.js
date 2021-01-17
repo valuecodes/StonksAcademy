@@ -5,7 +5,7 @@ import { ArticleButtonPrimary } from '../Other/Buttons'
 import { camelCaseToString } from '../../utils/utils';
 import Card from '@material-ui/core/Card';
 import Divider from '@material-ui/core/Divider';
-import AdSense from 'react-adsense';
+// import AdSense from 'react-adsense';
 
 export default function CourseTableOfContent({course, moveTo}){
     let Introduction = null
@@ -44,12 +44,12 @@ export default function CourseTableOfContent({course, moveTo}){
                                 </Card>
                             }   
                             <div className='add-adsense desktop-add'>
-                                <AdSense.Google
+                                {/* <AdSense.Google
                                     client='ca-pub-4976696279180454'
                                     slot='7806394673'
                                     style={{ width: 160, height: 600, float: '' }}
                                     format=''
-                                    />
+                                    /> */}
                             </div>
                         </div>
                     </div> 

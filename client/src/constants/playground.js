@@ -1,3 +1,4 @@
+import StockPriceSimulator from "../components/Playground/StockPriceSimulator";
 import { Asset, Liability } from "../courses/courseMaterial/investing/Section1";
 import { Business } from "../courses/courseMaterial/investing/Section3";
 
@@ -20,4 +21,10 @@ export const PLAYGROUNDLIST = [
         desc:'Learn how business works with restaurant example',
         component:Business
     },
+    {
+        name:'stock-price-simulator',
+        icon:'TimelineIcon',
+        desc:'Stock price valuation',
+        component:StockPriceSimulator
+    }
 ]

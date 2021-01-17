@@ -7,7 +7,7 @@ import {ArticleTermList} from '../../components/Article/ArticleTerm'
 import { ArticleButtonPrimary } from '../Other/Buttons'
 import { Link } from 'react-router-dom'
 import { camelCaseToString } from '../../utils/utils';
-import AdSense from 'react-adsense';
+// import AdSense from 'react-adsense';
 
 export default function CourseRecap({course, }){
     
@@ -73,12 +73,12 @@ export default function CourseRecap({course, }){
                             </ul>    
                             <div>
                                 <div className='add-adsense desktop-add'>
-                                    <AdSense.Google
+                                    {/* <AdSense.Google
                                         client='ca-pub-4976696279180454'
                                         slot='7806394673'
                                         style={{ width: 300, height: 600, float: '' }}
                                         format=''
-                                        />
+                                        /> */}
                                 </div>                                 
                                 {/* <Card className='courseScore'>
                                     <h2>Course Score</h2>

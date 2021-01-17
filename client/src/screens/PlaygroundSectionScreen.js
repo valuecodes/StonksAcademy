@@ -1,4 +1,5 @@
 import React,{ useEffect, useState } from 'react'
+import '../components/Playground/Playground.css'
 import { useParams } from 'react-router-dom'
 import ScreenHeader from '../components/Page/ScreenHeader'
 import { PLAYGROUNDLIST } from '../constants/playground'

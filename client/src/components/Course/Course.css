@@ -46,7 +46,6 @@
 }
 
 .courseScore{
-  /* grid-column: 1/3; */
   height: 40rem;
   padding: 2rem 0;
   display: grid;
@@ -59,13 +58,11 @@
 }
 
 .sectionScores{
-  /* grid-column: 1/3; */
   display: grid;
   grid-gap: 2rem;
 }
 
 .recapScore{
-    /* grid-column: 1/3; */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 1rem; 

@@ -34,7 +34,7 @@ function App() {
             <Route path='/disclaimer' component={DisclaimerScreen}/>
             <Route path='/privacy-policy' component={PrivacyPolicyScreen}/>
             <Route path='/profile' component={ProfileScreen} />
-            <Route exact={true} path='/playground/:id' component={PlaygroundSectionScreen}/>
+            <Route exact={true} path='/playground/:id' params={[]} component={PlaygroundSectionScreen}/>
             <Route exact={true} path='/playground' component={PlaygroundScreen}/>
             <Route path='/academy/:id' component={AcademyCourseScreen}/>
             <Route exact={true} path='/academy' component={AcademyScreen} />
