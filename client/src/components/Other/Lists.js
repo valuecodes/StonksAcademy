@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
         color:'black',
     },
     icon:{
-        color:'black',
         height:25,
         width:25,
         marginLeft:'auto',

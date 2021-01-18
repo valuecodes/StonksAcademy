@@ -1,23 +1,5 @@
 import React from 'react'
 import Slider from '@material-ui/core/Slider';
-import { makeStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-const useStyles = makeStyles({
-    root: {
-      width: 250,
-    },
-    input: {
-      width: 42,
-      fontSize:30,
-      marginLeft:'5rem'
-    },
-    sliderInput:{
-        display:'grid',
-        gridTemplateColumns:'1fr auto auto',
-        fontSize:20,
-        alignItems:'flex-end'
-    },
-  });
 
 export function InputSlider(props) {
 
